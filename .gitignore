@@ -3,3 +3,6 @@
 !.htaccess
 !.gitignore
 !index.php
+!static/css
+!static/img
+!static/js

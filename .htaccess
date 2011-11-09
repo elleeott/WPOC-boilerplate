@@ -40,9 +40,14 @@ php_flag ignore_repeated_errors On
 	RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
 
 	# redirect non-www to www
-	RewriteCond %{HTTP_HOST} !^www\.
-	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+	#RewriteCond %{HTTP_HOST} !^www\.
+	#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
+	# redirect www to non-www
+	#RewriteCond %{HTTPS} !=on
+	#RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	#RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]	
+	
 	#custom404
 	#RewriteCond %{REQUEST_FILENAME} !-f  
 	#RewriteCond %{REQUEST_FILENAME} !-d  
