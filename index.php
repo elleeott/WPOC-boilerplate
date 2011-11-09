@@ -6,6 +6,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link href="<?php autoVer('/static/css/style.css'); ?>" rel="stylesheet"/>
 	</head>
 	<body>
 	<header>
