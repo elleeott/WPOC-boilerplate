@@ -4,3 +4,4 @@
     ExpiresDefault "access plus 10 years"
 </FilesMatch>
 
+Options -Indexes

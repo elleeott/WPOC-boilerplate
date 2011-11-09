@@ -1,6 +1,7 @@
-*
-!README.md
-!.htaccess
-!.gitignore
-!index.php
-!/static/
+#*
+#!README.md
+#!.htaccess
+#!.gitignore
+#!index.php
+#!/static/
+#!/library/
