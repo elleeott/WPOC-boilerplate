@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/560/trunk/upload/install/view/template
+END
+upgrade.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/560/trunk/upload/install/view/template/upgrade.tpl
+END
+header.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/95/trunk/upload/install/view/template/header.tpl
+END
+success.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/560/trunk/upload/install/view/template/success.tpl
+END
+step_1.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/95/trunk/upload/install/view/template/step_1.tpl
+END
+step_2.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/95/trunk/upload/install/view/template/step_2.tpl
+END
+step_3.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/95/trunk/upload/install/view/template/step_3.tpl
+END
+step_4.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/95/trunk/upload/install/view/template/step_4.tpl
+END
+footer.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/95/trunk/upload/install/view/template/footer.tpl
+END
