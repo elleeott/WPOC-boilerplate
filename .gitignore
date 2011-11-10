@@ -1,8 +1,2 @@
-#*
-#!README.md
-#!.htaccess
-#!.gitignore
-#!index.php
-#!/static/
-#!/library/
 .htaccess
+wp-config.php

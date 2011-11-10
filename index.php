@@ -1,17 +1,18 @@
-<?php include($_SERVER['DOCUMENT_ROOT'].'/library/cacheBuster.php');?>
+<?php
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
 
-<!DOCTYPE html>
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define('WP_USE_THEMES', true);
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<link href="<?php autoVer('/static/css/style.css'); ?>" rel="stylesheet"/>
-	</head>
-	<body>
-	<header>
-		<img src="<?php autoVer('/static/img/logo.jpg'); ?>" alt="logo"/>
-	</header>
-
-	</body>
-</html>
+/** Loads the WordPress Environment and Template */
+require('./wp-blog-header.php');
+?>
