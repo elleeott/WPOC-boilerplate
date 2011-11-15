@@ -1,5 +1,4 @@
-.htaccess
 wp-config.php
 store/config.php
 store/admin/config.php
-static/.sass-cache
+.sass-cache
