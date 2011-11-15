@@ -1,3 +1,5 @@
 .htaccess
 wp-config.php
 .sass-cache
+
+#root .htaccess is assume unchanged
