@@ -9,10 +9,6 @@
 Options -Indexes 
 
 
-
-
-
-
 ##### error handling #####	
 #ErrorDocument 400 /404.php	
 #ErrorDocument 401 /404.php	
@@ -22,11 +18,17 @@ ErrorDocument 404 /404.php
 
 
 
-
-
 ##### rewrites #####
 <IfModule mod_rewrite.c>
+
 	RewriteEngine On
+
+	RewriteBase /store/
+	RewriteRule sitemap.xml /index.php?route=feed/google_sitemap
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
+
 	#cachebusting: Rules for Versioned Static Files - allow version names to be entered in filenames
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
@@ -46,6 +48,7 @@ ErrorDocument 404 /404.php
 	#RewriteCond %{REQUEST_FILENAME} !-d  
 	#RewriteRule .* 404.html [L]  
 	
+
 </IfModule>
 
 
