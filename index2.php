@@ -13,5 +13,6 @@
 		<img src="<?php autoVer('/static/img/logo.jpg'); ?>" alt="logo"/>
 	</header>
 
+
 	</body>
 </html>
