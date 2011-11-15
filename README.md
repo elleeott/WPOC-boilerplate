@@ -11,3 +11,8 @@ current working install of WP 3.2.1 and OC 1.5.1.3
 3. rename wp-config-sample.php to wp-config.php and enter db credentials
 4. run WP install - this will set up the required db tables for WP.
 5. in webroot, create /static directory, and map this to a subdomain  (static.mywebsite.com)
+
+## notes
+root .htaccess is assume unchanged:
+git update-index --assume-unchanged <file>
+git update-index --no-assume-unchanged <file>
