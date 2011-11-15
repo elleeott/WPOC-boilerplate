@@ -1,6 +1,2 @@
 wp-config.php
 .sass-cache
-store/system/logs
-store/config.php
-store/admin/config.php
-!store/system/library/config.php
