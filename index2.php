@@ -1,4 +1,4 @@
-<?php include($_SERVER['DOCUMENT_ROOT'].'/library/cacheBuster.php');?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/lib/cacheBuster.php');?>
 
 <!DOCTYPE html>
 

@@ -2,7 +2,7 @@
 class ControllerCommonFooter extends Controller {
 	protected function index() {
 		$this->language->load('common/footer');
-		
+		$this->data['scripts'] = $this->document->getScripts();		
 		$this->data['text_information'] = $this->language->get('text_information');
 		$this->data['text_service'] = $this->language->get('text_service');
 		$this->data['text_extra'] = $this->language->get('text_extra');

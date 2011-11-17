@@ -2,3 +2,6 @@ wp-config.php
 .sass-cache
 store/image/cache/data/
 store/system/cache/
+store/vqmod/vqmod.log
+store/vqmod/vqcache
+static/img/cache
