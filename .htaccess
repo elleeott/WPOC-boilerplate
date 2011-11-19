@@ -120,22 +120,10 @@ FileETag None
 </IfModule>
 
 ##### PHP stuff #####
-#turn these on in dev, off in production
-php_flag register_globals Off
-php_flag display_errors On
-php_flag display_startup_errors On
-php_flag ignore_repeated_errors On
+
 
 # Rename session cookie to something else, than PHPSESSID
-# php_value session.name sid
-
-#pword stuff
-#AuthType Basic  
-#AuthName "creds please"  
-#AuthUserFile /Volumes/drive2/Dropbox/Sites/frictious/.htpasswd  
-#AuthUserFile /home/elleeott/.htpasswd  
-#Require valid-user  
-
+php_value session.name sessident
 
 
 # BEGIN WordPress

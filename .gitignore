@@ -1,4 +1,5 @@
-wp-config.php
+wp-config-local.php
+config-local.php
 .sass-cache
 store/image/cache/data/
 store/system/cache/
