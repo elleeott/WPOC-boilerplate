@@ -123,7 +123,7 @@ FileETag None
 
 
 # Rename session cookie to something else, than PHPSESSID
-php_value session.name sessident
+#php_value session.name sessident
 
 
 # BEGIN WordPress
