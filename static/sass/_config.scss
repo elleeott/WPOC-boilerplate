@@ -1,0 +1,48 @@
+//color
+
+$canvasColor:#fff;
+$bodyCopyColor:#333;
+$primaryLinkColor:#cc692d;
+$secondaryLinkColor:#666;
+$knockOutColor:#333;
+$knockOutFontColor:#fff;
+$primaryAccentColor:666;
+$secondaryAccentColor:#ccc;
+
+//type
+
+$defaultSerif:georgia,serif;
+$defaultSansSerif:Arial, Helvetica, sans-serif;
+$defaultFontSize:14px;
+$bodyCopyLineHeight:1.5em;
+
+
+//units
+$unit1:1px;
+$unit2:2px;
+$unit3:3px;
+$unit5:5px;
+$unit10:10px;
+
+//paths
+
+
+//mixins
+
+@mixin rounded($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-khtml-border-radius: $radius;
+	border-radius: $radius;
+
+}
+@mixin shadow {
+	-webkit-box-shadow: 0px 2px 0px #F0F0F0;
+	-moz-box-shadow: 0px 2px 0px #F0F0F0;
+	box-shadow: 0px 2px 0px #F0F0F0;	
+}
+
+body {
+	font-family:$defaultSansSerif;
+	font-size:$defaultFontSize;
+}

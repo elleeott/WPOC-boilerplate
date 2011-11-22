@@ -1,4 +1,3 @@
-/****** resets *****/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -58,15 +57,10 @@ article, aside, figure, footer, header, hgroup, nav, section {
 .clearfix {
   zoom: 1; }
 
-html {
-  overflow-y: scroll; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px; }
 
-html {
-  overflow: -moz-scrollbars-vertical;
-  margin: 0;
-  padding: 0; }
-
-/***** SASS definitions *****/
 /***** defaults *****/
 body {
   background: white;

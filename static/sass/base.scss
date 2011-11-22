@@ -1,0 +1,9 @@
+@import "_reset.scss";
+@import "_config.scss";
+@import "_layout.scss";
+@import "_header.scss";
+@import "_article.scss";
+@import "_footer.scss";
+html {
+	overflow: -moz-scrollbars-vertical;
+}

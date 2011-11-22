@@ -1,0 +1,60 @@
+header {
+	position:relative;
+	height:200px;
+	margin:0 0 20px;
+
+}
+#logo {
+	background:#ccc;
+	width:200px;
+	height:100px;
+	line-height:100px;
+	font-size:50px;
+	position:absolute;
+	top:25px;
+	left:0;
+	color:$bodyCopyColor;
+	text-align:center;
+}
+
+nav {
+	background:$knockOutColor;
+	position:absolute;
+	bottom:0;
+	width:100%;
+}
+nav a {
+	display:block;
+	color:$knockOutFontColor;
+	text-decoration:none;
+	padding:5px 10px;
+	font-size:12px;
+	width:95px;
+	height:40px;
+	&:hover {
+		background:$knockOutColor/2;
+	}
+
+}
+.menu-primary-nav-container > ul > li {
+	position:relative;	
+	float:left;
+	> a {
+		float:left;
+	}
+	> ul {
+		display:none;
+		position:absolute;
+		top:50px;
+		left:0;
+		background:$knockOutColor;
+	}	
+}
+
+#support-links {
+	font-size:12px;
+	position:absolute;
+	right:0;
+	bottom:60px;
+}
+

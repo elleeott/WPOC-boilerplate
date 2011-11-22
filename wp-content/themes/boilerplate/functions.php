@@ -37,4 +37,21 @@ function wp_ingredients_init() {
 }
 add_action( 'init', 'wp_ingredients_init' );
 
+
+
+
+
+//#############
+
+function register_custom_menus() {
+	register_nav_menus(
+		array(
+			'primary-nav' => 'Primary Nav',
+			'secondary-nav' => 'Secondary Nav'
+		)
+	); 
+}
+add_action( 'init', 'register_custom_menus' );
+
+
 ?>

@@ -1,0 +1,19 @@
+#container {
+	width:940px;
+	margin:auto;
+}
+#content-container {
+	margin:0 0 20px;
+}
+
+#main-content {
+	float:left;
+	width:560px;	
+}
+
+#sidebar {
+	float:right;
+	width:200px;
+	min-height:400px;
+	background:$secondaryAccentColor;
+}
