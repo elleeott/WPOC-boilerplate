@@ -51,8 +51,8 @@ function add_recipe_comment_meta($comment_id) {
 		add_comment_meta($comment_id, 'comment-type', $type, false);
 	}
 	if(isset($_POST['rating'])){
-		$species = wp_filter_nohtml_kses($_POST['rating']);
-		add_comment_meta($comment_id, 'rating', $species, false);
+		$rating = wp_filter_nohtml_kses($_POST['rating']);
+		add_comment_meta($comment_id, 'rating', $rating, false);
 	}
 
 }
@@ -67,7 +67,7 @@ function average_rating() {
 	$ratings = $wpdb->get_results("select {$wpdb->prefix}commentmeta.meta_value from {$wpdb->prefix}commentmeta inner join {$wpdb->prefix}comments on {$wpdb->prefix}comments.comment_id={$wpdb->prefix}commentmeta.comment_id where {$wpdb->prefix}commentmeta.meta_key='rating' and {$wpdb->prefix}comments.comment_post_id=$post_id and {$wpdb->prefix}comments.comment_approved =1");
 	if ($ratings) {
 		foreach ($ratings as $rating) {
-			$counter = $counter +1;
+			$counter = $counter+1;
 			$average_rating = $average_rating + $rating->meta_value;
 		} 
 		return round((($average_rating/$counter)*2),0)/2;
