@@ -1,4 +1,10 @@
 <?php
+
+//mods to make OC play well w/ WP
+global $isapage;
+$isapage = true;
+require_once($_SERVER['DOCUMENT_ROOT'].'/wp-blog-header.php');
+
 // Version
 define('VERSION', '1.5.1.3');
 

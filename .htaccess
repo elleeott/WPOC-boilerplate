@@ -6,7 +6,7 @@
 </Files>
 
 #disallow directory listing
-Options -Indexes 
+Options -Indexes +FollowSymlinks
 
 
 ##### error handling #####	
@@ -22,7 +22,22 @@ ErrorDocument 404 /404.php
 <IfModule mod_rewrite.c>
 
 	RewriteEngine On
+	
+	RewriteRule ^(store)($|/) - [L,NC]
 
+	#custom404
+	#RewriteCond %{REQUEST_FILENAME} !-f  
+	#RewriteCond %{REQUEST_FILENAME} !-d  
+	#RewriteRule .* 404.php [L]  
+	
+	#wordpress
+	#RewriteBase /
+	RewriteRule ^index\.php$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /index.php [L]
+	
+	#OC
 	RewriteBase /store/
 	RewriteRule sitemap.xml /index.php?route=feed/google_sitemap
 	RewriteCond %{REQUEST_FILENAME} !-f
@@ -30,22 +45,17 @@ ErrorDocument 404 /404.php
 	RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 
 	# redirect non-www to www
-	#RewriteCond %{HTTP_HOST} !^www\.
-	#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+	RewriteCond %{HTTPS} !=on	
+	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
 	# redirect www to non-www
-	RewriteCond %{HTTPS} !=on
-	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-	RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]	
+	#RewriteCond %{HTTPS} !=on
+	#RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	#RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]	
 	
-	#custom404
-	#RewriteCond %{REQUEST_FILENAME} !-f  
-	#RewriteCond %{REQUEST_FILENAME} !-d  
-	#RewriteRule .* 404.html [L]  
 	
-
 </IfModule>
-
 
 
 
@@ -126,6 +136,8 @@ FileETag None
 #php_value session.name sessident
 
 
-# BEGIN WordPress
-
-# END WordPress
+##### Far Future Expires Header for all static elements #####
+<Files favicon.ico>
+    ExpiresActive On
+    ExpiresDefault "access plus 10 years"
+</Files>

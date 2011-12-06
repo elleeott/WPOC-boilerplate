@@ -7,4 +7,5 @@ store/vqmod/vqmod.log
 store/vqmod/vqcache
 static/img/cache
 store/system/logs/error.txt
-db/db.sql
+db/db-local.sql
+db/db-remote.sql

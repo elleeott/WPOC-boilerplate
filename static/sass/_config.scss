@@ -15,7 +15,19 @@ $defaultSerif:georgia,serif;
 $defaultSansSerif:Arial, Helvetica, sans-serif;
 $defaultFontSize:14px;
 $bodyCopyLineHeight:1.5em;
+h1 {
+	font-size:24px;
 
+		margin:0 0 1em;
+	}
+h2 {
+	font-size:18px;
+	margin:0 0 1em;
+}
+p {
+	margin:0 0 1em;
+	line-height:$bodyCopyLineHeight;
+}
 
 //units
 $unit1:1px;
@@ -41,6 +53,15 @@ $unit10:10px;
 	-moz-box-shadow: 0px 2px 0px #F0F0F0;
 	box-shadow: 0px 2px 0px #F0F0F0;	
 }
+
+@mixin transition {
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
 
 body {
 	font-family:$defaultSansSerif;

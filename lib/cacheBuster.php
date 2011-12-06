@@ -4,7 +4,6 @@ function autoVer($url){
     $path = pathinfo($url);
     $ext = $path['extension'];
     $ver = '.'.filemtime($_SERVER['DOCUMENT_ROOT'].$url).'.'.$ext;
-    
-    echo '//'.$subDomain.'.'.$_SERVER['SERVER_NAME'].str_replace($subDomain.'/','',$path['dirname']).'/'.str_replace('.'.$ext, $ver, $path['basename']);
+    echo '//'.$subDomain.'.'.str_replace('www.','',$_SERVER['SERVER_NAME']).str_replace($subDomain.'/','',$path['dirname']).'/'.str_replace('.'.$ext, $ver, $path['basename']);
 }
 ?>

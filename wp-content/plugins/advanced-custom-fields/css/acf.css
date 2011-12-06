@@ -1,0 +1,171 @@
+/*--------------------------------------------------------------------------------------------
+	Screen Extra
+--------------------------------------------------------------------------------------------*/
+#icon-options-general {
+	background: url(../images/acf-icon-32.png) 0 0 no-repeat !important;
+}
+
+.acf_cols {position: relative; overflow: hidden; clear: both;}
+.acf_col_left {margin-right: 300px;}
+.acf_col_left .tablenav {display: none;}
+.acf_col_left p.search-box {display: none;}
+.acf_col_left form {overflow: hidden; position: relative; clear: left;}
+
+
+.acf_col_right {
+	float: right; 
+	width: 281px; 
+	padding-top: 86px !important;
+}
+
+#poststuff.acf_col_right .inside {
+    margin: 0;
+    padding: 0;
+}
+
+.postbox h3.hndle {
+	cursor: default;
+	position: relative;
+}
+
+.postbox h3.hndle a.button {
+	height: 13px;
+    line-height: 12px;
+    position: absolute;
+    right: 6px;
+    top: 4px;
+}
+
+#poststuff.acf_col_right .inside .field {
+	border-bottom: #DFDFDF solid 1px;
+    border-top: #FFFFFF solid 1px;
+    padding: 6px 10px;
+}
+
+#poststuff.acf_col_right .inside h4,
+#poststuff.acf_col_right .inside p {
+	margin: 3px 0;
+	padding: 0;
+}
+
+/*--------------------------------------------------------------------------------------------
+	Unlock Fields
+--------------------------------------------------------------------------------------------*/
+#screen-meta-links .screen-meta-toggle.acf {
+	float: right;
+	background: none repeat scroll 0 0 #F9F9F9;
+    border-radius: 0 0 3px 3px;
+    float: right;
+    font-family: "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+    height: 22px;
+    margin: 0 6px 0 0;
+    position: relative;
+    border: #DFDFDF solid 1px;
+    border-top: 0 none;
+    padding: 0 3px;
+   
+}
+
+#screen-meta-links .acf a.show-settings {
+	padding: 0 16px;
+	border-top: 0 none;
+	color: #21759B;
+	padding: 0 20px 0 10px;
+	text-shadow: #fff 0 1px 0;
+}
+
+#screen-meta-links .acf.screen-meta-active {
+	margin-top: -1px;
+}
+
+.screen-meta-wrap h5 {
+	margin: 8px 0 3px;
+	font-size: 13px;
+}
+.screen-meta-wrap {
+	background-color: #F9F9F9;
+	border: #DFDFDF solid 1px;
+	border-top: 0 none;
+	margin: 0 20px 0 0;
+	padding: 8px 12px 12px;
+	border-radius: 0 0 4px 4px;
+}
+
+
+
+.screen-meta-wrap p {
+	margin-top: 0px;
+}
+
+table.acf_activate {
+	border: #DFDFDF solid 1px;
+	border-collapse:separate; 
+	border-spacing:0; 
+	vertical-align:top; 
+	width: 100%;
+	background: #FEFEFE;
+}
+
+table.acf_activate tr:nth-child(even) {
+	background: #F9F9F9
+}
+
+table.acf_activate tr:nth-child(odd) {
+	background: transparent;
+}
+
+table.acf_activate tr.field_save {
+	background: #EAF2FA;
+}
+
+table.acf_activate tr td,
+table.acf_activate tr th {
+	border-bottom: #DFDFDF solid 1px;
+	border-right: #DFDFDF solid 1px;
+	padding: 8px;
+}
+
+table.acf_activate tr:last-child  td {
+	border-bottom: 0 none;
+}
+
+table.acf_activate tr td:last-child {
+	border-right: 0 none;
+}
+
+table.acf_activate input[type="text"] {
+	padding: 7px;
+	width: 200px;
+}
+
+table.acf_activate input[type="submit"] {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/*--------------------------------------------------------------------------------------------
+	Columns
+--------------------------------------------------------------------------------------------*/
+.row-actions .inline {
+	display: none;
+}
+
+/*--------------------------------------------------------------------------------------------
+	Export
+--------------------------------------------------------------------------------------------*/
+
+#acf-screen-meta-form-1 {
+	float: left;
+	width: 48%;
+}
+
+#acf-screen-meta-form-1 select {
+	width: 99%;
+	height: 80px;
+	margin-bottom: 10px;
+}
+
+#acf-screen-meta-form-2 {
+	float: right;
+	width: 48%;
+}

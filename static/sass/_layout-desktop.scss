@@ -1,0 +1,36 @@
+#container {
+	width:940px;
+	margin:auto;
+}
+#content-container {
+	margin:0 0 20px;
+}
+
+#main-content {
+	width:720px;	
+}
+.main-content-right {
+	float:right;
+}
+.main-content-left {
+	float:left;
+}
+
+.sidebar {
+	width:200px;
+	min-height:400px;
+}
+
+.sidebar-right {
+	float:right;
+}
+
+.sidebar-left {
+	float:left;
+}
+
+.sidebar-content {
+	border:1px solid $secondaryAccentColor;
+	padding:10px;
+	min-height:500px;
+}

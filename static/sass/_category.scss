@@ -1,0 +1,24 @@
+.product-list {
+
+}
+
+.category-info {
+	border-top:1px solid $secondaryAccentColor;
+	border-bottom:1px solid $secondaryAccentColor;
+	.image {
+		float:left;
+	}
+}
+.product-cell {
+	width:200px;
+	float:left;	
+	padding:20px;
+	height:300px;
+	.image {
+		background:$secondaryAccentColor;
+		text-align:center;
+		height:150px;
+	}
+}
+
+

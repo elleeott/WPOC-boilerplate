@@ -1,0 +1,29 @@
+#container {
+	margin:0 20px;
+}
+#content-container {
+	margin:0 0 20px;
+}
+
+#main-content {
+}
+.main-content-right {
+}
+.main-content-left {
+}
+
+.sidebar {
+	min-height:100px;
+}
+
+.sidebar-right {
+}
+
+.sidebar-left {
+}
+
+.sidebar-content {
+	border:1px solid $secondaryAccentColor;
+	padding:10px;
+	min-height:500px;
+}
