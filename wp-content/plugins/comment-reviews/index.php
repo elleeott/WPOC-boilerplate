@@ -58,5 +58,21 @@ function add_recipe_comment_meta($comment_id) {
 }
 add_action ('comment_post', 'add_recipe_comment_meta', 1);
 
-
+//get average recipe rating
+function average_rating() {
+	global $wpdb;
+	$post_id = get_the_ID();
+	$average_rating = 0;	
+	$counter = 0;
+	$ratings = $wpdb->get_results("select {$wpdb->prefix}commentmeta.meta_value from {$wpdb->prefix}commentmeta inner join {$wpdb->prefix}comments on {$wpdb->prefix}comments.comment_id={$wpdb->prefix}commentmeta.comment_id where {$wpdb->prefix}commentmeta.meta_key='rating' and {$wpdb->prefix}comments.comment_post_id=$post_id and {$wpdb->prefix}comments.comment_approved =1");
+	if ($ratings) {
+		foreach ($ratings as $rating) {
+			$counter = $counter +1;
+			$average_rating = $average_rating + $rating->meta_value;
+		} 
+		return round((($average_rating/$counter)*2),0)/2;
+	} else {
+		return $counter;
+	}
+}
 ?>

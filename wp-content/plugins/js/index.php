@@ -8,11 +8,11 @@ Description: enqueue all js
 // enque required scripts per the following method to output correctly in OC:
 // http://scribu.net/wordpress/optimal-script-loading.html
 
-add_action('init', 'reg_scripts'); 
-add_action('wp_footer', 'print_scripts'); 
 
 
 if ( !is_admin() ) {
+	add_action('init', 'reg_scripts'); 
+	add_action('wp_footer', 'print_scripts'); 
 	function reg_scripts() {
         $protocol='http:';
         if(!empty($_SERVER['HTTPS'])) {

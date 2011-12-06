@@ -5,6 +5,8 @@
 		<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 			<article>
 				<h1><?php the_title(); ?> - - This is a Product</h1>
+				<?php echo average_rating(); ?>
+
 				<?php the_content(); ?>
 			</article>
 		<?php comments_template('/comments-recipes.php'); ?>
