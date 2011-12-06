@@ -50,7 +50,12 @@ function custom_comments( $comment, $args, $depth ) {
 				<?php endif; ?>
 
 				<?php if(is_singular('recipes')){ ?>
-					<?php echo "Rating: ".get_comment_meta( $comment->comment_ID, 'rating', true ); ?>
+					<?php echo "Rating: "; ?>
+					<?php if(get_comment_meta( $comment->comment_ID, 'rating', true )!=NULL){ ?>
+						<?php echo get_comment_meta( $comment->comment_ID, 'rating', true ); ?>
+					<?php } else {?>
+						<?php echo "No Rating"; ?>
+					<?php }	?>
 				<?php }	?>
 
 			<div class="comment-content">

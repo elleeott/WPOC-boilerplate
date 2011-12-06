@@ -11,7 +11,7 @@ $custom_comment_fields = array(
 	'hidden_field1' => '<input id="type" name="type" type="hidden" value="rating"/>',
 	'field1' => '<p class="comment-form">
 	<label for="rating">Rating</label>
-	<input id="rating-0" name="rating" type="radio" value="0" checked="yes"/>
+	<input id="rating-0" name="rating" type="radio" value="0"/>
 	<input id="rating-1" name="rating" type="radio" value="1"/>
 	<input id="rating-2" name="rating" type="radio" value="2"/>
 	<input id="rating-3" name="rating" type="radio" value="3"/>
@@ -63,14 +63,14 @@ function average_rating() {
 	global $wpdb;
 	$post_id = get_the_ID();
 	$average_rating = 0;	
-	$counter = 0;
 	$ratings = $wpdb->get_results("select {$wpdb->prefix}commentmeta.meta_value from {$wpdb->prefix}commentmeta inner join {$wpdb->prefix}comments on {$wpdb->prefix}comments.comment_id={$wpdb->prefix}commentmeta.comment_id where {$wpdb->prefix}commentmeta.meta_key='rating' and {$wpdb->prefix}comments.comment_post_id=$post_id and {$wpdb->prefix}comments.comment_approved =1");
+	$counter = 0;
 	if ($ratings) {
 		foreach ($ratings as $rating) {
-			$counter = $counter+1;
 			$average_rating = $average_rating + $rating->meta_value;
+			$counter++;
 		} 
-		return round((($average_rating/$counter)*2),0)/2;
+		return (round(($average_rating/$counter)*2,0)/2);
 	} else {
 		return $counter;
 	}
