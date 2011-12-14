@@ -10,3 +10,46 @@
 2011-12-05 21:33:57 - PHP Notice:  Undefined variable: product in /Volumes/drive2/localhost/frictious/store/catalog/view/theme/boilerplate/template/product/product.tpl on line 236
 2011-12-05 21:34:29 - PHP Notice:  Undefined variable: product in /Volumes/drive2/localhost/frictious/store/catalog/view/theme/boilerplate/template/product/product.tpl on line 236
 2011-12-05 21:34:58 - PHP Notice:  Undefined variable: product in /Volumes/drive2/localhost/frictious/store/catalog/view/theme/boilerplate/template/product/product.tpl on line 236
+2011-12-07 10:20:10 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/store/admin/view/template/module/category_hp.tpl on line 29
+2011-12-07 10:20:44 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/store/admin/view/template/module/category_hp.tpl on line 29
+2011-12-07 10:20:55 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/store/admin/view/template/module/category_hp.tpl on line 29
+2011-12-11 20:48:41 - PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'oc_categories' not found or invalid function name in /Volumes/drive2/localhost/frictious/wp-includes/plugin.php on line 170
+2011-12-11 20:48:41 - PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'oc_categories' not found or invalid function name in /Volumes/drive2/localhost/frictious/wp-includes/plugin.php on line 170
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 45
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 49
+2011-12-11 20:48:41 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 50
+2011-12-11 20:49:29 - PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'oc_categories' not found or invalid function name in /Volumes/drive2/localhost/frictious/wp-includes/plugin.php on line 170
+2011-12-11 20:49:29 - PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'oc_categories' not found or invalid function name in /Volumes/drive2/localhost/frictious/wp-includes/plugin.php on line 170
+2011-12-11 20:52:30 - PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'oc_categories' not found or invalid function name in /Volumes/drive2/localhost/frictious/wp-includes/plugin.php on line 170
+2011-12-11 20:52:30 - PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'oc_categories' not found or invalid function name in /Volumes/drive2/localhost/frictious/wp-includes/plugin.php on line 170
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 45
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 49
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 50
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 45
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 47
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 49
+2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 50
+2011-12-12 14:28:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 69

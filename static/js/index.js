@@ -7,10 +7,14 @@ $(document).ready(function(){
 	});
 	$('a.fancybox').fancybox();
 	
-
+	//top menu
+	$('#menu-primary-nav > li').hover(function() {
+		$(this).children('ul').css({display:'block'});
+	}, function() {
+		$(this).children('ul').css({display:'none'});
+	});
 	
 });
-
 
 /* Ajax Cart */
 $('#cart > .heading a').bind('click', function() {

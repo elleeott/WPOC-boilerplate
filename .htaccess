@@ -9,8 +9,8 @@
 Options -Indexes +FollowSymlinks
 
 # Use PHP 5.3
-Action application/x-hg-php53 /cgi-sys/php53
-AddHandler application/x-hg-php53 .php 
+#Action application/x-hg-php53 /cgi-sys/php53
+#AddHandler application/x-hg-php53 .php 
 
 
 ##### error handling #####	

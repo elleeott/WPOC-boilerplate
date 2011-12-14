@@ -8,7 +8,17 @@
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?> - <?php the_ID(); ?></a> this is a recipe
 			</h1>
 			<?php the_content(); ?>
-			<?php echo average_rating(); ?>
+			<div>Rating: 
+			<?php  
+				if(get_post_meta($post->ID,'_avg_rating',true)) {
+					echo get_post_meta($post->ID,'_avg_rating',true);
+				} else {
+					echo 'not yet rated';
+				} 
+
+			?>
+			</div>
+			 
 		</article>
 
 		<?php endwhile; endif;?>

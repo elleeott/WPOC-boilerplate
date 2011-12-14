@@ -1,7 +1,5 @@
 <?php
 
-add_action( 'init', 'wp_ingredients_init' );
-
 //custom menus
 function register_custom_menus() {
 	register_nav_menus(
@@ -12,6 +10,43 @@ function register_custom_menus() {
 	); 
 }
 add_action( 'init', 'register_custom_menus' );
+
+
+//register sidebars
+function bp_register_sidebars() {
+	register_sidebar(array(
+		'name' => 'Primary',
+		'id'   => 'primary-sidebar',
+		'description'   => 'This is a widgetized area.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>'
+		)
+	);
+	register_sidebar(array(
+		'name' => 'Secondary',
+		'id'   => 'secondary-sidebar',
+		'description'   => 'This is a widgetized area.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>'
+		)
+	);
+	register_sidebar(array(
+		'name' => 'Tertiary',
+		'id'   => 'tertiary-sidebar',
+		'description'   => 'This is a widgetized area.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>'
+		)
+	);
+}
+add_action( 'widgets_init', 'bp_register_sidebars' );
+
 
 // custom comments
 function custom_comments( $comment, $args, $depth ) {
@@ -72,6 +107,5 @@ function custom_comments( $comment, $args, $depth ) {
 	<?php
 
 }
-
 
 ?>

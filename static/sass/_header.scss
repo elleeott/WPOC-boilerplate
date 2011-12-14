@@ -29,10 +29,8 @@ nav a {
 	text-decoration:none;
 	padding:15px 20px;
 	font-size:12px;
-	width:115px;
-	//height:2em;
+	height:12px;
 	@include transition;
-	text-align:center;
 	&:hover {
 		background:$knockOutColor/2; 
 	}
@@ -50,9 +48,12 @@ nav a {
 	> ul {
 		display:none;
 		position:absolute;
-		top:50px;
+		top:42px;
 		left:0;
-		background:$knockOutColor;
+		background:$knockOutColor/2; 
+		> li {
+			width:200px;
+		}
 	}	
 }
 

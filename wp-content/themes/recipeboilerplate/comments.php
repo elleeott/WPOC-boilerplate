@@ -1,5 +1,5 @@
 <?php if ( have_comments() ) : ?>
-	<h4>Comments</h4>
+	<?php comments_number('No comments', 'One comment', '% comments'); ?>
 	<ol>
 		<?php wp_list_comments(); ?>
 	</ol>

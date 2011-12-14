@@ -12,22 +12,14 @@ $secondaryAccentColor:#ccc;
 //type
 
 $defaultSerif:georgia,serif;
-$defaultSansSerif:Arial, Helvetica, sans-serif;
+$defaultSansSerif:'helvetica neue',helvetica,arial, sans-serif;
+$titlingFont:$defaultSansSerif;
+$subHeadFont:$defaultSerif;
+$bodyCopyFont:$defaultSerif;
+
 $defaultFontSize:14px;
 $bodyCopyLineHeight:1.5em;
-h1 {
-	font-size:24px;
 
-		margin:0 0 1em;
-	}
-h2 {
-	font-size:18px;
-	margin:0 0 1em;
-}
-p {
-	margin:0 0 1em;
-	line-height:$bodyCopyLineHeight;
-}
 
 //units
 $unit1:1px;
@@ -66,4 +58,19 @@ $unit10:10px;
 body {
 	font-family:$defaultSansSerif;
 	font-size:$defaultFontSize;
+}
+
+h1 {
+	font-family:$titlingFont;
+	font-size:24px;
+	margin:0 0 1em;
+	}
+h2 {
+	font-size:18px;
+	margin:0 0 1em;
+}
+p {
+	margin:0 0 1em;
+	line-height:$bodyCopyLineHeight;
+	font-family:$bodyCopyFont;
 }
