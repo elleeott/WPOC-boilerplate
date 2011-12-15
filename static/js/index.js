@@ -1,18 +1,23 @@
 $(document).ready(function(){
-	$('#support-links a').fancybox({
-		'width' : 560,
-		'height' : 400,
-		'padding' :20,
-		'type' : 'iframe'
-	});
-	$('a.fancybox').fancybox();
-	
-	//top menu
-	$('#menu-primary-nav > li').hover(function() {
-		$(this).children('ul').css({display:'block'});
-	}, function() {
-		$(this).children('ul').css({display:'none'});
-	});
+
+	if (document.documentElement.clientWidth >= 600) { // viewport width
+	//if (screen.width >= 600) { //display width
+		//fancybox popovers
+		$('#support-links a').fancybox({
+			'width' : 560,
+			'height' : 400,
+			'padding' :20,
+			'type' : 'iframe'
+		});
+		$('a.fancybox').fancybox();
+		
+		//top menu
+		$('#menu-primary-nav > li').hover(function() {
+			$(this).children('ul').css({display:'block'});
+		}, function() {
+			$(this).children('ul').css({display:'none'});
+		});
+	}
 	
 });
 

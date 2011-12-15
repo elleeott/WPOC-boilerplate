@@ -75,13 +75,15 @@ p {
   line-height: 1.5em;
   font-family: georgia, serif; }
 
-@media screen and (max-width: 600px) {
+/* iphones */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
   #container {
     margin: 0 20px; }
 
   header {
     position: relative;
-    height: 200px;
     margin: 0 0 20px; }
 
   #content-container {
@@ -101,11 +103,9 @@ p {
     height: 100px;
     line-height: 100px;
     font-size: 50px;
-    position: absolute;
-    top: 25px;
-    left: 0;
     color: #333333;
-    text-align: center; }
+    text-align: center;
+    margin: 0 0 20px; }
 
   article {
     padding: 0 0 20px;
@@ -181,38 +181,20 @@ p {
     margin: 0 0 20px; }
 
   header nav {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0; }
-  header nav a {
-    display: block; }
-
-  nav {
     background: #333333; }
-
-  nav a {
+  header nav a {
+    display: block;
     color: white;
     text-decoration: none;
     padding: 15px 20px;
     font-size: 12px;
-    height: 12px;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out; }
-    nav a:hover {
-      background: #191919; }
+    height: 12px; }
 
   .current-menu-item {
     background: #666666; }
 
   .menu-primary-nav-container > ul > li {
-    position: relative;
-    float: left; }
-    .menu-primary-nav-container > ul > li > a {
-      float: left; }
+    position: relative; }
     .menu-primary-nav-container > ul > li > ul {
       display: none;
       position: absolute;
@@ -222,12 +204,22 @@ p {
       .menu-primary-nav-container > ul > li > ul > li {
         width: 200px; }
 
-  #support-links {
-    font-size: 12px;
+  #cart {
     position: absolute;
-    right: 0;
-    bottom: 60px; } }
-@media screen and (min-width: 600px) {
+    top: 0;
+    right: 0; }
+
+  #support-links {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    font-size: 12px; } }
+/* iphone4 */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+  /* iphone4 hi-dpi images */ }
+@media only screen
+and (min-device-width: 768px) {
   #container {
     width: 940px;
     margin: auto; }
@@ -339,18 +331,29 @@ p {
   #categories-menu h4 {
     font-weight: bold; }
 
+  #hero {
+    height: 300px;
+    border: 1px solid #ccc;
+    margin: 0 0 20px; }
+
+  #promo-tiles div {
+    height: 200px;
+    background: #ccc;
+    width: 300px;
+    float: left;
+    margin-right: 20px; }
+
+  #promo-tiles div.last {
+    margin-right: 0; }
+
   header nav {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0; }
-  header nav a {
-    display: block; }
-
-  nav {
+    right: 0;
     background: #333333; }
-
-  nav a {
+  header nav a {
+    display: block;
     color: white;
     text-decoration: none;
     padding: 15px 20px;
@@ -361,7 +364,7 @@ p {
     -o-transition: all .2s ease-in-out;
     -ms-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out; }
-    nav a:hover {
+    header nav a:hover {
       background: #191919; }
 
   .current-menu-item {
