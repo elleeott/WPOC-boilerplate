@@ -79,6 +79,11 @@ p {
   #container {
     margin: 0 20px; }
 
+  header {
+    position: relative;
+    height: 200px;
+    margin: 0 0 20px; }
+
   #content-container {
     margin: 0 0 20px; }
 
@@ -88,11 +93,149 @@ p {
   .sidebar-content {
     border: 1px solid #cccccc;
     padding: 10px;
-    min-height: 500px; } }
+    min-height: 500px; }
+
+  #logo {
+    background: #ccc;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 50px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    color: #333333;
+    text-align: center; }
+
+  article {
+    padding: 0 0 20px;
+    border-bottom: 1px solid #cccccc;
+    margin: 0 0 20px; }
+    article ol {
+      margin: 0 0 1em; }
+      article ol li {
+        list-style-type: decimal;
+        margin: 0 0 .5em;
+        line-height: 1.5em; }
+
+  footer {
+    height: 300px;
+    background: #333333; }
+
+  .product-info {
+    padding: 20px 0; }
+
+  .product-filter {
+    padding: 5px 0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 20px; }
+    .product-filter .limit, .product-filter .sort {
+      float: right;
+      margin-left: 20px; }
+
+  .product-images {
+    float: left;
+    width: 240px; }
+
+  .product-description {
+    float: left;
+    width: 460px;
+    margin-left: 20px; }
+
+  .cart {
+    margin: 20px 0; }
+
+  .button {
+    background: #cc692d;
+    color: #fff;
+    padding: 5px 10px; }
+
+  .category-info {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc; }
+    .category-info .image {
+      float: left; }
+
+  .product-cell {
+    width: 200px;
+    float: left;
+    padding: 20px;
+    height: 300px; }
+    .product-cell .image {
+      background: #cccccc;
+      text-align: center;
+      height: 150px; }
+
+  #categories-menu h4 {
+    font-weight: bold; }
+
+  #hero {
+    height: 300px;
+    border: 1px solid #ccc;
+    margin: 0 0 20px; }
+
+  #promo-tiles div {
+    height: 200px;
+    background: #ccc;
+    margin: 0 0 20px; }
+
+  header nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  header nav a {
+    display: block; }
+
+  nav {
+    background: #333333; }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 12px;
+    height: 12px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out; }
+    nav a:hover {
+      background: #191919; }
+
+  .current-menu-item {
+    background: #666666; }
+
+  .menu-primary-nav-container > ul > li {
+    position: relative;
+    float: left; }
+    .menu-primary-nav-container > ul > li > a {
+      float: left; }
+    .menu-primary-nav-container > ul > li > ul {
+      display: none;
+      position: absolute;
+      top: 42px;
+      left: 0;
+      background: #191919; }
+      .menu-primary-nav-container > ul > li > ul > li {
+        width: 200px; }
+
+  #support-links {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 60px; } }
 @media screen and (min-width: 600px) {
   #container {
     width: 940px;
     margin: auto; }
+
+  header {
+    position: relative;
+    height: 200px;
+    margin: 0 0 20px; }
 
   #content-container {
     margin: 0 0 20px; }
@@ -119,145 +262,129 @@ p {
   .sidebar-content {
     border: 1px solid #cccccc;
     padding: 10px;
-    min-height: 500px; } }
-header {
-  position: relative;
-  height: 200px;
-  margin: 0 0 20px; }
+    min-height: 500px; }
 
-#logo {
-  background: #ccc;
-  width: 200px;
-  height: 100px;
-  line-height: 100px;
-  font-size: 50px;
-  position: absolute;
-  top: 25px;
-  left: 0;
-  color: #333333;
-  text-align: center; }
-
-nav {
-  background: #333333;
-  position: absolute;
-  bottom: 0;
-  width: 100%; }
-
-nav a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 15px 20px;
-  font-size: 12px;
-  height: 12px;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out; }
-  nav a:hover {
-    background: #191919; }
-
-.current-menu-item {
-  background: #666666; }
-
-.menu-primary-nav-container > ul > li {
-  position: relative;
-  float: left; }
-  .menu-primary-nav-container > ul > li > a {
-    float: left; }
-  .menu-primary-nav-container > ul > li > ul {
-    display: none;
+  #logo {
+    background: #ccc;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 50px;
     position: absolute;
-    top: 42px;
+    top: 25px;
     left: 0;
-    background: #191919; }
-    .menu-primary-nav-container > ul > li > ul > li {
-      width: 200px; }
+    color: #333333;
+    text-align: center; }
 
-#support-links {
-  font-size: 12px;
-  position: absolute;
-  right: 0;
-  bottom: 60px; }
+  article {
+    padding: 0 0 20px;
+    border-bottom: 1px solid #cccccc;
+    margin: 0 0 20px; }
+    article ol {
+      margin: 0 0 1em; }
+      article ol li {
+        list-style-type: decimal;
+        margin: 0 0 .5em;
+        line-height: 1.5em; }
 
-article {
-  padding: 0 0 20px;
-  border-bottom: 1px solid #cccccc;
-  margin: 0 0 20px; }
-  article ol {
-    margin: 0 0 1em; }
-    article ol li {
-      list-style-type: decimal;
-      margin: 0 0 .5em;
-      line-height: 1.5em; }
+  footer {
+    height: 300px;
+    background: #333333; }
 
-footer {
-  height: 300px;
-  background: #333333; }
+  .product-info {
+    padding: 20px 0; }
 
-.product-info {
-  padding: 20px 0; }
+  .product-filter {
+    padding: 5px 0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 20px; }
+    .product-filter .limit, .product-filter .sort {
+      float: right;
+      margin-left: 20px; }
 
-.product-filter {
-  padding: 5px 0;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
-  margin-bottom: 20px; }
-  .product-filter .limit, .product-filter .sort {
-    float: right;
+  .product-images {
+    float: left;
+    width: 240px; }
+
+  .product-description {
+    float: left;
+    width: 460px;
     margin-left: 20px; }
 
-.product-images {
-  float: left;
-  width: 240px; }
+  .cart {
+    margin: 20px 0; }
 
-.product-description {
-  float: left;
-  width: 460px;
-  margin-left: 20px; }
+  .button {
+    background: #cc692d;
+    color: #fff;
+    padding: 5px 10px; }
 
-.cart {
-  margin: 20px 0; }
+  .category-info {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc; }
+    .category-info .image {
+      float: left; }
 
-.button {
-  background: #cc692d;
-  color: #fff;
-  padding: 5px 10px; }
+  .product-cell {
+    width: 200px;
+    float: left;
+    padding: 20px;
+    height: 300px; }
+    .product-cell .image {
+      background: #cccccc;
+      text-align: center;
+      height: 150px; }
 
-.category-info {
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc; }
-  .category-info .image {
+  #categories-menu h4 {
+    font-weight: bold; }
+
+  header nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  header nav a {
+    display: block; }
+
+  nav {
+    background: #333333; }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 12px;
+    height: 12px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out; }
+    nav a:hover {
+      background: #191919; }
+
+  .current-menu-item {
+    background: #666666; }
+
+  .menu-primary-nav-container > ul > li {
+    position: relative;
     float: left; }
+    .menu-primary-nav-container > ul > li > a {
+      float: left; }
+    .menu-primary-nav-container > ul > li > ul {
+      display: none;
+      position: absolute;
+      top: 42px;
+      left: 0;
+      background: #191919; }
+      .menu-primary-nav-container > ul > li > ul > li {
+        width: 200px; }
 
-.product-cell {
-  width: 200px;
-  float: left;
-  padding: 20px;
-  height: 300px; }
-  .product-cell .image {
-    background: #cccccc;
-    text-align: center;
-    height: 150px; }
-
-#categories-menu h4 {
-  font-weight: bold; }
-
-#hero {
-  height: 300px;
-  border: 1px solid #ccc;
-  margin: 0 0 20px; }
-
-#promo-tiles div {
-  height: 200px;
-  background: #ccc;
-  width: 300px;
-  float: left;
-  margin-right: 20px; }
-
-#promo-tiles div.last {
-  margin-right: 0; }
-
+  #support-links {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 60px; } }
 html {
   overflow: -moz-scrollbars-vertical; }

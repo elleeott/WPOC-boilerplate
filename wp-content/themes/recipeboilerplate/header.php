@@ -3,8 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<?php include($_SERVER['DOCUMENT_ROOT'].'/common/head.php'); ?>	
-		
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0, user-scalable=no" name="viewport">
+		<?php require_once($_SERVER['DOCUMENT_ROOT'].'/lib/cacheBuster.php');?>
+		<link rel="stylesheet" media="print" href="<?php autoVer('/static/css/print.css'); ?>" />	
+		<link rel="stylesheet" media="screen" href="<?php autoVer('/static/css/base.css'); ?>" />	
+		<link rel="stylesheet" media="screen" href="<?php autoVer('/static/js/fancybox/jquery.fancybox-1.3.4.css'); ?>" />			
 		
 		<?php //output post tags as keywords
 		   /* $postTags = get_the_tags();
