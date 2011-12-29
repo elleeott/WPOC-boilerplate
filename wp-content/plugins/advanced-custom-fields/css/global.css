@@ -1,3 +1,103 @@
+/*--------------------------------------------------------------------------------------------
+*
+*	Global
+*
+*--------------------------------------------------------------------------------------------*/
+
+.hl {
+    display: block;
+    list-style: none outside none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+
+.hl li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#icon-acf {
+	background: url(../images/acf-icon-32.png) 0 0 no-repeat !important;
+}
+
+/*--------------------------------------------------------------------------------------------
+*
+*	WP Box
+*
+*--------------------------------------------------------------------------------------------*/
+
+.wp-box {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+.wp-box .inner {
+    padding: 10px;
+}
+.wp-box .footer {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border-top: 1px solid #E1E1E1;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+}
+.wp-box .footer ul.left {
+    float: left;
+}
+.wp-box .footer ul li {
+    margin: 0;
+    padding: 0;
+}
+.wp-box .footer ul.left li {
+    margin-right: 10px;
+}
+.wp-box .footer ul.right {
+    float: right;
+}
+.wp-box .footer ul.right li {
+    margin-left: 10px;
+}
+
+.wp-box h2 {
+	margin: 0 0 .5em;
+}
+
+.wp-box h3 {
+	margin: 1.5em 0 0;
+}
+
+.wp-box p {
+	margin-top: 0.5em;
+}
+
+.wp-box-half.left {
+	width: 50%;
+	float: left;
+}
+
+.wp-box-half.right {
+	width: 50%;
+	height: 100%;
+	right: 0;
+	position: absolute;
+	background: none repeat scroll 0 0 #F9F9F9;
+    border-left: 1px solid #E1E1E1;
+}
+
+.wp-box-half.right .inner {
+	
+}
+
+.wp-box select {
+	width: 99%;
+	height: auto !important;
+}
+
+
 /*---------------------------------------------------------------------------------------------
 	Table
 ---------------------------------------------------------------------------------------------*/
@@ -58,6 +158,10 @@ table.acf_input select{
 	outline: none;
 }
 
+table.acf_input select {
+	padding: 2px;
+}
+
 table.acf_input input[type=text]:focus,
 table.acf_input textarea:focus,
 table.acf_input select:focus {
@@ -70,6 +174,7 @@ ul.radio_list {
 	overflow: hidden;
 	display: block;
 	padding: 3px 0;
+	margin: 0;
 }
 
 ul.radio_list input[type="radio"] {

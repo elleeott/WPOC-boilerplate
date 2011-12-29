@@ -4,7 +4,7 @@ Plugin Name: Simple Facebook Connect
 Plugin URI: http://ottopress.com/wordpress-plugins/simple-facebook-connect/
 Description: Makes it easy for your site to use Facebook Connect, in a wholly modular way.
 Author: Otto
-Version: 1.1
+Version: 1.2
 Author URI: http://ottodestruct.com
 License: GPL2
 
@@ -26,21 +26,14 @@ License: GPL2
 
 */
 function sfc_version() {
-	return '1.1';
+	return '1.2';
 }
 
-// require PHP 5
-function sfc_activation_check(){
-	if (version_compare(PHP_VERSION, '5', '<')) {
-		deactivate_plugins(basename(__FILE__)); // Deactivate ourself
-		wp_die(printf(__('Sorry, Simple Facebook Connect requires PHP 5 or higher. Your PHP version is "%s". Ask your web hosting service how to enable PHP 5 as the default on your servers.', 'sfc'), PHP_VERSION));
-	}
-}
-register_activation_hook(__FILE__, 'sfc_activation_check');
-
-// this will prevent the PHP 5 code from causing parsing errors on PHP 4 systems
-if (!version_compare(PHP_VERSION, '5', '<')) {
+// prevent parsing errors on PHP 4 or old WP installs
+if ( !version_compare(PHP_VERSION, '5', '<') && version_compare( $wp_version, '3.2.999', '>' ) ) {
 	include 'sfc-base.php';
+} else {
+	add_action('admin_notices', create_function( '', "echo '<div class=\"error\"><p>".__('Simple Facebook Connect requires PHP 5 and WordPress 3.3 to function. Please upgrade or deactivate the SFC plugin.', 'sfc') ."</p></div>';" ) );
 }
 
 // plugin row links
@@ -59,3 +52,4 @@ function sfc_settings_link($links) {
 	$links[] = '<a href="'.admin_url('options-general.php?page=sfc').'">'.__('Settings', 'sfc').'</a>';
 	return $links;
 }
+

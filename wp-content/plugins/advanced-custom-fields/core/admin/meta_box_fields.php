@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Meta Box: Fields
+ *
+ * This file creates the HTML for a list of fields within a Field Group
+ */
+ 
 // vars
 global $post;
 $fields_names = array();

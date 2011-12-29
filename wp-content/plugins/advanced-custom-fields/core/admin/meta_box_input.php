@@ -17,7 +17,7 @@ $post_id = $post ? $post->ID : 999999999;
 if($fields)
 {
 	echo '<input type="hidden" name="save_input" value="true" />';
-	echo '<div class="options" data-layout="' . $options['layout'] . '" data-show="' . $show . '"></div>';
+	echo '<div class="options" data-layout="' . $options['layout'] . '" data-show="' . $show . '" style="display:none"></div>';
 	foreach($fields as $field)
 	{
 		// if they didn't select a type, skip this field

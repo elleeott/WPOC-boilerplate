@@ -246,8 +246,8 @@ class acf_Repeater extends acf_Field
 					<th class="order"><!-- order --></th>
 					<?php endif; ?>
 					
-					<?php foreach($sub_fields as $sub_field):?>
-					<th class="<?php echo $sub_field['name']; ?>" style="width:<?php echo 100/count($sub_fields); ?>%;"><span><?php echo $sub_field['label']; ?></span></th>
+					<?php foreach($sub_fields as $sub_field_i => $sub_field):?>
+					<th class="<?php echo $sub_field['name']; ?>" <?php if($sub_field_i != 0): ?>style="width:<?php echo 95/count($sub_fields); ?>%;"<?php endif; ?>><span><?php echo $sub_field['label']; ?></span></th>
 					<?php endforeach; ?>
 					
 					<?php if($row_limit > 1): ?>
@@ -309,7 +309,7 @@ class acf_Repeater extends acf_Field
 			<?php if($row_limit > 1): ?>
 			<div class="table_footer">
 				<div class="order_message"></div>
-				<a href="javascript:;" id="add_field" class="button-primary">+ Add Field</a>
+				<a href="javascript:;" id="add_field" class="button-primary"><?php _e("+ Add Row",'acf'); ?></a>
 			</div>	
 			<?php endif; ?>	
 		</div>

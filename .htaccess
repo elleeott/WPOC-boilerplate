@@ -21,42 +21,60 @@ ErrorDocument 404 /404.php
 #ErrorDocument 500 /404.php	
 
 
-
 ##### rewrites #####
 <IfModule mod_rewrite.c>
 
 	RewriteEngine On
-	
-	RewriteRule ^(store)($|/) - [L,NC]
 
-	#custom404
-	#RewriteCond %{REQUEST_FILENAME} !-f  
-	#RewriteCond %{REQUEST_FILENAME} !-d  
-	#RewriteRule .* 404.php [L]  
+	#redirect non-www to www for non-ssl
+	RewriteCond %{HTTPS} off	
+	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	#redirect non-www to www for ssl
+	RewriteCond %{HTTPS} on	
+	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	#force ssl on cart, checkout
+	RewriteCond %{HTTPS} off
+	RewriteCond %{REQUEST_URI} ^/?store/
+	RewriteCond %{REQUEST_FILENAME} !-f
+	#RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+	#force non-ssl on all pages but cart and checkout
+	RewriteCond %{HTTPS} on
+	RewriteCond %{REQUEST_URI} !^/?store/
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+	
+	#force non-ssl hp
+	RewriteCond %{HTTPS} on
+	RewriteCond %{REQUEST_URI} ^/$
+	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 	
 	#wordpress
-	#RewriteBase /
+	RewriteBase /
 	RewriteRule ^index\.php$ - [L]
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule . /index.php [L]
+	#exclude opencart
+	RewriteCond %{REQUEST_URI} !^/?store/  
+ 	RewriteRule . /index.php [L]
 	
 	#OC
-	RewriteBase /store/
+	RewriteBase /store
 	RewriteRule sitemap.xml /index.php?route=feed/google_sitemap
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
-
-	# redirect non-www to www
-	RewriteCond %{HTTPS} !=on	
-	RewriteCond %{HTTP_HOST} !^www\.
-	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
-
-	# redirect www to non-www
-	#RewriteCond %{HTTPS} !=on
-	#RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-	#RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]	
+	
+	#404 everything else
+	#RewriteRule (.*) http://%{HTTP_HOST}/404.php [R=301,L]
+	
+	
 	
 	
 </IfModule>
@@ -132,12 +150,6 @@ FileETag None
   #AddOutputFilterByType DEFLATE image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
 #</IfModule>
 </IfModule>
-
-##### PHP stuff #####
-
-
-# Rename session cookie to something else, than PHPSESSID
-#php_value session.name sessident
 
 
 ##### Far Future Expires Header for all static elements #####

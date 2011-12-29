@@ -88,6 +88,7 @@ function sfc_register_handle_signed_request() {
 					// new user, set the registration info
 					$_POST['user_login'] = $info['username'];
 					$_POST['user_email'] = $info['email'];
+					do_action('sfc_register_request',$info);
 				}
 			}
 		}

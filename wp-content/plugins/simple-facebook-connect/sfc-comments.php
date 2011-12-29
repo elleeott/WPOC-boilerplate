@@ -24,7 +24,7 @@ add_action('alt_comment_login','sfc_comm_login_button');
 add_action('comment_form_before_fields', 'sfc_comm_login_button',10,0); // WP 3.0 support
 
 function sfc_comm_login_button() {
-	echo '<p><fb:login-button v="2" scope="email,user_website,publish_stream" onlogin="sfc_update_user_details();"><fb:intl>'.__('Connect with Facebook', 'sfc').'</fb:intl></fb:login-button></p>';
+	echo '<p><fb:login-button v="2" scope="email,publish_stream" onlogin="sfc_update_user_details();"><fb:intl>'.__('Connect with Facebook', 'sfc').'</fb:intl></fb:login-button></p>';
 }
 
 // this exists so that other plugins (simple twitter connect) can hook into the same place to add their login buttons
@@ -96,7 +96,7 @@ function sfc_comm_add_meta($comment_id) {
 		$url = "https://graph.facebook.com/{$uid}/feed&access_token={$token}";
 		$attachment['access_token'] = $token;
 
-		$data = wp_remote_post($url, array('body'=>$attachment));
+		$data = wp_remote_post($url, array('sslverify'=>0, 'body'=>$attachment));
 
 		if (!is_wp_error($data)) {
 			$resp = json_decode($data['body'],true);
@@ -106,9 +106,9 @@ function sfc_comm_add_meta($comment_id) {
 	
 	if ( !empty($uid) && !empty($token) ) {
 		// validate token
-		$url = "https://graph.facebook.com/{$uid}/?fields=name,email,website&access_token={$token}";
+		$url = "https://graph.facebook.com/{$uid}/?fields=name,email&access_token={$token}";
 
-		$data = wp_remote_get($url, array('sslverify'=>false));
+		$data = wp_remote_get($url, array('sslverify'=>0));
 
 		if (!is_wp_error($data)) {
 			$json = json_decode($data['body'],true);
@@ -130,15 +130,16 @@ function sfc_comm_fill_in_fields($comment_post_ID) {
 
 	if (empty($uid) || empty($token)) return; // need both of these to get the data from FB
 
-	$url = "https://graph.facebook.com/{$uid}/?fields=name,email,website&access_token={$token}";
+	$url = "https://graph.facebook.com/{$uid}/?fields=name,email&access_token={$token}";
 
-	$data = wp_remote_get($url, array('sslverify'=>false));
+	$data = wp_remote_get($url, array('sslverify'=>0));
 
 	if (!is_wp_error($data)) {
 		$json = json_decode($data['body'],true);
 		if ($json) {
+			$json = apply_filters('sfc_comm_user_data', $json, $uid);
 			$_POST['author'] = $json['name'];
-			$_POST['url'] = $json['website'];
+			$_POST['url'] = "http://www.facebook.com/profile.php?id={$uid}";
 			$_POST['email'] = $json['email'];
 		}
 	}
@@ -168,12 +169,12 @@ function sfc_update_user_details() {
 			if (!jQuery('#fb-user').length) {
 				jQuery('#comment-user-details').hide().after("<span id='fb-user'>" +
 				"<fb:profile-pic uid='loggedinuser' facebook-logo='true' size='s'></fb:profile-pic>" +
-				"<span id='fb-msg'><strong><fb:intl><?php echo addslashes(__('Hi', 'sfc')); ?></fb:intl> <fb:name uid='loggedinuser' useyou='false'></fb:name>!</strong><br /><fb:intl><?php echo addslashes(__('You are connected with your Facebook account.', 'sfc')); ?></fb:intl>" +
-				"<a href='#' onclick='FB.logout(function(response) { window.location = \"<?php the_permalink() ?>\"; }); return false;'> <?php echo addslashes(__('Logout', 'sfc')); ?></a>" +
+				"<span id='fb-msg'><strong><fb:intl><?php echo esc_js(__('Hi', 'sfc')); ?></fb:intl> <fb:name uid='loggedinuser' useyou='false'></fb:name>!</strong><br /><fb:intl><?php echo esc_js(__('You are connected with your Facebook account.', 'sfc')); ?></fb:intl>" +
+				"<a href='#' onclick='FB.logout(function(response) { window.location = \"<?php the_permalink() ?>\"; }); return false;'> <?php echo esc_js(__('Logout', 'sfc')); ?></a>" +
 				"</span><span class='end'></span></span>" + 
 				"<input type='hidden' name='sfc_user_id' value='"+response.authResponse.userID+"' />"+
 				"<input type='hidden' name='sfc_user_token' value='"+response.authResponse.accessToken+"' />");
-				jQuery('#sfc_comm_send').html('<input style="width: auto;" type="checkbox" id="sfc_comm_share" name="sfc_comm_share" /><label for="sfc_comm_share"><fb:intl><?php echo addslashes(__('Share Comment on Facebook', 'sfc')); ?></fb:intl></label>');
+				jQuery('#sfc_comm_send').html('<input style="width: auto;" type="checkbox" id="sfc_comm_share" name="sfc_comm_share" /><label for="sfc_comm_share"><fb:intl><?php echo esc_js(__('Share Comment on Facebook', 'sfc')); ?></fb:intl></label>');
 			}
 
 			// Refresh the DOM

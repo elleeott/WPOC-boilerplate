@@ -149,13 +149,13 @@
 			var type = $(this).val();
 			
 			// does it have repeater?
-			if(!$(this).find('option[value="repeater"]').exists() && !$(this).find('option[value="null"]').exists())
+			/*if(!$(this).find('option[value="repeater"]').exists() && !$(this).find('option[value="null"]').exists())
 			{
 				if($(this).closest('.repeater').length == 0)
 				{
 					$(this).append('<option value="null" disabled="true">Repeater (Unlock field with activation code)</option>');
 				}
-			}
+			}*/
 			
 			tbody.children('tr.field_option').hide();
 			tbody.children('tr.field_option').find('[name]').attr('disabled', 'true');
@@ -407,7 +407,7 @@
 	
 		
 		// add active to Settings Menu
-		$('#adminmenu #menu-settings').addClass('current wp-menu-open');
+		//$('#adminmenu #menu-settings').removeClass('wp-not-current-submenu').addClass('current wp-menu-open wp-has-current-submenu');
 		
 		// setup fields
 		setup_fields();

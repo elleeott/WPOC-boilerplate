@@ -126,9 +126,7 @@ add_action('trashed_comment', 'add_rating_meta');
 add_action('deleted_comment', 'add_rating_meta');
 
 
-
 //highest ranked recipe sidebar widget
-
 class Example_Widget extends WP_Widget {
 
 	function Example_Widget() {

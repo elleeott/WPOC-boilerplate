@@ -1,4 +1,9 @@
 <?php
+
+// change this back to feed if you want to get the old behavior
+if (!defined('SFC_PUBLISH_ENDPOINT')) 
+	define('SFC_PUBLISH_ENDPOINT','feed');
+
 // add the meta boxes
 add_action('admin_menu', 'sfc_publish_meta_box_add');
 function sfc_publish_meta_box_add() {
@@ -112,21 +117,21 @@ function sfc_publish_meta_box( $post ) {
 	}
 
 	// look for the images/video to add with image_src
-	$images = sfc_base_find_images($post);
-	$video = sfc_base_find_video($post);
-	if (preg_match('|http://[^/]*youtube\.com/v/([^/?&]+)|i', $video[''], $matches) ) {
-		array_unshift($images, "http://img.youtube.com/vi/{$matches[1]}/0.jpg");
+	$images = sfc_media_find_images($post);
+	$video = sfc_media_find_video($post);
+	if ( !empty( $video['og:image'] ) ) {
+		array_unshift($images, $video['og:image']);
 	}
  
  	$feed['app_id'] = $options["appid"];
- 	$feed['method'] = 'feed';
+ 	$feed['method'] = SFC_PUBLISH_ENDPOINT;
  	$feed['display'] = 'iframe';
+ 	$feed['scrape'] = 'true';
  	$permalink = apply_filters('sfc_publish_permalink',wp_get_shortlink($post->ID),$post->ID);
- 	$real_permalink = get_permalink($post->ID);
  	$feed['link'] = $permalink;
 	if ($images) $feed['picture'] = $images[0];
-	if ($video) $feed['source'] = $video[''];
-	$feed['name'] = $post->post_title;
+	if ($video) $feed['source'] = $video['og:video'];
+	$feed['name'] = strip_tags(apply_filters('the_title', htmlspecialchars_decode($post->post_title), $post->ID));
 	$feed['description'] = sfc_base_make_excerpt($post);
 	$feed['caption'] = ' ';
 	$actions[0]['name'] = 'Share';
@@ -134,6 +139,8 @@ function sfc_publish_meta_box( $post ) {
 	
 	$feed['actions'] = json_encode($actions);
 
+	$attachment = apply_filters('sfc_publish_manual', $feed, $post);
+	
 	// personal publish
 	$ui = $feed;
  	$cookie = sfc_cookie_parse();
@@ -177,7 +184,7 @@ FB.getLoginStatus(function(response) {
 	if (response.authResponse) {
 		sfcShowPubButtons();
 	} else {
-		jQuery('#sfc-publish-buttons').html('<fb:login-button v="2" scope="offline_access,publish_stream" onlogin="sfcShowPubButtons();"><fb:intl><?php echo addslashes(__('Connect with Facebook', 'sfc')); ?></fb:intl></fb:login-button>');
+		jQuery('#sfc-publish-buttons').html('<fb:login-button v="2" scope="offline_access,publish_stream,manage_pages" onlogin="sfcShowPubButtons();"><fb:intl><?php echo addslashes(__('Connect with Facebook', 'sfc')); ?></fb:intl></fb:login-button>');
 		FB.XFBML.parse();
 	}
 });
@@ -211,21 +218,23 @@ function sfc_publish_automatic($id, $post) {
 	// build the post to send to FB
 
 	// look for the images/video to add with image_src
-	$images = sfc_base_find_images($post);
-	$video = sfc_base_find_video($post);
-	if (preg_match('|http://[^/]*youtube\.com/v/([^/?&]+)|i', $video[''], $matches) ) {
-		array_unshift($images, "http://img.youtube.com/vi/{$matches[1]}/0.jpg");
+	$images = sfc_media_find_images($post);
+	$video = sfc_media_find_video($post);
+	if ( !empty( $video['og:image'] ) ) {
+		array_unshift($images, $video['og:image']);
 	}
-
+ 
 	// build the attachment
 	$permalink = apply_filters('sfc_publish_permalink',wp_get_shortlink($post->ID),$post->ID);
-	$attachment['name'] = $post->post_title;
+	$attachment['name'] = strip_tags(apply_filters('the_title', htmlspecialchars_decode($post->post_title), $post->ID));
+	$attachment['message'] = strip_tags(apply_filters('the_title', htmlspecialchars_decode($post->post_title), $post->ID));
 	$attachment['link'] = $permalink;
+	$attachment['scrape'] = 'true';
 	$attachment['description'] = sfc_base_make_excerpt($post);
 	$attachment['caption'] = ' ';
 	
 	if (!empty($images)) $attachment['picture'] = $images[0];
-	if (!empty($video)) $attachment['source'] = $video[''];
+	if (!empty($video)) $attachment['source'] = $video['og:video'];
 
 	// Actions
 	$actions[0]['name'] = 'Share';
@@ -233,15 +242,17 @@ function sfc_publish_automatic($id, $post) {
 
 	$attachment['actions'] = json_encode($actions);
 	
+	$attachment = apply_filters('sfc_publish_automatic', $attachment, $post);
+	
 	// publish to app or page
 	if ($options['autopublish_app'] && !get_post_meta($id,'_fb_post_id_app',true) ) {
 
 		if ($options['fanpage']) {
-			$url = "https://graph.facebook.com/{$options['fanpage']}/feed";
+			$url = "https://graph.facebook.com/{$options['fanpage']}/".SFC_PUBLISH_ENDPOINT;
 			$attachment['access_token'] = $options['page_access_token'];
 		}
 		else {
-			$url = "https://graph.facebook.com/{$options['appid']}/feed";
+			$url = "https://graph.facebook.com/{$options['appid']}/".SFC_PUBLISH_ENDPOINT;
 			$attachment['access_token'] = $options['app_access_token'];
 		}
 
@@ -256,7 +267,7 @@ function sfc_publish_automatic($id, $post) {
 	// publish to profile
 	if ($options['autopublish_profile'] && !get_post_meta($id,'_fb_post_id_profile',true)) {
 
-		$url = "https://graph.facebook.com/{$options['user']}/feed";
+		$url = "https://graph.facebook.com/{$options['user']}/".SFC_PUBLISH_ENDPOINT;
 
 		// check the cookie for an access token. If not found, try to use the stored one.
 		$cookie = sfc_cookie_parse();
@@ -291,7 +302,7 @@ function sfc_publish_validate_options($input) {
 		// for fan pages, we need to go get their access token
 		if ($input['fanpage']) {
 			// connect to FB, find a list of the available Pages
-			$data = wp_remote_get("https://graph.facebook.com/{$input['user']}/accounts?access_token={$input['access_token']}", array('sslverify'=>false));
+			$data = wp_remote_get("https://graph.facebook.com/{$input['user']}/accounts?access_token={$input['access_token']}", array('sslverify'=>0));
 			if (!is_wp_error($data)) {
 				$pages = json_decode($data['body'],true);
 				if ( is_array( $pages ) && isset( $pages['data'] ) ) foreach ($pages['data'] as $page) {
@@ -304,7 +315,7 @@ function sfc_publish_validate_options($input) {
 		}
 
 		// get application access token
-		$data = wp_remote_get("https://graph.facebook.com/oauth/access_token?client_id={$input['appid']}&client_secret={$input['app_secret']}&type=client_cred", array('sslverify'=>false));
+		$data = wp_remote_get("https://graph.facebook.com/oauth/access_token?client_id={$input['appid']}&client_secret={$input['app_secret']}&type=client_cred", array('sslverify'=>0));
 		if (!is_wp_error($data)) {
 			$token = $data['body'];
 			if (strpos($token,'access_token=') !== false) {

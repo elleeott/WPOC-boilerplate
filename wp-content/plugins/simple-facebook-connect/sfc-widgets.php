@@ -447,6 +447,10 @@ class SFC_User_Status_Widget extends WP_Widget {
 
 <p><?php _e('You have to grant permissions for the widget to get your Status updates'); ?></p>
 <fb:login-button v="2" scope="read_stream" onlogin="sfcUserStatusSetup('<?php echo 'widget-'.$this->id_base.'-'.$this->number; ?>')">Grant Permissions</fb:login-button>
+<script type="text/javascript">
+	// Refresh the DOM
+	FB.XFBML.parse();
+</script>
 <?php
 	}
 }

@@ -5,6 +5,8 @@
 	background: url(../images/acf-icon-32.png) 0 0 no-repeat !important;
 }
 
+#toplevel_page_edit-post_type-acf .wp-menu-image { background: url("../../../../wp-admin/images/menu.png") no-repeat scroll 0 -1px transparent; }
+		
 #message p a {
 	display: none;
 }
@@ -196,6 +198,7 @@ table.widefat.acf td {
 .fields .field {
 	position: relative;
 	overflow: hidden;
+	background: #F5F5F5;
 }
 
 .fields .field:nth-child(even) {
@@ -326,7 +329,6 @@ table.acf_input tr td .acf tr td {
 
 .field_form table.acf_input {
 	border: #98b6cb solid 1px;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 	position: relative;
 	overflow: hidden;
 }

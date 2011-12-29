@@ -243,17 +243,12 @@ if(empty($location['rules']))
 							</div>
 							<div rel="user_type">
 								<?php 
-								
+								global $wp_roles;
 								$this->create_field(array(
 									'type'	=>	'select',
 									'name'	=>	'location[rules]['.$k.'][value]',
 									'value'	=>	$rule['value'],
-									'choices' => array(
-										'administrator' => 'Administrator', 
-										'editor' => 'Editor', 
-										'author' => 'Author', 
-										'contributor' => 'contributor'
-									)
+									'choices' => $roles = $wp_roles->get_names()
 								));
 								
 								?>

@@ -57,7 +57,6 @@ add_filter('wp_nav_menu_items','get_oc_categories',10,2);
 
 
 //get products menu from opencart
-
 function get_oc_products($items, $args) {
     if( $args->theme_location == 'primary-nav' ){
 		global $wpdb;

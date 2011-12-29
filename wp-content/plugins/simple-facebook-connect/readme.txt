@@ -2,9 +2,9 @@
 Contributors: Otto42
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%40ottodestruct%2ecom
 Tags: facebook, connect, simple, otto, otto42, javascript, comments, share, status
-Requires at least: 3.2
+Requires at least: 3.3
 Tested up to: 3.3
-Stable Tag: 1.1
+Stable Tag: 1.2
 
 == Description ==
 
@@ -13,8 +13,6 @@ Simple Facebook Connect is a framework and series of sub-systems that let you ad
 After activating the plugin and setting up a Facebook Application for your site, you can enable individual pieces of functionality to let you integrate your site in various ways.
 
 The plugin is also a developer framework for both the Graph API and the Facebook Javascript SDK, allowing you to make other custom plugins or theme modifications with much less code. The basics of Facebook integration are already handled by the core plugin, so just a few function calls can be made to contact Facebook systems and connect with them in various ways.
-
-Requires WordPress 3.0 and PHP 5. 
 
 * Enables your site to connect to Facebook with JS SDK
 * Implements OpenGraph tags, entirely automatically
@@ -37,7 +35,7 @@ If you have suggestions for a new add-on, feel free to email me at otto@ottodest
 
 Want regular updates? Become a fan of my sites on Facebook!
 http://www.facebook.com/ottopress
-http://www.facebook.com/apps/application.php?id=116002660893
+https://www.facebook.com/pages/Nothing-to-See-Here/241409175928000
 
 Or follow my sites on Twitter!
 http://twitter.com/ottodestruct
@@ -104,15 +102,14 @@ Next, you can add these to your site's wp-config:
 define('SFC_APP_SECRET', 'xxxxx');
 define('SFC_APP_ID', 'xxxxx');
 define('SFC_FANPAGE', '(this one is optional)');
-define('SFC_IGNORE_ERRORS', true');
 
-The first four are the exact same settings as on the normal SFC base configuration screen, and they will override those settings for the entire network of sites. In fact, when those are defined, the corresponding settings options won't even appear. This may look odd at first.
-
-The last one is a special override that causes the normal URL check to be disabled. This is because your URLs won't match the Facebook settings, but in this case, they don't actually need to.
+These are the exact same settings as on the normal SFC base configuration screen, and they will override those settings for the entire network of sites. In fact, when those are defined, the corresponding settings options won't even appear. This may look odd at first.
 
 With this setup, SFC *should* work across all your subdomains and subdirectories. So it'll work on example.com or blog.example.com or otto.example.com or whatever. It should also work on example.com/blog. 
 
 The "base domain" setting on your Facebook application is important. In this case, it MUST be set to the base domain (example.com), so that the cookies will be set there and thus will let you stay "connected" across the sites.
+
+Leaving the Fan Page setting undefined will allow each site to enter in their own Fan Page, but still using your single Application to publish to them.
 
 Notes: 
 * SFC-Login may or may not work. It's hard to say. Try it, it might work. I need more info to debug this.
@@ -124,9 +121,7 @@ Email me if you have problems... But only if you're also willing to help solve t
 
 The Comments module will automatically use Facebook avatars for users that leave comments using Facebook.
 
-The Login module can optionally make the system use Facebook avatars instead of Gravatars, for users that have connected their accounts to Facebook. This is disabled by default, because Facebook avatars are of much lower quality than Gravatars, and they do not look particularly good. However, to use FB Avatars anyway, add this line of code to your wp-config.php file:
-
-define('SFC_USE_FB_AVATARS',true);
+The Login module can optionally make the system use Facebook avatars instead of Gravatars, for users that have connected their accounts to Facebook.
 
 
 == Screenshots ==
@@ -148,10 +143,27 @@ define('SFC_USE_FB_AVATARS',true);
 
 == Upgrade Notice ==
 
-= 1.1 =
-REQUIRED UPGRADE. All previous versions of SFC will STOP WORKING on October 1st due to Facebook's new mandatory OAuth 2.0 upgrade. See http://developers.facebook.com/docs/oauth2-https-migration/ for more information.
+= 1.2 = 
+* This version REQUIRES WordPress 3.3. If you have not yet updated to WordPress 3.3, DO NOT UPGRADE THIS PLUGIN. This plugin will not work with WordPress 3.2.
 
 == Changelog ==
+
+= 1.2 =
+* Lots of minor bugfixes
+* Logout JS fix for edge cases. Props johnkleinschmidt.
+* Updated FB schema URIs to be compliant with the latest spec
+* Locale handling improvements
+* Vast changes to OpenGraph support. Now supports audio, various video sites, etc. Media handling migrated to sfc-media.php for easier expansion in the future.
+* Registration improvements
+* Support website linkage properly in comments (FB does silly things here with multiple websites)
+* Publish using message fields to get greater edgerank for auto posts
+* Publish using "link" feed type, since edgerank seems to be improved in this way (use SFC_PUBLISH_ENDPOINT define if you want to change it back to "feed")
+* Help Screen additions, along with a dismissable WP 3.3 pointer to point you to them
+* Permissions fixes for publishing
+* Text Domain loading fixes for translations
+* Made modules generic for easier additions in the future and by separate plugins
+* Improved asyncronous JS loading, to reduce conflicting code cases
+* Added channel URL support (should reduce extraneous log of FB requests, and eliminate frame-busting issues)
 
 = 1.1 = 
 * OAuth 2.0 upgrade. Signed requests are now used exclusively.

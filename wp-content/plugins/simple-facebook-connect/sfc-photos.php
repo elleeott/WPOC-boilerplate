@@ -23,6 +23,7 @@ function media_sfc_photos_form($errors) {
 	$post_id = intval($_REQUEST['post_id']);
 	
 	$user = sfc_cookie_parse();
+
 	if (!isset($user['user_id'])) {
 		?><p><?php _e("You don't appear to be logged into Facebook. Click the button below to login and grant photo access.",'sfc'); ?></p>
 		<fb:login-button v="2" scope="offline_access,user_photos" onlogin="location.reload();"><fb:intl><?php _e('Connect with Facebook', 'sfc'); ?></fb:intl></fb:login-button><?php
@@ -36,7 +37,7 @@ function media_sfc_photos_form($errors) {
 	if ( isset($_GET['send']) ){
 		$send_id = $_GET['send'];
 		
-		$photo = sfc_photo_get_photo($send_id, $user['access_token']);
+		$photo = sfc_photo_get_photo($send_id, $user['code']);
 		
 		$photo = apply_filters('sfc_photo_insert',$photo);
 		
@@ -64,9 +65,9 @@ function media_sfc_photos_form($errors) {
 	if (!empty($_GET['album'])) {
 		// show an album
 		$album = $_GET['album'];
-	
+
 		if ( false === ( $photos = get_transient('sfcphotos-'.$album) ) ) {
-			$photos = sfc_remote($album, 'photos', array('access_token'=>$user['access_token'], 'timeout' => 60));
+			$photos = sfc_remote($album, 'photos', array('code'=>$user['code'], 'timeout' => 60));
 
 			if ($photos === false) {
 				?><p><?php _e('Facebook is being really, really slow and not responding to requests in a reasonable period of time. Try again later.','sfc'); ?></p><?php	
@@ -96,7 +97,7 @@ function media_sfc_photos_form($errors) {
 
 			$link = admin_url("media-upload.php?post_id=$post_id&type=$type&tab=$redir_tab&album={$album['id']}&send={$photo['id']}");
 
-			echo "<p><a href='$link'><img src='{$photo['images'][1]['source']}' /></a></p>";
+			echo "<p><a href='$link'><img src='{$photo['picture']}' /></a></p>";
 
 			echo '</td>';
 
@@ -109,8 +110,8 @@ function media_sfc_photos_form($errors) {
 	} else {
 
 		if ( false === ( $albums = get_transient('sfcphotos-'.$user['user_id']) ) ) {
-			$albums = sfc_remote($user['uid'], 'albums', array('access_token'=>$user['access_token'], 'timeout' => 60));
-
+			$albums = sfc_remote($user['user_id'], 'albums', array('code'=>$user['code'], 'timeout' => 60));
+			
 			if ($albums === false) {
 				?><p><?php _e('Facebook is being really, really slow and not responding to requests in a reasonable period of time. Try again later.','sfc'); ?></p><?php	
 				return;
@@ -123,39 +124,41 @@ function media_sfc_photos_form($errors) {
 		if ( empty($albums['data']) ) {
 			?><p><?php _e('Either you have no photo albums on Facebook, or you have not granted the site permission to access them. Either way, click the button below to login and grant access.','sfc'); ?></p>
 			<fb:login-button v="2" scope="offline_access,user_photos" onlogin="location.reload();"><fb:intl><?php _e('Connect with Facebook', 'sfc'); ?></fb:intl></fb:login-button><?php
-		}
+		} else {
 
-		$albums = $albums['data'];
+			$albums = $albums['data'];
 
-		echo '<table><tr>'; 
-		$i=1;
-		foreach ($albums as $album) {
-			echo '<td>';
+			echo '<table><tr>'; 
+			$i=1;
+			foreach ($albums as $album) {
+				echo '<td>';
 
-			$link = admin_url("media-upload.php?post_id=$post_id&type=$type&tab=$redir_tab&album={$album['id']}");
-			// retrieve the cover image for the album
-			if (false !== ($photo = sfc_photo_get_photo($album['cover_photo'], $user['access_token']) ) ) {
-				echo "<p><a href='$link'><img src='{$photo['images'][1]['source']}' /></a></p>";
-			} else {
-				// TODO cover not available
+				$link = admin_url("media-upload.php?post_id=$post_id&type=$type&tab=$redir_tab&album={$album['id']}");
+				// retrieve the cover image for the album
+				if (false !== ($photo = sfc_photo_get_photo($album['cover_photo'], $user['code']) ) ) {
+					echo "<p><a href='$link'><img src='{$photo['picture']}' /></a></p>";
+				} else {
+					// TODO cover not available
+				}
+
+				echo "<p><a href='$link'>{$album['name']}</a></p>";
+				echo '</td>';
+
+				if ($i%3 == 0) echo '</tr><tr>';
+				$i++;
 			}
-
-			echo "<p><a href='$link'>{$album['name']}</a></p>";
-			echo '</td>';
-
-			if ($i%3 == 0) echo '</tr><tr>';
-			$i++;
+			echo '</tr></table>';
 		}
-		echo '</tr></table>';
 	}
 ?>
 <?php
 }
 
 // generic function to get a photo's info from FB and store it in a transient cache (speed reasons)
-function sfc_photo_get_photo($fbid, $access_token) {
+function sfc_photo_get_photo($fbid, $code) {
+
 	if (false === ($photo = get_transient('sfcphoto-'.$fbid) ) ) {
-		$photo = sfc_remote( $fbid, '', array('access_token'=>$access_token) );
+		$photo = sfc_remote( $fbid, '', array('code'=>$code) );
 		if (!empty($photo['images'])) {
 			set_transient('sfcphoto-'.$fbid, $photo, 60*60);
 		} else {

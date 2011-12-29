@@ -20,9 +20,35 @@ class acf_Wysiwyg extends acf_Field
     	$this->name = 'wysiwyg';
 		$this->title = __("Wysiwyg Editor",'acf');
 		
-		add_action('admin_head', 'wp_tiny_mce');
+		add_action('admin_head', array($this, 'add_tiny_mce'));
 		
    	}
+   	
+   	
+   	/*--------------------------------------------------------------------------------------
+	*
+	*	add_tiny_mce
+	*
+	*	@author Elliot Condon
+	*	@since 3.0.3
+	*	@updated 3.0.3
+	* 
+	*-------------------------------------------------------------------------------------*/
+   	
+   	function add_tiny_mce()
+   	{
+   		global $post;
+   		
+   		if($post && post_type_supports($post->post_type, 'editor'))
+   		{
+   			// do nothing, wysiwyg will render correctly!
+   		}
+   		else
+   		{
+   			wp_tiny_mce();
+   		}
+		
+	}
    	
    	
    	/*--------------------------------------------------------------------------------------
@@ -57,6 +83,7 @@ class acf_Wysiwyg extends acf_Field
 	function admin_print_styles()
 	{
   		wp_enqueue_style(array(
+  			'editor-buttons',
 			'thickbox',		
 		));
 	}
@@ -272,29 +299,32 @@ class acf_Wysiwyg extends acf_Field
 		
 		$id = 'wysiwyg_' . uniqid();
 		
+		$version = get_bloginfo('version');
 		
 		?>
-		<div class="acf_wysiwyg" data-toolbar="<?php echo $field['toolbar']; ?>">
+		<?php if(version_compare($version,'3.2.1') > 0): ?>
+			
+		<?php else: ?>
+			
+		<?php endif; ?>
+		
+		<div class="acf_wysiwyg wp-editor-wrap" data-toolbar="<?php echo $field['toolbar']; ?>">
 			<?php if($field['media_upload'] == 'yes'): ?>
-			<div id="editor-toolbar" class="hide-if-no-js">	
-				<div id="media-buttons" class="hide-if-no-js">
-					Upload/Insert 
-					<a title="Add an Image" class="thickbox" id="add_image" href="media-upload.php?post_id=1802&amp;type=image&amp;TB_iframe=1&amp;width=640&amp;height=314">
-						<img onclick="return false;" alt="Add an Image" src="<?php echo $this->parent->wpadminurl; ?>images/media-button-image.gif?ver=20100531">
-					</a>
-					<a title="Add Video" class="thickbox" id="add_video" href="media-upload.php?post_id=1802&amp;type=video&amp;TB_iframe=1&amp;width=640&amp;height=314">
-						<img onclick="return false;" alt="Add Video" src="<?php echo $this->parent->wpadminurl; ?>images/media-button-video.gif?ver=20100531">
-					</a>
-					<a title="Add Audio" class="thickbox" id="add_audio" href="media-upload.php?post_id=1802&amp;type=audio&amp;TB_iframe=1&amp;width=640&amp;height=314">
-						<img onclick="return false;" alt="Add Audio" src="<?php echo $this->parent->wpadminurl; ?>images/media-button-music.gif?ver=20100531">
-					</a>
-					<a title="Add Media" class="thickbox" id="add_media" href="media-upload.php?post_id=1802&amp;TB_iframe=1&amp;width=640&amp;height=314">
-						<img onclick="return false;" alt="Add Media" src="<?php echo $this->parent->wpadminurl; ?>images/media-button-other.gif?ver=20100531">
-					</a>
-				</div>
-			</div>
+				<?php if(version_compare($version,'3.2.1') > 0): ?>
+					<div id="wp-content-editor-tools" class="wp-editor-tools">
+						<div class="hide-if-no-js wp-media-buttons">
+							<?php do_action( 'media_buttons' ); ?>
+						</div>
+					</div>
+				<?php else: ?>
+					<div id="editor-toolbar">
+						<div id="media-buttons" class="hide-if-no-js">
+							<?php do_action( 'media_buttons' ); ?>
+						</div>
+					</div>
+				<?php endif; ?>
 			<?php endif; ?>
-			<div id="editorcontainer">
+			<div id="editorcontainer" class="wp-editor-container">
 				<textarea id="<?php echo $field['name']; ?>" name="<?php echo $field['name']; ?>" ><?php echo wp_richedit_pre($field['value']); ?></textarea>
 			</div>
 		</div>

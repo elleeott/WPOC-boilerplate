@@ -26,7 +26,7 @@ $('#cart > .heading a').bind('click', function() {
 	$('#cart').addClass('active');
 	
 	$.ajax({
-		url: 'index.php?route=checkout/cart/update',
+		url: '/store/index.php?route=checkout/cart/update',
 		dataType: 'json',
 		success: function(json) {
 			if (json['output']) {
@@ -42,11 +42,11 @@ $('#cart > .heading a').bind('click', function() {
 
 function addToCart(product_id) {
 	$.ajax({
-		url: 'index.php?route=checkout/cart/update',
+		url: '/store/index.php?route=checkout/cart/update',
 		type: 'post',
 		data: 'product_id=' + product_id,
 		dataType: 'json',
-		success: window.location = 'index.php?route=checkout/cart'
+		success: window.location = '/store/index.php?route=checkout/cart'
 		/*
 		function(json) {
 			$('.success, .warning, .attention, .information, .error').remove();

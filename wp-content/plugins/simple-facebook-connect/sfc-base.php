@@ -4,7 +4,10 @@
  */
 
 // Load the textdomain
-load_plugin_textdomain('sfc', false, dirname(plugin_basename(__FILE__)));
+add_action('init', 'sfc_load_textdomain');
+function sfc_load_textdomain() {
+	load_plugin_textdomain('sfc', false, dirname(plugin_basename(__FILE__)));
+}
 
 global $sfc_plugin_list;
 $sfc_plugin_list = array(
@@ -17,6 +20,20 @@ $sfc_plugin_list = array(
 	'plugin_register'=>'sfc-register.php',
 	'plugin_share'=>'sfc-share.php',
 	'plugin_photos'=>'sfc-photos.php',
+);
+
+global $sfc_plugin_descriptions;
+$sfc_plugin_descriptions = array(
+	'plugin_login'		=>__('Login with Facebook','sfc'),
+	'plugin_register'	=>__('User registration (must also enable Login)','sfc'),
+	'plugin_like'		=>__('Like Button','sfc'),
+	'plugin_share'		=>__('Share Button','sfc'),
+	'plugin_publish'	=>__('Publisher (send posts to Facebook)','sfc'),
+	'plugin_widgets'	=>__('Sidebar widgets (enables all widgets, use the ones you want)','sfc'),
+	'plugin_comments'	=>__('Allow FB Login to Comment (for non-registered users)','sfc'),
+	'plugin_getcomm'	=>__('Integrate FB Comments (needs automatic publishing enabled)','sfc'),
+	'plugin_photos'		=>__('Photo Posting (integrate FB Photo Albums into the Media display)','sfc'),
+	
 );
 
 // load all the subplugins
@@ -34,7 +51,7 @@ function sfc_plugin_loader() {
 // fix up the html tag to have the FBML extensions
 add_filter('language_attributes','sfc_lang_atts');
 function sfc_lang_atts($lang) {
-    return ' xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/" '.$lang;
+    return ' xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#" '.$lang;
 }
 
 // basic XFBML load into footer
@@ -44,9 +61,8 @@ function sfc_add_base_js() {
 	sfc_load_api($options['appid']);
 };
 
-function sfc_load_api($appid) {
-
-	// allow locale overrides
+function sfc_get_locale() {
+	// allow locale overrides using SFC_LOCALE define in the wp-config.php file
 	if ( defined( 'SFC_LOCALE' ) ) {
 		$locale = SFC_LOCALE;
 	} else {
@@ -63,25 +79,56 @@ function sfc_load_api($appid) {
 		);
 
 		$locale = get_locale();
+		
+		// convert locales like "es" to "es_ES", in case that works for the given locale (sometimes it does)
+		if (strlen($locale) == 2) {
+			$locale = strtolower($locale).'_'.strtoupper($locale);
+		}
+		
+		// convert things like de-DE to de_DE
+		$locale = str_replace('-', '_', $locale);
+		
+		// TODO make a locale conversion list, perhaps?
+		
+		// check to see if the locale is a valid FB one, if not, use en_US as a fallback
 		if ( !in_array($locale, $sfc_valid_fb_locales) ) {
-			$locale = 'en_US';	// default if they're using one FB doesn't like
+			$locale = 'en_US';
 		}
 	}
+	
+	return $locale;
+}
+
+function sfc_load_api($appid) {
+	$locale = sfc_get_locale();
+	
 ?>
 <div id="fb-root"></div>
 <script type="text/javascript">
   window.fbAsyncInit = function() {
-    FB.init({appId: '<?php echo $appid; ?>', status: true, cookie: true, xfbml: true, oauth: true });
+    FB.init({appId: '<?php echo $appid; ?>', channelUrl: '<?php echo home_url('?sfc-channel-file=1'); ?>', status: true, cookie: true, xfbml: true, oauth: true });
     <?php do_action('sfc_async_init'); // do any other actions sub-plugins might need to do here ?>
   };
-  (function() {
-    var e = document.createElement('script'); e.async = true;
-    e.src = document.location.protocol +
-      '//connect.facebook.net/<?php echo $locale; ?>/all.js';
-    document.getElementById('fb-root').appendChild(e);
-  }());
+  (function(d){
+       var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+       js = d.createElement('script'); js.id = id; js.async = true;
+       js.src = "//connect.facebook.net/<?php echo $locale; ?>/all.js";
+       d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));     
 </script>
 <?php
+}
+
+add_action('init','sfc_channel_file');
+function sfc_channel_file() {
+	if (!empty($_GET['sfc-channel-file'])) {
+		$cache_expire = 60*60*24*365;
+		header("Pragma: public");
+		header("Cache-Control: max-age=".$cache_expire);
+		header('Expires: ' . gmdate('D, d M Y H:i:s', time()+$cache_expire) . ' GMT');
+		echo '<script src="//connect.facebook.net/'.sfc_get_locale().'/all.js"></script>';
+		exit;
+	}
 }
 
 // add the admin settings and such
@@ -100,8 +147,8 @@ function sfc_admin_init(){
 	if (!defined('SFC_APP_SECRET')) add_settings_field('sfc_app_secret', __('Facebook Application Secret', 'sfc'), 'sfc_setting_app_secret', 'sfc', 'sfc_main');
 	if (!defined('SFC_FANPAGE')) add_settings_field('sfc_fanpage', __('Facebook Fan Page', 'sfc'), 'sfc_setting_fanpage', 'sfc', 'sfc_main');
 
-	add_settings_section('sfc_plugins', __('SFC Plugins', 'sfc'), 'sfc_plugins_text', 'sfc');
-	add_settings_field('sfc_subplugins', __('Plugins', 'sfc'), 'sfc_subplugins', 'sfc', 'sfc_plugins');
+	add_settings_section('sfc_plugins', __('SFC Modules', 'sfc'), 'sfc_plugins_text', 'sfc');
+	add_settings_field('sfc_subplugins', __('Modules', 'sfc'), 'sfc_subplugins', 'sfc', 'sfc_plugins');
 	
 	add_settings_section('sfc_meta', __('Facebook Metadata', 'sfc'), 'sfc_meta_text', 'sfc');
 	add_settings_field('sfc_default_image', __('Default Image', 'sfc'), 'sfc_default_image', 'sfc', 'sfc_meta');
@@ -113,75 +160,152 @@ add_action('admin_menu', 'sfc_admin_add_page');
 function sfc_admin_add_page() {
 	global $sfc_options_page;
 	$sfc_options_page = add_options_page(__('Simple Facebook Connect', 'sfc'), __('Simple Facebook Connect', 'sfc'), 'manage_options', 'sfc', 'sfc_options_page');
+	add_action("load-$sfc_options_page", 'sfc_plugin_help');
 }
 
-function sfc_plugin_help($contextual_help, $screen_id, $screen) {
-	global $sfc_options_page;
-	if ($screen_id == $sfc_options_page) {
-		$home = home_url('/');
-		$contextual_help = __("
-<p>To connect your site to Facebook, you will need a Facebook Application.
-If you have already created one, please insert your Application Secret and Application ID below.</p>
-<p><strong>Can't find your key?</strong></p>
-<ol>
-<li>Get a list of your applications from here: <a target='_blank' href='https://developers.facebook.com/apps'>Facebook Application List</a></li>
-<li>Select the application you want, then copy and paste the Application Secret and Application ID from there.</li>
-</ol>
-
-<p><strong>Haven't created an application yet?</strong> Don't worry, it's easy!</p>
-<ol>
-<li>Go to this link to create your application: <a target='_blank' href='https://developers.facebook.com/apps'>Facebook Application List</a></li>
-<li>After creating the application, put <strong>%s</strong> in as the Connect URL on the Connect Tab.</li>
-<li>You can get the information from the application on the
-<a target='_blank' href='https://developers.facebook.com/apps'>Facebook Application List</a> page.</li>
-<li>Select the application you created, then copy and paste the Application Secret, and Application ID from there.</li>
-</ol>
-
-<h3>SFC-Plugins</h3>
-<p>Each separate plugin can be enabled or disabled using the checkboxes below. Only enable the plugins you want to use, and the rest will not run at all! Here's a quick description of each plugin:</p>
-<ul>
-<li><strong>Login</strong> - The Login plugin allows your users to login using their Facebook Credentials. To do this, 
-	it adds a Facebook button on the Login screen. There is also a button on the Users' profile screen to allow them 
-	to connect or disconnect their account from Facebook. The User's Facebook ID number will be stored as usermeta 
-	and can be used for many things.</p></li>
-<li><strong>Register</strong> - The Register plugin changes the normal WordPress user registration mechanism into the 
-	Facebook Register plugin mechanism. This lets users easily register using their Facebook credentials, or to 
-	register without having any credentials. Users who register with FB credentials will automatically be able to 
-	Login using their FB credentials in the Login plugin. As an added bonus, FB Register adds a CAPTCHA to the 
-	registration process, helping to eliminate spam registrations.</p></li>
-<li><strong>Like</strong> - The Like plugin will let you automatically or manually add Like and Send buttons to all 
-	the Posts and Pages on your site.</p></li>
-<li><strong>Share</strong> - The Share plugin will let you automatically add a second Like button to all the Posts and 
-	Pages on your site. This is styled to look similar to the older, now removed, \"Share\" feature Facebook used 
-	to offer, but it doesn't have the same kind of popup dialog any longer.</p></li>
-<li><strong>Publish</strong> - The Publish plugin will let you automatically send new posts and pages to either your 
-	site's main Facebook Page or your personal Facebook Profile. Automatically posted entries also get metadata 
-	about the Facebook post saved about them, for use by other plugins.</p></li>
-<li><strong>Widgets</strong> - The Widgets plugin adds several widgets that can be used by your site's sidebar (or 
-	any other widget areas in your theme). Most of these come from the 
-	<a href='http://developers.facebook.com/docs/plugins/'>Facebook Social Plugins</a>.</p></li>
-<li><strong>Comments</strong> - The Comments plugin will let your users use Facebook credentials to make comments, and 
-	offer those users an option to share their comments, and your post, on Facebook. This basically eliminates the 
-	need for users to type in their Names and Email addresses. Note that some themes do checking for these \"required\" 
-	elements via Javascript. Because Facebook Comments get these fields filled on the back end, the theme may need to 
-	be modified to both display the button or to eliminate the javascript requirements checks.</p></li>
-<li><strong>Integrate Comments</strong> - The Comment Integration plugin will interact with the saved data from the 
-	automatic publishing plugin, and periodically poll Facebook for new comments made to your auto-published stories. 
-	Comments will then be pulled from Facebook and integrated into the normally displayed comments stream.</p></li>
-<li><strong>Photos</strong> - The Photos plugin adds a new tab to the Media Uploader on the Edit Post pages, which will 
-	show your Facebook photo albums and let you easily embed pictures from Facebook into your posts.</p></li>
-", 'sfc');
-	}
+function sfc_plugin_help() {
+	if (!class_exists('WP_Screen')) return;
 	
-	$contextual_help = sprintf( $contextual_help, $home );
-	return $contextual_help;
+	global $sfc_options_page;
+	
+	$screen = get_current_screen();
+	
+	if ($screen->id != $sfc_options_page) 
+		return;
+		
+	$home = home_url('/');
+	$sfc_help_base = __("
+		<p>To connect your site to Facebook, you will need a Facebook Application.
+		If you have already created one, please insert your Application Secret and Application ID below.</p>
+		<p><strong>Can't find your key?</strong></p>
+		<ol>
+		<li>Get a list of your applications from here: <a target='_blank' href='https://developers.facebook.com/apps'>Facebook Application List</a></li>
+		<li>Select the application you want, then copy and paste the Application Secret and Application ID from there.</li>
+		</ol>
+
+		<p><strong>Haven't created an application yet?</strong> Don't worry, it's easy!</p>
+		<ol>
+		<li>Go to this link to create your application: <a target='_blank' href='https://developers.facebook.com/apps'>Facebook Application List</a></li>
+		<li>After creating the application, put <strong>%s</strong> in as the Site URL in the Website section.</li>
+		<li>You can get the information from the application on the
+		<a target='_blank' href='https://developers.facebook.com/apps'>Facebook Application List</a> page.</li>
+		<li>Select the application you created, then copy and paste the Application Secret, and Application ID from there.</li>
+		</ol>
+	", 'sfc');
+
+	$sfc_help_base = sprintf( $sfc_help_base, $home );
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-base',
+		'title'   => __('Connecting to Facebook', 'sfc'),
+		'content' => $sfc_help_base,
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-modules',
+		'title'   => __('SFC Modules', 'sfc'),
+		'content' => __("<p>Each separate module can be enabled or disabled using the checkboxes below. 
+			Only enable the modules you want to use, and the rest will not run at all!</p> 
+			<p>This is how SFC remains quick and fast. Non-activated modules never get loaded into memory, 
+			and so will take no extra time or processing power.</p>
+			<p>You can see more information about each module in its individual help tab.</p>"
+			, 'sfc'),
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-login',
+		'title'   => __('Login and Register', 'sfc'),
+		'content' => __("<p>The Login module will allow you to log into the WordPress site using your Facebook credentials.</p>
+			<p>Each existing user can activate their Facebook credentials for login by visiting their User Profile page.</p>
+			<p>If you also enable the Register module, then SFC will modify the default registration screen to allow new users to register 
+			using the Facebook registration plugin. This plugin will also allow non-Facebook users to register.</p>
+			<p>The Login module has one option, which is to enable Facebook avatars in preference to Gravatars. If this is turned on, any 
+			user with Facebook credentials attached to their WordPress account will show their Facebook avatar instead of the normal Gravatar.</p>"
+			,'sfc'),
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-like',
+		'title'   => __('Like and Share', 'sfc'),
+		'content' => __("<p>The Like module will allow you to automatically or manually add Facebook like buttons to your posts.</p>
+			<p>The automatic option will add Like buttons to all posts, pages, and other forms of content on your site.</p>
+			<p>If you want to be more selective, you can edit your theme to have the <code>sfc_like_button();</code> function call where you 
+			want the Like buttons to appear.</p>
+			<p>You can also use the <code>[fb-like]</code> shortcode in your posts, for more specific usage.</p>
+			<p>Facebook also used to have an option known as the Share button. They have deprecated this button, and it will no longer
+			work with their newer codebase.</p>
+			<p>Therefore, the Share module will allow you to automatically or manually add Facebook like buttons to your posts which are styled 
+			so as to be approximately the same look and feel of the former Share button.</p>
+			<p>The automatic option will add Like buttons to all posts, pages, and other forms of content on your site.</p>
+			<p>If you want to be more selective, you can edit your theme to have the <code>sfc_share_button();</code> function call where you 
+			want the Like buttons to appear.</p>
+			<p>You can also use the <code>[fb-share]</code> shortcode in your posts, for more specific usage.</p>"
+			,'sfc'),
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-publish',
+		'title'   => __('Publish', 'sfc'),
+		'content' => __("<p>The Publish module will allow you to automatically or manually send posts to your Facebook Profile or Page Walls.</p>
+			<p>The automatic option can be configured on the main SFC Settings screen, and publishing happens transparently, with 
+			very little configuration. You will need to grant the proper permissions and Save the settings page before this will work.</p>
+			<p>The manual option is performed through the Edit Post screen. A new meta box will exist allowing you to publish to your Profile 
+			or Page using a popup box. The post must be published, and public, for this option to appear.</p>"
+			,'sfc'),
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-widgets',
+		'title'   => __('Widgets', 'sfc'),
+		'content' => __("<p>The Widgets module adds several widgets to the Appearance->Widgets screen, allowing for various widgets to be used in your
+			theme's sidebar or other widget areas. Most of these widgets are duplicating Facebook widgets, and thus will have their own configuration.</p>
+			<p>The Fan Box widget is a special case, as it can be independently styled using CSS. The Fan Box CSS box on the main SFC Settings page will
+			allow you to add custom CSS for this widget to use.</p>"
+			,'sfc'),
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-comments',
+		'title'   => __('Comments', 'sfc'),
+		'content' => __("<p>The Comments module will let your users use Facebook credentials to make comments, and also offer those users 
+			the option to share their comments, and your post, on Facebook. This basically eliminates the need for users to type in 
+			their Names and Email addresses.</p>
+			<p>For newer themes that use the <code>comment_form()</code> function in WordPress, this is completely automatic. For older themes, 
+			you may need to edit your theme's comments form to contain the necessary hooks to make the module work. Please see the 
+			<a href='http://wordpress.org/extend/plugins/simple-facebook-connect/faq/'>FAQ</a> for more information on this.</p>
+			<p>Note that some themes do checking for 'required' elements via Javascript. Because Facebook Comments get these fields 
+			filled on the back end, the theme may need to be modified to both display the button or to eliminate the javascript checks.</p>"
+			,'sfc'),
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-getcomm',
+		'title'   => __('Comments Integration', 'sfc'),
+		'content' => __("<p>The Comment Integration module uses the data saved from the automatic Publishing module to check the published stories on 
+			Facebook for comments. It will then periodically poll Facebook to get those comments, and integrate them back into the normally 
+			displayed comments stream on your post.</p>
+			<p>Note that this is not guaranteed to work in all cases. It polls on a 6 hour basis, and sometimes Facebook is non-repsonsive, and so
+			the comments won't be available. This is a 'best-effort' operation.</p>
+			<p>Because these comments are not actually on your site, the module also removes the 'Reply' link from them, so as to prevent people from
+			replying to comments made elsewhere, and which the original author will not be able to see.</p>"
+			,'sfc'),
+	));
+
+	$screen->add_help_tab( array(
+		'id'      => 'sfc-photos',
+		'title'   => __('Photos','sfc'),
+		'content' => __("<p>The Photos module adds a new tab to the Media Uploader on the Edit Post pages, which will show your Facebook photo 
+			albums and let you easily embed pictures from Facebook into your posts.</p>
+			<p>This module is new and considered to be 'alpha' quality, so don't count on it to work for all cases at present.</p>"
+			,'sfc'),
+	));
 }
-//add_action('contextual_help', 'sfc_plugin_help', 10, 3);
 
 // display the admin options page
 function sfc_options_page() {
 ?>
 	<div class="wrap">
+	<?php screen_icon(); ?>
 	<h2><?php _e('Simple Facebook Connect', 'sfc'); ?></h2>
 	<p><?php _e('Options relating to the Simple Facebook Connect plugins.', 'sfc'); ?> </p>
 	<form method="post" action="options.php">
@@ -189,7 +313,7 @@ function sfc_options_page() {
 	<table><tr><td>
 	<?php do_settings_sections('sfc'); ?>
 	</td><td style='vertical-align:top;'>
-	<div style='width:20em; float:right; background: #ffc; border: 1px solid #333; margin: 2px; padding: 5px'>
+	<div id='sfc-about' style='width:20em; float:right; background: #ffc; border: 1px solid #333; margin: 2px; padding: 5px'>
 			<h3 align='center'><?php _e('About the Author', 'sfc'); ?></h3>
 		<p><a href="http://ottopress.com/blog/wordpress-plugins/simple-facebook-connect/">Simple Facebook Connect</a> is developed and maintained by <a href="http://ottodestruct.com">Otto</a>.</p>
 			<p>He blogs at <a href="http://ottodestruct.com">Nothing To See Here</a> and <a href="http://ottopress.com">Otto on WordPress</a>, posts photos on <a href="http://www.flickr.com/photos/otto42/">Flickr</a>, and chats on <a href="http://twitter.com/otto42">Twitter</a>.</p>
@@ -225,7 +349,7 @@ If you have already created one, please insert your Application Secret and Appli
 <p><strong><?php _e('Haven\'t created an application yet?', 'sfc'); ?></strong> <?php _e('Don\'t worry, it\'s easy!', 'sfc'); ?></p>
 <ol>
 <li><?php _e('Go to this link to create your application: <a target="_blank" href="https://developers.facebook.com/apps">Facebook Application Setup</a>', 'sfc'); ?></li>
-<li><?php $home = home_url('/'); _e("After creating the application, put <strong>{$home}</strong> in as the Connect URL on the Connect Tab.", 'sfc'); ?></li>
+<li><?php $home = home_url('/'); _e("After creating the application, put <strong>{$home}</strong> in as the Site URL in the Website section.", 'sfc'); ?></li>
 <li><?php _e('You can get the API information from the application on the
 <a target="_blank" href="https://developers.facebook.com/apps">Facebook Application List</a> page.', 'sfc'); ?></li>
 <li><?php _e('Select the application you created, then copy and paste the Application Secret and Application ID from there.', 'sfc'); ?></li>
@@ -263,18 +387,11 @@ function sfc_setting_fanpage() {
 	if (defined('SFC_FANPAGE')) return;
 	$options = get_option('sfc_options'); ?>
 
-<p><?php _e('Some sites use Fan Pages on Facebook to connect with their users. The Application wall acts as a
-Fan Page in all respects, however some sites have been using Fan Pages previously, and already have
-communities and content built around them. Facebook offers no way to migrate these, so the option to
-use an existing Fan Page is offered for people with this situation. Note that this doesn\'t <em>replace</em>
-the application, as that is not optional. However, you can use a Fan Page for specific parts of the
-SFC plugin, such as the Fan Box, the Publisher, and the Chicklet.', 'sfc'); ?></p>
-
-<p><?php _e('If you have a <a href="http://www.facebook.com/pages/manage/">Fan Page</a> that you want to use for
-your site, enter the ID of the page here. Most users should leave this blank.', 'sfc'); ?></p>
-
+<p><?php _e('If you use a Fan Page for your site, you can fill in the ID number of the Fan Page here. To get the ID number, go to the Fan Page on Facebook,
+find the "Edit Page" link, and click it. The Fan Page ID number will be in the URL of the Edit page. Note that Fan Pages are optional, SFC is capable of using
+Application Walls just as effectively as Fan Pages.', 'sfc'); ?></p>
 <?php
-	echo "<input type='text' id='sfcfanpage' name='sfc_options[fanpage]' value='{$options['fanpage']}' size='40' />";
+	echo "<input type='text' id='sfcfanpage' name='sfc_options[fanpage]' value='{$options['fanpage']}' size='40' /> (optional)";
 }
 
 function sfc_plugins_text() {
@@ -284,19 +401,15 @@ function sfc_plugins_text() {
 }
 
 function sfc_subplugins() {
+	global $sfc_plugin_descriptions;
 	$options = get_option('sfc_options');
 	if ($options['appid']) {
-	?>
-	<p><label><input type="checkbox" name="sfc_options[plugin_login]" value="enable" <?php @checked('enable', $options['plugin_login']); ?> /> <?php _e('Login with Facebook','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_register]" value="enable" <?php @checked('enable', $options['plugin_register']); ?> /> <?php _e('User registration (must also enable Login)','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_like]" value="enable" <?php @checked('enable', $options['plugin_like']); ?> /> <?php _e('Like Button','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_share]" value="enable" <?php @checked('enable', $options['plugin_share']); ?> /> <?php _e('Share Button','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_publish]" value="enable" <?php @checked('enable', $options['plugin_publish']); ?> /> <?php _e('Publisher (send posts to Facebook)','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_widgets]" value="enable" <?php @checked('enable', $options['plugin_widgets']); ?> /> <?php _e('Sidebar widgets (enables all widgets, use the ones you want)','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_comments]" value="enable" <?php @checked('enable', $options['plugin_comments']); ?> /> <?php _e('Allow FB Login to Comment (for non-registered users)','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_getcomm]" value="enable" <?php @checked('enable', $options['plugin_getcomm']); ?> /> <?php _e('Integrate FB Comments (needs automatic publishing enabled)','sfc'); ?></label></p>
-	<p><label><input type="checkbox" name="sfc_options[plugin_photos]" value="enable" <?php @checked('enable', $options['plugin_photos']); ?> /> <?php _e('Photo Posting (integrate FB Photo Albums into the Media display)','sfc'); ?></label></p>
-	<?php
+	
+		foreach($sfc_plugin_descriptions as $key=>$val) {
+		?>
+		<p><label><input type="checkbox" name="sfc_options[<?php echo $key; ?>]" value="enable" <?php @checked('enable', $options[$key]); ?> /> <?php echo $val; ?></label></p>
+		<?php
+		}
 	do_action('sfc_subplugins');
 	}
 }
@@ -358,10 +471,12 @@ function sfc_cookie_parse() {
 	$options = get_option('sfc_options');
 	$args = array();
 	
-	if (list($encoded_sig, $payload) = explode('.', $_COOKIE['fbsr_'. $options['appid']], 2) ) {
-		$sig = sfc_base64_url_decode($encoded_sig);  
-		if (hash_hmac('sha256', $payload, $options['app_secret'], true) == $sig) {
-			$args = json_decode(sfc_base64_url_decode($payload), true);
+	if (!empty($_COOKIE['fbsr_'. $options['appid']])) {
+		if (list($encoded_sig, $payload) = explode('.', $_COOKIE['fbsr_'. $options['appid']], 2) ) {
+			$sig = sfc_base64_url_decode($encoded_sig);  
+			if (hash_hmac('sha256', $payload, $options['app_secret'], true) == $sig) {
+				$args = json_decode(sfc_base64_url_decode($payload), true);
+			}
 		}
 	}
 	
@@ -386,11 +501,11 @@ function sfc_is_fan($pageid='0') {
 	$options = get_option('sfc_options');
 
 	if ($pageid == '0') {
-		if ($options['fanpage']) $pageid = $options['fanpage'];
+		if (!empty($options['fanpage'])) $pageid = $options['fanpage'];
 		else $pageid = $options['appid'];
 	}
 
-	if ($options['fanpage']) $token = $options['page_access_token'];
+	if (!empty($options['fanpage'])) $token = $options['page_access_token'];
 	else $token = $options['app_access_token'];
 
 	$fbresp = sfc_remote($user['user_id'], "likes/{$pageid}", array('access_token'=>$token));
@@ -404,6 +519,26 @@ function sfc_is_fan($pageid='0') {
 
 function sfc_remote($obj, $connection='', $args=array(), $type = 'GET') {
 
+	// save the access tokens for later use in the same request
+	static $saved_access_tokens;
+	
+	if (empty($args['access_token']) && isset($saved_access_tokens[$obj]) && $saved_access_tokens[$obj] = $obj) {
+		$args['access_token'] = $saved_access_tokens[$obj];
+	}
+	
+	$options = get_option('sfc_options');
+	
+	// get the access token
+	if (empty($args['access_token']) && !empty($args['code'])) {
+		$resp = wp_remote_get("https://graph.facebook.com/oauth/access_token?client_id={$options['appid']}&redirect_uri=&client_secret={$options['app_secret']}&code={$args['code']}");	
+		if (!is_wp_error($resp) && 200 == wp_remote_retrieve_response_code( $resp )) {
+			$args['access_token'] = str_replace('access_token=','',$resp['body']);
+			$saved_access_tokens[$obj] = $args['access_token'];
+		} else {
+			return false;
+		}
+	}
+	
 	$type = strtoupper($type);
 	
 	if (empty($obj)) return null;
@@ -411,7 +546,7 @@ function sfc_remote($obj, $connection='', $args=array(), $type = 'GET') {
 	$url = 'https://graph.facebook.com/'. $obj;
 	if (!empty($connection)) $url .= '/'.$connection;
 	if ($type == 'GET') $url .= '?'.http_build_query($args);
-	$args['sslverify']=false;
+	$args['sslverify']=0;
 
 	if ($type == 'POST') {
 		$data = wp_remote_post($url, $args);
@@ -464,77 +599,9 @@ function sfc_base_make_excerpt($post) {
 	return $text;
 }
 
-// code to find any and all images in a post's actual content, given a post object (returns array of urls)
-// this should give the best representative sample of images from the post to push to FB
-function sfc_base_find_images(&$post) { 
-	
-	$images = array();
-	
-	// first we apply the filters to the content, just in case they're using shortcodes or oembed to display images
-	if ($post->filtered_content) $content = $post->filtered_content;
-	else $content = $post->filtered_content = apply_filters('the_content', $post->post_content);
-	
-	// next, we get the post thumbnail, put it first in the image list
-	if ( current_theme_supports('post-thumbnails') && has_post_thumbnail($post->ID) ) {
-		$thumbid = get_post_thumbnail_id($post->ID);
-		$att = wp_get_attachment_image_src($thumbid, 'full');
-		if (!empty($att[0])) {
-			$images[] = $att[0];
-		}
-	}
-	
-	if (is_attachment() && 	preg_match('!^image/!', get_post_mime_type( $post ))) {	
-	    $images[] = wp_get_attachment_url($post->ID);
-	}
-	
-	// now search for images in the content itself
-	if ( preg_match_all('/<img\s+(.+?)>/', $content, $matches) ) {
-		foreach($matches[1] as $match) {
-			foreach ( wp_kses_hair($match, array('http')) as $attr)
-				$img[strtolower($attr['name'])] = $attr['value'];
-			if ( isset($img['src']) ) {
-				if ( !isset( $img['class'] ) || ( isset( $img['class'] ) && false === straipos( $img['class'], apply_filters( 'sfc_img_exclude', array( 'wp-smiley' ) ) ) ) ) { // ignore smilies
-					if ( !in_array( $img['src'], $images ) 
-						&& strpos( $img['src'], 'fbcdn.net' ) === false // exclude any images on facebook's CDN
-						&& strpos( $img['src'], '/plugins/' ) === false // exclude any images put in from plugin dirs
-						) {
-						$images[] = $img['src'];
-					}
-				}
-			}
-		}
-	}
-	
-	return $images;
-}
 
-// tries to find any video content in a post for meta stuff (only finds first video embed)
-function sfc_base_find_video(&$post) {
-
-	$vid = array();
-	
-	// first we apply the filters to the content, just in case they're using shortcodes or oembed to display videos
-	if ($post->filtered_content) $content = $post->filtered_content;
-	else $content = $post->filtered_content = apply_filters('the_content', $post->post_content);
-
-	// look for an embed to add with video_src (simple, just add first embed)
-	if ( preg_match('/<embed\s+(.+?)>/i', $content, $matches) ) {
-		foreach ( wp_kses_hair($matches[1], array('http')) as $attr) 
-			$embed[strtolower($attr['name'])] = $attr['value'];
-		
-		$embed['src'] = preg_replace('/&.*$/','', $embed['src']);
-		if (preg_match('@http://[^/]*?youtube\.com/@i', $embed['src']) ) {
-			$embed['src'] = preg_replace('/[?&#].*$/','', $embed['src']);
-		}
-
-		if ( isset($embed['src']) ) $vid[''] = $embed['src'];
-		if ( isset($embed['height']) ) $vid[':height'] = $embed['height'];
-		if ( isset($embed['width']) ) $vid[':width'] = $embed['width'];
-		if ( isset($embed['type']) ) $vid[':type'] = $embed['type'];
-	}
-	
-	return $vid;
-}
+// add the media handlers
+include 'sfc-media.php';
 
 // add meta tags for *everything*
 add_action('wp_head','sfc_base_meta');
@@ -557,12 +624,7 @@ function sfc_base_meta() {
 		
 		// get the content from the main post on the page
 		$content = sfc_base_make_excerpt($post);
-		$images = sfc_base_find_images($post);
-		$video = sfc_base_find_video($post);
-		if (!empty($video) && preg_match('@http://[^/]*?youtube\.com/(?:v/|p/|embed/p/|embed/|watch\?[vp]=)([^/?&]+)@i', $video[''], $matches) ) {
-			array_unshift($images, "http://img.youtube.com/vi/{$matches[1]}/0.jpg");
-		}
-		
+
 		$title = get_the_title();
 		$permalink = get_permalink();
 		
@@ -571,19 +633,6 @@ function sfc_base_meta() {
 		$fbmeta['og:url'] = esc_url($permalink);
 		$fbmeta['og:description'] = esc_attr($content);
 
-		if (!empty($images)) {
-			foreach ($images as $image) {
-				$fbmeta['og:image'][] = $image;
-			}
-		} else if (!empty($options['default_image'])) {
-			$fbmeta['og:image'][] = $options['default_image'];
-		}
-		
-		if (!empty($video)) {
-			foreach ($video as $type=>$value) {
-				$fbmeta["og:video{$type}"][] = $value;
-			}
-		}
 	} else { // non singular pages need images and descriptions too
 		if (!empty($options['default_image'])) {
 			$fbmeta['og:image'][] = $options['default_image'];
@@ -601,9 +650,10 @@ function sfc_base_meta() {
 	
 	// stuff on all pages
 	$fbmeta['og:site_name'] = get_bloginfo("name");
-	$fbmeta['fb:app_id'] = esc_attr($options["appid"]);
+	if (!empty($options["appid"])) $fbmeta['fb:app_id'] = esc_attr($options["appid"]);
+	$fbmeta['og:locale'] = sfc_get_locale();
 	
-	$fbmeta = apply_filters('sfc_base_meta',$fbmeta);
+	$fbmeta = apply_filters('sfc_base_meta',$fbmeta, $post);
 	
 	foreach ($fbmeta as $prop=>$content) {
 		if (is_array($content)) {
@@ -636,3 +686,62 @@ function straipos($haystack,$array,$offset=0)
    return array($key,$value);
 }
 endif;
+
+function sfc_pointer_enqueue( $hook_suffix ) {
+	global $sfc_options_page;
+	if ( $hook_suffix != $sfc_options_page ) return;
+	
+	$dismissed = explode( ',', (string) get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true ) );
+
+	if ( ! in_array( 'sfc-help', $dismissed ) ) {
+		$enqueue = true;
+		add_action( 'admin_print_footer_scripts', '_sfc_pointer' );
+		wp_enqueue_style( 'wp-pointer' );
+		wp_enqueue_script( 'wp-pointer' );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'sfc_pointer_enqueue' );
+
+function _sfc_pointer() {
+	$pointer_content  = '<h3>' . __('Help is available!', 'sfc') . '</h3>';
+	$pointer_content .= '<p>' . __('Make sure to check the Help dropdown box for information on installing and using Simple Facebook Connect.','sfc') . '</p>';
+?>
+<script type="text/javascript">
+//<![CDATA[
+jQuery(document).ready( function($) {
+	$('#contextual-help-link-wrap').pointer({
+		content: '<?php echo $pointer_content; ?>',
+		position: {
+			edge:  'top',
+			align: 'right'
+		},
+		pointerClass: 'sfc-help-pointer',
+		close: function() {
+			$.post( ajaxurl, {
+					pointer: 'sfc-help',
+				//	_ajax_nonce: $('#_ajax_nonce').val(),
+					action: 'dismiss-wp-pointer'
+			});
+		}
+	}).pointer('open');
+	
+	$(window).resize(function() {
+		if ( $('.sfc-help-pointer').is(":visible") ) $('#contextual-help-link-wrap').pointer('reposition');
+	});
+	
+	$('#contextual-help-link-wrap').click( function () {
+		setTimeout( function () {
+			$('#contextual-help-link-wrap').pointer('reposition');
+		}, 1000);
+	});
+});
+//]]>
+</script>
+<style>
+.sfc-help-pointer .wp-pointer-arrow {
+	right:10px;
+	left:auto;
+}
+</style>
+<?php
+}

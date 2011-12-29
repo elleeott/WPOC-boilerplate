@@ -220,7 +220,7 @@ class Options_page
 	*-------------------------------------------------------------------------------------*/
 	function admin_footer()
 	{
-		wp_preload_dialogs( array( 'plugins' => 'safari,inlinepopups,spellchecker,paste,wordpress,media,fullscreen,wpeditimage,wpgallery,tabfocus' ) );
+		//wp_preload_dialogs( array( 'plugins' => 'safari,inlinepopups,spellchecker,paste,wordpress,media,fullscreen,wpeditimage,wpgallery,tabfocus' ) );
 	}
 	
 	

@@ -152,7 +152,7 @@ function sfc_login_check($user) {
 		} else {
 			$data = sfc_remote($fbuid, '', array(
 				'fields'=>'email',
-				'access_token'=>$cookie['access_token'],
+				'code'=>$cookie['code'],
 			));
 
 			if (!empty($data['email'])) {
@@ -196,8 +196,14 @@ exit;
 function sfc_login_logout_js() {
 	$redirect_to = !empty( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : 'wp-login.php?loggedout=true';
 ?>
-FB.logout(function(response) {
-	window.location.href = '<?php echo $redirect_to; ?>';
+FB.getLoginStatus(function(response) {
+	if (response.authResponse) {
+		FB.logout(function(response) {
+			window.location.href = '<?php echo $redirect_to; ?>';
+		});
+	} else {
+		window.location.href = '<?php echo $redirect_to; ?>';
+	}
 });
 <?php
 }

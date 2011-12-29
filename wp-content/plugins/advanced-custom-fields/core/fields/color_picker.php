@@ -76,7 +76,7 @@ class acf_Color_picker extends acf_Field
 				$('#acf_color_picker').css({
 					left: input.offset().left,
 					top: input.offset().top - $('#acf_color_picker').height(),
-					display: 'block',
+					display: 'block'
 				});
 				
 				farbtastic.linkTo(this);
@@ -84,7 +84,7 @@ class acf_Color_picker extends acf_Field
 			}).live('blur', function(){
 
 				$('#acf_color_picker').css({
-					display: 'none',
+					display: 'none'
 				});
 								
 			});
