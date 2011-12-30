@@ -13,7 +13,7 @@ $_['text_login']      = 'Attention: You must <a href="%s">login</a> or <a href="
 // Column
 $_['column_remove']   = 'Remove';
 $_['column_image']    = 'Image';
-$_['column_name']     = 'Product Name';
+$_['column_name']     = 'Item';
 $_['column_model']    = 'Model';
 $_['column_quantity'] = 'Quantity';
 $_['column_price']    = 'Unit Price';

@@ -91,7 +91,6 @@ input[type="text"] {
 a.button {
   display: inline-block;
   text-decoration: none;
-  background: #cc692d;
   color: #fff;
   font-size: 12px;
   height: 28px;
@@ -110,6 +109,15 @@ a.button {
   text-shadow: 0 -1px 0 #666666; }
   a.button:hover {
     background: #b75e28; }
+
+a.button-primary {
+  background: #cc692d; }
+
+a.button-secondary {
+  background: #999999; }
+
+a.button-tertiary {
+  background: #999999; }
 
 footer {
   height: 300px;
@@ -187,10 +195,11 @@ td, th {
     text-align: center; }
     .cart-info td.quantity input {
       text-align: center; }
+  .cart-info tbody td {
+    padding-top: 10px;
+    padding-bottom: 10px; }
   .cart-info tbody td.image {
     width: 80px; }
-  .cart-info tbody td.image img {
-    border: 1px solid #cccccc; }
 
 .cart-total {
   border-top: 1px solid #cccccc;
@@ -205,8 +214,9 @@ td, th {
 
 #buttons {
   margin: 0 0 20px; }
-  #buttons .checkout-button {
-    float: right; }
+
+.checkout-button {
+  float: right; }
 
 #categories-menu h4 {
   font-weight: bold; }

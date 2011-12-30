@@ -26,7 +26,7 @@
         <td><input type="text" name="postcode" value="<?php echo $postcode; ?>" /></td>
       </tr>
     </table>
-    <a id="button-quote" class="button"><span><?php echo $button_quote; ?></span></a>
+    <a id="button-quote" class="button button-secondary"><span><?php echo $button_quote; ?></span></a>
     <div id="quote" style="display: none;"></div>
     <input type="hidden" name="shipping_method" value="<?php echo $code; ?>" />
   </div>

@@ -127,9 +127,9 @@ add_action('deleted_comment', 'add_rating_meta');
 
 
 //highest ranked recipe sidebar widget
-class Example_Widget extends WP_Widget {
+class Ranked_Recipes_Widget extends WP_Widget {
 
-	function Example_Widget() {
+	function Ranked_Recipes_Widget() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'ranked-recipes', 'description' => 'Displays the highest ranked recipes.');
 
@@ -147,26 +147,25 @@ class Example_Widget extends WP_Widget {
 			'order' => 'DESC'
 		 ));
 		 
-			if($query->have_posts()):
-				echo $before_widget . $before_title . 'Top Recipes' . $after_title;
-				echo '<ul>';
-				while ($query->have_posts()):$query->the_post();
-					if(get_post_meta($post->ID,'_avg_rating',true)) : 
-						echo '<li>';
-						echo '<a href="'.get_permalink($post->ID).'">'.$post->post_title.'</a> ';
-						echo get_post_meta($post->ID,'_avg_rating',true);
-						echo '</li>';
-					endif; 
-				endwhile;
-				echo '</ul>';
-				echo $after_widget;
-			endif; 
+		if($query->have_posts()):
+			echo $before_widget . $before_title . 'Top Recipes' . $after_title;
+			echo '<ul>';
+			while ($query->have_posts()):$query->the_post();
+				if(get_post_meta($post->ID,'_avg_rating',true)) : 
+					echo '<li>';
+					echo '<a href="'.get_permalink($post->ID).'">'.$post->post_title.'</a> ';
+					echo get_post_meta($post->ID,'_avg_rating',true);
+					echo '</li>';
+				endif; 
+			endwhile;
+			echo '</ul>';
+			echo $after_widget;
+		endif; 
 	}	
-
 }
 
-function example_load_widgets() {
-	register_widget( 'Example_Widget' );
+function load_ranked_recipe_widgets() {
+	register_widget( 'Ranked_Recipes_Widget' );
 }
-add_action( 'widgets_init', 'example_load_widgets' );
+add_action( 'widgets_init', 'load_ranked_recipe_widgets' );
 

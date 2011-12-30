@@ -26,11 +26,15 @@ td,th {
 			text-align:center;
 		}
 	}
+	tbody td {
+		padding-top:10px;
+		padding-bottom:10px;
+	}
 	tbody td.image {
 		width:80px;
 	}
 	tbody td.image img {
-		border:1px solid $secondaryAccentColor;
+		//border:1px solid $secondaryAccentColor;
 	}
 }
 
@@ -50,8 +54,8 @@ td,th {
 }
 #buttons {
 	margin:0 0 20px;
-	.checkout-button {
-		float:right;		
-	}
-	
 }
+.checkout-button {
+	float:right;		
+}
+

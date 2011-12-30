@@ -1,7 +1,6 @@
 a.button {
 	display:inline-block;
 	text-decoration:none;
-	background:$primaryLinkColor;
 	color:#fff;
 	font-size:12px;
 	height:28px;
@@ -16,4 +15,16 @@ a.button {
 	&:hover {
 		background:darken($primaryLinkColor,5%);
 	}
+}
+a.button-primary {
+	background:$primaryLinkColor;
+}
+
+a.button-secondary {
+	background:$tertiaryLinkColor;
+
+}
+a.button-tertiary {
+	background:$tertiaryLinkColor;
+
 }

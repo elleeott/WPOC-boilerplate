@@ -116,7 +116,7 @@
 						
 						
 						<?php // ajax add to cart ?>
-						<div class="cart"><a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><span><?php echo $button_cart; ?></span></a></div>
+						<div class="cart"><a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button button-primary"><span><?php echo $button_cart; ?></span></a></div>
 					
 						<?php //non-ajax add to cart ?>
 						<?php /* ?>

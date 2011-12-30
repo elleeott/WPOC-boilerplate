@@ -2,7 +2,7 @@
   <div class="cart-heading"><?php echo $heading_title; ?></div>
   <div class="cart-content" id="voucher"><?php echo $entry_voucher; ?>&nbsp;
     <input type="text" name="voucher" value="<?php echo $voucher; ?>" />
-    &nbsp;<a id="button-voucher" class="button"><span><?php echo $button_voucher; ?></span></a></div>
+    &nbsp;<a id="button-voucher" class="button button-secondary"><span><?php echo $button_voucher; ?></span></a></div>
 </div>
 <script type="text/javascript"><!--
 $('#button-voucher').bind('click', function() {

@@ -32,7 +32,7 @@
 					<?php wp_nav_menu(array( 'theme_location' => 'secondary-nav' ) ); ?>
 				</div>
 				<?php if(function_exists('cart_items')) { ?>
-						<div id="cart"><a href="/store/shopping-cart/">Shopping Cart (<?php echo cart_items(); ?>)</a></div>
+						<div id="cart"><a href="/store/index.php?route=checkout/cart">Shopping Cart (<?php echo cart_items(); ?>)</a></div>
 				<?php } ?>
 				<nav class="clearfix">
 					<?php  wp_nav_menu(array( 'theme_location' => 'primary-nav' ) ); ?> 

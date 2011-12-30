@@ -233,7 +233,7 @@
 				<div><?php echo $text_qty; ?>
 					<input type="text" name="quantity" size="2" value="<?php echo $minimum; ?>" />
 					<input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
-					<a onclick="addToCart('<?php echo $product_id; ?>');" id="button-cart" class="button"><span><?php echo $button_cart; ?></span></a>
+					<a onclick="addToCart('<?php echo $product_id; ?>');" id="button-cart" class="button button-primary"><span><?php echo $button_cart; ?></span></a>
 				</div>
 				<a href="#" onclick="addToWishList('<?php echo $product_id; ?>');"><?php echo $button_wishlist; ?></a><br/>
 				<a href="#" onclick="addToCompare('<?php echo $product_id; ?>');"><?php echo $button_compare; ?></a>
