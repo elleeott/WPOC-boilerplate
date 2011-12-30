@@ -37,23 +37,18 @@ ErrorDocument 404 /404.php
 	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 	#force ssl on cart, checkout
-	RewriteCond %{HTTPS} off
-	RewriteCond %{REQUEST_URI} ^/?store/
-	RewriteCond %{REQUEST_FILENAME} !-f
-	#RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+	#RewriteCond %{HTTPS} off
+	#RewriteCond %{REQUEST_URI} shopping-cart [OR]
+	#RewriteCond %{REQUEST_URI} ^checkout [OR]
+	#RewriteCond %{QUERY_STRING} ^checkout
+	#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 	#force non-ssl on all pages but cart and checkout
-	RewriteCond %{HTTPS} on
-	RewriteCond %{REQUEST_URI} !^/?store/
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-	
-	#force non-ssl hp
-	RewriteCond %{HTTPS} on
-	RewriteCond %{REQUEST_URI} ^/$
-	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+	#RewriteCond %{HTTPS} on
+	#RewriteCond %{REQUEST_URI} !shopping-cart
+	#RewriteCond %{REQUEST_URI} !^checkout
+	#RewriteCond %{QUERY_STRING} !^checkout
+	#RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 	
 	#wordpress
 	RewriteBase /
@@ -66,15 +61,18 @@ ErrorDocument 404 /404.php
 	
 	#OC
 	RewriteBase /store
-	RewriteRule sitemap.xml /index.php?route=feed/google_sitemap
+	#RewriteRule shopping-cart ?route=checkout/cart 
+	#RewriteRule update ?route=checkout/cart/update
+	#RewriteRule checkout ?route=checkout/checkout 
+		
+	
+	#RewriteRule sitemap.xml /index.php?route=feed/google_sitemap
+
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 	
-	#404 everything else
-	#RewriteRule (.*) http://%{HTTP_HOST}/404.php [R=301,L]
-	
-	
+
 	
 	
 </IfModule>

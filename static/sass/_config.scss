@@ -1,13 +1,18 @@
 //color
 
 $canvasColor:#fff;
-$bodyCopyColor:#333;
+$primaryTypeColor:#333;
+$secondaryTypeColor:#666;
+$tertiaryTypeColor:#999;
 $primaryLinkColor:#cc692d;
 $secondaryLinkColor:#666;
 $knockOutColor:#333;
-$knockOutFontColor:#fff;
+$primaryknockOutTypeColor:#fff;
+$secondaryknockOutTypeColor:#ccc;
+$tertiaryknockOutTypeColor:#777;
 $primaryAccentColor:666;
 $secondaryAccentColor:#ccc;
+$tertiaryAccentColor:#efefef;
 
 //type
 
@@ -46,6 +51,10 @@ $unit10:10px;
 	box-shadow: 0px 2px 0px #F0F0F0;	
 }
 
+@mixin NegativeTextShadow($shadowColor) {
+	text-shadow:0 -1px 0 $shadowColor;
+}
+
 @mixin transition {
 	-webkit-transition: all .2s ease-in-out;
 	-moz-transition: all .2s ease-in-out;
@@ -54,10 +63,17 @@ $unit10:10px;
 	transition: all .2s ease-in-out;
 }
 
-
 body {
 	font-family:$defaultSansSerif;
 	font-size:$defaultFontSize;
+}
+
+a {
+	color:$primaryLinkColor;
+	&:hover {
+		color:darken($primaryLinkColor,20%);
+		text-decoration:none;
+	}
 }
 
 h1 {
@@ -73,4 +89,11 @@ p {
 	margin:0 0 1em;
 	line-height:$bodyCopyLineHeight;
 	font-family:$bodyCopyFont;
+}
+input[type="text"] {
+	border:1px solid $secondaryAccentColor;
+	padding:3px;
+	font-family:$defaultSansSerif;
+	font-size:12px;
+	color:$secondaryTypeColor;
 }

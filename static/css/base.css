@@ -61,6 +61,12 @@ body {
   font-family: "helvetica neue", helvetica, arial, sans-serif;
   font-size: 14px; }
 
+a {
+  color: #cc692d; }
+  a:hover {
+    color: #783e1b;
+    text-decoration: none; }
+
 h1 {
   font-family: "helvetica neue", helvetica, arial, sans-serif;
   font-size: 24px;
@@ -74,6 +80,138 @@ p {
   margin: 0 0 1em;
   line-height: 1.5em;
   font-family: georgia, serif; }
+
+input[type="text"] {
+  border: 1px solid #cccccc;
+  padding: 3px;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-size: 12px;
+  color: #666666; }
+
+a.button {
+  display: inline-block;
+  text-decoration: none;
+  background: #cc692d;
+  color: #fff;
+  font-size: 12px;
+  height: 28px;
+  line-height: 26px;
+  padding: 0 15px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 2px 0px #F0F0F0;
+  -moz-box-shadow: 0px 2px 0px #F0F0F0;
+  box-shadow: 0px 2px 0px #F0F0F0;
+  text-shadow: 0 -1px 0 #666666; }
+  a.button:hover {
+    background: #b75e28; }
+
+footer {
+  height: 300px;
+  background: #333333; }
+
+article {
+  padding: 0 0 20px;
+  border-bottom: 1px solid #cccccc;
+  margin: 0 0 20px; }
+  article ol {
+    margin: 0 0 1em; }
+    article ol li {
+      list-style-type: decimal;
+      margin: 0 0 .5em;
+      line-height: 1.5em; }
+
+.product-info {
+  padding: 20px 0; }
+
+.product-filter {
+  padding: 5px 0;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 20px; }
+  .product-filter .limit, .product-filter .sort {
+    float: right;
+    margin-left: 20px; }
+
+.product-images {
+  float: left;
+  width: 240px; }
+
+.product-description {
+  float: left;
+  width: 460px;
+  margin-left: 20px; }
+
+.cart {
+  margin: 20px 0; }
+
+.category-info {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc; }
+  .category-info .image {
+    float: left; }
+
+.product-cell {
+  width: 200px;
+  float: left;
+  padding: 20px;
+  height: 400px; }
+  .product-cell .image {
+    background: #cccccc;
+    text-align: center;
+    height: 150px; }
+
+td, th {
+  padding: 5px; }
+
+.cart-info {
+  margin: 0 0 20px; }
+  .cart-info table {
+    width: 100%; }
+  .cart-info td {
+    vertical-align: top;
+    border-bottom: 1px solid #cccccc; }
+  .cart-info thead td {
+    color: #666666;
+    border-bottom: 3px solid #cccccc; }
+  .cart-info td.price, .cart-info td.total {
+    text-align: right; }
+  .cart-info td.remove {
+    vertical-align: middle; }
+  .cart-info td.quantity {
+    text-align: center; }
+    .cart-info td.quantity input {
+      text-align: center; }
+  .cart-info tbody td.image {
+    width: 80px; }
+  .cart-info tbody td.image img {
+    border: 1px solid #cccccc; }
+
+.cart-total {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  margin: 0 0 20px; }
+  .cart-total table {
+    float: right; }
+  .cart-total td, .cart-total th {
+    text-align: right; }
+  .cart-total th {
+    font-weight: bold; }
+
+#buttons {
+  margin: 0 0 20px; }
+  #buttons .checkout-button {
+    float: right; }
+
+#categories-menu h4 {
+  font-weight: bold; }
+#categories-menu ul > li > ul {
+  display: none; }
 
 /* iphones */
 @media only screen
@@ -106,69 +244,6 @@ and (max-device-width : 480px) {
     color: #333333;
     text-align: center;
     margin: 0 0 20px; }
-
-  article {
-    padding: 0 0 20px;
-    border-bottom: 1px solid #cccccc;
-    margin: 0 0 20px; }
-    article ol {
-      margin: 0 0 1em; }
-      article ol li {
-        list-style-type: decimal;
-        margin: 0 0 .5em;
-        line-height: 1.5em; }
-
-  footer {
-    height: 300px;
-    background: #333333; }
-
-  .product-info {
-    padding: 20px 0; }
-
-  .product-filter {
-    padding: 5px 0;
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
-    margin-bottom: 20px; }
-    .product-filter .limit, .product-filter .sort {
-      float: right;
-      margin-left: 20px; }
-
-  .product-images {
-    float: left;
-    width: 240px; }
-
-  .product-description {
-    float: left;
-    width: 460px;
-    margin-left: 20px; }
-
-  .cart {
-    margin: 20px 0; }
-
-  .button {
-    background: #cc692d;
-    color: #fff;
-    padding: 5px 10px; }
-
-  .category-info {
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc; }
-    .category-info .image {
-      float: left; }
-
-  .product-cell {
-    width: 200px;
-    float: left;
-    padding: 20px;
-    height: 300px; }
-    .product-cell .image {
-      background: #cccccc;
-      text-align: center;
-      height: 150px; }
-
-  #categories-menu h4 {
-    font-weight: bold; }
 
   #hero {
     height: 300px;
@@ -267,69 +342,6 @@ and (min-device-width: 768px) {
     left: 0;
     color: #333333;
     text-align: center; }
-
-  article {
-    padding: 0 0 20px;
-    border-bottom: 1px solid #cccccc;
-    margin: 0 0 20px; }
-    article ol {
-      margin: 0 0 1em; }
-      article ol li {
-        list-style-type: decimal;
-        margin: 0 0 .5em;
-        line-height: 1.5em; }
-
-  footer {
-    height: 300px;
-    background: #333333; }
-
-  .product-info {
-    padding: 20px 0; }
-
-  .product-filter {
-    padding: 5px 0;
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
-    margin-bottom: 20px; }
-    .product-filter .limit, .product-filter .sort {
-      float: right;
-      margin-left: 20px; }
-
-  .product-images {
-    float: left;
-    width: 240px; }
-
-  .product-description {
-    float: left;
-    width: 460px;
-    margin-left: 20px; }
-
-  .cart {
-    margin: 20px 0; }
-
-  .button {
-    background: #cc692d;
-    color: #fff;
-    padding: 5px 10px; }
-
-  .category-info {
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc; }
-    .category-info .image {
-      float: left; }
-
-  .product-cell {
-    width: 200px;
-    float: left;
-    padding: 20px;
-    height: 300px; }
-    .product-cell .image {
-      background: #cccccc;
-      text-align: center;
-      height: 150px; }
-
-  #categories-menu h4 {
-    font-weight: bold; }
 
   #hero {
     height: 300px;

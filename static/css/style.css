@@ -61,6 +61,12 @@ body {
   font-family: "helvetica neue", helvetica, arial, sans-serif;
   font-size: 14px; }
 
+a {
+  color: #cc692d; }
+  a:hover {
+    color: #783e1b;
+    text-decoration: none; }
+
 h1 {
   font-family: "helvetica neue", helvetica, arial, sans-serif;
   font-size: 24px;
@@ -74,6 +80,13 @@ p {
   margin: 0 0 1em;
   line-height: 1.5em;
   font-family: georgia, serif; }
+
+input[type="text"] {
+  border: 1px solid #cccccc;
+  padding: 3px;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-size: 12px;
+  color: #666666; }
 
 /***** defaults *****/
 body {
