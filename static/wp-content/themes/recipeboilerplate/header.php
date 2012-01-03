@@ -24,18 +24,22 @@
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	</head>
 	<body>
-		<div id="container">
-			<header>			
-				<div id="logo"><a href="/">logo</a></div> 
-
-				<div id="support-links">
-					<?php wp_nav_menu(array( 'theme_location' => 'secondary-nav' ) ); ?>
-				</div>
-				<?php if(function_exists('cart_items')) { ?>
-						<div id="cart"><a href="/store/index.php?route=checkout/cart">Shopping Cart (<?php echo cart_items(); ?>)</a></div>
-				<?php } ?>
-				<nav class="clearfix">
-					<?php  wp_nav_menu(array( 'theme_location' => 'primary-nav' ) ); ?> 
+		<div id="outer-container">
+			<header>		
+				<div class="container">
+					<div id="logo"><a href="/">logo</a></div> 
+	
+					<div id="support-links">
+						<?php wp_nav_menu(array( 'theme_location' => 'secondary-nav' ) ); ?>
+					</div>
+					<?php if(function_exists('cart_items')) { ?>
+							<div id="cart"><a href="/store/index.php?route=checkout/cart">Shopping Cart (<?php echo cart_items(); ?>)</a></div>
+					<?php } ?>
+				</div>	
+				<nav>
+					<div class="container clearfix">
+						<?php  wp_nav_menu(array( 'theme_location' => 'primary-nav' ) ); ?> 
+					</div>
 				</nav>				
 			</header>
 			<div class="breadcrumbs">

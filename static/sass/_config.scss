@@ -50,9 +50,9 @@ $unit10:10px;
 
 }
 @mixin shadow {
-	-webkit-box-shadow: 0px 2px 0px #F0F0F0;
-	-moz-box-shadow: 0px 2px 0px #F0F0F0;
-	box-shadow: 0px 2px 0px #F0F0F0;	
+	-webkit-box-shadow: 0px 2px 0px hsla(0,0%,0%,.1);
+	-moz-box-shadow: 0px 2px 0px  hsla(0,0%,0%,.1);
+	box-shadow: 0px 2px 0px  hsla(0,0%,0%,.1);	
 }
 
 @mixin NegativeTextShadow($shadowColor) {

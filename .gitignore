@@ -6,6 +6,7 @@ store/system/cache/
 store/vqmod/vqmod.log
 store/vqmod/vqcache
 static/img/cache
+static/sass/_sass-local.scss
 store/system/logs/error.txt
 db/db-local.sql
 db/db-remote.sql

@@ -1,10 +1,29 @@
 #hero {
-	height:300px;
-	border:1px solid #ccc;
 	margin:0 0 20px;
+	background:url($staticdir + '/img/assets/home-hero-background.png') center bottom no-repeat;
+}
+.slide {
+	position:relative;
+	height:300px;
+}
+.slide img {
+	position:absolute;
+	left:0;
+	top:-40px;
+}
+.slide h1 {
+	position:absolute;
+	top:40px;
+	left:600px;
+}
+.slide a {
+	position:absolute;
+	top:80px;
+	left:600px;
 }
 #promo-tiles {
 }
+
 #promo-tiles div{
 	height:200px;
 	background:#ccc;

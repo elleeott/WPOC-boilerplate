@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <div id="content-container" class="clearfix">
+<div class="container">
 	<section id="main-content" class="main-content-left">
 	
 		<?php 
@@ -10,13 +11,14 @@
 
 		<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 
-		<?php include('archive.php'); ?>
+			<?php include('archive.php'); ?>
 				
 		<?php endwhile; endif;?>
 		
 	</section>
 	
 	<?php get_sidebar(); ?>
+</div>
 	
 </div><!--end content container -->
 

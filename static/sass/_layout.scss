@@ -1,15 +1,23 @@
-#container {
+#outer-container {
+	background:$tertiaryAccentColor;
+}
+.container {
 	width:940px;
 	margin:auto;
+	position:relative;
 }
 header {
 	position:relative;
+	background:#000;
+	z-index:100;
+}
+header > .container {
 	height:200px;
-	margin:0 0 20px;
 }
 
 #content-container {
-	margin:0 0 20px;
+	padding:20px 0 60px;
+	min-height:500px;
 }
 
 #main-content {

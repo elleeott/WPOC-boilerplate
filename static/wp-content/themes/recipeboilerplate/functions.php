@@ -1,4 +1,13 @@
 <?php
+//create static subdomain
+$protocol='http:';
+if(!empty($_SERVER['HTTPS'])) {
+    $protocol='https:';
+}
+global $static_subdomain;
+$static_subdomain = $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']);
+
+//basic theme support setup
 function theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-thumbnails' );
@@ -64,11 +73,11 @@ add_action( 'widgets_init', 'bp_register_sidebars' );
 // http://scribu.net/wordpress/optimal-script-loading.html
 if (!is_admin()) {
 	function reg_scripts() {
+		global $static_subdomain;
         $protocol='http:';
         if(!empty($_SERVER['HTTPS'])) {
             $protocol='https:';
         }
-		
 		//remove l10n js
 		wp_deregister_script( 'l10n' );	
 			
@@ -77,10 +86,10 @@ if (!is_admin()) {
 		wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', false, NULL, true);
 		
 		// register fancybox
-		wp_register_script('fancybox', $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']).'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL, true);
+		wp_register_script('fancybox', $static_subdomain.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL, true);
 		
 		// register theme script
-		wp_register_script('site-script', $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']).autoVer('/static/js/index.js'), array('jquery'), NULL, true);
+		wp_register_script('site-script', $static_subdomain . autoVer('/static/js/index.js'), array('jquery'), NULL, true);
 	}
 	function print_scripts() {
 		wp_print_scripts('jquery');	
@@ -94,18 +103,15 @@ if (!is_admin()) {
 //enqueue css
 if (!is_admin()) {
 	function reg_styles() {
-	    $protocol='http:';
-	    if(!empty($_SERVER['HTTPS'])) {
-	        $protocol='https:';
-	    }
+		global $static_subdomain;
 	    if (is_page_template('fancy-template.php')){
-		    $fancy = $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']).autoVer('/static/css/fancy.css');
+		    $fancy = $static_subdomain . autoVer('/static/css/fancy.css');
 			wp_register_style('fancy',$fancy,false,NULL,'screen');
 			wp_enqueue_style('fancy');
 		} else {
-		    $print = $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']).autoVer('/static/css/print.css');
-		    $base = $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']).autoVer('/static/css/base.css');
-		    $fancybox = $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']).autoVer('/static/js/fancybox/jquery.fancybox-1.3.4.css');
+		    $print = $static_subdomain . autoVer('/static/css/print.css');
+		    $base = $static_subdomain . autoVer('/static/css/base.css');
+		    $fancybox = $static_subdomain . autoVer('/static/js/fancybox/jquery.fancybox-1.3.4.css');
 			wp_register_style('print',$print,false,NULL,'print');
 			wp_enqueue_style('print');
 			wp_register_style('base',$base,false,NULL,'screen');

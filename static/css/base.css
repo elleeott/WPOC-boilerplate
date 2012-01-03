@@ -103,9 +103,9 @@ a.button {
   -moz-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
-  -webkit-box-shadow: 0px 2px 0px #F0F0F0;
-  -moz-box-shadow: 0px 2px 0px #F0F0F0;
-  box-shadow: 0px 2px 0px #F0F0F0;
+  -webkit-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
   text-shadow: 0 -1px 0 #666666; }
   a.button:hover {
     background: #b75e28; }
@@ -133,6 +133,9 @@ article {
       list-style-type: decimal;
       margin: 0 0 .5em;
       line-height: 1.5em; }
+
+.widget {
+  margin-bottom: 20px; }
 
 .product-info {
   padding: 20px 0; }
@@ -227,7 +230,7 @@ td, th {
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
-  #container {
+  #outer-container {
     margin: 0 20px; }
 
   header {
@@ -305,17 +308,25 @@ only screen and (min-device-pixel-ratio : 1.5) {
   /* iphone4 hi-dpi images */ }
 @media only screen
 and (min-device-width: 768px) {
-  #container {
+  #outer-container {
+    background: #efefef; }
+
+  .container {
     width: 940px;
-    margin: auto; }
+    margin: auto;
+    position: relative; }
 
   header {
     position: relative;
-    height: 200px;
-    margin: 0 0 20px; }
+    background: #000;
+    z-index: 100; }
+
+  header > .container {
+    height: 200px; }
 
   #content-container {
-    margin: 0 0 20px; }
+    padding: 20px 0 60px;
+    min-height: 500px; }
 
   #main-content {
     width: 720px; }
@@ -354,9 +365,27 @@ and (min-device-width: 768px) {
     text-align: center; }
 
   #hero {
-    height: 300px;
-    border: 1px solid #ccc;
-    margin: 0 0 20px; }
+    margin: 0 0 20px;
+    background: url("//static.frictio.dev//img/assets/home-hero-background.png") center bottom no-repeat; }
+
+  .slide {
+    position: relative;
+    height: 300px; }
+
+  .slide img {
+    position: absolute;
+    left: 0;
+    top: -40px; }
+
+  .slide h1 {
+    position: absolute;
+    top: 40px;
+    left: 600px; }
+
+  .slide a {
+    position: absolute;
+    top: 80px;
+    left: 600px; }
 
   #promo-tiles div {
     height: 200px;
@@ -410,6 +439,13 @@ and (min-device-width: 768px) {
     font-size: 12px;
     position: absolute;
     right: 0;
-    bottom: 60px; } }
+    bottom: 60px; }
+
+  #cart a {
+    display: block;
+    position: absolute;
+    right: 0;
+    background: #cccccc;
+    padding: 10px 20px; } }
 html {
   overflow: -moz-scrollbars-vertical; }
