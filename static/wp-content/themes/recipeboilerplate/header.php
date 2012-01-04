@@ -1,3 +1,4 @@
+<?php global $isapage; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,7 +9,7 @@
 			    elseif ( is_home() ) { echo 'Blog | '; bloginfo('name'); get_page_number(); } //blog
 			    elseif ( is_front_page() ) {   bloginfo('name'); echo ' | '; bloginfo('description'); get_page_number(); } //hp
 			    elseif ( is_page() ) { single_post_title(); echo ' | '; bloginfo('name'); }
-			    elseif ( is_search() ) { bloginfo('name'); print ' | Search results for ' . wp_specialchars($s); get_page_number(); }
+			    elseif ( is_search() ) { bloginfo('name'); print ' | Search results for ' . esc_html($s); get_page_number(); }
 			    elseif ( is_404() && (isset($isapage)) ) { bloginfo('name'); print ' | Not Found'; }
 			    else { wp_title("",true);  echo ' | '; bloginfo('name'); get_page_number();}
 			?>
@@ -23,7 +24,11 @@
 		<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="latest comments" />
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	</head>
-	<body>
+	<?php if(isset($isapage)): ?>
+		<body class="store">
+		<?php else : ?>
+		<body <?php body_class(); ?>>
+	<?php endif; ?>
 		<div id="outer-container">
 			<header>		
 				<div class="container">

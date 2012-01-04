@@ -120,8 +120,12 @@ a.button-tertiary {
   background: #999999; }
 
 footer {
-  height: 300px;
-  background: #333333; }
+  padding: 40px;
+  min-height: 300px;
+  background: #333333;
+  color: #fff; }
+  footer li {
+    margin: 0 0 5px; }
 
 article {
   padding: 0 0 20px;
@@ -133,6 +137,14 @@ article {
       list-style-type: decimal;
       margin: 0 0 .5em;
       line-height: 1.5em; }
+
+.single .product-img {
+  float: right;
+  margin: 0 0 20px 20px; }
+
+.list .product-img {
+  float: left;
+  margin: 0 20px 20px 0; }
 
 .widget {
   margin-bottom: 20px; }
@@ -308,9 +320,6 @@ only screen and (min-device-pixel-ratio : 1.5) {
   /* iphone4 hi-dpi images */ }
 @media only screen
 and (min-device-width: 768px) {
-  #outer-container {
-    background: #efefef; }
-
   .container {
     width: 940px;
     margin: auto;

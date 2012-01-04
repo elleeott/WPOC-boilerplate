@@ -14,6 +14,10 @@ function theme_setup() {
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
+//additional image sizes
+add_image_size( 'product-large',400,9999);
+add_image_size( 'product-med',300,9999);
+add_image_size( 'product-thumb',150,9999);
 
 // Get the page number
 function get_page_number() {

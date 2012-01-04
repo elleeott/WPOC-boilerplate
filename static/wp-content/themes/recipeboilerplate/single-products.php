@@ -5,24 +5,17 @@
 		
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 				<article>
-					<?php the_time('F j, Y'); ?>
-					<h1><?php the_title(); ?></h1>
-					<div>
-						<?php the_content(); ?>
-						<p>
-							Categories: <?php the_category(', ') ?>
-						</p>
-						<p>
-							<?php the_tags(); ?>
-						</p>
+					<div class="product-img">
+						<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'product-med' ); } ?>
 					</div>
+					<h1><?php the_title(); ?></h1>
+					<?php the_content(); ?>
 				</article>
-			<?php comments_template(); ?>
 			<?php endwhile; endif;?>
 	
 		</section>
 		<?php get_sidebar(); ?>
-	</div>	
+	</div>
 </div><!--end content container -->
 
 <?php get_footer(); ?>

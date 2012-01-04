@@ -5,7 +5,7 @@
 		
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 				<article>
-					<h1><?php the_title(); ?> - - This is a Product</h1>
+					<h1><?php the_title(); ?> - - This is a Recipe</h1>
 				<div>Rating: 
 				<?php  
 					if(get_post_meta($post->ID,'_avg_rating',true)) {
@@ -16,7 +16,6 @@
 	
 				?>
 				</div>
-	
 	
 					<?php the_content(); ?>
 				</article>

@@ -1,4 +1,9 @@
 footer {
-	height:300px;
+	padding:40px;
+	min-height:300px;
 	background:$knockOutColor;
+	color:#fff;
+	li {
+		margin:0 0 5px;
+	}
 }

@@ -2,9 +2,9 @@
 
 <div id="content-container" class="clearfix">
 	<div class="container">
-		<?php echo $column_left; ?>
-		<?php echo $content_top; ?>
-		<?php echo $column_right; ?>
+		<?php //echo $column_left; ?>
+		<?php // echo $content_top; ?>
+		<?php //echo $column_right; ?>
 		<div id="main-content" class="main-content-right">
 	
 		

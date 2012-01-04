@@ -6,6 +6,7 @@
 		<section id="main-content" class="main-content-left">
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 			<article>
+				<?php the_time('F j, Y'); ?>
 				<h1>
 					<a href="<?php the_permalink(); ?>"><?php the_title(); ?> - <?php the_ID(); ?></a> this is a recipe
 				</h1>
