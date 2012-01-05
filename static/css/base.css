@@ -390,8 +390,7 @@ and (min-device-width: 768px) {
     text-align: center; }
 
   #hero {
-    margin: 0 0 20px;
-    background: url("//static.frictio.dev//img/assets/home-hero-background.png") center bottom no-repeat; }
+    margin: 0 0 20px; }
 
   .slide {
     position: relative;
