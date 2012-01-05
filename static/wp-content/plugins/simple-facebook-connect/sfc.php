@@ -25,31 +25,34 @@ License: GPL2
     http://www.gnu.org/licenses/gpl-2.0.html
 
 */
-function sfc_version() {
-	return '1.2';
-}
+if(!isset($isapage)) {
 
-// prevent parsing errors on PHP 4 or old WP installs
-if ( !version_compare(PHP_VERSION, '5', '<') && version_compare( $wp_version, '3.2.999', '>' ) ) {
-	include 'sfc-base.php';
-} else {
-	add_action('admin_notices', create_function( '', "echo '<div class=\"error\"><p>".__('Simple Facebook Connect requires PHP 5 and WordPress 3.3 to function. Please upgrade or deactivate the SFC plugin.', 'sfc') ."</p></div>';" ) );
-}
-
-// plugin row links
-add_filter('plugin_row_meta', 'sfc_donate_link', 10, 2);
-function sfc_donate_link($links, $file) {
-	if ($file == plugin_basename(__FILE__)) {
-		$links[] = '<a href="'.admin_url('options-general.php?page=sfc').'">'.__('Settings', 'sfc').'</a>';
-		$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%40ottodestruct%2ecom">'.__('Donate', 'sfc').'</a>';
+	function sfc_version() {
+		return '1.2';
 	}
-	return $links;
-}
+	
+	// prevent parsing errors on PHP 4 or old WP installs
+	if ( !version_compare(PHP_VERSION, '5', '<') && version_compare( $wp_version, '3.2.999', '>' ) ) {
+		include 'sfc-base.php';
+	} else {
+		add_action('admin_notices', create_function( '', "echo '<div class=\"error\"><p>".__('Simple Facebook Connect requires PHP 5 and WordPress 3.3 to function. Please upgrade or deactivate the SFC plugin.', 'sfc') ."</p></div>';" ) );
+	}
+	
+	// plugin row links
+	add_filter('plugin_row_meta', 'sfc_donate_link', 10, 2);
+	function sfc_donate_link($links, $file) {
+		if ($file == plugin_basename(__FILE__)) {
+			$links[] = '<a href="'.admin_url('options-general.php?page=sfc').'">'.__('Settings', 'sfc').'</a>';
+			$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%40ottodestruct%2ecom">'.__('Donate', 'sfc').'</a>';
+		}
+		return $links;
+	}
+	
+	// action links
+	add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'sfc_settings_link', 10, 1);
+	function sfc_settings_link($links) {
+		$links[] = '<a href="'.admin_url('options-general.php?page=sfc').'">'.__('Settings', 'sfc').'</a>';
+		return $links;
+	}
 
-// action links
-add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'sfc_settings_link', 10, 1);
-function sfc_settings_link($links) {
-	$links[] = '<a href="'.admin_url('options-general.php?page=sfc').'">'.__('Settings', 'sfc').'</a>';
-	return $links;
 }
-

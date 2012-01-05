@@ -26,6 +26,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+if(!isset($isapage)) {
+
+
+
 @include dirname( __FILE__ ) . '/scb/load.php';
 
 function _pagenavi_init() {
@@ -60,3 +64,4 @@ function _pagenavi_init() {
 }
 scb_init( '_pagenavi_init' );
 
+}

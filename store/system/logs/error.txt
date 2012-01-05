@@ -53,3 +53,31 @@
 2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 49
 2011-12-11 20:53:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 50
 2011-12-12 14:28:10 - PHP Notice:  Undefined variable: cat_list in /Volumes/drive2/localhost/frictious/wp-content/plugins/opencart/index.php on line 69
+2012-01-05 15:51:21 - PHP Warning:  preg_split() expects parameter 2 to be string, array given in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 71
+2012-01-05 15:51:21 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 73
+2012-01-05 15:51:21 - PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 91
+2012-01-05 15:51:21 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:51:21 - PHP Unknown:  call_user_func_array() expects parameter 1 to be a valid callback, non-static method PageNavi_Core::stylesheets() should not be called statically in /Volumes/drive2/localhost/frictious/wp/wp-includes/plugin.php on line 405
+2012-01-05 15:51:21 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:52:36 - PHP Warning:  preg_split() expects parameter 2 to be string, array given in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 71
+2012-01-05 15:52:36 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 73
+2012-01-05 15:52:36 - PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 91
+2012-01-05 15:52:36 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:52:36 - PHP Unknown:  call_user_func_array() expects parameter 1 to be a valid callback, non-static method PageNavi_Core::stylesheets() should not be called statically in /Volumes/drive2/localhost/frictious/wp/wp-includes/plugin.php on line 405
+2012-01-05 15:52:36 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:52:39 - PHP Warning:  preg_split() expects parameter 2 to be string, array given in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 71
+2012-01-05 15:52:39 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 73
+2012-01-05 15:52:39 - PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 91
+2012-01-05 15:52:39 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:52:39 - PHP Unknown:  call_user_func_array() expects parameter 1 to be a valid callback, non-static method PageNavi_Core::stylesheets() should not be called statically in /Volumes/drive2/localhost/frictious/wp/wp-includes/plugin.php on line 405
+2012-01-05 15:52:39 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:54:20 - PHP Warning:  preg_split() expects parameter 2 to be string, array given in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 71
+2012-01-05 15:54:20 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 73
+2012-01-05 15:54:20 - PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 91
+2012-01-05 15:55:28 - PHP Warning:  preg_split() expects parameter 2 to be string, array given in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 71
+2012-01-05 15:55:28 - PHP Warning:  Invalid argument supplied for foreach() in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 73
+2012-01-05 15:55:28 - PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /Volumes/drive2/localhost/frictious/wp/wp-includes/formatting.php on line 91
+2012-01-05 15:56:37 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:56:38 - PHP Unknown:  call_user_func_array() expects parameter 1 to be a valid callback, non-static method PageNavi_Core::stylesheets() should not be called statically in /Volumes/drive2/localhost/frictious/wp/wp-includes/plugin.php on line 405
+2012-01-05 15:56:38 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
+2012-01-05 15:57:03 - PHP Unknown:  call_user_func_array() expects parameter 1 to be a valid callback, non-static method PageNavi_Core::stylesheets() should not be called statically in /Volumes/drive2/localhost/frictious/wp/wp-includes/plugin.php on line 405

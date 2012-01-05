@@ -25,7 +25,6 @@
 						<li>comments_rss2_url: <a href="<?php bloginfo('comments_rss2_url');?>"><?php bloginfo('comments_rss2_url');?></a></li>
 						<li>charset: <?php bloginfo('charset');?></li>
 						<li>html_type: <?php bloginfo('html_type');?></li>
-						<li>language: <?php bloginfo('language');?></li>
 						<li>text_direction: <?php bloginfo('text_direction');?></li>
 						<li>version: <?php bloginfo('version');?></li>
 						<li>blogid: <?php echo get_current_blog_id(); ?></li>
