@@ -14,7 +14,7 @@
 			<?php include('archive.php'); ?>
 				
 		<?php endwhile; endif;?>
-		
+		<?php wp_pagenavi(); ?>
 	</section>
 	
 	<?php get_sidebar(); ?>

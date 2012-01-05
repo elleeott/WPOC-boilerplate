@@ -1,3 +1,4 @@
+// dom ready functions
 $(document).ready(function(){
 
 	if (document.documentElement.clientWidth >= 600) { // viewport width
@@ -21,8 +22,14 @@ $(document).ready(function(){
 	
 });
 
+//window loaded functions
+$(window).load(function(){  
+
+});
+
 /* Ajax Cart */
 $('#cart > .heading a').bind('click', function() {
+
 	$('#cart').addClass('active');
 	
 	$.ajax({
@@ -39,6 +46,7 @@ $('#cart > .heading a').bind('click', function() {
 		$(this).removeClass('active');
 	});
 });
+
 
 function addToCart(product_id) {
 	$.ajax({

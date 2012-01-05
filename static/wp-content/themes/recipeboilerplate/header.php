@@ -33,7 +33,6 @@
 			<header>		
 				<div class="container">
 					<div id="logo"><a href="/">logo</a></div> 
-	
 					<div id="support-links">
 						<?php wp_nav_menu(array( 'theme_location' => 'secondary-nav' ) ); ?>
 					</div>

@@ -130,13 +130,29 @@ footer {
 article {
   padding: 0 0 20px;
   border-bottom: 1px solid #cccccc;
-  margin: 0 0 20px; }
+  margin: 0 0 20px;
+  position: relative; }
   article ol {
     margin: 0 0 1em; }
     article ol li {
       list-style-type: decimal;
       margin: 0 0 .5em;
       line-height: 1.5em; }
+
+.wp-pagenavi {
+  font-family: georgia, serif; }
+  .wp-pagenavi .pages {
+    margin-right: 10px;
+    color: #999999; }
+  .wp-pagenavi a, .wp-pagenavi .current {
+    padding: 5px 10px;
+    margin: 0 4px; }
+  .wp-pagenavi .current {
+    border-bottom: 2px solid #cccccc; }
+  .wp-pagenavi a.page {
+    text-decoration: none; }
+    .wp-pagenavi a.page:hover {
+      background: #efefef; }
 
 .single .product-img {
   float: right;
