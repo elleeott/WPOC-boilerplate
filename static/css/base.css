@@ -76,6 +76,9 @@ h2 {
   font-size: 18px;
   margin: 0 0 1em; }
 
+strong {
+  font-weight: bold; }
+
 p {
   margin: 0 0 1em;
   line-height: 1.5em;
@@ -138,6 +141,46 @@ article {
       list-style-type: decimal;
       margin: 0 0 .5em;
       line-height: 1.5em; }
+
+.nutrition-label {
+  width: 220px;
+  padding: 10px;
+  border: 1px solid #efefef;
+  font-size: 12px; }
+  .nutrition-label h2 {
+    font-weight: bold;
+    margin: 0;
+    font-size: 24px; }
+  .nutrition-label table {
+    width: 100%; }
+  .nutrition-label th, .nutrition-label td {
+    border-bottom: 1px solid #efefef;
+    padding: 3px 0; }
+  .nutrition-label thead th, .nutrition-label thead td {
+    border-bottom: 1px solid #efefef;
+    padding: 1px 0; }
+  .nutrition-label td {
+    text-align: right;
+    font-weight: bold; }
+  .nutrition-label thead th, .nutrition-label thead td {
+    border: 0 none; }
+  .nutrition-label .indent {
+    padding-left: 5px; }
+  .nutrition-label .percent-value {
+    font-size: 80%; }
+  .nutrition-label .servings {
+    padding: 0 0 3px;
+    border-bottom: 10px solid #cccccc; }
+  .nutrition-label .protein {
+    border-bottom: 10px solid #cccccc; }
+  .nutrition-label .calories {
+    border-bottom: 3px solid #cccccc; }
+  .nutrition-label td.calories {
+    font-weight: normal; }
+  .nutrition-label .footnote {
+    font-size: 80%;
+    color: #666666;
+    border-bottom: 0 none; }
 
 .wp-pagenavi {
   font-family: georgia, serif; }
@@ -205,48 +248,44 @@ article {
     text-align: center;
     height: 150px; }
 
-td, th {
+#shopping-cart td, #shopping-cart th {
   padding: 5px; }
-
-.cart-info {
+#shopping-cart .cart-info {
   margin: 0 0 20px; }
-  .cart-info table {
+  #shopping-cart .cart-info table {
     width: 100%; }
-  .cart-info td {
+  #shopping-cart .cart-info td {
     vertical-align: top;
     border-bottom: 1px solid #cccccc; }
-  .cart-info thead td {
+  #shopping-cart .cart-info thead td {
     color: #666666;
     border-bottom: 3px solid #cccccc; }
-  .cart-info td.price, .cart-info td.total {
+  #shopping-cart .cart-info td.price, #shopping-cart .cart-info td.total {
     text-align: right; }
-  .cart-info td.remove {
+  #shopping-cart .cart-info td.remove {
     vertical-align: middle; }
-  .cart-info td.quantity {
+  #shopping-cart .cart-info td.quantity {
     text-align: center; }
-    .cart-info td.quantity input {
+    #shopping-cart .cart-info td.quantity input {
       text-align: center; }
-  .cart-info tbody td {
+  #shopping-cart .cart-info tbody td {
     padding-top: 10px;
     padding-bottom: 10px; }
-  .cart-info tbody td.image {
+  #shopping-cart .cart-info tbody td.image {
     width: 80px; }
-
-.cart-total {
+#shopping-cart .cart-total {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   margin: 0 0 20px; }
-  .cart-total table {
+  #shopping-cart .cart-total table {
     float: right; }
-  .cart-total td, .cart-total th {
+  #shopping-cart .cart-total td, #shopping-cart .cart-total th {
     text-align: right; }
-  .cart-total th {
+  #shopping-cart .cart-total th {
     font-weight: bold; }
-
-#buttons {
+#shopping-cart #buttons {
   margin: 0 0 20px; }
-
-.checkout-button {
+#shopping-cart .checkout-button {
   float: right; }
 
 #categories-menu h4 {
@@ -341,13 +380,12 @@ and (min-device-width: 768px) {
     margin: auto;
     position: relative; }
 
-  header {
+  header.main {
     position: relative;
     background: #000;
     z-index: 100; }
-
-  header > .container {
-    height: 200px; }
+    header.main > .container {
+      height: 200px; }
 
   #content-container {
     padding: 20px 0 60px;
@@ -390,7 +428,8 @@ and (min-device-width: 768px) {
     text-align: center; }
 
   #hero {
-    margin: 0 0 20px; }
+    margin: 0 0 20px;
+    height: 330px; }
 
   .slide {
     position: relative;

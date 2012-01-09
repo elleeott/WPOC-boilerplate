@@ -17,7 +17,6 @@ function cart_items() {
 		}
 	}
 	return $cart_items;
-
 }
 add_action('init', 'cart_items');
 
@@ -32,6 +31,7 @@ function ssp_status_filter($s) {
 }
 add_filter('status_header', 'ssp_status_filter');
 
+/*
 //get catalog data from opencart
 function get_oc_categories($items, $args) {
     if( $args->theme_location == 'primary-nav' ){
@@ -56,7 +56,7 @@ function get_oc_categories($items, $args) {
 add_filter('wp_nav_menu_items','get_oc_categories',10,2);
 
 
-//get products menu from opencart
+//add products to menu from opencart
 function get_oc_products($items, $args) {
     if( $args->theme_location == 'primary-nav' ){
 		global $wpdb;
@@ -76,10 +76,9 @@ function get_oc_products($items, $args) {
 	}
 }
 add_filter('wp_nav_menu_items','get_oc_products',10,2);
-
+*/
 
 //product sidebar widget
-
 class OC_Products_Widget extends WP_Widget {
 
 	function OC_Products_Widget() {
@@ -112,3 +111,108 @@ function load_oc_products_widgets() {
 	register_widget( 'OC_Products_Widget' );
 }
 add_action( 'widgets_init', 'load_oc_products_widgets' );
+
+
+// add product custom post type
+function wp_create_products() {
+	register_post_type( 
+		'products',
+		array(
+			'labels' => array(
+				'name' => __( 'Products' ),
+				'singular_name' => __( 'Product' ),
+				'add_new_item' => __('Add New Product'),
+				'all_items' => __('All Products'),
+			),
+			'public' => true,
+			'has_archive' => true,
+			'menu_position' => 5, 
+        	'rewrite' => array('slug' => 'products'),
+		    'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats')        	
+		)
+	);
+}
+add_action( 'init', 'wp_create_products' );
+
+// create an product category taxonomy for products post type
+function wp_product_categories_init() {
+	register_taxonomy(
+		'product-category',
+		'products',
+		array(
+			'label' => __( 'Product Categories' ),
+			'sort' => true,
+			'args' => array( 'orderby' => 'term_order' ),
+			'rewrite' => array( 'slug' => 'product-category'),
+			'hierarchical' => true
+		)
+	);
+}
+add_action( 'init', 'wp_product_categories_init' );
+
+// create an product category taxonomy for products post type
+function wp_product_tags_init() {
+	register_taxonomy(
+		'product-tags',
+		'products',
+		array(
+			'label' => __( 'Product Tags' ),
+			'sort' => true,
+			'args' => array( 'orderby' => 'term_order' ),
+			'rewrite' => array( 'slug' => 'product-tag')
+		)
+	);
+}
+add_action( 'init', 'wp_product_tags_init' );
+
+//sync oc products with WP db - create product custom post type for each OC product.
+//TODO: move this to an options page so it doesn't run on every admin request
+
+function load_oc_products() {
+	global $wpdb;
+	
+	//get product list from OC
+	$products = $wpdb->get_results("
+		SELECT *
+		FROM oc_product
+		INNER JOIN oc_product_description
+		ON oc_product.product_id=oc_product_description.product_id
+	");
+	
+	//loop through results
+	foreach ($products as $product) {
+	
+		//query to see if product is already in WP db
+		$wp_products = $wpdb->get_row("
+			SELECT *
+			FROM $wpdb->postmeta
+			WHERE meta_value = $product->product_id
+			AND meta_key =  '_oc_product_id'
+		");
+		
+		//if product doesn't exist in WP DB:
+		if(empty($wp_products->meta_value)){
+			$the_post = array(
+				'post_title'=>$product->name,
+				'post_type'=>'products',
+				'post_status'=>'publish'
+			);
+			$oc_post_id = wp_insert_post($the_post);
+			add_post_meta($oc_post_id, '_oc_product_id', $product->product_id);						
+		} else {
+		//if product DOES exist in the DB:
+			$the_post = array(
+				'post_title'=>$product->name,
+				'ID'=>$wp_products->post_id
+			);
+			wp_update_post($the_post);
+		}
+		update_post_meta($wp_products->post_id, '_oc_product_price', $product->price);				
+		update_post_meta($wp_products->post_id, '_oc_product_sku', $product->sku);				
+	}
+}
+add_action( 'admin_init', 'load_oc_products' );
+
+
+
+

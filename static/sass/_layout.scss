@@ -5,13 +5,13 @@
 	margin:auto;
 	position:relative;
 }
-header {
+header.main {
 	position:relative;
 	background:#000;
 	z-index:100;
-}
-header > .container {
-	height:200px;
+	> .container {
+		height:200px;
+	}
 }
 
 #content-container {

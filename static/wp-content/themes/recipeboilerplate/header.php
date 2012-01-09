@@ -30,7 +30,7 @@
 		<body <?php body_class(); ?>>
 	<?php endif; ?>
 		<div id="outer-container">
-			<header>		
+			<header class="main">		
 				<div class="container">
 					<div id="logo"><a href="/">logo</a></div> 
 					<div id="support-links">

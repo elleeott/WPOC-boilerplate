@@ -44,9 +44,10 @@ ErrorDocument 404 /404.php
 
 	#force non-ssl on all pages but cart and checkout
 	RewriteCond %{HTTPS} on
-	RewriteCond %{QUERY_STRING} !^route=checkout
-	RewriteCond %{REQUEST_URI} !^/wp$
-	#RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+	RewriteCond %{QUERY_STRING} !^route=checkout 
+	RewriteCond %{REQUEST_URI} !^/wp/
+	RewriteCond %{REQUEST_URI} !^/store/admin/
+	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 	
 	#wordpress
 	RewriteBase /

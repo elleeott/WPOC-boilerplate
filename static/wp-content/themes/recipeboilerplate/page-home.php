@@ -2,10 +2,51 @@
 <div id="content-container" class="clearfix">
 		<section>
 			<div id="hero">
-				<div class="slide container">
-					<h1>Beans n&rsquo; Chicken</h1>
-					<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
-					<a class="button button-primary">get this recipe</a>
+				<div class="container">
+					<div class="flexslider">
+						<ul class="slides">
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+							<li class="slide">
+								<h1>Beans n&rsquo; Chicken</h1>
+								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
+								<a class="button button-primary">get this recipe</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 	<div class="container">	

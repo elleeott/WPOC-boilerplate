@@ -1,6 +1,6 @@
 <?php echo $header; ?>
 <div id="content-container" class="clearfix">
-	<div class="container">
+	<div id="shopping-cart" class="container">
 		<?php echo $content_top; ?>
 		<div class="breadcrumb">
 			<?php foreach ($breadcrumbs as $breadcrumb) { ?>

@@ -1,0 +1,57 @@
+.nutrition-label {
+	width:220px;
+	padding:10px;
+	border:1px solid $tertiaryAccentColor;
+	font-size:12px;
+	h2 {
+		font-weight:bold;
+		margin:0;
+		font-size:24px;
+	}
+	table {
+		width:100%;
+	}
+	th, td {
+		border-bottom:1px solid $tertiaryAccentColor;
+		padding:3px 0;
+	}
+	thead {
+		th, td {
+			border-bottom:1px solid $tertiaryAccentColor;
+			padding:1px 0;
+		}
+	}
+	td {
+		text-align:right;
+		font-weight:bold;
+	}
+	thead {
+		th,td {
+			border:0 none;
+		}
+	}
+	.indent {
+		padding-left:5px;
+	}
+	.percent-value {
+		font-size:80%;
+	}
+	.servings {
+		padding:0 0 3px;
+		border-bottom:10px solid $secondaryAccentColor;		
+	}
+	.protein {
+		border-bottom:10px solid $secondaryAccentColor;		
+	}
+	.calories {
+		border-bottom:3px solid $secondaryAccentColor;
+	}
+	td.calories {
+		font-weight:normal;
+	}
+	.footnote {
+		font-size:80%;
+		color:$secondaryTypeColor;
+		border-bottom:0 none;
+	}
+}

@@ -18,13 +18,13 @@
 					} else {
 						echo 'not yet rated';
 					} 
-	
 				?>
 				</div>
 				 
 			</article>
 	
 			<?php endwhile; endif;?>
+			<?php wp_pagenavi(); ?>
 		</section>
 		
 		<?php get_sidebar(); ?>

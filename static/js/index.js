@@ -20,69 +20,31 @@ $(document).ready(function(){
 		});
 	}
 	
+	//add to cart
+	$('.add-to-cart-form button').click(function(){
+		theID=$(this).siblings('input[type=\'hidden\']').val();
+		theQty=$(this).siblings('input[type=\'text\']').val();
+		//alert(theID + ' - ' + theQty);
+		$.ajax({
+			url: '/store/index.php?route=checkout/cart/update',
+			type: 'post',
+			dataType: 'json',
+			data:'product_id=' + theID + '&quantity=' + theQty,
+			success: window.location = '/store/index.php?route=checkout/cart'
+		});
+		return false;
+	});
 });
 
 //window loaded functions
 $(window).load(function(){  
-
-});
-
-/* Ajax Cart */
-$('#cart > .heading a').bind('click', function() {
-
-	$('#cart').addClass('active');
-	
-	$.ajax({
-		url: '/store/index.php?route=checkout/cart/update',
-		dataType: 'json',
-		success: function(json) {
-			if (json['output']) {
-				$('#cart .content').html(json['output']);
-			}
-		}
-	});			
-	
-	$('#cart').bind('mouseleave', function() {
-		$(this).removeClass('active');
-	});
+    $('.flexslider').flexslider({
+    	animation:'slide',
+    	controlsContainer: '#hero .container'
+    });
 });
 
 
-function addToCart(product_id) {
-	$.ajax({
-		url: '/store/index.php?route=checkout/cart/update',
-		type: 'post',
-		data: 'product_id=' + product_id,
-		dataType: 'json',
-		success: window.location = '/store/index.php?route=checkout/cart'
-		/*
-		function(json) {
-			$('.success, .warning, .attention, .information, .error').remove();
-			
-			if (json['redirect']) {
-				location = json['redirect'];
-			}
-			
-			if (json['error']) {
-				if (json['error']['warning']) {
-					$('#notification').html('<div class="warning" style="display: none;">' + json['error']['warning'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
-					
-					$('.warning').fadeIn('slow');
-					
-					$('html, body').animate({ scrollTop: 0 }, 'slow');
-				}
-			}	 
-						
-			if (json['success']) {
-				$('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
-				
-				$('.success').fadeIn('slow');
-				
-				$('#cart_total').html(json['total']);
-				
-				$('html, body').animate({ scrollTop: 0 }, 'slow'); 
-			}	
-		}*/
-	});
-}
+
+
 

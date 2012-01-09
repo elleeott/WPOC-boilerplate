@@ -19,6 +19,16 @@ add_image_size( 'product-large',400,9999);
 add_image_size( 'product-med',300,9999);
 add_image_size( 'product-thumb',150,9999);
 
+//additional featured image sizes
+if (class_exists('MultiPostThumbnails')) {
+		new MultiPostThumbnails(array(
+		'label' => 'Secondary Image',
+		'id' => 'secondary-image',
+		'post_type' => 'products'
+		)
+	);
+}
+
 // Get the page number
 function get_page_number() {
     if ( get_query_var('paged') ) {
@@ -92,12 +102,16 @@ if (!is_admin()) {
 		// register fancybox
 		wp_register_script('fancybox', $static_subdomain.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL, true);
 		
+		// register flexslider
+		wp_register_script('flexslider', $static_subdomain.'/js/jquery.flexslider-min.js', array('jquery'), NULL, true);
+		
 		// register theme script
 		wp_register_script('site-script', $static_subdomain . autoVer('/static/js/index.js'), array('jquery'), NULL, true);
 	}
 	function print_scripts() {
 		wp_print_scripts('jquery');	
 		wp_print_scripts('fancybox');	
+		wp_print_scripts('flexslider');	
 		wp_print_scripts('site-script');	
 	}
 	add_action('init', 'reg_scripts'); 
@@ -116,12 +130,15 @@ if (!is_admin()) {
 		    $print = $static_subdomain . autoVer('/static/css/print.css');
 		    $base = $static_subdomain . autoVer('/static/css/base.css');
 		    $fancybox = $static_subdomain . autoVer('/static/js/fancybox/jquery.fancybox-1.3.4.css');
+		    $flexslider = $static_subdomain . autoVer('/static/css/flexslider.css');
 			wp_register_style('print',$print,false,NULL,'print');
 			wp_enqueue_style('print');
 			wp_register_style('base',$base,false,NULL,'screen');
 			wp_enqueue_style('base');	    
 			wp_register_style('fancybox',$fancybox,false,NULL,'screen');
 			wp_enqueue_style('fancybox');	    
+			wp_register_style('flexslider',$flexslider,false,NULL,'screen');
+			wp_enqueue_style('flexslider');	    
 	    }
 	}
 	add_action('wp_print_styles','reg_styles');
