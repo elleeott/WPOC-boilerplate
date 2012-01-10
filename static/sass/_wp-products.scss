@@ -2,7 +2,19 @@
 	.product-img {
 		float:right;
 		margin:0 0 20px 20px;
+		width:300px;
 	}
+	/*
+	.large-img {
+		position:relative;
+		height:300px;
+		img {
+			position:absolute;
+			top:0;
+			left:0;
+		}
+	}
+	*/
 }
 .list {
 	.product-img {

@@ -1,12 +1,16 @@
 <?php get_header(); ?>
 <div id="content-container" class="clearfix">
 	<div class="container">
-		<section id="main-content" class="main-content-left">
-		
+		<section id="main-content" class="main-content-left">	
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 				<article>
 					<div class="product-img">
-						<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'product-med' ); } ?>
+						<div class="large-img">
+							<?php get_custom_gallery('product-med'); ?>
+						</div>
+						<div class="small-img">
+							<?php get_custom_gallery('product-thumb'); ?>
+						</div>
 					</div>
 					<h1><?php the_title(); ?></h1>
 					<?php the_content(); ?>
@@ -32,7 +36,7 @@
 	
 		</section>
 		<?php get_sidebar(); ?>
-	</div>
+	</div><!-- end container -->
 </div><!--end content container -->
 
 <?php get_footer(); ?>

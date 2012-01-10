@@ -134,7 +134,7 @@ function wp_create_products() {
 }
 add_action( 'init', 'wp_create_products' );
 
-// create an product category taxonomy for products post type
+// create a product category taxonomy for products post type
 function wp_product_categories_init() {
 	register_taxonomy(
 		'product-category',
@@ -150,7 +150,7 @@ function wp_product_categories_init() {
 }
 add_action( 'init', 'wp_product_categories_init' );
 
-// create an product category taxonomy for products post type
+// create n product tags taxonomy for products post type
 function wp_product_tags_init() {
 	register_taxonomy(
 		'product-tags',
@@ -165,10 +165,17 @@ function wp_product_tags_init() {
 }
 add_action( 'init', 'wp_product_tags_init' );
 
-//sync oc products with WP db - create product custom post type for each OC product.
-//TODO: move this to an options page so it doesn't run on every admin request
 
-function load_oc_products() {
+function oc_plugin_menu() {
+	add_options_page('OpenCart Plugin Options', 'OpenCart', 'manage_options', 'oc-plugin-options', 'oc_plugin_options');
+}
+
+function oc_plugin_options() {
+	if (!current_user_can('manage_options'))  {
+		wp_die( __('You do not have sufficient permissions to access this page.') );
+	}
+	
+	//sync oc products with WP db - create product custom post type for each OC product.
 	global $wpdb;
 	
 	//get product list from OC
@@ -210,9 +217,15 @@ function load_oc_products() {
 		update_post_meta($wp_products->post_id, '_oc_product_price', $product->price);				
 		update_post_meta($wp_products->post_id, '_oc_product_sku', $product->sku);				
 	}
+	
+	
+	echo '<div class="wrap">';
+	echo '<h2>OpenCart Plugin Options</h2>';
+	echo '<p>Here is where the form would go if I actually had options.</p>';
+	echo '</div>';	
+	
+	
 }
-add_action( 'admin_init', 'load_oc_products' );
-
-
+add_action('admin_menu', 'oc_plugin_menu');
 
 

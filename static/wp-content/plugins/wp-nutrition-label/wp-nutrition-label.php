@@ -10,18 +10,7 @@ Version: 0.4
 Author URI: http://romkey.com/
 */
 
-
-
-/* add_action('widgets_init', create_function('', 'return register_widget("NutriLabelWidget");')); */
 add_shortcode('nutr-label', 'nutr_label_shortcode');
-add_action('init', 'nutr_load_plugin_textdomain');
-
-/*
- * Add local textdomain
- */
-function nutr_load_plugin_textdomain() {
-  load_plugin_textdomain('wp-nutrition-label', false, 'wp-nutrition-label/languages/');
-}
 
 /*
  * output our style sheet at the head of the file
@@ -165,45 +154,4 @@ function nutr_label_generate($args) {
 		</table>
 		
 	</div>';
-	
-	/*
-	
-	<span class='heading'>".__("Nutrition Facts")."</span>
-	<span class='alignleft'>".__("Serving Size")." ".$nutr_servingsize."</span>
-	<span class='alignright'>".__("Servings")." ".$nutr_servings."</span>
-	<hr class='heavy' />
-	<strong>Amount Per Serving</strong>
-	<hr />
-	<span class='alignleft'>".__("Calories")." ".$nutr_calories."</span>
-	<span class='alignright'>Calories from Fat ".($nutr_totalfat * 9)."</span>
-	<hr />
-	<div class='alignright'><strong>% ".__("Daily Value")."*</strong></div><div style='clear: both'></div>
-	<span class='alignleft'><strong>".__("Total Fat")."</strong> ".$nutr_totalfat."g</span>
-	<span class='alignright'>".nutr_percentage($nutr_totalfat, $rda['totalfat'])."%</span>
-	<hr />
-	<span class='alignleft indent'>".__("Saturated Fat")." ".$nutr_satfat."g</span>
-	<span class='alignright'>".nutr_percentage($nutr_satfat, $rda['satfat'])."%</span>
-	<hr />
-	<span class='indent'>".__("Trans Fat")." ".$nutr_transfat."g</span>
-	<hr />
-	<span class='alignleft'><strong>".__("Cholesterol")."</strong> ".$nutr_cholesterol."mg</span>
-	<span class='alignright'>".nutr_percentage($nutr_cholesterol, $rda['cholesterol'])."%</span>
-	<hr />
-	<span class='alignleft'><strong>".__("Sodium")."</strong> ".$nutr_sodium."mg</span>
-	<span class='alignright'>".nutr_percentage($nutr_sodium, $rda['sodium'])."%</span>
-	<hr />
-	<span class='alignleft'><strong>".__("Total Carbohydrate")."</strong> ".$nutr_carbohydrates."g</span>
-	<span class='alignright'>".nutr_percentage($nutr_carbohydrates, $rda['carbohydrates'])."%</span>
-	<hr />
-	<span class='alignleft indent'>".__("Dietary Fiber")." ".$nutr_fiber."g</span>
-	<span class='alignright'>".nutr_percentage($nutr_fiber, $rda['fiber'])."%</span>
-	<hr />
-	<span class='indent'>".__("Sugars")." ".$nutr_sugars."g</span>
-	<hr />
-	<span class='alignleft'><strong>".__("Protein")."</strong> ".$nutr_protein."g</span>
-	<span class='alignright'>".nutr_percentage($nutr_protein, $rda['protein'])."%</span>
-	<hr />
-	<span class='small'>* ".__("Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.")."</span>
-</div>";
-	*/
 } ?>

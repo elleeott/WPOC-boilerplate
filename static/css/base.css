@@ -197,9 +197,22 @@ article {
     .wp-pagenavi a.page:hover {
       background: #efefef; }
 
-.single .product-img {
-  float: right;
-  margin: 0 0 20px 20px; }
+.single {
+  /*
+  .large-img {
+  	position:relative;
+  	height:300px;
+  	img {
+  		position:absolute;
+  		top:0;
+  		left:0;
+  	}
+  }
+  */ }
+  .single .product-img {
+    float: right;
+    margin: 0 0 20px 20px;
+    width: 300px; }
 
 .list .product-img {
   float: left;

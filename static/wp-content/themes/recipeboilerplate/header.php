@@ -3,6 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta content="<?php custom_meta_description(); ?>" name="description" />
 		<title>
 			<?php
 			    if ( is_single() ) { single_post_title(); echo ' | '; bloginfo('name'); }
@@ -14,7 +15,7 @@
 			    else { wp_title("",true);  echo ' | '; bloginfo('name'); get_page_number();}
 			?>
 		</title>
-		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0, user-scalable=no" name="viewport">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0, user-scalable=no" name="viewport" />
 
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

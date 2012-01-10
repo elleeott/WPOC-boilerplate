@@ -18,15 +18,36 @@ add_action( 'after_setup_theme', 'theme_setup' );
 add_image_size( 'product-large',400,9999);
 add_image_size( 'product-med',300,9999);
 add_image_size( 'product-thumb',150,9999);
+add_image_size( 'recipe-large',400,9999);
+add_image_size( 'recipe-med',300,9999);
+add_image_size( 'recipe-thumb',150,9999);
 
-//additional featured image sizes
-if (class_exists('MultiPostThumbnails')) {
-		new MultiPostThumbnails(array(
-		'label' => 'Secondary Image',
-		'id' => 'secondary-image',
-		'post_type' => 'products'
-		)
-	);
+// custom gallery code
+function get_custom_gallery($size) {
+	global $post;
+	$featured_img_id = get_post_thumbnail_id($post->ID);
+	$attached_imgs = get_posts(array(
+		'post_type'=>'attachment',
+		'post_mime_type'=>'image',
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'post_parent'=>$post->ID
+	));
+	echo '<ul>';
+	foreach($attached_imgs as $attachment) {
+		//echo $attachment->ID . '<br>';
+		//echo wp_get_attachment_url($attachment->ID) .'<br>';
+		//echo '<img src="'.wp_get_attachment_url($attachment->ID) .'"/>';
+		//echo $attachment->post_title . '<br>';
+		//echo $attachment->post_content . '<br>';
+		$the_img= wp_get_attachment_image_src($attachment->ID,$size,true);
+		if($attachment->ID == $featured_img_id){
+			echo '<li><img src="'.$the_img[0].'" width="'.$the_img[1].'" height="'.$the_img[2].'" class="featured photo"/></li>';
+		} else {
+			echo '<li><img src="'.$the_img[0].'" width="'.$the_img[1].'" height="'.$the_img[2].'"/></li>';
+		}
+	}
+	echo '</ul>';
 }
 
 // Get the page number
@@ -152,6 +173,27 @@ function autoVer($url){
     return str_replace('static/','',$path['dirname']).'/'.str_replace('.'.$ext, $ver, $path['basename']);
 }
 
+// auto-populate description field using the_excerpt 
+function custom_meta_description(){
+	global $post;
+	if(is_single()){
+		$custom_excerpt = get_the_excerpt();
+		if($custom_excerpt != '') {
+			echo esc_attr($custom_excerpt);
+		}
+	} else {
+		echo 'something something';
+	}
+}
+
+//customize mce buttons
+/*
+function add_mce_buttons($buttons){
+	return array('formatselect','bold','italic','strikethrough','bullist','numlist','sup','sub','blockquote','link','unlink','undo','redo','charmap','fullscreen');
+}
+add_filter("mce_buttons", "add_mce_buttons");
+*/
+
 // custom comments
 function custom_comments( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
@@ -211,3 +253,4 @@ function custom_comments( $comment, $args, $depth ) {
 	<?php
 
 }
+
