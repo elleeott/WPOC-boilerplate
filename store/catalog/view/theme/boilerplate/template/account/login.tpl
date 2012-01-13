@@ -18,7 +18,7 @@
       <div class="content">
         <p><b><?php echo $text_register; ?></b></p>
         <p><?php echo $text_register_account; ?></p>
-        <a href="<?php echo $register; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+        <a href="<?php echo $register; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
     <div class="right">
       <h2><?php echo $text_returning_customer; ?></h2>
@@ -34,7 +34,7 @@
           <br />
           <a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a><br />
           <br />
-          <a onclick="$('#login').submit();" class="button"><span><?php echo $button_login; ?></span></a>
+          <a onclick="$('#login').submit();" class="button button-primary"><span><?php echo $button_login; ?></span></a>
           <?php if ($redirect) { ?>
           <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
           <?php } ?>

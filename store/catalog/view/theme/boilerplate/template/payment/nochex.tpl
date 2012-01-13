@@ -25,5 +25,5 @@
   <input type="hidden" name="hide_billing_details" value="true" />
 </form>
 <div class="buttons">
-  <div class="right"><a onclick="$('#payment').submit();" class="button"><span><?php echo $button_confirm; ?></span></a></div>
+  <div class="right"><a onclick="$('#payment').submit();" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></div>
 </div>

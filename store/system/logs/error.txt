@@ -81,3 +81,6 @@
 2012-01-05 15:56:38 - PHP Unknown:  call_user_func_array() expects parameter 1 to be a valid callback, non-static method PageNavi_Core::stylesheets() should not be called statically in /Volumes/drive2/localhost/frictious/wp/wp-includes/plugin.php on line 405
 2012-01-05 15:56:38 - PHP Warning:  strlen() expects parameter 1 to be string, array given in /Volumes/drive2/localhost/frictious/static/wp-content/plugins/simple-facebook-connect/sfc-base.php on line 84
 2012-01-05 15:57:03 - PHP Unknown:  call_user_func_array() expects parameter 1 to be a valid callback, non-static method PageNavi_Core::stylesheets() should not be called statically in /Volumes/drive2/localhost/frictious/wp/wp-includes/plugin.php on line 405
+2012-01-13 16:57:52 - PHP Notice:  Undefined variable: invoice_no in /Volumes/drive2/localhost/frictious/store/catalog/view/theme/boilerplate/template/mail/order.tpl on line 38
+2012-01-13 17:00:16 - PHP Notice:  Undefined variable: invoice_no in /Volumes/drive2/localhost/frictious/store/catalog/view/theme/boilerplate/template/mail/order.tpl on line 38
+2012-01-13 17:44:38 - PHP Notice:  Undefined variable: pageTitle in /Volumes/drive2/localhost/frictious/store/catalog/view/theme/boilerplate/template/common/header.tpl on line 4

@@ -103,7 +103,7 @@ $('#button-quote').bind('click', function() {
 				}
 				
 				html += '</table>';
-				html += '<br /><a id="button-shipping" class="button"><span><?php echo $button_shipping; ?></span></a>';				
+				html += '<br /><a id="button-shipping" class="button button-primary"><span><?php echo $button_shipping; ?></span></a>';				
 		
 				$('#quote').html(html);	
 			

@@ -27,8 +27,8 @@
       </table>
     </div>
     <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button"><span><?php echo $button_back; ?></span></a></div>
-      <div class="right"><a onclick="$('#password').submit();" class="button"><span><?php echo $button_continue; ?></span></a></div>
+      <div class="left"><a href="<?php echo $back; ?>" class="button button-primary"><span><?php echo $button_back; ?></span></a></div>
+      <div class="right"><a onclick="$('#password').submit();" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
   </form>
   <?php echo $content_bottom; ?></div>

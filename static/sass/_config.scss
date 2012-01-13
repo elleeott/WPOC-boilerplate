@@ -29,7 +29,6 @@ $bodyCopyFont:$defaultSerif;
 $defaultFontSize:14px;
 $bodyCopyLineHeight:1.5em;
 
-
 //units
 $unit1:1px;
 $unit2:2px;
@@ -39,8 +38,15 @@ $unit10:10px;
 
 //paths
 
-
 //mixins
+
+@mixin errorText {
+	color:red;
+}
+@mixin knockoutError {
+	color:#fff;
+	background:red;
+}
 
 @mixin rounded($radius) {
 	-webkit-border-radius: $radius;

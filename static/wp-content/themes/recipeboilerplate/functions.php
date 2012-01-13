@@ -15,7 +15,7 @@ function theme_setup() {
 add_action( 'after_setup_theme', 'theme_setup' );
 
 //additional image sizes
-add_image_size( 'product-large',400,9999);
+add_image_size( 'product-large',900,9999);
 add_image_size( 'product-med',300,9999);
 add_image_size( 'product-thumb',150,9999);
 add_image_size( 'recipe-large',400,9999);
@@ -23,7 +23,7 @@ add_image_size( 'recipe-med',300,9999);
 add_image_size( 'recipe-thumb',150,9999);
 
 // custom gallery code
-function get_custom_gallery($size) {
+function get_custom_gallery() {
 	global $post;
 	$featured_img_id = get_post_thumbnail_id($post->ID);
 	$attached_imgs = get_posts(array(
@@ -35,16 +35,13 @@ function get_custom_gallery($size) {
 	));
 	echo '<ul>';
 	foreach($attached_imgs as $attachment) {
-		//echo $attachment->ID . '<br>';
-		//echo wp_get_attachment_url($attachment->ID) .'<br>';
-		//echo '<img src="'.wp_get_attachment_url($attachment->ID) .'"/>';
-		//echo $attachment->post_title . '<br>';
-		//echo $attachment->post_content . '<br>';
-		$the_img= wp_get_attachment_image_src($attachment->ID,$size,true);
+		$prod_large = wp_get_attachment_image_src($attachment->ID,'product-large',true);
+		$prod_med = wp_get_attachment_image_src($attachment->ID,'product-med',true);
+		$prod_thumb = wp_get_attachment_image_src($attachment->ID,'product-small',true);
 		if($attachment->ID == $featured_img_id){
-			echo '<li><img src="'.$the_img[0].'" width="'.$the_img[1].'" height="'.$the_img[2].'" class="featured photo"/></li>';
+			echo '<li class="focus-img"><a class="fancybox" href="'.$prod_large[0].'"><img src="'.$prod_med[0].'" width="'.$prod_med[1].'" height="'.$prod_med[2].'"/></a></li>';
 		} else {
-			echo '<li><img src="'.$the_img[0].'" width="'.$the_img[1].'" height="'.$the_img[2].'"/></li>';
+			echo '<li><a class="fancybox" href="'.$prod_large[0].'"><img src="'.$prod_med[0].'" width="'.$prod_med[1].'" height="'.$prod_med[2].'"/></a></li>';
 		}
 	}
 	echo '</ul>';
@@ -67,6 +64,8 @@ function register_custom_menus() {
 	); 
 }
 add_action( 'init', 'register_custom_menus' );
+
+
 
 //register sidebars
 function bp_register_sidebars() {
@@ -221,7 +220,6 @@ function custom_comments( $comment, $args, $depth ) {
 							)
 						);
 					?>
-
 					<?php edit_comment_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 				</div><!-- .comment-author .vcard -->
 

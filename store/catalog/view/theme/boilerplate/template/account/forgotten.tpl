@@ -1,6 +1,7 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
+<?php echo $header; ?>
+<div id="content-container">
+<div class="container">
+	<div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
@@ -21,9 +22,11 @@
       </table>
     </div>
     <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button"><span><?php echo $button_back; ?></span></a></div>
-      <div class="right"><a onclick="$('#forgotten').submit();" class="button"><span><?php echo $button_continue; ?></span></a></div>
+      <div class="left"><a href="<?php echo $back; ?>" class="button button-primary"><span><?php echo $button_back; ?></span></a></div>
+      <div class="right"><a onclick="$('#forgotten').submit();" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
   </form>
-  <?php echo $content_bottom; ?></div>
+  <?php echo $content_bottom; ?>
+</div>
+</div>
 <?php echo $footer; ?>

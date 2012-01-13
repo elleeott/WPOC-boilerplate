@@ -20,7 +20,12 @@ header {
 	}
 }
 
-.current-menu-item {
+.current-menu-item,
+body.post-type-archive-recipes .menu-item-756,
+.single-recipes .menu-item-756,
+body.post-type-archive-products .menu-item-751,
+.single-products .menu-item-751
+ {
 	background:$knockOutColor*2;
 }
 .menu-primary-nav-container > ul > li {

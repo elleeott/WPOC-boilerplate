@@ -12,6 +12,6 @@
   <input type="hidden" name="email" value="<?php echo $email; ?>" />
   <input type="hidden" name="testMode" value="<?php echo $test; ?>" />
   <div class="buttons">
-    <div class="right"><a onclick="$('#payment').submit();" class="button"><span><?php echo $button_confirm; ?></span></a></div>
+    <div class="right"><a onclick="$('#payment').submit();" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></div>
   </div>
 </form>

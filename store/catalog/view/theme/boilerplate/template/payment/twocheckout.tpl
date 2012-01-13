@@ -30,6 +30,6 @@
   <input type="hidden" name="lang" value="<?php echo $lang; ?>" />
   <input type="hidden" name="return_url" value="<?php echo $return_url; ?>" />
   <div class="buttons">
-    <div class="right"><a onclick="$('#payment').submit();" class="button"><span><?php echo $button_confirm; ?></span></a></div>
+    <div class="right"><a onclick="$('#payment').submit();" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></div>
   </div>
 </form>

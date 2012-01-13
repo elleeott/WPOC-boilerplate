@@ -36,15 +36,19 @@ ErrorDocument 404 /404.php
 	RewriteCond %{HTTP_HOST} !^www\.
 	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
-	#force ssl on cart, checkout
+	#force ssl on cart, checkout, account
 	RewriteCond %{HTTPS} off
-	RewriteCond %{QUERY_STRING} ^route=checkout
+	RewriteCond %{QUERY_STRING} ^route=checkout [OR]
+	RewriteCond %{QUERY_STRING} ^route=account [OR]
+	RewriteCond %{REQUEST_URI} ^/store/admin/
 	RewriteCond %{QUERY_STRING} !^route=checkout/cart/update
 	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 	#force non-ssl on all pages but cart and checkout
 	RewriteCond %{HTTPS} on
 	RewriteCond %{QUERY_STRING} !^route=checkout 
+	RewriteCond %{QUERY_STRING} !^route=payment 
+	RewriteCond %{QUERY_STRING} !^route=account
 	RewriteCond %{REQUEST_URI} !^/wp/
 	RewriteCond %{REQUEST_URI} !^/store/admin/
 	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

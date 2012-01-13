@@ -1,6 +1,7 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
+<?php echo $header; ?>
+<div id="content-container">
+<div class="container">
+<div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
@@ -152,15 +153,17 @@
         <?php } else { ?>
         <input type="checkbox" name="agree" value="1" />
         <?php } ?>
-        <a onclick="$('#register').submit();" class="button"><span><?php echo $button_continue; ?></span></a></div>
+        <a onclick="$('#register').submit();" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
     <?php } else { ?>
     <div class="buttons">
-      <div class="right"><a onclick="$('#register').submit();" class="button"><span><?php echo $button_continue; ?></span></a></div>
+      <div class="right"><a onclick="$('#register').submit();" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
     <?php } ?>
   </form>
-  <?php echo $content_bottom; ?></div>
+  <?php echo $content_bottom; ?>
+</div><!-- close container -->  
+</div><!-- close content-container-->
 <script type="text/javascript"><!--
 $('select[name=\'zone_id\']').load('index.php?route=account/register/zone&country_id=<?php echo $country_id; ?>&zone_id=<?php echo $zone_id; ?>');
 //--></script> 

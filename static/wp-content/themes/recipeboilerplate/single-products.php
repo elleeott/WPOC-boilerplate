@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 <div id="content-container" class="clearfix">
 	<div class="container">
 		<section id="main-content" class="main-content-left">	
@@ -6,32 +7,22 @@
 				<article>
 					<div class="product-img">
 						<div class="large-img">
-							<?php get_custom_gallery('product-med'); ?>
+							<?php get_custom_gallery(); ?>
 						</div>
 						<div class="small-img">
-							<?php get_custom_gallery('product-thumb'); ?>
+							<?php get_custom_gallery(); ?>
 						</div>
 					</div>
 					<h1><?php the_title(); ?></h1>
+					<div class="product-info">
+						<?php get_oc_options(); ?>				
+					</div>
+					<h2>Description</h2>
 					<?php the_content(); ?>
-
-					<div>
-						<strong>Price:</strong>
-						<?php echo money_format('$%i',get_post_meta(get_the_id(),'_oc_product_price',true)); ?>
-					</div>
-					<div>
-						<strong>Item#:</strong>
-						<?php echo get_post_meta(get_the_id(),'_oc_product_sku',true); ?>
-					</div>
-					<form class="add-to-cart-form" action="/store/index.php?route=checkout/cart/update" method="post">
-						<input type="hidden" name="product_id" value="<?php echo get_post_meta(get_the_id(),'_oc_product_id',true); ?>"/>
-						<input type="text" name="quantity" value="1"/>				
-						<button class="button button-primary add-to-cart">add to cart</button>
-						<!--<a href="#" class="button button-primary add-to-cart">add to cart</a>-->
-					</form>
-
-
 				</article>
+				<div class="related-recipes">
+					<?php get_related_recipes(); ?>
+				</div>
 			<?php endwhile; endif;?>
 	
 		</section>

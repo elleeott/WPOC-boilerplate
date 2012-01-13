@@ -16,7 +16,7 @@
       <div><b><?php echo $text_remaining; ?></b> <?php echo $download['remaining']; ?></div>
       <div class="download-info">
         <?php if ($download['remaining'] > 0) { ?>
-        <a href="<?php echo $download['href']; ?>" class="button"><span><?php echo $text_download; ?></span></a>
+        <a href="<?php echo $download['href']; ?>" class="button button-primary"><span><?php echo $text_download; ?></span></a>
         <?php } ?>
       </div>
     </div>
@@ -24,7 +24,7 @@
   <?php } ?>
   <div class="pagination"><?php echo $pagination; ?></div>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+    <div class="right"><a href="<?php echo $continue; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
   </div>
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>

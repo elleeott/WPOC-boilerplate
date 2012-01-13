@@ -1,4 +1,8 @@
-<?php global $isapage; ?>
+<?php
+	//two parameters passed from OC pages
+	global $isapage; 
+	global $page_title; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,13 +10,52 @@
 		<meta content="<?php custom_meta_description(); ?>" name="description" />
 		<title>
 			<?php
-			    if ( is_single() ) { single_post_title(); echo ' | '; bloginfo('name'); }
-			    elseif ( is_home() ) { echo 'Blog | '; bloginfo('name'); get_page_number(); } //blog
-			    elseif ( is_front_page() ) {   bloginfo('name'); echo ' | '; bloginfo('description'); get_page_number(); } //hp
-			    elseif ( is_page() ) { single_post_title(); echo ' | '; bloginfo('name'); }
-			    elseif ( is_search() ) { bloginfo('name'); print ' | Search results for ' . esc_html($s); get_page_number(); }
-			    elseif ( is_404() && (isset($isapage)) ) { bloginfo('name'); print ' | Not Found'; }
-			    else { wp_title("",true);  echo ' | '; bloginfo('name'); get_page_number();}
+				//HP
+				if (is_front_page()) { 
+					bloginfo('name'); 
+					echo ' :: '; 
+					bloginfo('description'); 
+					get_page_number(); 
+				} 
+				//single post pages
+				elseif (is_single()) {
+					single_post_title();
+					echo ' :: ';
+					echo get_post_type();
+					echo ' :: ';
+					bloginfo('name');
+				}
+				//pages
+				elseif (is_page()) { 
+					single_post_title();
+					echo ' :: ';
+					bloginfo('name');
+				}
+				//search results
+				elseif (is_search()) {
+					bloginfo('name');
+					echo ' :: Search results for ' . esc_html($s);
+					get_page_number();
+				}
+				//Opencart Pages
+				elseif (is_404() && (isset($isapage))) { 
+					bloginfo('name'); 
+					echo ' :: '; 
+					echo $page_title;
+				}
+				//actual 404s
+				elseif (is_404()) {
+					echo 'Not Found';
+					echo ' :: ';
+					bloginfo('name');
+				}
+				//everything else
+				else {
+					wp_title("",true);  
+					echo ' :: '; 
+					bloginfo('name'); 
+					get_page_number();
+				}
 			?>
 		</title>
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0, user-scalable=no" name="viewport" />
@@ -34,6 +77,7 @@
 			<header class="main">		
 				<div class="container">
 					<div id="logo"><a href="/">logo</a></div> 
+						<a href="/store/index.php?route=account/login">login</a>
 					<div id="support-links">
 						<?php wp_nav_menu(array( 'theme_location' => 'secondary-nav' ) ); ?>
 					</div>
@@ -47,13 +91,7 @@
 					</div>
 				</nav>				
 			</header>
-			<div class="breadcrumbs">
-			<?php
-			/*
-				$crumbs = explode("/",$_SERVER["REQUEST_URI"]);
-				foreach($crumbs as $crumb){
-				    echo ucfirst(str_replace(array(".php","_"),array(""," "),$crumb) . ' ');
-				}
-			*/
-			?>
+			<div class="breadcrumbs container">
+			
+				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.
 			</div>

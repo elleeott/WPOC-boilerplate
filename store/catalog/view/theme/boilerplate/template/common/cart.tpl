@@ -34,7 +34,7 @@
   </tr>
   <?php } ?>
 </table>
-<div class="checkout"><a href="<?php echo $checkout; ?>" class="button"><span><?php echo $button_checkout; ?></span></a></div>
+<div class="checkout"><a href="<?php echo $checkout; ?>" class="button button-primary"><span><?php echo $button_checkout; ?></span></a></div>
 <?php } else { ?>
 <div class="empty"><?php echo $text_empty; ?></div>
 <?php } ?>

@@ -16,6 +16,6 @@
   <input type="hidden" name="cancelurl" value="<?php echo $cancel; ?>" />
   <?php } ?>
   <div class="buttons">
-    <div class="right"><a onclick="$('#payment').submit();" class="button"><span><?php echo $button_confirm; ?></span></a></div>
+    <div class="right"><a onclick="$('#payment').submit();" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></div>
   </div>
 </form>

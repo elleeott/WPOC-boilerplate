@@ -48,7 +48,7 @@
 </table>
 <br />
 <div class="buttons">
-  <div class="right"><a id="button-guest-shipping" class="button"><span><?php echo $button_continue; ?></span></a></div>
+  <div class="right"><a id="button-guest-shipping" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
 </div>
 <script type="text/javascript"><!--
 $('#shipping-address select[name=\'zone_id\']').load('index.php?route=checkout/address/zone&country_id=<?php echo $country_id; ?>&zone_id=<?php echo $zone_id; ?>');

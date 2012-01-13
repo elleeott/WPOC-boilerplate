@@ -31,6 +31,6 @@
   <input type="hidden" name="x_email" value="<?php echo $x_email; ?>" />
   <input type="hidden" name="x_relay_response" value="<?php echo $x_relay_response; ?>" />
   <div class="buttons">
-    <div class="right"><a onclick="$('#payment').submit();" class="button"><span><?php echo $button_confirm; ?></span></a></div>
+    <div class="right"><a onclick="$('#payment').submit();" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></div>
   </div>
 </form>

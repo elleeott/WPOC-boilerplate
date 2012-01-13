@@ -204,11 +204,11 @@
         <?php } else { ?>
         <input type="checkbox" name="agree" value="1" />
         <?php } ?>
-        <a onclick="$('#register').submit();" class="button"><span><?php echo $button_continue; ?></span></a></div>
+        <a onclick="$('#register').submit();" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
     <?php } else { ?>
     <div class="buttons">
-      <div class="right"><a onclick="$('#register').submit();" class="button"><span><?php echo $button_continue; ?></span></a></div>
+      <div class="right"><a onclick="$('#register').submit();" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
     <?php } ?>
   </form>

@@ -18,14 +18,14 @@
     <table style="width: 100%;">
       <tr>
         <td><?php echo $result['address']; ?></td>
-        <td style="text-align: right;"><a href="<?php echo $result['update']; ?>" class="button"><span><?php echo $button_edit; ?></span></a> &nbsp; <a href="<?php echo $result['delete']; ?>" class="button"><span><?php echo $button_delete; ?></span></a></td>
+        <td style="text-align: right;"><a href="<?php echo $result['update']; ?>" class="button button-primary"><span><?php echo $button_edit; ?></span></a> &nbsp; <a href="<?php echo $result['delete']; ?>" class="button button-primary"><span><?php echo $button_delete; ?></span></a></td>
       </tr>
     </table>
   </div>
   <?php } ?>
   <div class="buttons">
-    <div class="left"><a href="<?php echo $back; ?>" class="button"><span><?php echo $button_back; ?></span></a></div>
-    <div class="right"><a href="<?php echo $insert; ?>" class="button"><span><?php echo $button_new_address; ?></span></a></div>
+    <div class="left"><a href="<?php echo $back; ?>" class="button button-primary"><span><?php echo $button_back; ?></span></a></div>
+    <div class="right"><a href="<?php echo $insert; ?>" class="button button-primary"><span><?php echo $button_new_address; ?></span></a></div>
   </div>
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>

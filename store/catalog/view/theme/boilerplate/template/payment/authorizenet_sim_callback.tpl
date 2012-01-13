@@ -11,7 +11,7 @@
   <table>
     <tr>
       <td align="left"></td>
-      <td align="right"><a onclick="location = '<?php echo $confirm; ?>'" class="button"><span><?php echo $button_confirm; ?></span></a></td>
+      <td align="right"><a onclick="location = '<?php echo $confirm; ?>'" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></td>
     </tr>
   </table>
 </div>
@@ -22,7 +22,7 @@
 <div class="buttons">
   <table>
     <tr>
-      <td align="left"><a onclick="location = '<?php echo $back; ?>'" class="button"><span><?php echo $button_back; ?></span></a></td>
+      <td align="left"><a onclick="location = '<?php echo $back; ?>'" class="button button-primary"><span><?php echo $button_back; ?></span></a></td>
       <td align="right"></td>
     </tr>
   </table>
@@ -32,7 +32,7 @@
 <div class="buttons">
   <table>
     <tr>
-      <td align="left"><a onclick="location = '<?php echo $back; ?>'" class="button"><span><?php echo $button_back; ?></span></a></td>
+      <td align="left"><a onclick="location = '<?php echo $back; ?>'" class="button button-primary"><span><?php echo $button_back; ?></span></a></td>
       <td align="right"></td>
     </tr>
   </table>

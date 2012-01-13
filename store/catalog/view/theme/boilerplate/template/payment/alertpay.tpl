@@ -8,6 +8,6 @@
   <input type="hidden" name="ap_returnurl" value="<?php echo $ap_returnurl; ?>" />
   <input type="hidden" name="ap_cancelurl" value="<?php echo $ap_cancelurl; ?>" />
   <div class="buttons">
-    <div class="right"><a onclick="$('#payment').submit();" class="button"><span><?php echo $button_confirm; ?></span></a></div>
+    <div class="right"><a onclick="$('#payment').submit();" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></div>
   </div>
 </form>

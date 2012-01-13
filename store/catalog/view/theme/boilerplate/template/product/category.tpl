@@ -121,7 +121,7 @@
 						
 							<?php //non-ajax add to cart ?>
 							<?php /* ?>
-							<div class="cart"><a href="/store/index.php?route=checkout/cart&product_id=<?php echo $product['product_id'];?>" class="button"><span><?php echo $button_cart; ?></span></a></div>
+							<div class="cart"><a href="/store/index.php?route=checkout/cart&product_id=<?php echo $product['product_id'];?>" class="button button-primary"><span><?php echo $button_cart; ?></span></a></div>
 							<?php */ ?>
 							
 							
@@ -141,7 +141,7 @@
 			<?php if (!$categories && !$products) { ?>
 				<div class="content"><?php echo $text_empty; ?></div>
 				<div class="buttons">
-					<div class="right"><a href="<?php echo $continue; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+					<div class="right"><a href="<?php echo $continue; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
 				</div>
 			<?php } ?>
 			</div><!--close product-info-->		  

@@ -57,7 +57,7 @@
       <?php if ($product['rating']) { ?>
       <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
       <?php } ?>
-      <div class="cart"><a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><span><?php echo $button_cart; ?></span></a></div>
+      <div class="cart"><a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button button-primary"><span><?php echo $button_cart; ?></span></a></div>
       <div class="wishlist"><a onclick="addToWishList('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a></div>
       <div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>
     </div>
@@ -67,7 +67,7 @@
   <?php } else { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+    <div class="right"><a href="<?php echo $continue; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
   </div>
   <?php }?>
   <?php echo $content_bottom; ?></div>

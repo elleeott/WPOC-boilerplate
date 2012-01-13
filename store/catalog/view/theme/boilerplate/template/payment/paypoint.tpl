@@ -23,6 +23,6 @@
   <input type="hidden" name="order_id" value="<?php echo $order_id; ?>" />
   <input type="hidden" name="options" value="<?php echo $options; ?>" />
   <div class="buttons">
-    <div class="right"><a onclick="$('#payment').submit();" class="button"><span><?php echo $button_confirm; ?></span></a></div>
+    <div class="right"><a onclick="$('#payment').submit();" class="button button-primary"><span><?php echo $button_confirm; ?></span></a></div>
   </div>
 </form>

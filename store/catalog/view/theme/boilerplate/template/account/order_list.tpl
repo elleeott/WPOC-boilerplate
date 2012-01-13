@@ -16,7 +16,7 @@
         <b><?php echo $text_products; ?></b> <?php echo $order['products']; ?></div>
       <div><b><?php echo $text_customer; ?></b> <?php echo $order['name']; ?><br />
         <b><?php echo $text_total; ?></b> <?php echo $order['total']; ?></div>
-      <div class="order-info"><a href="<?php echo $order['href']; ?>" class="button"><span><?php echo $button_view; ?></span></a></div>
+      <div class="order-info"><a href="<?php echo $order['href']; ?>" class="button button-primary"><span><?php echo $button_view; ?></span></a></div>
     </div>
   </div>
   <?php } ?>
@@ -25,7 +25,7 @@
   <div class="content"><?php echo $text_empty; ?></div>
   <?php } ?>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+    <div class="right"><a href="<?php echo $continue; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
   </div>
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>

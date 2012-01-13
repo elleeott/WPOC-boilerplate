@@ -75,7 +75,7 @@
         <?php } else { ?>
         <input type="checkbox" name="agree" value="1" />
         <?php } ?>
-        <a onclick="$('#voucher').submit();" class="button"><span><?php echo $button_continue; ?></span></a></div>
+        <a onclick="$('#voucher').submit();" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
     </div>
   </form>
   <?php echo $content_bottom; ?></div>

@@ -17,7 +17,7 @@
     <textarea name="link" cols="40" rows="5"></textarea>
   </p>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+    <div class="right"><a href="<?php echo $continue; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
   </div>
   <?php echo $content_bottom; ?></div>
 <script type="text/javascript"><!--

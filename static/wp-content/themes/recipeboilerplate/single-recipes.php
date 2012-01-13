@@ -1,4 +1,20 @@
 <?php get_header(); ?>
+<style>
+	dl {
+		margin:20px 0;
+	}
+	dt {
+		clear:left;
+		float:left;
+		width:150px;
+		font-weight:bold;
+	}
+	dd {
+		width:220px;
+		float:left;
+		margin-left:10px;
+	}
+</style>
 <div id="content-container" class="clearfix">
 	<div class="container">
 		<section id="main-content" class="main-content-left">
@@ -38,27 +54,36 @@
 								</div>
 							</span>
 						</div>
-						<dl>
-							<dt>Prep time:</dt> <dd class="preptime">30 min<span class="value-title" title="PT30M"></span></dd>
-							<dt>Cook time:</dt> <dd class="cooktime">1 hour<span class="value-title" title="PT1H"></span></dd>
-							<dt>Total time:</dt> <dd class="duration">1 hour, 30 min<span class="value-title" title="PT1H30M"></span></dd>
+						<dl class="clearfix">
+							<?php if(get_post_meta($post->ID,'_prep_time',true)): ?>
+								<dt>Prep time:</dt> <dd class="preptime"><?php create_time('_prep_time'); ?><span class="value-title" title="<?php create_hrecipe_time('_prep_time');?>"></span></dd>
+							<?php endif; ?>
+							<dt>Cook time:</dt> <dd class="cooktime"><?php create_time('_cook_time'); ?><span class="value-title" title="<?php create_hrecipe_time('_cook_time');?>"></span></dd>
+							<dt>Total time:</dt> <dd class="duration"><?php create_time('total'); ?><span class="value-title" title="<?php create_hrecipe_time('total');?>"></span></dd>
 							<dt>Yield:</dt> <dd class="yield">1 9" pie</dd>
 						</dl>
-						<dl class="nutrition">
+						<dl class="nutrition clearfix">
 							<dt>Serving Size:</dt> <dd class="servingsize">1 medium slice</dd>
 							<dt>Calories per serving:</dt> <dd class="servingsize">250</dd>
 							<dt>Fat per Serving:</dt> <dd class="fat">12g</dd>
 						</dl>
-						<h3>Ingredients:</h3>
+						<?php if(get_post_meta($post->ID,'_recipe_ingredients',true)) : ?>
+							<div class="ingredients">
+								<h3>Ingredients:</h3>
+								<?php get_ingredients();?>
+							</div>
+						<?php endif; ?>
+						<?php /*
 						<ul class="ingredients">
 							<li class="ingredient">Thinly-sliced <span class="name"><a href="#">apples</a></span>: <span class="amount">6 cups</span></li>
 							<li class="ingredient"><span class="name"><a href="#">White sugar</a></span>: <span class="amount">3/4 cup</span></li>
 							<li class="ingredient"><span class="amount">3/4 cup</span> <span class="name"><a href="#">White sugar</a></span></li>
 						</ul>
-						<?php if(get_post_meta($post->ID,'_recipe-directions',true)) : ?>
+						*/ ?>
+						<?php if(get_post_meta($post->ID,'_recipe_directions',true)) : ?>
 						<div class="instructions">
 							<h3>Directions:</h3>
-							<?php echo get_post_meta($post->ID,'_recipe-directions',true); ?>
+							<?php echo get_post_meta($post->ID,'_recipe_directions',true); ?>
 						</div>
 						<?php endif; ?>
 						<div class="summary">

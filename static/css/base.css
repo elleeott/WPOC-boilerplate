@@ -97,7 +97,7 @@ a.button {
   color: #fff;
   font-size: 12px;
   height: 28px;
-  line-height: 26px;
+  line-height: 27px;
   padding: 0 15px;
   font-size: 12px;
   font-weight: bold;
@@ -106,9 +106,6 @@ a.button {
   -moz-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
-  -webkit-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
   text-shadow: 0 -1px 0 #666666; }
   a.button:hover {
     background: #b75e28; }
@@ -121,6 +118,9 @@ a.button-secondary {
 
 a.button-tertiary {
   background: #999999; }
+
+a.busy {
+  background-color: #4c4c4c; }
 
 footer {
   padding: 40px;
@@ -197,22 +197,53 @@ article {
     .wp-pagenavi a.page:hover {
       background: #efefef; }
 
-.single {
-  /*
-  .large-img {
-  	position:relative;
-  	height:300px;
-  	img {
-  		position:absolute;
-  		top:0;
-  		left:0;
-  	}
-  }
-  */ }
-  .single .product-img {
-    float: right;
-    margin: 0 0 20px 20px;
-    width: 300px; }
+body.single-products .product-img {
+  float: left;
+  margin: 0 20px 20px 0; }
+body.single-products .large-img {
+  height: 300px;
+  width: 300px;
+  position: relative; }
+  body.single-products .large-img li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 300px;
+    background: #fff;
+    display: none; }
+  body.single-products .large-img li.focus-img {
+    display: block; }
+body.single-products .small-img {
+  height: 150px;
+  width: 150px;
+  position: relative;
+  display: none; }
+  body.single-products .small-img li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 150px;
+    width: 150px;
+    background: #fff;
+    display: none; }
+  body.single-products .small-img li.focus-img {
+    display: block; }
+body.single-products .product-info .option {
+  margin: 0 0 20px;
+  position: relative; }
+body.single-products .product-info label {
+  display: block; }
+body.single-products .product-info .required {
+  font-weight: bold; }
+body.single-products .product-info .error {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red; }
+body.single-products .product-info .field-error {
+  border: 1px solid red; }
 
 .list .product-img {
   float: left;
@@ -220,46 +251,6 @@ article {
 
 .widget {
   margin-bottom: 20px; }
-
-.product-info {
-  padding: 20px 0; }
-
-.product-filter {
-  padding: 5px 0;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
-  margin-bottom: 20px; }
-  .product-filter .limit, .product-filter .sort {
-    float: right;
-    margin-left: 20px; }
-
-.product-images {
-  float: left;
-  width: 240px; }
-
-.product-description {
-  float: left;
-  width: 460px;
-  margin-left: 20px; }
-
-.cart {
-  margin: 20px 0; }
-
-.category-info {
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc; }
-  .category-info .image {
-    float: left; }
-
-.product-cell {
-  width: 200px;
-  float: left;
-  padding: 20px;
-  height: 400px; }
-  .product-cell .image {
-    background: #cccccc;
-    text-align: center;
-    height: 150px; }
 
 #shopping-cart td, #shopping-cart th {
   padding: 5px; }
@@ -305,6 +296,15 @@ article {
   font-weight: bold; }
 #categories-menu ul > li > ul {
   display: none; }
+
+#notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: red;
+  color: #fff;
+  z-index: 1000; }
 
 /* iphones */
 @media only screen
@@ -446,12 +446,12 @@ and (min-device-width: 768px) {
 
   .slide {
     position: relative;
-    height: 300px; }
+    height: 300px;
+    background: #efefef; }
 
   .slide img {
     position: absolute;
-    left: 0;
-    top: -40px; }
+    left: 40px; }
 
   .slide h1 {
     position: absolute;
@@ -494,7 +494,11 @@ and (min-device-width: 768px) {
     header nav a:hover {
       background: #191919; }
 
-  .current-menu-item {
+  .current-menu-item,
+  body.post-type-archive-recipes .menu-item-756,
+  .single-recipes .menu-item-756,
+  body.post-type-archive-products .menu-item-751,
+  .single-products .menu-item-751 {
     background: #666666; }
 
   .menu-primary-nav-container > ul > li {

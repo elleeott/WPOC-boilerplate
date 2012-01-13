@@ -1,5 +1,6 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
+<?php echo $header; ?> 
+<div id="content-container">
+<div class="container">
   <div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
@@ -34,5 +35,7 @@
       <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
     </ul>
   </div>
-  <?php echo $content_bottom; ?></div>
+  <?php echo $content_bottom; ?>
+</div>  
+</div><!-- close content-container-->
 <?php echo $footer; ?> 

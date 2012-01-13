@@ -108,7 +108,7 @@
     <tr>
       <td></td>
       <?php foreach ($products as $product) { ?>
-      <td><a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><span><?php echo $button_cart; ?></span></a></td>
+      <td><a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button button-primary"><span><?php echo $button_cart; ?></span></a></td>
       <?php } ?>
     </tr>
     <tr>
@@ -116,18 +116,18 @@
       <?php foreach ($products as $product) { ?>
       <td><form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
           <input type="hidden" name="remove" value="<?php echo $product['product_id']; ?>" />
-          <a class="button" onclick="$(this).parent().submit();"><span><?php echo $text_remove; ?></span></a>
+          <a class="button button-primary" onclick="$(this).parent().submit();"><span><?php echo $text_remove; ?></span></a>
         </form></td>
       <?php } ?>
     </tr>
   </table>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+    <div class="right"><a href="<?php echo $continue; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
   </div>
   <?php } else { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><span><?php echo $button_continue; ?></span></a></div>
+    <div class="right"><a href="<?php echo $continue; ?>" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
   </div>
   <?php } ?>
   <?php echo $content_bottom; ?></div>

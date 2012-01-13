@@ -89,11 +89,11 @@
 <div class="buttons">
   <div class="right"><?php echo $text_agree; ?>
     <input type="checkbox" name="agree" value="1" />
-    <a id="button-register" class="button"><span><?php echo $button_continue; ?></span></a></div>
+    <a id="button-register" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
 </div>
 <?php } else { ?>
 <div class="buttons">
-  <div class="right"><a id="button-register" class="button"><span><?php echo $button_continue; ?></span></a></div>
+  <div class="right"><a id="button-register" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
 </div>
 <?php } ?>
 <script type="text/javascript"><!--

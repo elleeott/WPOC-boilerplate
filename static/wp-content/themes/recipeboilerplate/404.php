@@ -5,6 +5,7 @@
 		<section id="main-content" class="main-content-left">	
 			<article>
 				<h1>404</h1>
+				<?php get_template_part('sitemap'); ?>
 			</article>
 		</section>
 		<?php get_sidebar(); ?>

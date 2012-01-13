@@ -45,5 +45,5 @@
   <input type="hidden" name="custom" value="<?php echo $custom; ?>" />
 </form>
 <div class="buttons">
-  <div class="right"><a id="button-confirm" class="button" onclick="$('#payment').submit();"><span><?php echo $button_confirm; ?></span></a></div>
+  <div class="right"><a id="button-confirm" class="button button-primary" onclick="$('#payment').submit();"><span><?php echo $button_confirm; ?></span></a></div>
 </div>

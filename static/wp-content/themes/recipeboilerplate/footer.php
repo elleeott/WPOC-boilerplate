@@ -33,6 +33,7 @@
 				</div>
 			</div>			
 		</footer>
+		<div id="notification"></div>
 	</div><!-- close outer-container -->
 	<?php wp_footer(); ?>
 <?php /*	

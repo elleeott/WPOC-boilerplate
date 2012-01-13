@@ -1,61 +1,76 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?></h1>
-  <div class="checkout">
-    <div id="checkout">
-      <div class="checkout-heading"><?php echo $text_checkout_option; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php if (!$logged) { ?>
-    <div id="payment-address">
-      <div class="checkout-heading"><span><?php echo $text_checkout_account; ?></span></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php } else { ?>
-    <div id="payment-address">
-      <div class="checkout-heading"><span><?php echo $text_checkout_payment_address; ?></span></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php } ?>
-    <?php if ($shipping_required) { ?>
-    <div id="shipping-address">
-      <div class="checkout-heading"><?php echo $text_checkout_shipping_address; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <div id="shipping-method">
-      <div class="checkout-heading"><?php echo $text_checkout_shipping_method; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php } ?>
-    <div id="payment-method">
-      <div class="checkout-heading"><?php echo $text_checkout_payment_method; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <div id="confirm">
-      <div class="checkout-heading"><?php echo $text_checkout_confirm; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-  </div>
-  <?php echo $content_bottom; ?></div>
-<script type="text/javascript"><!--
+<?php echo $header; ?>
+<style>
+	.checkout-heading {
+		background:#efefef;
+		padding:5px;
+		margin:0 0 10px;
+	}
+</style>
+<div id="content-container" class="clearfix">
+	<div class="container">
+		<div class="breadcrumb">
+			<?php foreach ($breadcrumbs as $breadcrumb) { ?>
+			<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+			<?php } ?>
+		</div>
+	  <h1><?php echo $heading_title; ?></h1>
+		<div class="checkout">
+			<div id="checkout">
+				<div class="checkout-heading"><?php echo $text_checkout_option; ?></div>
+				<div class="checkout-content"></div>
+			</div>
+			<?php if (!$logged) { ?>
+				<div id="payment-address">
+					<div class="checkout-heading"><span><?php echo $text_checkout_account; ?></span></div>
+					<div class="checkout-content"></div>
+				</div>
+			<?php } else { ?>
+				<div id="payment-address">
+					<div class="checkout-heading"><span><?php echo $text_checkout_payment_address; ?></span></div>
+					<div class="checkout-content"></div>
+				</div>
+			<?php } ?>
+			<?php if ($shipping_required) { ?>
+				<div id="shipping-address">
+					<div class="checkout-heading"><?php echo $text_checkout_shipping_address; ?></div>
+					<div class="checkout-content"></div>
+				</div>
+				<div id="shipping-method">
+					<div class="checkout-heading"><?php echo $text_checkout_shipping_method; ?></div>
+					<div class="checkout-content"></div>
+				</div>
+			<?php } ?>
+			<div id="payment-method">
+				<div class="checkout-heading"><?php echo $text_checkout_payment_method; ?></div>
+				<div class="checkout-content"></div>
+			</div>
+			<div id="confirm">
+				<div class="checkout-heading"><?php echo $text_checkout_confirm; ?></div>
+				<div class="checkout-content"></div>
+			</div>
+		</div><!--close checkout-->
+	  <?php echo $content_bottom; ?>
+	</div><!--close container-->
+</div><!--close content-container-->
+
+
+
+<?php echo $footer; ?>
+
+<script type="text/javascript">
 $('#checkout .checkout-content input[name=\'account\']').live('change', function() {
 	if ($(this).attr('value') == 'register') {
 		$('#payment-address .checkout-heading span').html('<?php echo $text_checkout_account; ?>');
 	} else {
 		$('#payment-address .checkout-heading span').html('<?php echo $text_checkout_payment_address; ?>');
 	}
+
+	$('.checkout-heading a').live('click', function() {
+		$('.checkout-content').slideUp('slow');
+		$(this).parent().parent().find('.checkout-content').slideDown('slow');
+	});
 });
 
-$('.checkout-heading a').live('click', function() {
-	$('.checkout-content').slideUp('slow');
-	
-	$(this).parent().parent().find('.checkout-content').slideDown('slow');
-});
 <?php if (!$logged) { ?> 
 $(document).ready(function() {
 	$.ajax({
@@ -101,11 +116,11 @@ $('#button-account').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-account').attr('disabled', true);
-			$('#button-account').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#button-account').addClass('busy');
 		},		
 		complete: function() {
 			$('#button-account').attr('disabled', false);
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.warning').remove();
@@ -138,11 +153,11 @@ $('#button-login').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-login').attr('disabled', true);
-			$('#button-login').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#button-login').addClass('busy');
 		},	
 		complete: function() {
 			$('#button-login').attr('disabled', false);
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},				
 		success: function(json) {
 			$('.warning').remove();
@@ -199,11 +214,11 @@ $('#button-register').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-register').attr('disabled', true);
-			$('#button-register').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#button-register').addClass('busy');
 		},	
 		complete: function() {
 			$('#button-register').attr('disabled', false); 
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.warning').remove();
@@ -390,11 +405,11 @@ $('#payment-address #button-address').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#payment-address #button-address').attr('disabled', true);
-			$('#payment-address #button-address').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#payment-address #button-address').addClass('busy');
 		},	
 		complete: function() {
 			$('#payment-address #button-address').attr('disabled', false);
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.error').remove();
@@ -513,11 +528,11 @@ $('#shipping-address #button-address').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#shipping-address #button-address').attr('disabled', true);
-			$('#shipping-address #button-address').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#shipping-address #button-address').addClass('busy');
 		},	
 		complete: function() {
 			$('#shipping-address #button-address').attr('disabled', false);
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.error').remove();
@@ -614,11 +629,11 @@ $('#button-guest').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-guest').attr('disabled', true);
-			$('#button-guest').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#button-guest').addClass('busy');
 		},	
 		complete: function() {
 			$('#button-guest').attr('disabled', false); 
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.error').remove();
@@ -771,11 +786,11 @@ $('#button-guest-shipping').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-guest-shipping').attr('disabled', true);
-			$('#button-guest-shipping').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#button-guest-shipping').addClass('busy');
 		},	
 		complete: function() {
 			$('#button-guest-shipping').attr('disabled', false); 
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.error').remove();
@@ -849,11 +864,11 @@ $('#button-shipping').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-shipping').attr('disabled', true);
-			$('#button-shipping').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#button-shipping').addClass('busy');
 		},	
 		complete: function() {
 			$('#button-shipping').attr('disabled', false);
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.warning').remove();
@@ -907,11 +922,11 @@ $('#button-payment').live('click', function() {
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-payment').attr('disabled', true);
-			$('#button-payment').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('#button-payment').addClass('busy');
 		},	
 		complete: function() {
 			$('#button-payment').attr('disabled', false);
-			$('.wait').remove();
+			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.warning').remove();
@@ -955,5 +970,4 @@ $('#button-payment').live('click', function() {
 		}
 	});	
 });
-//--></script> 
-<?php echo $footer; ?>
+</script> 

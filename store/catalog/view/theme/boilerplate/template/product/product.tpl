@@ -190,7 +190,7 @@
 										<span class="required">*</span>
 									<?php } ?>
 									<?php echo $option['name']; ?>:
-									<a id="button-option-<?php echo $option['product_option_id']; ?>" class="button"><span><?php echo $button_upload; ?></span></a>
+									<a id="button-option-<?php echo $option['product_option_id']; ?>" class="button button-primary"><span><?php echo $button_upload; ?></span></a>
 									<input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="" />
 								</div>
 							<?php } ?>
@@ -330,7 +330,7 @@
 			<input type="text" name="captcha" value="" />
 			<img src="index.php?route=product/product/captcha" alt="" id="captcha" />
 			<div class="buttons">
-				<div class="right"><a id="button-review" class="button"><span><?php echo $button_continue; ?></span></a></div>
+				<div class="right"><a id="button-review" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
 			</div>
 		</div>
 	<?php } ?>
@@ -360,7 +360,7 @@
 						<?php if ($product['rating']) { ?>
 							<div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
 						<?php } ?>
-						<a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><span><?php echo $button_cart; ?></span></a>
+						<a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button button-primary"><span><?php echo $button_cart; ?></span></a>
 					</div>
 				<?php } ?>
 			</div>

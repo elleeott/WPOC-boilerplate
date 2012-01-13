@@ -4,13 +4,13 @@ a.button {
 	color:#fff;
 	font-size:12px;
 	height:28px;
-	line-height:26px;
+	line-height:27px;
 	padding:0 15px;
 	font-size:12px;
 	font-weight:bold;
 	cursor:pointer;
 	@include rounded(3px);
-	@include shadow;
+	//@include shadow;
 	@include NegativeTextShadow(lighten(#000,40%));
 	&:hover {
 		background:darken($primaryLinkColor,5%);
@@ -27,4 +27,8 @@ a.button-secondary {
 a.button-tertiary {
 	background:$tertiaryLinkColor;
 
+}
+
+a.busy {
+	background-color:$tertiaryLinkColor/2;
 }
