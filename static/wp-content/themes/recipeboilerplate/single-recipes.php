@@ -24,14 +24,14 @@
 						<div class="published"><?php the_time('F j, Y'); ?></div>
 						<div class="recipe-img">
 							<div class="large-img">
-								<?php get_custom_gallery('product-med'); ?>
+								<?php get_custom_gallery(); ?>
 							</div>
 							<div class="small-img">
-								<?php get_custom_gallery('product-thumb'); ?>
+								<?php get_custom_gallery(); ?>
 							</div>
 						</div>
 						<div class="item">
-							<h1 clas="fn"><?php the_title(); ?> - - This is a Recipe</h1>
+							<h1 class="fn"><?php the_title(); ?></h1>
 						</div>
 						
 						<div class="review hreview-aggregate">

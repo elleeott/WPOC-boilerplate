@@ -39,7 +39,7 @@ function get_custom_gallery() {
 		$prod_med = wp_get_attachment_image_src($attachment->ID,'product-med',true);
 		$prod_thumb = wp_get_attachment_image_src($attachment->ID,'product-small',true);
 		if($attachment->ID == $featured_img_id){
-			echo '<li class="focus-img"><a class="fancybox" href="'.$prod_large[0].'"><img src="'.$prod_med[0].'" width="'.$prod_med[1].'" height="'.$prod_med[2].'"/></a></li>';
+			echo '<li class="focus-img"><a class="fancybox" href="'.$prod_large[0].'"><img class="photo" src="'.$prod_med[0].'" width="'.$prod_med[1].'" height="'.$prod_med[2].'"/></a></li>';
 		} else {
 			echo '<li><a class="fancybox" href="'.$prod_large[0].'"><img src="'.$prod_med[0].'" width="'.$prod_med[1].'" height="'.$prod_med[2].'"/></a></li>';
 		}
