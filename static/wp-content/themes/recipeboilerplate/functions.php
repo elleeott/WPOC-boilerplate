@@ -33,7 +33,7 @@ function get_custom_gallery() {
 		'order' => 'ASC',
 		'post_parent'=>$post->ID
 	));
-	echo '<ul>';
+	echo '<ul class="slides">';
 	foreach($attached_imgs as $attachment) {
 		$prod_large = wp_get_attachment_image_src($attachment->ID,'product-large',true);
 		$prod_med = wp_get_attachment_image_src($attachment->ID,'product-med',true);

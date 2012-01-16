@@ -6,12 +6,14 @@
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 				<article>
 					<div class="product-img">
-						<div class="large-img">
+						<div class="large-img flexslider">
 							<?php get_custom_gallery(); ?>
 						</div>
+						<?php /*
 						<div class="small-img">
 							<?php get_custom_gallery(); ?>
 						</div>
+						*/ ?>
 					</div>
 					<h1><?php the_title(); ?></h1>
 					<div class="product-info">

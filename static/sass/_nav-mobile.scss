@@ -1,35 +1,16 @@
 header {
-	nav {
-		background:$knockOutColor;
+	nav#full-nav {
+		display:none;
 	}
-	nav a {
-		display:block;
-		color:$primaryknockOutTypeColor;
-		text-decoration:none;
-		padding:15px 20px;
-		font-size:12px;
-		height:12px;
+	nav#mobile-nav {
+		background:$knockOutColor;
+		padding:5px;
+		select {
+			width:100%;
+		}
 	}
 }
 
-.current-menu-item {
-	background:$knockOutColor*2;
-}
-.menu-primary-nav-container > ul > li {
-	position:relative;	
-	> a {
-	}
-	> ul {
-		display:none;
-		position:absolute;
-		top:42px;
-		left:0;
-		background:$knockOutColor/2; 
-		> li {
-			width:200px;
-		}
-	}	
-}
 #cart {
 	position:absolute;
 	top:0;

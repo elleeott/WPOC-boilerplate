@@ -58,7 +58,7 @@
 				}
 			?>
 		</title>
-		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0, user-scalable=no" name="viewport" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0" name="viewport" />
 
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -73,6 +73,7 @@
 		<?php else : ?>
 		<body <?php body_class(); ?>>
 	<?php endif; ?>
+	<?php include_once($_SERVER['DOCUMENT_ROOT'].'/ga_tracking.php'); ?>
 		<div id="outer-container">
 			<header class="main">		
 				<div class="container">
@@ -85,13 +86,35 @@
 							<div id="cart"><a href="/store/index.php?route=checkout/cart">Shopping Cart (<?php echo cart_items(); ?>)</a></div>
 					<?php } ?>
 				</div>	
-				<nav>
+				<nav id="full-nav">
 					<div class="container clearfix">
 						<?php  wp_nav_menu(array( 'theme_location' => 'primary-nav' ) ); ?> 
 					</div>
-				</nav>				
+				</nav>	
+				<nav id="mobile-nav">
+					<?php $args =array(
+						'post_type'=>'nav_menu_item'
+					); ?>
+					<?php $items = wp_get_nav_menu_items('primary-nav',$args); ?>
+					<?php //print_r($items); ?>
+					<form>
+						<select>
+							<?php foreach ($items as $item) { ?>
+								<option value="<?php echo $item->url; ?>"><?php echo $item->title; ?></option>
+							<?php } ?>
+						</select>
+						<button type="submit">go</button>
+					</form>
+				</nav>			
 			</header>
 			<div class="breadcrumbs container">
 			
 				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.
+
 			</div>
+			
+			
+			
+			
+			
+			

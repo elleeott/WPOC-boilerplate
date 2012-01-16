@@ -1,6 +1,5 @@
 // dom ready functions
 $(document).ready(function(){
-
 	if (document.documentElement.clientWidth >= 600) { // viewport width
 	//if (screen.width >= 600) { //display width
 		//fancybox popovers
@@ -17,6 +16,11 @@ $(document).ready(function(){
 			$(this).children('ul').css({display:'block'});
 		}, function() {
 			$(this).children('ul').css({display:'none'});
+		});
+	} else {
+		$('#mobile-nav button').click(function(){
+			window.location=$('#mobile-nav select option:selected').val();
+			return false;
 		});
 	}
 	
@@ -69,9 +73,17 @@ $(document).ready(function(){
 
 //window loaded functions
 $(window).load(function(){  
-    $('.flexslider').flexslider({
+	//hp slider
+    $('body.home .flexslider').flexslider({
     	animation:'slide',
     	controlsContainer: '#hero .container'
+    });
+    //prod page slider
+    $('body.single-products .flexslider').flexslider({
+    	animation:'slide',
+    	controlsContainer: '.product-img',
+    	animationDuration: 200,
+    	directionNav: false
     });
 });
 
