@@ -26,9 +26,6 @@
 							<div class="large-img">
 								<?php get_custom_gallery(); ?>
 							</div>
-							<div class="small-img">
-								<?php get_custom_gallery(); ?>
-							</div>
 						</div>
 						<div class="item">
 							<h1 class="fn"><?php the_title(); ?></h1>

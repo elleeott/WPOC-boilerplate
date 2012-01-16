@@ -97,17 +97,17 @@ function get_oc_options() {
 
 	<div>
 		<strong>Item#:</strong>
-		<?php echo get_post_meta($post->ID,'_oc_product_sku',true); ?>
+		<span class="sku"><?php echo get_post_meta($post->ID,'_oc_product_sku',true); ?></span>
 	</div>
-	<div class="price">
+	<div class="price-information">
 		<?php if(get_post_meta($post->ID,'_oc_product_price_special',true)): ?>
 			<strong>Price:</strong>
 			<?php echo format_currency(get_post_meta($post->ID,'_oc_product_price',true)); ?><br/>
 			<strong>Special Price:</strong>
-			<?php echo format_currency(get_post_meta($post->ID,'_oc_product_price_special',true)); ?>
+			<span class="price"><?php echo format_currency(get_post_meta($post->ID,'_oc_product_price_special',true)); ?></span>
 		<?php else: ?>
 			<strong>Price:</strong>
-			<?php echo format_currency(get_post_meta($post->ID,'_oc_product_price',true)); ?>
+			<span class="price"><?php echo format_currency(get_post_meta($post->ID,'_oc_product_price',true)); ?></span>
 		<?php endif; ?>
 	</div>
 
