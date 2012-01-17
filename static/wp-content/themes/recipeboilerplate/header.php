@@ -1,63 +1,13 @@
-<?php
-	//two parameters passed from OC pages
-	global $isapage; 
-	global $page_title; 
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta content="<?php custom_meta_description(); ?>" name="description" />
-		<title>
-			<?php
-				//HP
-				if (is_front_page()) { 
-					bloginfo('name'); 
-					echo ' :: '; 
-					bloginfo('description'); 
-					get_page_number(); 
-				} 
-				//single post pages
-				elseif (is_single()) {
-					single_post_title();
-					echo ' :: ';
-					echo get_post_type();
-					echo ' :: ';
-					bloginfo('name');
-				}
-				//pages
-				elseif (is_page()) { 
-					single_post_title();
-					echo ' :: ';
-					bloginfo('name');
-				}
-				//search results
-				elseif (is_search()) {
-					bloginfo('name');
-					echo ' :: Search results for ' . esc_html($s);
-					get_page_number();
-				}
-				//Opencart Pages
-				elseif (is_404() && (isset($isapage))) { 
-					bloginfo('name'); 
-					echo ' :: '; 
-					echo $page_title;
-				}
-				//actual 404s
-				elseif (is_404()) {
-					echo 'Not Found';
-					echo ' :: ';
-					bloginfo('name');
-				}
-				//everything else
-				else {
-					wp_title("",true);  
-					echo ' :: '; 
-					bloginfo('name'); 
-					get_page_number();
-				}
-			?>
-		</title>
+		<meta property="og:title" content="<?php set_the_title(); ?>" name="title" />
+		<meta property="og:site_name" content="<?php echo bloginfo('name'); ?>" />
+		<meta property="og:image" content="<?php get_page_thumbnail(); ?>" />
+		<meta property="og:url" content="<?php the_permalink(); ?>" />
+		<meta property="og:description" content="<?php custom_meta_description(); ?>" name="description" />
+		<title><?php set_the_title(); ?></title>
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0" name="viewport" />
 
 		<!--[if lt IE 9]>
@@ -109,8 +59,8 @@
 			</header>
 			<div class="breadcrumbs container">
 			
-				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.
-
+				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.<br>
+				<?php echo 'session data: '; print_r($_SESSION); ?>
 			</div>
 			
 			

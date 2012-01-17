@@ -251,4 +251,68 @@ function custom_comments( $comment, $args, $depth ) {
 	<?php
 
 }
+function set_the_title() {
+	//two parameters passed from OC pages
+	global $isapage; 
+	global $page_title; 
+	
+	//HP
+	if (is_front_page()) { 
+		bloginfo('name'); 
+		echo ' :: '; 
+		bloginfo('description'); 
+		get_page_number(); 
+	} 
+	//single post pages
+	elseif (is_single()) {
+		single_post_title();
+		echo ' :: ';
+		echo get_post_type();
+		echo ' :: ';
+		bloginfo('name');
+	}
+	//pages
+	elseif (is_page()) { 
+		single_post_title();
+		echo ' :: ';
+		bloginfo('name');
+	}
+	//search results
+	elseif (is_search()) {
+		bloginfo('name');
+		echo ' :: Search results for ' . esc_html($s);
+		get_page_number();
+	}
+	//Opencart Pages
+	elseif (is_404() && (isset($isapage))) { 
+		bloginfo('name'); 
+		echo ' :: '; 
+		echo $page_title;
+	}
+	//actual 404s
+	elseif (is_404()) {
+		echo 'Not Found';
+		echo ' :: ';
+		bloginfo('name');
+	}
+	//everything else
+	else {
+		wp_title("",true);  
+		echo ' :: '; 
+		bloginfo('name'); 
+		get_page_number();
+	}
+}
+
+function get_page_thumbnail() {
+	global $static_subdomain;
+	if(has_post_thumbnail()){
+		$thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+		
+		echo $thumb['0'];
+	} else {
+		echo $static_subdomain.'img/site_logo.png';
+	}
+}
+
 

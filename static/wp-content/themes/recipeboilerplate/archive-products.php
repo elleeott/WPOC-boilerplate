@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="content-container" class="clearfix">
+<div id="content-container" class="products-category clearfix">
 	<div class="container">
 		<section id="main-content" class="main-content-left">
 		

@@ -1,6 +1,12 @@
 		<footer>
 			<div class="container">
-				
+				<?php if(function_exists('get_session_phone')): ?>
+					<div class="phone-number">
+						Call <?php get_session_phone(); ?>!
+					</div>
+				<?php endif;?>
+
+				<!--
 				<div id="search-form"><?php get_search_form(); ?></div>
 				<div id="login-out"><?php wp_loginout(); ?></div>
 				<div id="login-form"><?php wp_login_form(); ?></div>
@@ -30,6 +36,7 @@
 						<li>blogid: <?php echo get_current_blog_id(); ?></li>
 					</ul>
 					<div id="post-type">post type archive title: <?php echo post_type_archive_title(); ?></div>
+				-->
 				</div>
 			</div>			
 		</footer>
