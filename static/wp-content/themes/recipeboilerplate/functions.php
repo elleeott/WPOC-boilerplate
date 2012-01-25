@@ -17,7 +17,7 @@ add_action( 'after_setup_theme', 'theme_setup' );
 //additional image sizes
 add_image_size( 'product-large',900,9999);
 add_image_size( 'product-med',300,9999);
-add_image_size( 'product-thumb',150,9999);
+add_image_size( 'product-thumb',150,200);
 add_image_size( 'recipe-large',400,9999);
 add_image_size( 'recipe-med',300,9999);
 add_image_size( 'recipe-thumb',150,9999);

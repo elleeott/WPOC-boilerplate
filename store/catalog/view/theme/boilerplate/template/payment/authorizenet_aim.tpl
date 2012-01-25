@@ -34,6 +34,7 @@
 </div>
 <script type="text/javascript"><!--
 $('#button-confirm').bind('click', function() {
+
 	$.ajax({
 		type: 'POST',
 		url: 'index.php?route=payment/authorizenet_aim/send',
@@ -41,13 +42,35 @@ $('#button-confirm').bind('click', function() {
 		dataType: 'json',		
 		beforeSend: function() {
 			$('#button-confirm').attr('disabled', true);
-			
+			$('#payment').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
+		},
+		success: function(json) {
+			$('.success, .warning, .attention, .information, .error').remove();
+			if (json['error']) {
+				//alert(json['error']);
+				$('#notification').html('<div class="warning" style="display: none;">' + json['error'] + '</div>');
+				$('.warning').fadeIn('slow');
+				$('#button-confirm').attr('disabled', false);
+			}
+						
+			if (json['success']) {
+				location = json['success'];
+			}
+		}
+	});
+});
+/*	$.ajax({
+		type: 'POST',
+		url: 'index.php?route=payment/authorizenet_aim/send',
+		data: $('#payment :input'),
+		dataType: 'json',		
+		beforeSend: function() {
+			$('#button-confirm').attr('disabled', true);
 			$('#payment').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
 		},
 		success: function(json) {
 			if (json['error']) {
 				alert(json['error']);
-				
 				$('#button-confirm').attr('disabled', false);
 			}
 			
@@ -58,5 +81,6 @@ $('#button-confirm').bind('click', function() {
 			}
 		}
 	});
-});
+});*/
+
 //--></script>

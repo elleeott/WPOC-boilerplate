@@ -25,7 +25,7 @@ $(document).ready(function(){
 	}
 	
 	//product page add to cart
-	$('.products-detail .add-to-cart-form button').click(function(){
+	$('.products-detail .add-to-cart-form a.button').click(function(){
 		//theID=$(this).siblings('input[type=\'hidden\']').val();
 		//theQty=$(this).siblings('input[type=\'text\']').val();
 		$.ajax({

@@ -113,7 +113,8 @@ function get_oc_options() {
 
 	<input type="hidden" name="product_id" value="<?php echo $oc_prod_id; ?>"/>
 	<input type="text" name="quantity" value="1"/>				
-	<button class="button button-primary add-to-cart">add to cart</button>
+	<!--<button class="button button-primary add-to-cart">add to cart</button>-->
+	<a href="#" class="button button-primary add-to-cart">add to cart</a>
 	</fieldset>					
 </form>
 <?php

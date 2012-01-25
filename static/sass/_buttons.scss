@@ -1,4 +1,4 @@
-a.button {
+a.button, button.button {
 	display:inline-block;
 	text-decoration:none;
 	color:#fff;
@@ -9,6 +9,10 @@ a.button {
 	font-size:12px;
 	font-weight:bold;
 	cursor:pointer;
+	border:0 none;
+	font-family:$defaultSansSerif;
+	vertical-align:top;
+	@include transition;
 	@include rounded(3px);
 	//@include shadow;
 	@include NegativeTextShadow(lighten(#000,40%));
@@ -16,7 +20,7 @@ a.button {
 		background:darken($primaryLinkColor,5%);
 	}
 }
-a.button-primary {
+a.button-primary, button.button-primary {
 	background:$primaryLinkColor;
 }
 
