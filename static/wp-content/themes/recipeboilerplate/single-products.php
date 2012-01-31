@@ -8,7 +8,7 @@
 					<div class="hproduct">
 						<div class="product-img">
 							<div class="large-img flexslider">
-								<?php get_custom_gallery(); ?>
+								<?php get_product_gallery(); ?>
 							</div>
 							<?php /*
 							<div class="small-img">
@@ -26,6 +26,18 @@
 						<div class="description">
 							<?php the_content(); ?>
 						</div>
+					</div>
+					<div id="product-tags">
+						<?php 
+						$terms = get_the_terms($post->ID,'product-tags');
+						if($terms){
+							echo '<ul>';
+							foreach($terms as $term) {
+								echo '<li><a href="'.get_term_link($term->slug,'product-tags').'">'.$term->name.'</a></li>';
+							}
+							echo '</ul>';
+						}
+						?>
 					</div>
 				</article>
 				<div class="related-recipes">

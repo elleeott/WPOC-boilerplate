@@ -29,8 +29,8 @@
   <?php } ?>
 </table>
 <?php } ?>
-<b><?php echo $text_comments; ?></b>
-<textarea name="comment" rows="8" style="width: 98%;"><?php echo $comment; ?></textarea>
+<?php echo $text_comments; ?>
+<textarea name="comment" rows="8"><?php echo $comment; ?></textarea>
 <br />
 <br />
 <div class="buttons">

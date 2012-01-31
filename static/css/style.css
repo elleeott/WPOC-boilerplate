@@ -62,10 +62,11 @@ body {
   font-size: 14px; }
 
 a {
-  color: #cc692d; }
+  color: #cc692d;
+  text-decoration: none; }
   a:hover {
     color: #783e1b;
-    text-decoration: none; }
+    text-decoration: underline; }
 
 h1 {
   font-family: "helvetica neue", helvetica, arial, sans-serif;

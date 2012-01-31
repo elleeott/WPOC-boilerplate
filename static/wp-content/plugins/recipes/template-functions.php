@@ -7,9 +7,13 @@ function wrap_amount($atts, $content=NULL){
 add_shortcode('ingredient_amount','wrap_amount');
 
 function wrap_ingredient_name($atts, $content=NULL){
-	//global $post;
 	$terms = get_term_by('name',$content,'ingredients');
-	return '<span class="name"><a href="/ingredients/'.$terms->slug.'">'.$content.'</a></span>';
+	//if ingredient matches ingredient tag, then convert this to link
+	if ($terms) {
+		return '<span class="name"><a href="/ingredients/'.$terms->slug.'">'.$content.'</a></span>';
+	} else {
+		return '<span class="name">'.$content.'</span>';
+	}
 }
 add_shortcode('ingredient_name','wrap_ingredient_name');
 

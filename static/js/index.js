@@ -41,8 +41,8 @@ $(document).ready(function(){
 			$('.option').removeClass('field-error');
 				if (json['error']) {
 					if (json['error']['warning']) {
-						$('#notification').html('<div class="warning" style="display: none;">' + json['error']['warning'] + '</div>');
-						$('.warning').fadeIn('slow');
+						$('#notification').html('<div class="warning container" style="display: none;">' + json['error']['warning'] + '</div>');
+						$('.warning').fadeIn('slow').delay(1000).fadeOut('slow');
 					}
 					
 					for (i in json['error']) {
@@ -51,8 +51,8 @@ $(document).ready(function(){
 					}
 				}	
 				if (json['success']) {
-					$('#notification').html('<div class="success" style="display: none;">' + json['success'] + '</div>');
-					$('.success').fadeIn('slow');
+					$('#notification').html('<div class="success container" style="display: none;">' + json['success'] + '</div>');
+					$('.success').fadeIn('slow').delay(1000).fadeOut('slow');
 					$('#cart_total').html(json['total']);
 				}	
 			}
@@ -62,7 +62,7 @@ $(document).ready(function(){
 	});
 	
 	//category page add to carts
-	$('.products-category .add-to-cart-form button').click(function(){
+	$('.products-category .add-to-cart-form .button').click(function(){
 		product_id = $(this).siblings('input[name=\'product_id\']').val();
 		$.ajax({
 			url: '/store/index.php?route=checkout/cart/update',
@@ -75,20 +75,17 @@ $(document).ready(function(){
 				if (json['redirect']) {
 					location = json['redirect'];
 				}
-				
 				if (json['error']) {
 					if (json['error']['warning']) {
-						$('#notification').html('<div class="warning" style="display: none;">' + json['error']['warning'] + '</div>');
-						$('.warning').fadeIn('slow');
+						$('#notification').html('<div class="warning container" style="display: none;">' + json['error']['warning'] + '</div>');
+						$('.warning').fadeIn('slow').delay(1000).fadeOut('slow');
 						$('html, body').animate({ scrollTop: 0 }, 'slow');
 					}
 				}	 
-							
 				if (json['success']) {
-					$('#notification').html('<div class="success" style="display: none;">' + json['success'] + '</div>');
-					$('.success').fadeIn('slow');
+					$('#notification').html('<div class="success container" style="display: none;">' + json['success'] + '</div>');
+					$('.success').fadeIn('slow').delay(1000).fadeOut('slow');
 					$('#cart_total').html(json['total']);
-					
 				}	
 			}
 		});

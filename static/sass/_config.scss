@@ -80,10 +80,12 @@ body {
 
 a {
 	color:$primaryLinkColor;
+	text-decoration:none;
 	&:hover {
 		color:darken($primaryLinkColor,20%);
-		text-decoration:none;
+		text-decoration:underline;
 	}
+
 }
 
 h1 {

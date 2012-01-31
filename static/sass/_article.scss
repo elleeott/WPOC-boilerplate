@@ -12,4 +12,29 @@ article {
 			line-height:$bodyCopyLineHeight;
 		}
 	}
+	
+	/*** images ***/
+	.wp-caption {
+		max-width:100%;
+	}
+	.aligncenter,.alignleft,.alignright {
+		height:auto;
+		max-width:100%;
+		
+	}
+
+	.aligncenter {
+		clear:both;
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.alignleft {
+		float:left;
+		margin:0 1em 1em 0;
+	}
+	.alignright {
+		float:right;
+		margin:0 0 1em 1em;
+	}
 }

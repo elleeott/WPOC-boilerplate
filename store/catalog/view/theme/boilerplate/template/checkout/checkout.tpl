@@ -55,7 +55,6 @@
 
 
 
-<?php echo $footer; ?>
 
 <script type="text/javascript">
 $('#checkout .checkout-content input[name=\'account\']').live('change', function() {
@@ -971,3 +970,4 @@ $('#button-payment').live('click', function() {
 	});	
 });
 </script> 
+<?php echo $footer; ?>

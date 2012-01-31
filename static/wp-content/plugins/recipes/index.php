@@ -13,7 +13,9 @@ include('recipe-admin.php');
 //template tags - functions for use in themes
 include('template-functions.php');
 
-//template tags - functions for use in themes
+//ratings functionality and widget
 include('recipe-ratings.php');
 
+//ingredients widget
+include('recipe-widgets.php');
 

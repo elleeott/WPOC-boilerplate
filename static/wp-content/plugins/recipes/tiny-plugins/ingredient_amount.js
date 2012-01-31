@@ -1,25 +1,17 @@
-function tiny_plugin() {
-    return "[tiny-plugin]";
-}
- 
 (function() {
-    tinymce.create('tinymce.plugins.ingredients', {
- 
+    tinymce.create('tinymce.plugins.ingredient_amount', {
         init : function(ed, url){
-            ed.addButton('ingredients', {
-            title : 'Insert ingredients',
-                onclick : function() {
-                    ed.execCommand(
-                    'mceInsertContent',
-                    false,
-                    tiny_plugin()
-                    );
-                },
-                image: url + "/wand.png"
+            ed.addButton('ingredient_amount', {
+            title : 'ingredient amount',
+            onclick : function() {
+				var text=ed.selection.getContent({'format':'text'});
+				ed.execCommand('mceInsertContent',false,'[ingredient_amount]' + text + '[/ingredient_amount]');
+            },
+            image: url + "/amt.png"
             });
         }
     });
  
-    tinymce.PluginManager.add('ingredients', tinymce.plugins.ingredients);
+    tinymce.PluginManager.add('ingredient_amount', tinymce.plugins.ingredient_amount);
  
 })();

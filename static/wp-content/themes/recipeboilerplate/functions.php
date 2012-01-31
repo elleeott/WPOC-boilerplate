@@ -7,7 +7,9 @@ if(!empty($_SERVER['HTTPS'])) {
 global $static_subdomain;
 $static_subdomain = $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']);
 
+
 //basic theme support setup
+$content_width = 940;
 function theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-thumbnails' );
@@ -18,12 +20,45 @@ add_action( 'after_setup_theme', 'theme_setup' );
 add_image_size( 'product-large',900,9999);
 add_image_size( 'product-med',300,9999);
 add_image_size( 'product-thumb',150,200);
-add_image_size( 'recipe-large',400,9999);
+add_image_size( 'recipe-large',720,400,true);
 add_image_size( 'recipe-med',300,9999);
 add_image_size( 'recipe-thumb',150,9999);
+add_image_size( 'xtra-large', 900, 9999, false );
 
-// custom gallery code
-function get_custom_gallery() {
+//add new image size to UI
+function additional_image_sizes($sizes) {
+        $addsizes = array(
+                "xtra-large" => __( "Extra Large")
+                );
+        $newsizes = array_merge($sizes, $addsizes);
+        return $newsizes;
+}
+add_filter('image_size_names_choose', 'additional_image_sizes');
+
+
+
+// remove extra inline spacing added by wp-caption
+function fixed_img_caption_shortcode($attr, $content = null) {
+	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
+	if ( $output != '' ) return $output;
+	extract(shortcode_atts(array(
+		'id'=> '',
+		'align'	=> 'alignnone',
+		'width'	=> '',
+		'caption' => ''), $attr));
+	if ( 1 > (int) $width || empty($caption) )
+	return $content;
+	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+	return '<span ' . $id . 'class="wp-caption ' . esc_attr($align) .'" style="width:'.$width.'px;">'
+	. do_shortcode( $content ) . '<p class="wp-caption-text">'
+	. $caption . '</p></span>';
+}
+add_shortcode('wp_caption', 'fixed_img_caption_shortcode');
+add_shortcode('caption', 'fixed_img_caption_shortcode');
+
+
+// custom product gallery code
+function get_product_gallery() {
 	global $post;
 	$featured_img_id = get_post_thumbnail_id($post->ID);
 	$attached_imgs = get_posts(array(
@@ -46,6 +81,32 @@ function get_custom_gallery() {
 	}
 	echo '</ul>';
 }
+
+// custom recipe gallery code
+function get_recipe_gallery() {
+	global $post;
+	$featured_img_id = get_post_thumbnail_id($post->ID);
+	$attached_imgs = get_posts(array(
+		'post_type'=>'attachment',
+		'post_mime_type'=>'image',
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'post_parent'=>$post->ID
+	));
+	echo '<ul class="slides">';
+	foreach($attached_imgs as $attachment) {
+		$recipe_large = wp_get_attachment_image_src($attachment->ID,'recipe-large',true);
+		$recipe_med = wp_get_attachment_image_src($attachment->ID,'recipe-med',true);
+		$recipe_thumb = wp_get_attachment_image_src($attachment->ID,'recipe-small',true);
+		if($attachment->ID == $featured_img_id){
+			echo '<li class="focus-img"><a class="fancybox" href="'.$recipe_large[0].'"><img class="photo" src="'.$recipe_large[0].'" width="'.$recipe_large[1].'" height="'.$recipe_large[2].'"/></a></li>';
+		} else {
+			echo '<li><a class="fancybox" href="'.$recipe_large[0].'"><img src="'.$recipe_large[0].'" width="'.$recipe_large[1].'" height="'.$recipe_large[2].'"/></a></li>';
+		}
+	}
+	echo '</ul>';
+}
+
 
 // Get the page number
 function get_page_number() {
@@ -112,30 +173,63 @@ if (!is_admin()) {
         if(!empty($_SERVER['HTTPS'])) {
             $protocol='https:';
         }
-		//remove l10n js
-		wp_deregister_script( 'l10n' );	
+        
+        if(isset($isapage)) {
+			//remove l10n js
+			wp_deregister_script( 'l10n' );	
+				
+			//reqister protocol relative google cdn jquery
+		    wp_deregister_script( 'jquery' );
+			wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', false, NULL, true);
 			
-		//reqister protocol relative google cdn jquery
-	    wp_deregister_script( 'jquery' );
-		wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', false, NULL, true);
-		
-		// register fancybox
-		wp_register_script('fancybox', $static_subdomain.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL, true);
-		
-		// register flexslider
-		wp_register_script('flexslider', $static_subdomain.'/js/jquery.flexslider-min.js', array('jquery'), NULL, true);
-		
-		// register theme script
-		wp_register_script('site-script', $static_subdomain . autoVer('/static/js/index.js'), array('jquery'), NULL, true);
+			// register fancybox
+			wp_register_script('fancybox', $static_subdomain.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL, true);
+			
+			// register flexslider
+			wp_register_script('flexslider', $static_subdomain.'/js/jquery.flexslider-min.js', array('jquery'), NULL, true);
+			
+			// register theme script
+			wp_register_script('site-script', $static_subdomain . autoVer('/static/js/index.js'), array('jquery'), NULL, true);
+        } else {
+			//remove l10n js
+			wp_deregister_script( 'l10n' );	
+				
+			//reqister protocol relative google cdn jquery
+		    wp_deregister_script( 'jquery' );
+			wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', false, NULL);
+			
+			// register fancybox
+			wp_register_script('fancybox', $static_subdomain.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL);
+			
+			// register flexslider
+			wp_register_script('flexslider', $static_subdomain.'/js/jquery.flexslider-min.js', array('jquery'), NULL);
+			
+			// register theme script
+			wp_register_script('site-script', $static_subdomain . autoVer('/static/js/index.js'), array('jquery'), NULL);        
+        }
 	}
-	function print_scripts() {
+	add_action('init', 'reg_scripts'); 
+
+	function print_scripts_footer() {
 		wp_print_scripts('jquery');	
 		wp_print_scripts('fancybox');	
 		wp_print_scripts('flexslider');	
 		wp_print_scripts('site-script');	
 	}
-	add_action('init', 'reg_scripts'); 
-	add_action('wp_footer', 'print_scripts'); 
+
+	function print_scripts_header() {
+		wp_print_scripts('jquery');	
+		wp_print_scripts('fancybox');	
+		wp_print_scripts('flexslider');	
+		wp_print_scripts('site-script');	
+	}
+	
+	if(isset($isapage)) {
+		add_action('wp_head', 'print_scripts_header'); 				
+	} else {
+		add_action('wp_footer', 'print_scripts_footer'); 	
+	}
+
 }
 
 //enqueue css
@@ -255,6 +349,7 @@ function set_the_title() {
 	//two parameters passed from OC pages
 	global $isapage; 
 	global $page_title; 
+	global $s;
 	
 	//HP
 	if (is_front_page()) { 
@@ -280,7 +375,7 @@ function set_the_title() {
 	//search results
 	elseif (is_search()) {
 		bloginfo('name');
-		echo ' :: Search results for ' . esc_html($s);
+		echo ' :: Search results for "' . esc_html($s) . '"';
 		get_page_number();
 	}
 	//Opencart Pages

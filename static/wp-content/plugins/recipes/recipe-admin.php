@@ -15,21 +15,32 @@ function additional_meta_boxes() {
 add_action('admin_init','additional_meta_boxes');
 
 
+//add custom tinymce button to tag recipe ingredients
+
+function ingredients_register($plugin_array) {
+    $plugin_array['ingredient_name'] = plugins_url('recipes/tiny-plugins/ingredient_name.js');
+    $plugin_array['ingredient_amount'] = plugins_url('recipes/tiny-plugins/ingredient_amount.js');
+    return $plugin_array;
+}
+
+function tiny_addbuttons() {
+	if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ) {
+		return;
+	}
+	if ( get_user_option('rich_editing') == 'true') {
+		add_filter('mce_external_plugins', 'ingredients_register');
+	}
+}
+
+add_action('init', 'tiny_addbuttons');
+
+
 //render the directions field
 function recipe_directions_init($post) {
 ?>
 <style>
-	#recipe-directions, #recipe-ingredients {
-		width:98%;
-		height:10em;
-	}
-	#directions_meta {
-	}
-	#directions_meta .inside {
 
-	}
 	#directions_meta .mceEditor {
-		border:1px solid #ccc;
 		display:block;
 		background:#fff;
 	}
@@ -45,12 +56,12 @@ function recipe_directions_init($post) {
     wp_nonce_field( 'recipe_directions_nonce_action', 'recipe_directions_nonce' ); 
 	$values = get_post_custom($post->ID);
 	if(isset($values['_recipe_directions'])){
-		$directions = esc_attr($values['_recipe_directions'][0]);
+		$directions = html_entity_decode($values['_recipe_directions'][0]);
 	} else {
 		$directions = '';
 	}
 	if(isset($values['_recipe_ingredients'])){
-		$ingredients = esc_attr($values['_recipe_ingredients'][0]);
+		$ingredients = html_entity_decode($values['_recipe_ingredients'][0]);
 	} else {
 		$ingredients = '';
 	}
@@ -84,10 +95,28 @@ function recipe_directions_init($post) {
 	} else {
 		$fat = '';
 	}
-	echo '<p><strong>Ingredients</strong></p>';
-	echo '<div><textarea id="recipe-ingredients" class="mceEditor" name="_recipe_ingredients" cols="40" rows="4">'.$ingredients.'</textarea></div>';
-	echo '<p><strong>Directions</strong></p>';
-	echo '<div><textarea id="recipe-directions" class="mceEditor" name="_recipe_directions" cols="40" rows="4">'.$directions.'</textarea></div>';
+	echo '<strong>Ingredients</strong><br/>';
+	//echo '<div><textarea id="recipe-ingredients" class="mceEditor" name="_recipe_ingredients" cols="40" rows="4">'.$ingredients.'</textarea></div>';
+	$ing_settings = array(
+		'wpautop' => true,
+		'media_buttons' => false,
+		'textarea_name' => '_recipe_ingredients',
+		'tinymce' => array(
+			'theme_advanced_buttons1'=>'undo,redo,bullist,ingredient_amount,ingredient_name,link,unlink'
+		)
+	);
+	wp_editor($ingredients,'recipeingredients',$ing_settings);
+	echo '<p></p><strong>Directions</strong><br/>';
+	//echo '<div><textarea id="recipe-directions" class="mceEditor" name="_recipe_directions" cols="40" rows="4">'.$directions.'</textarea></div>';
+	$dir_settings = array(
+		'wpautop' => true,
+		'media_buttons' => false,
+		'textarea_name' => '_recipe_directions',
+		'tinymce' => array(
+			'theme_advanced_buttons1'=>'numlist,bold,italic,link,unlink,sub,sup,undo,redo'
+		)
+	);
+	wp_editor($directions,'recipedirections',$dir_settings);
 	echo '<div class="additional-meta-fields">';
 	echo '<div><label for="prep-time">Prep Time:</label><input type="text" id="prep-time" name="_prep_time" value="'.$prep_time.'"/></div>';
 	echo '<div><label for="cook-time">Cook Time:</label><input type="text" id="cook-time" name="_cook_time" value="'.$cook_time.'"/></div>';
@@ -162,42 +191,14 @@ function save_recipe_postdata($post_id) {
 	}
 	if(isset($_POST['_recipe_ingredients'])) {
 		update_post_meta($post_id,'_recipe_ingredients',wp_kses($_POST['_recipe_ingredients'],$allowed));
+		
+		//this seems too complicated.  let's just have users manually enter the relevant ingredients 'tags'.
+		/*
 		$pattern = '#\[ingredient_name\](.+)\[\/ingredient_name\]#';
 		preg_match_all($pattern,$_POST['_recipe_ingredients'],$matches);
 		wp_set_post_terms($post_id,$matches[1],'ingredients');
+		*/
+		
 	}
 }
 add_action( 'save_post', 'save_recipe_postdata' );
-
-
-//add visual editor capabilites for recipe directions
-function tinyMCE_directions_editor() {
-
-?>
-<script type="text/javascript">
-	jQuery(document).ready(function(){
-		/*tinyMCE.execCommand("mceAddControl", false, "recipe-directions");
-		tinyMCE.execCommand("mceAddControl", false, "recipe-ingredients");
-		*/
-	});
-</script>
-<?php
-}
-
-add_action('admin_head', 'tinyMCE_directions_editor');
-
-
-//add custom tinymce button to tag recipe ingredients
-function add_ingredient_buttons($buttons) {
-    array_push($buttons,'ingredient_name','ingredient_amount');
-    return $buttons;
-}
-add_filter('mce_buttons', 'add_ingredient_buttons');
-
-function ingredients_register($plugin_array) {
-    $plugin_array['ingredient_name'] = plugins_url('recipes/tiny-plugins/ingredient_name.js');
-    $plugin_array['ingredient_amount'] = plugins_url('recipes/tiny-plugins/ingredient_amount.js');
-    return $plugin_array;
-}
-add_filter('mce_external_plugins', 'ingredients_register');
-

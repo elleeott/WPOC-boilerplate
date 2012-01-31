@@ -26,6 +26,7 @@
 }
 
 #promo-tiles {
+	margin:0 0 20px;
 }
 
 #promo-tiles div{
@@ -36,5 +37,19 @@
 	margin-right:20px;
 }
 #promo-tiles div.last{
+	margin-right:0;
+}
+
+.widgets .widget {
+	width:280px;
+	padding:10px;
+	float:left;
+	margin-right:20px;
+	background:#efefef;
+	height:200px;
+	overflow:auto;
+}
+
+.widgets .widget:nth-child(3n) {
 	margin-right:0;
 }

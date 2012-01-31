@@ -15,6 +15,7 @@ function cart_items() {
 }
 add_action('init', 'cart_items');
 
+
 //this function checks if we have set the $isapage variable, and if so prevents WP from sending a 404
 //required to make wordpress work with OpenCart
 function ssp_status_filter($s) {
@@ -25,6 +26,7 @@ function ssp_status_filter($s) {
 		return $s;
 }
 add_filter('status_header', 'ssp_status_filter');
+
 
 // add product custom post type
 function wp_create_products() {
@@ -47,6 +49,7 @@ function wp_create_products() {
 }
 add_action( 'init', 'wp_create_products' );
 
+
 // create a product category taxonomy for products post type
 function wp_product_categories_init() {
 	register_taxonomy(
@@ -62,6 +65,7 @@ function wp_product_categories_init() {
 	);
 }
 add_action( 'init', 'wp_product_categories_init' );
+
 
 // create n product tags taxonomy for products post type
 function wp_product_tags_init() {

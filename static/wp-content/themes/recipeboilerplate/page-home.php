@@ -32,21 +32,18 @@
 								<img src="<?php echo $static_subdomain; echo autoVer('/static/img/assets/recipe_wings.png'); ?> "/>
 								<a class="button button-primary">get this recipe</a>
 							</li>
-
-
-
 						</ul>
 					</div>
 				</div>
 			</div>
-	<div class="container">	
-			<div id="promo-tiles" class="clearfix">
-				<div></div>
-				<div></div>
-				<div class="last"></div>
+
+			<div class="container widgets">
+				<?php dynamic_sidebar( 'tertiary' ); ?>
 			</div>
 		</section>
-	</div>
 </div><!--end content container -->
 
 <?php get_footer(); ?>
+
+
+

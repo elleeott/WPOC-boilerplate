@@ -1,6 +1,5 @@
 header {
 	nav#full-nav {
-		//display:none;
 		position:absolute;
 		bottom:0;
 		left:0;
@@ -51,16 +50,3 @@ body.post-type-archive-products .menu-item-751,
 	}	
 }
 
-#support-links {
-	font-size:12px;
-	position:absolute;
-	right:0;
-	bottom:60px;
-}
-#cart a{
-	display:block;
-	position:absolute;
-	right:0;
-	background:$secondaryAccentColor;
-	padding:10px 20px;
-}

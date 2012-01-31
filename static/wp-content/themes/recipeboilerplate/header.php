@@ -17,13 +17,13 @@
 		<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="latest posts" />
 		<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="latest comments" />
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+		<?php if(function_exists('insert_ga_code')) insert_ga_code(); ?>
 	</head>
 	<?php if(isset($isapage)): ?>
 		<body class="store">
 		<?php else : ?>
 		<body <?php body_class(); ?>>
 	<?php endif; ?>
-	<?php include_once($_SERVER['DOCUMENT_ROOT'].'/ga_tracking.php'); ?>
 		<div id="outer-container">
 			<header class="main">		
 				<div class="container">
@@ -33,8 +33,9 @@
 						<?php wp_nav_menu(array( 'theme_location' => 'secondary-nav' ) ); ?>
 					</div>
 					<?php if(function_exists('cart_items')) { ?>
-							<div id="cart"><a href="/store/index.php?route=checkout/cart">Shopping Cart (<?php echo cart_items(); ?>)</a></div>
+							<div id="cart"><a href="/store/index.php?route=checkout/cart">Shopping Cart (<span id="cart_total"><?php echo cart_items(); ?></span>)</a></div>
 					<?php } ?>
+					<?php get_search_form(); ?>		
 				</div>	
 				<nav id="full-nav">
 					<div class="container clearfix">
@@ -55,7 +56,7 @@
 						</select>
 						<button type="submit">go</button>
 					</form>
-				</nav>			
+				</nav>	
 			</header>
 			<div class="breadcrumbs container">
 			

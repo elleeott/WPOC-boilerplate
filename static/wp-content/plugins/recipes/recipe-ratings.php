@@ -116,7 +116,7 @@ class Ranked_Recipes_Widget extends WP_Widget {
 					echo '<li>';
 					echo '<a href="'.get_permalink($post->ID).'">'.$post->post_title.'</a> ';
 					echo get_post_meta($post->ID,'_avg_rating',true);
-					echo '</li>';
+					echo ' stars</li>';
 				endif; 
 			endwhile;
 			echo '</ul>';

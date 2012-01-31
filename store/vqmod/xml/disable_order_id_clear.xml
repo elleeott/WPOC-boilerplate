@@ -1,0 +1,18 @@
+<modification>
+	<id>Prevents the success controller from clearing the order_id from user session.  We need this to capture order info for GA.  Session info will be cleared by the GA WP plugin.</id>
+	<version>1</version>
+	<vqmver>1.0</vqmver>
+	<author>Bent Media</author>
+	<email>elliottr@bentmedia.com</email>
+	<website>http://www.bentmedia.com</website>
+	
+	<file name="catalog/controller/checkout/success.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				unset($this->session->data['order_id']);			
+			]]></search>
+			<add><![CDATA[				 
+			]]></add>
+		</operation>
+	</file>
+</modification>

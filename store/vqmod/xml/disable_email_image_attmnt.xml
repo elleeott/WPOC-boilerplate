@@ -1,9 +1,9 @@
 <modification>
-	<id>Override default taxes</id>
+	<id>Prevents an image attachment being attached to email confirmations.</id>
 	<version>1</version>
-	<vqmver>1.0.8</vqmver>
+	<vqmver>1.0</vqmver>
 	<author>Bent Media</author>
-	<email>jon@bentmedia.com</email>
+	<email>elliottr@bentmedia.com</email>
 	<website>http://www.bentmedia.com</website>
 	
 	<file name="catalog/model/checkout/order.php">

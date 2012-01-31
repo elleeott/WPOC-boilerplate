@@ -49,6 +49,7 @@ ErrorDocument 404 /404.php
 	RewriteCond %{QUERY_STRING} !^route=checkout 
 	RewriteCond %{QUERY_STRING} !^route=payment 
 	RewriteCond %{QUERY_STRING} !^route=account
+	RewriteCond %{QUERY_STRING} !^route=total
 	RewriteCond %{REQUEST_URI} !^/wp/
 	RewriteCond %{REQUEST_URI} !^/store/admin/
 	RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

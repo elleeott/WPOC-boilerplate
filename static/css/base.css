@@ -62,10 +62,11 @@ body {
   font-size: 14px; }
 
 a {
-  color: #cc692d; }
+  color: #cc692d;
+  text-decoration: none; }
   a:hover {
     color: #783e1b;
-    text-decoration: none; }
+    text-decoration: underline; }
 
 h1 {
   font-family: "helvetica neue", helvetica, arial, sans-serif;
@@ -142,13 +143,30 @@ article {
   padding: 0 0 20px;
   border-bottom: 1px solid #cccccc;
   margin: 0 0 20px;
-  position: relative; }
+  position: relative;
+  /*** images ***/ }
   article ol {
     margin: 0 0 1em; }
     article ol li {
       list-style-type: decimal;
       margin: 0 0 .5em;
       line-height: 1.5em; }
+  article .wp-caption {
+    max-width: 100%; }
+  article .aligncenter, article .alignleft, article .alignright {
+    height: auto;
+    max-width: 100%; }
+  article .aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  article .alignleft {
+    float: left;
+    margin: 0 1em 1em 0; }
+  article .alignright {
+    float: right;
+    margin: 0 0 1em 1em; }
 
 .nutrition-label {
   width: 220px;
@@ -274,6 +292,14 @@ body.single-products .product-info .field-error {
   width: 150px;
   height: 200px; }
 
+.recipe-cell {
+  width: 300px;
+  float: left;
+  margin: 20px; }
+  .recipe-cell .recipe-img {
+    height: 200px;
+    overflow: hidden; }
+
 .widget {
   margin-bottom: 20px; }
 
@@ -327,9 +353,14 @@ body.single-products .product-info .field-error {
   top: 0;
   left: 0;
   right: 0;
-  background: red;
-  color: #fff;
+  background: #efefef;
+  color: #333;
   z-index: 1000; }
+  #notification .container {
+    padding: 10px 0; }
+  #notification a {
+    color: #333;
+    text-decoration: none; }
 
 /* iphones */
 @media only screen
@@ -407,7 +438,8 @@ and (min-device-width: 768px) {
     background: #000;
     z-index: 100; }
     header.main > .container {
-      height: 200px; }
+      padding: 30px 0 0;
+      height: 120px; }
 
   #content-container {
     padding: 20px 0 60px;
@@ -445,9 +477,12 @@ and (min-device-width: 768px) {
     font-size: 20px;
     position: absolute;
     top: 25px;
-    left: 0;
+    right: 0;
     color: #333333;
     text-align: center; }
+
+  #header-search {
+    color: #fff; }
 
   #hero {
     margin: 0 0 20px;
@@ -472,6 +507,9 @@ and (min-device-width: 768px) {
     top: 80px;
     left: 600px; }
 
+  #promo-tiles {
+    margin: 0 0 20px; }
+
   #promo-tiles div {
     height: 200px;
     background: #ccc;
@@ -480,6 +518,18 @@ and (min-device-width: 768px) {
     margin-right: 20px; }
 
   #promo-tiles div.last {
+    margin-right: 0; }
+
+  .widgets .widget {
+    width: 280px;
+    padding: 10px;
+    float: left;
+    margin-right: 20px;
+    background: #efefef;
+    height: 200px;
+    overflow: auto; }
+
+  .widgets .widget:nth-child(3n) {
     margin-right: 0; }
 
   header nav#full-nav {
@@ -524,19 +574,6 @@ and (min-device-width: 768px) {
       left: 0;
       background: #191919; }
       .menu-primary-nav-container > ul > li > ul > li {
-        width: 200px; }
-
-  #support-links {
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    bottom: 60px; }
-
-  #cart a {
-    display: block;
-    position: absolute;
-    right: 0;
-    background: #cccccc;
-    padding: 10px 20px; } }
+        width: 200px; } }
 html {
   overflow: -moz-scrollbars-vertical; }

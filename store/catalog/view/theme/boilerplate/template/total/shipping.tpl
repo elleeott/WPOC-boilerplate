@@ -73,8 +73,8 @@ $('#button-quote').bind('click', function() {
 			}
 			
 			if (json['shipping_methods']) {
-				html  = '<br />';
-				html += '<table width="100%" cellpadding="3">';
+				html  = '';
+				html += '<table>';
 				
 				for (i in json['shipping_methods']) {
 					html += '<tr>';
@@ -86,13 +86,13 @@ $('#button-quote').bind('click', function() {
 							html += '<tr>';
 							
 							if (json['shipping_methods'][i]['quote'][j]['code'] == $('input[name=\'shipping_method\']').attr('value')) {
-								html += '<td width="1"><input type="radio" name="shipping_method" value="' + json['shipping_methods'][i]['quote'][j]['code'] + '" id="' + json['shipping_methods'][i]['quote'][j]['code'] + '" checked="checked" /></td>';
+								html += '<td><input type="radio" name="shipping_method" value="' + json['shipping_methods'][i]['quote'][j]['code'] + '" id="' + json['shipping_methods'][i]['quote'][j]['code'] + '" checked="checked" /></td>';
 							} else {
-								html += '<td width="1"><input type="radio" name="shipping_method" value="' + json['shipping_methods'][i]['quote'][j]['code'] + '" id="' + json['shipping_methods'][i]['quote'][j]['code'] + '" /></td>';
+								html += '<td><input type="radio" name="shipping_method" value="' + json['shipping_methods'][i]['quote'][j]['code'] + '" id="' + json['shipping_methods'][i]['quote'][j]['code'] + '" /></td>';
 							}
 								
 							html += '  <td><label for="' + json['shipping_methods'][i]['quote'][j]['code'] + '">' + json['shipping_methods'][i]['quote'][j]['title'] + '</label></td>';
-							html += '  <td width="1"><label for="' + json['shipping_methods'][i]['quote'][j]['code'] + '">' + json['shipping_methods'][i]['quote'][j]['text'] + '</label></td>';
+							html += '  <td><label for="' + json['shipping_methods'][i]['quote'][j]['code'] + '">' + json['shipping_methods'][i]['quote'][j]['text'] + '</label></td>';
 							html += '</tr>';
 						}		
 					} else {
@@ -103,7 +103,7 @@ $('#button-quote').bind('click', function() {
 				}
 				
 				html += '</table>';
-				html += '<br /><a id="button-shipping" class="button button-primary"><span><?php echo $button_shipping; ?></span></a>';				
+				html += '<a id="button-shipping" class="button button-primary"><span><?php echo $button_shipping; ?></span></a>';				
 		
 				$('#quote').html(html);	
 			

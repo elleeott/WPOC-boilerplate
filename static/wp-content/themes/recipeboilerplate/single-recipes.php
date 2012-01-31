@@ -21,15 +21,15 @@
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 				<article>
 					<div class="hrecipe">
-						<div class="published"><?php the_time('F j, Y'); ?></div>
 						<div class="recipe-img">
 							<div class="large-img">
-								<?php get_custom_gallery(); ?>
+								<?php get_recipe_gallery(); ?>
 							</div>
 						</div>
 						<div class="item">
 							<h1 class="fn"><?php the_title(); ?></h1>
 						</div>
+						<div class="published"><?php the_time('F j, Y'); ?></div>
 						
 						<div class="review hreview-aggregate">
 							<span class="rating">
@@ -88,6 +88,45 @@
 						</div>
 						<?php the_content(); ?>
 					</div>
+					<div id="recipe-tags">
+						<?php 
+						$terms = get_the_terms($post->ID,'recipe-tags');
+						if($terms){
+							echo '<ul>';
+							foreach($terms as $term) {
+								echo '<li><a href="'.get_term_link($term->slug,'recipe-tags').'">'.$term->name.'</a></li>';
+							}
+							echo '</ul>';
+						}
+						?>
+					</div>
+					<hr>
+					<div id="ingredients">
+						<?php 
+						$terms = get_the_terms($post->ID,'ingredients');
+						if($terms){
+							echo '<ul>';
+							foreach($terms as $term) {
+								echo '<li><a href="'.get_term_link($term->slug,'ingredients').'">'.$term->name.'</a></li>';
+							}
+							echo '</ul>';
+						}
+						?>
+					</div>
+					<hr>
+					<div id="ingredients">
+						<?php 
+						$terms = get_the_terms($post->ID,'recipe-category');
+						if($terms){
+							echo '<ul>';
+							foreach($terms as $term) {
+								echo '<li><a href="'.get_term_link($term->slug,'recipe-category').'">'.$term->name.'</a></li>';
+							}
+							echo '</ul>';
+						}
+						?>
+					</div>
+
 				</article>
 			<?php comments_template('/comments-recipes.php'); ?>
 			<?php endwhile; endif;?>

@@ -3,7 +3,14 @@
 	top:0;
 	left:0;
 	right:0;
-	background:red;
-	color:#fff;
+	background:#efefef;
+	color:#333;
 	z-index:1000;
+	.container {
+		padding:10px 0;
+	}
+	a {
+		color:#333;
+		text-decoration:none;
+	}
 }
