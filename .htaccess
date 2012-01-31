@@ -29,11 +29,13 @@ ErrorDocument 404 /404.php
 	#redirect non-www to www for non-ssl
 	RewriteCond %{HTTPS} off	
 	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond %{HTTP_HOST} !^static\.
 	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
 	#redirect non-www to www for ssl
 	RewriteCond %{HTTPS} on	
 	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond %{HTTP_HOST} !^static\.
 	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 	#force ssl on cart, checkout, account
