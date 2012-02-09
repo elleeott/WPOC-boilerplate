@@ -1,12 +1,4 @@
 <?php
-//create static subdomain
-$protocol='http:';
-if(!empty($_SERVER['HTTPS'])) {
-    $protocol='https:';
-}
-global $static_subdomain;
-$static_subdomain = $protocol.'//static.'.str_replace('www.','',$_SERVER['SERVER_NAME']);
-
 
 //basic theme support setup
 $content_width = 940;
@@ -168,7 +160,6 @@ add_action( 'widgets_init', 'bp_register_sidebars' );
 // http://scribu.net/wordpress/optimal-script-loading.html
 if (!is_admin()) {
 	function reg_scripts() {
-		global $static_subdomain;
         $protocol='http:';
         if(!empty($_SERVER['HTTPS'])) {
             $protocol='https:';
@@ -183,13 +174,13 @@ if (!is_admin()) {
 			wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', false, NULL, true);
 			
 			// register fancybox
-			wp_register_script('fancybox', $static_subdomain.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL, true);
+			wp_register_script('fancybox', STATIC_SUBDIR.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL, true);
 			
 			// register flexslider
-			wp_register_script('flexslider', $static_subdomain.'/js/jquery.flexslider-min.js', array('jquery'), NULL, true);
+			wp_register_script('flexslider', STATIC_SUBDIR.'/js/jquery.flexslider-min.js', array('jquery'), NULL, true);
 			
 			// register theme script
-			wp_register_script('site-script', $static_subdomain . autoVer('/static/js/index.js'), array('jquery'), NULL, true);
+			wp_register_script('site-script', STATIC_SUBDIR . autoVer('/static/js/index.js'), array('jquery'), NULL, true);
         } else {
 			//remove l10n js
 			wp_deregister_script( 'l10n' );	
@@ -199,13 +190,13 @@ if (!is_admin()) {
 			wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', false, NULL);
 			
 			// register fancybox
-			wp_register_script('fancybox', $static_subdomain.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL);
+			wp_register_script('fancybox', STATIC_SUBDIR.'/js/fancybox/jquery.fancybox-1.3.4.pack.js', array('jquery'), NULL);
 			
 			// register flexslider
-			wp_register_script('flexslider', $static_subdomain.'/js/jquery.flexslider-min.js', array('jquery'), NULL);
+			wp_register_script('flexslider', STATIC_SUBDIR.'/js/jquery.flexslider-min.js', array('jquery'), NULL);
 			
 			// register theme script
-			wp_register_script('site-script', $static_subdomain . autoVer('/static/js/index.js'), array('jquery'), NULL);        
+			wp_register_script('site-script', STATIC_SUBDIR . autoVer('/static/js/index.js'), array('jquery'), NULL);        
         }
 	}
 	add_action('init', 'reg_scripts'); 
@@ -223,28 +214,29 @@ if (!is_admin()) {
 		wp_print_scripts('flexslider');	
 		wp_print_scripts('site-script');	
 	}
-	
+	// place js files in the footer on WP pages, in header on OC pages.  OC has inline jquery dependencies that can't be easily moved.
 	if(isset($isapage)) {
 		add_action('wp_head', 'print_scripts_header'); 				
 	} else {
 		add_action('wp_footer', 'print_scripts_footer'); 	
 	}
-
 }
+
+
+
 
 //enqueue css
 if (!is_admin()) {
 	function reg_styles() {
-		global $static_subdomain;
 	    if (is_page_template('fancy-template.php')){
-		    $fancy = $static_subdomain . autoVer('/static/css/fancy.css');
+		    $fancy = STATIC_SUBDIR . autoVer('/static/css/fancy.css');
 			wp_register_style('fancy',$fancy,false,NULL,'screen');
 			wp_enqueue_style('fancy');
 		} else {
-		    $print = $static_subdomain . autoVer('/static/css/print.css');
-		    $base = $static_subdomain . autoVer('/static/css/base.css');
-		    $fancybox = $static_subdomain . autoVer('/static/js/fancybox/jquery.fancybox-1.3.4.css');
-		    $flexslider = $static_subdomain . autoVer('/static/css/flexslider.css');
+		    $print = STATIC_SUBDIR . autoVer('/static/css/print.css');
+		    $base = STATIC_SUBDIR . autoVer('/static/css/base.css');
+		    $fancybox = STATIC_SUBDIR . autoVer('/static/js/fancybox/jquery.fancybox-1.3.4.css');
+		    $flexslider = STATIC_SUBDIR . autoVer('/static/css/flexslider.css');
 			wp_register_style('print',$print,false,NULL,'print');
 			wp_enqueue_style('print');
 			wp_register_style('base',$base,false,NULL,'screen');
@@ -332,14 +324,11 @@ function custom_comments( $comment, $args, $depth ) {
 				<?php }	?>
 
 			<div class="comment-content">
-
-
-			<?php comment_text(); ?>
+				<?php comment_text(); ?>
 			</div>
-
 			<div class="reply">
 				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'twentyeleven' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
+			</div>
 		</article><!-- #comment-## -->
 
 	<?php
@@ -399,15 +388,17 @@ function set_the_title() {
 	}
 }
 
+// page thumbail link for opengraph meta tags in header.php
 function get_page_thumbnail() {
-	global $static_subdomain;
-	if(has_post_thumbnail()){
+	$protocol='http:';
+	if(!empty($_SERVER['HTTPS'])) {
+	    $protocol='https:';
+	}
+	if(is_single() && has_post_thumbnail()) {
 		$thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
-		
-		echo $thumb['0'];
+		echo $protocol.$thumb[0];
 	} else {
-		echo $static_subdomain.'img/site_logo.png';
+		echo STATIC_SUBDIR.'/img/site_logo.png';
 	}
 }
-
 

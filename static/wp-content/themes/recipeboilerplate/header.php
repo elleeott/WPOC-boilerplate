@@ -2,14 +2,13 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0" name="viewport" />
 		<meta property="og:title" content="<?php set_the_title(); ?>" name="title" />
 		<meta property="og:site_name" content="<?php echo bloginfo('name'); ?>" />
 		<meta property="og:image" content="<?php get_page_thumbnail(); ?>" />
-		<meta property="og:url" content="<?php the_permalink(); ?>" />
+		<meta property="og:url" content="<?php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']; ?>" />
 		<meta property="og:description" content="<?php custom_meta_description(); ?>" name="description" />
 		<title><?php set_the_title(); ?></title>
-		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0" name="viewport" />
-
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->

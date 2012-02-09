@@ -5,8 +5,8 @@
 						Call <?php get_session_phone(); ?>!
 					</div>
 				<?php endif;?>
-
-				<!--
+				
+				<?php /*
 				<div id="search-form"><?php get_search_form(); ?></div>
 				<div id="login-out"><?php wp_loginout(); ?></div>
 				<div id="login-form"><?php wp_login_form(); ?></div>
@@ -36,22 +36,22 @@
 						<li>blogid: <?php echo get_current_blog_id(); ?></li>
 					</ul>
 					<div id="post-type">post type archive title: <?php echo post_type_archive_title(); ?></div>
-				-->
+				*/ ?>
 				</div>
 			</div>			
 		</footer>
 		<div id="notification"></div>
 	</div><!-- close outer-container -->
 	<?php wp_footer(); ?>
-<?php /*	
+	
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=274893932564903";
 	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-*/ ?>
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
 	</body>
 </html>

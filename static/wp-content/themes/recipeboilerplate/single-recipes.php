@@ -26,6 +26,7 @@
 								<?php get_recipe_gallery(); ?>
 							</div>
 						</div>
+						<div class="fb-like" data-href="<?php the_permalink();?>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 						<div class="item">
 							<h1 class="fn"><?php the_title(); ?></h1>
 						</div>
@@ -70,13 +71,6 @@
 								<?php get_ingredients();?>
 							</div>
 						<?php endif; ?>
-						<?php /*
-						<ul class="ingredients">
-							<li class="ingredient">Thinly-sliced <span class="name"><a href="#">apples</a></span>: <span class="amount">6 cups</span></li>
-							<li class="ingredient"><span class="name"><a href="#">White sugar</a></span>: <span class="amount">3/4 cup</span></li>
-							<li class="ingredient"><span class="amount">3/4 cup</span> <span class="name"><a href="#">White sugar</a></span></li>
-						</ul>
-						*/ ?>
 						<?php if(get_post_meta($post->ID,'_recipe_directions',true)) : ?>
 						<div class="instructions">
 							<h3>Directions:</h3>
@@ -89,6 +83,7 @@
 						<?php the_content(); ?>
 					</div>
 					<div id="recipe-tags">
+						<h3>recipe tags</h3>
 						<?php 
 						$terms = get_the_terms($post->ID,'recipe-tags');
 						if($terms){
@@ -100,8 +95,8 @@
 						}
 						?>
 					</div>
-					<hr>
 					<div id="ingredients">
+						<h3>recipe ingredients</h3>
 						<?php 
 						$terms = get_the_terms($post->ID,'ingredients');
 						if($terms){
@@ -113,8 +108,8 @@
 						}
 						?>
 					</div>
-					<hr>
-					<div id="ingredients">
+					<div id="recipe-categories">
+						<h3>recipe categories</h3>
 						<?php 
 						$terms = get_the_terms($post->ID,'recipe-category');
 						if($terms){
