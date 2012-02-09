@@ -40,6 +40,7 @@ ErrorDocument 404 /404.php
 
 	#force ssl on cart, checkout, account
 	RewriteCond %{HTTPS} off
+	RewriteCond %{HTTP_HOST} !^static\.
 	RewriteCond %{QUERY_STRING} ^route=checkout [OR]
 	RewriteCond %{QUERY_STRING} ^route=account [OR]
 	RewriteCond %{REQUEST_URI} ^/store/admin/
@@ -48,6 +49,7 @@ ErrorDocument 404 /404.php
 
 	#force non-ssl on all pages but cart and checkout
 	RewriteCond %{HTTPS} on
+	RewriteCond %{HTTP_HOST} !^static\.
 	RewriteCond %{QUERY_STRING} !^route=checkout 
 	RewriteCond %{QUERY_STRING} !^route=payment 
 	RewriteCond %{QUERY_STRING} !^route=account
