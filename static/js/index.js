@@ -65,7 +65,6 @@ $(document).ready(function(){
 	$('.products-category .add-to-cart-form .button').click(function(){
 		product_id = $(this).siblings('input[name=\'product_id\']').val();
 		prodName = $(this).parents('.product-cell').find('h3 a').html();
-		//alert(prodName);
 		$.ajax({
 			url: '/store/index.php?route=checkout/cart/update',
 			type: 'post',
@@ -88,7 +87,6 @@ $(document).ready(function(){
 					$('#notification').html('<div class="success container" style="display: none;">' + json['success'] + '</div>');
 					$('.success').fadeIn('slow').delay(1000).fadeOut('slow');
 					$('#cart_total').html(json['total']);
-					alert(prodName);
 					_gaq.push(['_trackEvent', 'Products', 'Add to Cart',prodName]);
 				}	
 			}
