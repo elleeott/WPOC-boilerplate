@@ -53,7 +53,7 @@ $(document).ready(function(){
 					$('.success').fadeIn('slow').delay(1000).fadeOut('slow');
 					$('#cart_total').html(json['total']);
 					var prodName= $('h1.fn').html();
-					_gaq.push(['_trackEvent', 'Products', 'Add to Cart',prodName);
+					_gaq.push(['_trackEvent', 'Products', 'Add to Cart',prodName]);
 				}	
 			}
 			
