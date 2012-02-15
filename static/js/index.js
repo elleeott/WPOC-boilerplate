@@ -26,8 +26,6 @@ $(document).ready(function(){
 	
 	//product page add to cart
 	$('.products-detail .add-to-cart-form a.button').click(function(){
-		//theID=$(this).siblings('input[type=\'hidden\']').val();
-		//theQty=$(this).siblings('input[type=\'text\']').val();
 		$.ajax({
 			url: '/store/index.php?route=checkout/cart/update',
 			type: 'post',
@@ -54,6 +52,8 @@ $(document).ready(function(){
 					$('#notification').html('<div class="success container" style="display: none;">' + json['success'] + '</div>');
 					$('.success').fadeIn('slow').delay(1000).fadeOut('slow');
 					$('#cart_total').html(json['total']);
+					var prodName= $('h1.fn').html();
+					_gaq.push(['_trackEvent', 'Products', 'Add to Cart',prodName);
 				}	
 			}
 			

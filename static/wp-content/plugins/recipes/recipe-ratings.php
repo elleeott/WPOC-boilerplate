@@ -17,7 +17,7 @@ $custom_comment_fields = array(
 
 //create additional form fields for recipe post types
 function recipe_review_fields($fields) {
-	if(is_singular( 'recipes' )){
+	 if(is_singular('recipes')){ 
 		global $custom_comment_fields;
 		foreach($custom_comment_fields as $custom_comment_fields_key => $custom_comment_fields_html){
 			$fields[$custom_comment_fields_key] = $custom_comment_fields_html;
@@ -30,9 +30,11 @@ add_filter( 'comment_form_default_fields', 'recipe_review_fields' );
 
 //show additional fields for logged in users
 function recipe_review_fields_logged_in($commenter,$user_identity){
-	global $custom_comment_fields;
-	foreach($custom_comment_fields as $recipe_review_fields){
-		echo $recipe_review_fields."\n";
+	if(is_singular('recipes')){ 
+		global $custom_comment_fields;
+		foreach($custom_comment_fields as $recipe_review_fields){
+			echo $recipe_review_fields."\n";
+		}
 	}
 }
 add_action( 'comment_form_logged_in_after', 'recipe_review_fields_logged_in',10,2);

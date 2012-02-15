@@ -123,7 +123,7 @@
 					</div>
 
 				</article>
-			<?php comments_template('/comments-recipes.php'); ?>
+			<?php comments_template(); ?>
 			<?php endwhile; endif;?>
 	
 		</section>

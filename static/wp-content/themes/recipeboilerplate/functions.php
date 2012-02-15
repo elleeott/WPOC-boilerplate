@@ -258,40 +258,19 @@ function autoVer($url){
     return str_replace('static/','',$path['dirname']).'/'.str_replace('.'.$ext, $ver, $path['basename']);
 }
 
-// auto-populate description field using the_excerpt 
-function custom_meta_description(){
-	global $post;
-	if(is_single()){
-		$custom_excerpt = get_the_excerpt();
-		if($custom_excerpt != '') {
-			echo esc_attr($custom_excerpt);
-		}
-	} else {
-		echo 'something something';
-	}
-}
-
-//customize mce buttons
-/*
-function add_mce_buttons($buttons){
-	return array('formatselect','bold','italic','strikethrough','bullist','numlist','sup','sub','blockquote','link','unlink','undo','redo','charmap','fullscreen');
-}
-add_filter("mce_buttons", "add_mce_buttons");
-*/
 
 // custom comments
 function custom_comments( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
-
 	?>
 
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>" class="comment">
 				<div class="comment-author vcard">
 					<?php
-						$avatar_size = 68;
+						$avatar_size = 50;
 						if ( '0' != $comment->comment_parent )
-							$avatar_size = 39;
+							$avatar_size = 50;
 
 						echo get_avatar( $comment, $avatar_size );
 
@@ -388,17 +367,5 @@ function set_the_title() {
 	}
 }
 
-// page thumbail link for opengraph meta tags in header.php
-function get_page_thumbnail() {
-	$protocol='http:';
-	if(!empty($_SERVER['HTTPS'])) {
-	    $protocol='https:';
-	}
-	if(is_single() && has_post_thumbnail()) {
-		$thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
-		echo $protocol.$thumb[0];
-	} else {
-		echo STATIC_SUBDIR.'/img/site_logo.png';
-	}
-}
+
 
