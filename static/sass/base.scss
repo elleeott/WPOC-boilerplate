@@ -1,39 +1,19 @@
-@import "_sass-local.scss";
-@import "_reset.scss";
-@import "_config.scss";
+@import "partials/_sass-local.scss";
+@import "partials/_reset.scss";
+@import "partials/_config.scss";
 
 
-@import "_buttons.scss";
-@import "_footer.scss";
-
-@import "_blog-single.scss";
-@import "_blog-category.scss";
-@import "_products-single.scss";
-@import "_products-category.scss";
-@import "_recipes-single.scss";
-@import "_recipes-category.scss";
-@import "_nutrition-label.scss";
-
-@import "_pagination.scss";
-@import "_sidebar-widgets.scss";
-
-@import "_comments.scss";
-@import "_cart.scss";
-@import "_checkout.scss";
-
-@import "_notifications.scss";
-@import "_ratings.scss";
-
+/*******LAYOUT MEDIA QUERIES ********/
 
 /* iphones */
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px)
 {
-	@import "_layout-mobile.scss";
-	@import "_header-mobile.scss";
-	@import "_home-mobile.scss";
-	@import "_nav-mobile.scss";
+	@import "partials/_layout-mobile.scss";
+	@import "partials/_header-mobile.scss";
+	@import "partials/_home-mobile.scss";
+	@import "partials/_nav-mobile.scss";
 }
 
 /* iphone4 */
@@ -50,12 +30,14 @@ only screen and (min-device-pixel-ratio : 1.5)
 @media only screen
 and (min-device-width: 768px)
 {
-	@import "_layout.scss";
-	@import "_header.scss";
-	@import "_home.scss";
-	@import "_nav.scss";
+	@import "partials/_layout.scss";
+	@import "partials/_header.scss";
+	@import "partials/_home.scss";
+	@import "partials/_nav.scss";
 }
 
+
+/* some default styling */
 html {
 	overflow: -moz-scrollbars-vertical;
 	-webkit-font-smoothing: subpixel-antialiased;
@@ -63,5 +45,60 @@ html {
 
 body {
 	//@include backgroundImage('img/assets/home-hero-background.png',0 0,repeat);
+	background-color:$canvasColor;
+	font-family:$serif1;
+	font-size:$baseFontSize;
 }
+
+a {
+	color:$linkColor1;
+	text-decoration:none;
+	&:hover {
+		color:darken($linkColor1,20%);
+		text-decoration:underline;
+	}
+	&:visited {
+		color:darken($linkColor1,15%);	
+	}
+	&:active {
+		color:darken($linkColor1,10%);	
+	}
+
+}
+
+strong {
+	font-weight:bold;
+}
+
+
+/****  imports  ******/
+
+/* common */
+@import "partials/_buttons.scss";
+@import "partials/_footer.scss";
+@import "partials/_social-elements.scss";
+@import "partials/_pagination.scss";
+@import "partials/_sidebar-widgets.scss";
+@import "partials/_comments.scss";
+@import "partials/_notifications.scss";
+@import "partials/_ratings.scss";
+
+/* blog views */
+@import "partials/_blog-single.scss";
+@import "partials/_blog-category.scss";
+
+/* product views */
+@import "partials/_products-single.scss";
+@import "partials/_products-category.scss";
+
+/* recipe views */
+@import "partials/_recipes-single.scss";
+@import "partials/_recipes-category.scss";
+@import "partials/_nutrition-label.scss";
+
+/* cart/checkout */
+@import "partials/_cart.scss";
+@import "partials/_checkout.scss";
+
+
 

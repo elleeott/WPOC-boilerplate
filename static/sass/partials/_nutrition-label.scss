@@ -1,7 +1,7 @@
 .nutrition-label {
 	width:220px;
 	padding:10px;
-	border:1px solid $tertiaryAccentColor;
+	border:1px solid $accentColor3;
 	font-size:12px;
 	h2 {
 		font-weight:bold;
@@ -12,12 +12,12 @@
 		width:100%;
 	}
 	th, td {
-		border-bottom:1px solid $tertiaryAccentColor;
+		border-bottom:1px solid $accentColor3;
 		padding:3px 0;
 	}
 	thead {
 		th, td {
-			border-bottom:1px solid $tertiaryAccentColor;
+			border-bottom:1px solid $accentColor3;
 			padding:1px 0;
 		}
 	}
@@ -38,20 +38,20 @@
 	}
 	.servings {
 		padding:0 0 3px;
-		border-bottom:10px solid $secondaryAccentColor;		
+		border-bottom:10px solid $accentColor2;		
 	}
 	.protein {
-		border-bottom:10px solid $secondaryAccentColor;		
+		border-bottom:10px solid $accentColor2;		
 	}
 	.calories {
-		border-bottom:3px solid $secondaryAccentColor;
+		border-bottom:3px solid $accentColor2;
 	}
 	td.calories {
 		font-weight:normal;
 	}
 	.footnote {
 		font-size:80%;
-		color:$secondaryTypeColor;
+		color:$fontColor2;
 		border-bottom:0 none;
 	}
 }

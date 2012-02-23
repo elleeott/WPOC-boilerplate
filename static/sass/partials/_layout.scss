@@ -21,6 +21,7 @@ header.main {
 }
 
 #main-content {
+	position:relative;
 	width:620px;	
 }
 .main-content-right {
@@ -45,10 +46,10 @@ header.main {
 
 .sidebar-content {
 
-	@include BoxShadow(5px,5px,0,0,0%,0%,.02);
-	//background-color:$knockOutColor;
-	//color:$secondaryknockOutTypeColor;
-	border:1px solid $secondaryAccentColor;
+	@include boxShadow(5px,5px,0,0,0%,0%,.02);
+	//background-color:$backgroundColor1;
+	//color:$fontColor5;
+	border:1px solid $accentColor2;
 	padding:10px;
 	min-height:500px;
 	font-family:"franklin-gothic-urw-cond";
@@ -58,7 +59,7 @@ header.main {
 		color:#373632;
 	}
 	a {
-		//color:$secondaryknockOutTypeColor;
+		//color:$fontColor5;
 		//@include textShadow($s:0%,$l:0%,$a:1);	
 		font-weight:normal;
 	}

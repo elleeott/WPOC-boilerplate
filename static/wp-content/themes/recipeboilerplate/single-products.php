@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="content-container" class="products-detail clearfix">
+<div id="content-container" class="products-single clearfix">
 	<div class="container">
 		<div id="main-content" class="main-content-left">	
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>

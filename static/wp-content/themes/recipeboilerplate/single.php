@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-<div id="content-container" class="clearfix">
-	<div class="container">
+<div id="content-container" class="blog-single clearfix">
+	<div class="container clearfix">
 		<div id="main-content" class="main-content-left">
 		
 		
@@ -14,7 +14,7 @@
 					<div class="social-elements">
 						<?php get_social_elements(); ?>
 					</div>
-					<div class="date"><?php the_time('F j, Y'); ?></div>
+					<time datetime="<?php the_time('c'); ?>"><?php the_time('F j, Y'); ?></time>
 				
 					<?php the_content(); ?>
 					<p>

@@ -57,20 +57,7 @@ article, aside, figure, footer, header, hgroup, nav, section {
 .clearfix {
   zoom: 1; }
 
-a {
-  color: #cc692d;
-  text-decoration: none; }
-  a:hover {
-    color: #783e1b;
-    text-decoration: underline; }
-  a:visited {
-    color: #8d491f; }
-  a:active {
-    color: #a25324; }
-
-strong {
-  font-weight: bold; }
-
+/************** text mixins ****************/
 article h1 {
   font-size: 1.5em;
   margin: 0 0 1em; }
@@ -78,11 +65,9 @@ article h2 {
   font-size: 1.2em;
   margin: 0 0 1em; }
 article p {
-  margin: 0 0 1em;
-  line-height: 1.5em; }
+  margin: 0 0 1em; }
 article ol {
   margin: 0 0 1em; }
   article ol li {
     list-style-type: decimal;
-    margin: 0 0 .5em;
-    line-height: 1.5em; }
+    margin: 0 0 .5em; }

@@ -1,0 +1,48 @@
+h1 {
+	@include heading1;
+}
+
+h2 {
+	@include heading2;
+
+}
+
+h3 {
+	@include heading3;
+
+}
+
+h4 {
+	@include heading4;
+
+}
+
+h5 {
+	@include heading5;
+
+}
+
+h6 {
+	@include heading6;
+
+}
+
+p {
+	@include copyStyle;
+}
+
+ol {
+	@include numList;
+}
+ul {
+	@include bullList;
+}
+
+blockquote {
+	border-left:3px solid $accentColor2;
+	padding:0 5%;
+	p {
+		font-style:italic;
+		color:$fontColor2;
+	}
+}

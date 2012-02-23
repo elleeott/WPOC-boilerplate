@@ -1,0 +1,36 @@
+	/* wordpress image & caption class hook styling */
+	.wp-caption {
+		max-width:100%;
+		img {
+			display:block;
+			height:auto;
+			max-width:100%;
+		}
+		p{
+			@include captionStyle;
+		}
+	}
+	.aligncenter,.alignleft,.alignright {
+		height:auto;
+		max-width:100%;
+		
+	}
+	
+	.aligncenter {
+		clear:both;
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.alignleft {
+		float:left;
+		margin:0 1em 1em 0;
+	}
+	.alignright {
+		float:right;
+		margin:0 0 1em 1em;
+	}
+	embed {
+		width:100%;
+		height:100%;
+	}

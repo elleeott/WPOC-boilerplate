@@ -10,29 +10,29 @@ a.button, button.button {
 	font-weight:bold;
 	cursor:pointer;
 	border:0 none;
-	font-family:$defaultSansSerif;
+	font-family:$sansSerif1;
 	vertical-align:top;
 	@include transition;
 	@include rounded(3px);
-	@include BoxShadow;
+	@include boxShadow;
 	@include textShadow(lighten(#000,40%));
 	&:hover {
-		background:darken($primaryLinkColor,5%);
+		background:darken($linkColor1,5%);
 	}
 }
 a.button-primary, button.button-primary {
-	background:$primaryLinkColor;
+	background:$linkColor1;
 }
 
 a.button-secondary {
-	background:$tertiaryLinkColor;
+	background:$linkColor3;
 
 }
 a.button-tertiary {
-	background:$tertiaryLinkColor;
+	background:$linkColor3;
 
 }
 
 a.busy {
-	background-color:$tertiaryLinkColor/2;
+	background-color:$linkColor3/2;
 }

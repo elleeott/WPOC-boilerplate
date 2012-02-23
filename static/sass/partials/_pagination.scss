@@ -1,20 +1,20 @@
 .wp-pagenavi {
-	font-family:$defaultSerif;
+	font-family:$serif1;
 	.pages {
 		margin-right:10px;
-		color:$tertiaryTypeColor;
+		color:$fontColor3;
 	}
 	a, .current {
 		padding:5px 10px;
 		margin:0 4px;
 	}
 	.current {
-		border-bottom:2px solid $secondaryAccentColor;
+		border-bottom:2px solid $accentColor2;
 	}
 	a.page {
 		text-decoration:none;
 		&:hover {
-			background:$tertiaryAccentColor;
+			background:$accentColor3;
 		}
 	}
 }

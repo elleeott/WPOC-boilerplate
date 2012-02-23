@@ -407,9 +407,9 @@ function set_the_title() {
 //output social buttons
 function get_social_elements() {
 ?>
-	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-	<div class="fb-like" data-href="<?php the_permalink();?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="false"></div>
-	<a href="http://pinterest.com/pin/create/button/" class="pin-it-button" count-layout="horizontal">Pin It</a>
+	<span class="tweet"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></span>
+	<span class="facebook-like-button"><div class="fb-like" data-href="<?php the_permalink();?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="false"></div></span>
+	<span class="pinterest-pin"><a href="http://pinterest.com/pin/create/button/" class="pin-it-button" count-layout="horizontal">Pin It</a></span>
 <?php
 }
 

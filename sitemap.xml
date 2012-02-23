@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- generator="wordpress/3.3.1" -->
 <!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="3.2.6" -->
-<!-- generated-on="February 16, 2012 2:29 pm" -->
+<!-- generated-on="February 23, 2012 9:20 pm" -->
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
 		<loc>http://www.frictio.dev/</loc>
 		<lastmod>2011-11-30T22:53:17+00:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/testing-the-theme-elements/</loc>
+		<lastmod>2012-02-23T21:19:21+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/products/macbook-pro/</loc>
+		<lastmod>2012-02-23T14:27:38+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/recipes/poppy-cock-salad/</loc>
+		<lastmod>2012-02-16T16:00:35+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/recipes/bourbon-chicken/</loc>
+		<lastmod>2012-02-16T15:06:34+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://www.frictio.dev/recipes/lemony-chicken-piccata-2/</loc>
@@ -14,16 +38,10 @@
 		<priority>0.2</priority>
 	</url>
 	<url>
-		<loc>http://www.frictio.dev/recipes/bourbon-chicken/</loc>
-		<lastmod>2012-01-30T16:48:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.2</priority>
-	</url>
-	<url>
 		<loc>http://www.frictio.dev/recipes/recipe-4/</loc>
 		<lastmod>2012-01-29T22:05:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
-		<priority>0.3</priority>
+		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://www.frictio.dev/recipes/recipe-3/</loc>
@@ -58,12 +76,6 @@
 	<url>
 		<loc>http://www.frictio.dev/post-format-test-image-attached/</loc>
 		<lastmod>2012-01-25T19:24:09+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.2</priority>
-	</url>
-	<url>
-		<loc>http://www.frictio.dev/products/macbook-pro/</loc>
-		<lastmod>2012-01-16T14:22:27+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
 	</url>
@@ -176,19 +188,13 @@
 		<priority>0.6</priority>
 	</url>
 	<url>
-		<loc>http://www.frictio.dev/register/</loc>
-		<lastmod>2012-01-09T16:15:10+00:00</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>0.6</priority>
-	</url>
-	<url>
-		<loc>http://www.frictio.dev/forums/</loc>
-		<lastmod>2012-01-09T16:15:10+00:00</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>0.6</priority>
-	</url>
-	<url>
 		<loc>http://www.frictio.dev/groups/</loc>
+		<lastmod>2012-01-09T16:15:10+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/members/</loc>
 		<lastmod>2012-01-09T16:15:10+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.6</priority>
@@ -200,7 +206,13 @@
 		<priority>0.6</priority>
 	</url>
 	<url>
-		<loc>http://www.frictio.dev/members/</loc>
+		<loc>http://www.frictio.dev/forums/</loc>
+		<lastmod>2012-01-09T16:15:10+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/register/</loc>
 		<lastmod>2012-01-09T16:15:10+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.6</priority>
@@ -266,6 +278,204 @@
 		<priority>0.6</priority>
 	</url>
 	<url>
+		<loc>http://www.frictio.dev/services/graphic-design/</loc>
+		<lastmod>2008-12-07T20:11:18+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/services/web-design/</loc>
+		<lastmod>2008-12-07T20:11:01+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/make-sure-to-view-the-last-post-of-elements/</loc>
+		<lastmod>2008-12-01T22:51:31+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-is-just-going-to-be-another-test-post/</loc>
+		<lastmod>2008-12-01T22:51:05+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/keeping-the-title-length-equal-for-home/</loc>
+		<lastmod>2008-12-01T22:50:25+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-would-be-yet-another-testing-post/</loc>
+		<lastmod>2008-12-01T22:49:56+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/another-one-to-fill-space/</loc>
+		<lastmod>2008-12-01T22:49:31+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/just-another-test-post/</loc>
+		<lastmod>2008-12-01T22:49:08+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/testing-a-whole-lot-of-body-content/</loc>
+		<lastmod>2008-12-01T22:48:07+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-is-going-to-be-a-decent-length-title-with-little-text/</loc>
+		<lastmod>2008-12-01T22:47:07+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/another-short-one/</loc>
+		<lastmod>2008-12-01T22:45:51+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/custom-fields-included/</loc>
+		<lastmod>2008-12-01T22:45:09+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/here-is-another-test-to-see-how-content-will-act/</loc>
+		<lastmod>2008-12-01T22:44:44+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/testing-this-is-just-a-test/</loc>
+		<lastmod>2008-12-01T22:44:21+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-is-a-really-long-title-for-testing-purposes-even-longer-than-that-and-that/</loc>
+		<lastmod>2008-12-01T22:43:07+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/tags-and-images-for-each-post/</loc>
+		<lastmod>2008-12-01T22:42:28+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/testing-this-theme-with-more-posts/</loc>
+		<lastmod>2008-12-01T22:41:40+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-would-be-another-test/</loc>
+		<lastmod>2008-12-01T22:32:19+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/one-about-the-movie-scene/</loc>
+		<lastmod>2008-12-01T22:31:04+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-is-any-entertainment-post/</loc>
+		<lastmod>2008-12-01T22:30:43+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-would-be-some-breaking-news-story/</loc>
+		<lastmod>2008-12-01T22:30:25+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-is-one-of-many/</loc>
+		<lastmod>2008-12-01T22:29:55+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/news-update-take-our-poll/</loc>
+		<lastmod>2008-12-01T22:28:57+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/another-of-many-test-posts/</loc>
+		<lastmod>2008-12-01T22:28:29+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/testing-another-post-with-a-much-longer-than-normal-title/</loc>
+		<lastmod>2008-12-01T22:27:54+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-would-be-another-test-post/</loc>
+		<lastmod>2008-12-01T22:25:40+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/news-update-site-news/</loc>
+		<lastmod>2008-12-01T22:25:05+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/short-title/</loc>
+		<lastmod>2008-12-01T22:24:28+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/testing-posts-with-longer-than-normal-titles/</loc>
+		<lastmod>2008-12-01T22:23:54+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/this-is-the-second-test-post/</loc>
+		<lastmod>2008-12-01T22:22:48+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/contact/</loc>
+		<lastmod>2008-12-01T22:19:24+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/services/</loc>
+		<lastmod>2008-12-01T22:19:10+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/about-2/</loc>
+		<lastmod>2008-12-01T22:18:56+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
 		<loc>http://www.frictio.dev/readability-test/</loc>
 		<lastmod>2008-09-05T07:27:25+00:00</lastmod>
 		<changefreq>monthly</changefreq>
@@ -310,6 +520,12 @@
 	<url>
 		<loc>http://www.frictio.dev/post-format-test-status/</loc>
 		<lastmod>2008-06-04T15:21:24+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>http://www.frictio.dev/hello-world-2/</loc>
+		<lastmod>2008-06-04T03:22:56+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.2</priority>
 	</url>
@@ -359,7 +575,7 @@
 		<loc>http://www.frictio.dev/comment-test/</loc>
 		<lastmod>2008-03-03T17:11:37+00:00</lastmod>
 		<changefreq>monthly</changefreq>
-		<priority>0.4</priority>
+		<priority>0.3</priority>
 	</url>
 	<url>
 		<loc>http://www.frictio.dev/comments-disabled/</loc>

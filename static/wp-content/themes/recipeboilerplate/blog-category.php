@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="content-container" class="clearfix">
+<div id="content-container" class="blog-category clearfix">
 <div class="container">
 	<div id="main-content" class="main-content-left">
 		<hgroup>
@@ -7,7 +7,7 @@
 		</hgroup>
 		<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 		<article>
-			<?php the_time('F j, Y'); ?>
+			<time datetime="<?php the_time('c'); ?>"><?php the_time('F j, Y'); ?></time>
 			<h1>
 				<a href="<?php the_permalink(); ?>">
 					<?php the_title(); ?>

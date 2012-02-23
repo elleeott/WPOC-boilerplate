@@ -1,21 +1,6 @@
 <?php get_header(); ?>
-<style>
-	dl {
-		margin:20px 0;
-	}
-	dt {
-		clear:left;
-		float:left;
-		width:150px;
-		font-weight:bold;
-	}
-	dd {
-		width:220px;
-		float:left;
-		margin-left:10px;
-	}
-</style>
-<div id="content-container" class="clearfix">
+
+<div id="content-container" class="recipe-single clearfix">
 	<div class="container">
 		<div id="main-content" class="main-content-left">
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
@@ -26,13 +11,13 @@
 								<?php get_recipe_gallery(); ?>
 							</div>
 						</div>
-						<div class="social-elements">
+						<div class="social-elements clearfix">
 							<?php get_social_elements(); ?>
 						</div>
 						<div class="item">
 							<h1 class="fn"><?php the_title(); ?></h1>
 						</div>
-						<div class="published"><?php the_time('F j, Y'); ?></div>
+							<time datetime="<?php the_time('c'); ?>"><?php the_time('F j, Y'); ?></time>
 						
 						<div class="summary">
 							<?php the_excerpt(); ?>

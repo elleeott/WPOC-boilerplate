@@ -1,7 +1,6 @@
-@import "_reset.scss";
-@import "_config.scss";
+@import "partials/_reset.scss";
+@import "partials/_config.scss";
 article {
-
 	
 	h1 {
 		font-size:1.5em;
@@ -13,14 +12,12 @@ article {
 	}
 	p {
 		margin:0 0 1em;
-		line-height:$bodyCopyLineHeight;
 	}
 	ol {
 		margin:0 0 1em;
 		li {
 			list-style-type:decimal;
 			margin:0 0 .5em;
-			line-height:$bodyCopyLineHeight;
 		}
 	}
 }

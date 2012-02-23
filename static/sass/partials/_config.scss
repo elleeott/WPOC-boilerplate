@@ -1,0 +1,188 @@
+//color
+
+$canvasColor:#fff;
+
+$fontColor1:#333;
+$fontColor2:#666;
+$fontColor3:#999;
+
+$linkColor1:#cc692d;
+$linkColor2:#666;
+$linkColor3:#999;
+$fontColor4:#fff;
+$fontColor5:#ccc;
+$fontColor6:#777;
+
+$errorColor:red;
+$warningColor:blue;
+
+
+$backgroundColor1:#333;
+$accentColor1:#666;
+$accentColor2:#ccc;
+$accentColor3:#efefef;
+
+//type
+
+$serif1:georgia,serif;
+$sansSerif1:'helvetica neue',helvetica,arial, sans-serif;
+$baseFontSize:14px;
+$baseLineHeight: 1.5em;
+
+//units
+$unit1:1px;
+$unit2:2px;
+$unit3:3px;
+$unit5:5px;
+$unit10:10px;
+
+//mixins
+
+@mixin errorText {
+	color:red;
+}
+@mixin knockoutError {
+	color:#fff;
+	background:red;
+}
+
+@mixin rounded($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-khtml-border-radius: $radius;
+	border-radius: $radius;
+
+}
+@mixin boxShadow($x:0px, $y:1px, $blur:3px, $h:0, $s:0%, $l:0%, $a:.1) {
+	-webkit-box-shadow: $x $y $blur hsla($h,$s,$l,$a);
+	   -moz-box-shadow: $x $y $blur hsla($h,$s,$l,$a);
+	       -box-shadow: $x $y $blur hsla($h,$s,$l,$a);
+}
+
+@mixin textShadow($x:0px, $y:-1px, $blur:0px, $h:0, $s:100%, $l:100%, $a:.7) {
+	text-shadow:$x $y $blur hsla($h,$s,$l,$a);
+}
+
+@mixin transition {
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+
+@mixin backgroundImage($path, $position:0 0, $repeat:no-repeat) {
+	background: {
+		image:file_url($staticFilePath,$staticHost,$path);
+		position:$position;
+		repeat:$repeat;
+	}	
+}
+
+@mixin textInputs {
+	padding:3px;
+	font-family:$sansSerif1;
+	font-size:12px;
+	color:$fontColor2;
+}
+
+
+
+
+
+/************** text mixins ****************/
+
+@mixin heading1($fontSize:($baseFontSize * 2)) {
+	font-size:$fontSize;
+	line-height:1em;
+	margin:0 0 1em;
+	font-family:$sansSerif1;
+}
+
+@mixin heading2($fontSize:($baseFontSize * 1.7 )) {
+	font-size:$fontSize;
+	line-height:1em;
+	margin:0 0 .5em;
+	font-family:$serif1;
+}
+
+@mixin heading3($fontSize:($baseFontSize * 1.4)) {
+	font-size:$fontSize;
+	line-height:1em;
+	margin:0 0 1em;
+	font-family:$serif1;
+	font-style:italic;
+}
+@mixin heading4($fontSize:($baseFontSize * 1.2)) {
+	font-size:$fontSize;
+	line-height:1em;
+	margin:0 0 1em;
+	font-family:$sansSerif1;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+@mixin heading5($fontSize:($baseFontSize * 1.2)) {
+	font-size:$fontSize;
+	line-height:1em;
+	margin:0 0 1em;
+	font-weight:bold;
+}
+@mixin heading6($fontSize:$baseFontSize) {
+	font-size:$fontSize;
+	line-height:1em;
+	margin:0 0 1em;
+	font-weight:bold;
+}
+
+
+@mixin copyStyle($fontSize:$baseFontSize) {
+	font-size:$fontSize;
+	font-family:$serif1;
+	line-height:$fontSize*1.5;
+	margin:1em 0;
+}
+
+@mixin captionStyle($fontSize:$baseFontSize*.857) {
+	font-size:$fontSize;
+	font-family:$sansSerif1;
+	line-height:($fontSize*1.4);
+	margin:.5em 0 0;
+	color:$fontColor2;
+}
+
+@mixin bullList {
+	list-style-type:disc;
+	margin:1.5em;
+	li {
+		margin:0 0 .5em;
+		line-height:($baseLineHeight);
+	}
+	
+}
+
+@mixin numList {
+	list-style-type:decimal;
+	margin:1.5em;
+	li {
+		margin:0 0 .5em;
+		line-height:($baseLineHeight);
+	}
+	
+}
+
+@mixin formInputError {
+	border: 1px solid $errorColor;
+}
+
+
+
+
+
+
+
+
+
+
+
+

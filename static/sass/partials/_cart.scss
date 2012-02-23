@@ -9,11 +9,11 @@
 		}
 		td {
 			vertical-align: top;
-			border-bottom:1px solid $secondaryAccentColor;
+			border-bottom:1px solid $accentColor2;
 		}
 		thead td {
-			color:$secondaryTypeColor;
-			border-bottom:3px solid $secondaryAccentColor;
+			color:$fontColor2;
+			border-bottom:3px solid $accentColor2;
 		}
 		td.price,td.total {
 			text-align:right;
@@ -35,13 +35,13 @@
 			width:80px;
 		}
 		tbody td.image img {
-			//border:1px solid $secondaryAccentColor;
+			//border:1px solid $accentColor2;
 		}
 	}
 	
 	.cart-total {
-		border-top:1px solid $secondaryAccentColor;
-		border-bottom:1px solid $secondaryAccentColor;
+		border-top:1px solid $accentColor2;
+		border-bottom:1px solid $accentColor2;
 		margin:0 0 20px;
 		table {
 			float:right;
