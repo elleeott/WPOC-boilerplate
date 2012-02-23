@@ -92,7 +92,7 @@ function nutr_label_generate($args) {
 					<th colspan="2">Serving Size: '.$nutr_servingsize.'</td>
 				</tr>
 				<tr>
-					<th class="servings" cospan="2">Servings Per Container: '.$nutr_servings.'</th>
+					<th class="servings" cospan="2">Number of Servings: '.$nutr_servings.'</th>
 				</tr>
 			</thead>
 		</table>
@@ -112,7 +112,7 @@ function nutr_label_generate($args) {
 		<table>
 			<tbody>
 				<tr>
-					<th><strong>Total Fat</strong> '.$nutr_calories.'</th>
+					<th><strong>Total Fat</strong> '.$nutr_totalfat.'</th>
 					<td>'.nutr_percentage($nutr_totalfat, $rda['totalfat']).'%</td>
 				</tr>
 				<tr>

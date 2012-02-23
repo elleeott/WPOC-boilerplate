@@ -83,7 +83,7 @@ $(document).ready(function() {
 			if (json['output']) {		
 				$('#checkout .checkout-content').html(json['output']);
 				$('#checkout .checkout-content').slideDown('slow');
-				_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Register or Guest Checkout']);
+				_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step1: Checkout Options']);
 			}
 		}
 	});	
@@ -101,7 +101,7 @@ $(document).ready(function() {
 			if (json['output']) {
 				$('#payment-address .checkout-content').html(json['output']);
 				$('#payment-address .checkout-content').slideDown('slow');
-				_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Payment Address']);
+				_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step2: Billing Details']);
 			}
 		}
 	});	
@@ -138,7 +138,7 @@ $('#button-account').live('click', function() {
 				$('.checkout-heading a').remove();
 				
 				$('#checkout .checkout-heading').append('<a><?php echo $text_modify; ?></a>');
-				_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Payment Address']);
+				_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step2: Billing Details']);
 			}
 		}
 	});
@@ -197,7 +197,7 @@ $('#button-login').live('click', function() {
 							$('#payment-address .checkout-heading span').html('<?php echo $text_checkout_payment_address; ?>');
 							
 							$('.checkout-heading a').remove();
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Payment Address']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step2: Billing Details']);
 						}
 					}
 				});	
@@ -298,7 +298,7 @@ $('#button-register').live('click', function() {
 								$('#payment-address .checkout-content').slideUp('slow');
 								
 								$('#shipping-method .checkout-content').slideDown('slow');
-								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Shipping Method']);
+								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step4: Shipping Method']);
 								
 								$('#checkout .checkout-heading a').remove();
 								$('#payment-address .checkout-heading a').remove();
@@ -348,7 +348,7 @@ $('#button-register').live('click', function() {
 								$('#payment-method .checkout-heading a').remove();							
 
 								$('#payment-address .checkout-heading').append('<a><?php echo $text_modify; ?></a>');	
-								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Shipping Address']);
+								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step3: Shipping Address']);
 							}
 						}
 					});			
@@ -374,7 +374,7 @@ $('#button-register').live('click', function() {
 							$('#payment-method .checkout-heading a').remove();								
 							
 							$('#payment-address .checkout-heading').append('<a><?php echo $text_modify; ?></a>');	
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Payment Method']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step5: Payment Method']);
 						}
 					}
 				});					
@@ -470,7 +470,7 @@ $('#payment-address #button-address').live('click', function() {
 							$('#payment-address .checkout-content').slideUp('slow');
 							
 							$('#shipping-address .checkout-content').slideDown('slow');
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Shipping Address']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step3: Shipping Address']);
 							
 							$('#payment-address .checkout-heading a').remove();
 							$('#shipping-address .checkout-heading a').remove();
@@ -496,7 +496,7 @@ $('#payment-address #button-address').live('click', function() {
 							$('#payment-address .checkout-content').slideUp('slow');
 							
 							$('#payment-method .checkout-content').slideDown('slow');
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Payment Method']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step5: Payment Method']);
 							
 							$('#payment-address .checkout-heading a').remove();
 							$('#payment-method .checkout-heading a').remove();
@@ -598,7 +598,7 @@ $('#shipping-address #button-address').live('click', function() {
 							$('#shipping-address .checkout-content').slideUp('slow');
 							
 							$('#shipping-method .checkout-content').slideDown('slow');
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Shipping Method']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step4: Shipping Method']);
 							
 							$('#shipping-address .checkout-heading a').remove();
 							$('#shipping-method .checkout-heading a').remove();
@@ -704,7 +704,7 @@ $('#button-guest').live('click', function() {
 								$('#payment-address .checkout-content').slideUp('slow');
 								
 								$('#shipping-method .checkout-content').slideDown('slow');
-								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Shipping Method']);
+								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step4: Shipping Method']);
 								
 								$('#payment-address .checkout-heading a').remove();
 								$('#shipping-address .checkout-heading a').remove();
@@ -745,7 +745,7 @@ $('#button-guest').live('click', function() {
 								$('#payment-address .checkout-content').slideUp('slow');
 								
 								$('#shipping-address .checkout-content').slideDown('slow');
-								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Shipping Address']);
+								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step3: Shipping Address']);
 								
 								$('#payment-address .checkout-heading a').remove();
 								$('#shipping-address .checkout-heading a').remove();
@@ -772,7 +772,7 @@ $('#button-guest').live('click', function() {
 							$('#payment-address .checkout-content').slideUp('slow');
 								
 							$('#payment-method .checkout-content').slideDown('slow');
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Payment Address']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step2: Billing Details']);
 								
 							$('#payment-address .checkout-heading a').remove();
 							$('#payment-method .checkout-heading a').remove();
@@ -852,7 +852,7 @@ $('#button-guest-shipping').live('click', function() {
 							$('#shipping-address .checkout-content').slideUp('slow');
 							
 							$('#shipping-method .checkout-content').slideDown('slow');
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Shipping Method']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step4: Shipping Method']);
 							
 							$('#shipping-address .checkout-heading a').remove();
 							$('#shipping-method .checkout-heading a').remove();
@@ -909,7 +909,7 @@ $('#button-shipping').live('click', function() {
 							$('#shipping-method .checkout-content').slideUp('slow');
 							
 							$('#payment-method .checkout-content').slideDown('slow');
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Payment Method']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step5: Payment Method']);
 
 							$('#shipping-method .checkout-heading a').remove();
 							$('#payment-method .checkout-heading a').remove();
@@ -968,7 +968,7 @@ $('#button-payment').live('click', function() {
 							$('#payment-method .checkout-content').slideUp('slow');
 							
 							$('#confirm .checkout-content').slideDown('slow');
-							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Confirm']);
+							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step6: Confirm Order']);
 							
 							$('#payment-method .checkout-heading a').remove();
 							

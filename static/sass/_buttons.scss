@@ -14,8 +14,8 @@ a.button, button.button {
 	vertical-align:top;
 	@include transition;
 	@include rounded(3px);
-	//@include shadow;
-	@include NegativeTextShadow(lighten(#000,40%));
+	@include BoxShadow;
+	@include textShadow(lighten(#000,40%));
 	&:hover {
 		background:darken($primaryLinkColor,5%);
 	}

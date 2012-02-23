@@ -14,7 +14,7 @@ function wp_create_recipes() {
 			'has_archive' => true,
 			'menu_position' => 5, 
         	'rewrite' => array('slug' => 'recipes'),
-		    'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats'),        	
+		    'supports' => array( 'title', /*'editor',*/ 'author', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats'),        	
 		)
 	);
 }

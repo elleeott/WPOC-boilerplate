@@ -19,7 +19,9 @@ function sfc_media_handler($og, $post) {
 
 	// video handling
 	$vids = sfc_media_find_video($post, $content);
-	$og = array_merge($og,$vids);
+
+	if ( !empty($vids) ) 
+		$og = array_merge($og,$vids);
 	
 	// image handling
 	$images = sfc_media_find_images($post, $content);
@@ -117,8 +119,8 @@ function sfc_media_find_video($post, $content='') {
 			if ( preg_match('@http://[^/]*?youtube\.com/embed/([^?&#]+)@i', $embed['src'], $matches ) ) {	
 				// this is what youtube's own opengraph data looks like
 				$og['og:video'] = 'http://www.youtube.com/v/'.$matches[1].'?version=3&amp;autohide=1';
-				$og['og:video:height'] = 398;
-				$og['og:video:width'] = 224;
+				$og['og:video:height'] = 224;
+				$og['og:video:width'] = 398;
 				$og['og:video:type'] = "application/x-shockwave-flash";
 				$og['og:image'][] = "http://img.youtube.com/vi/{$matches[1]}/0.jpg";
 			} 
@@ -129,8 +131,8 @@ function sfc_media_find_video($post, $content='') {
 			if ( preg_match('@http://[^/]*?vimeo\.com/video/([^?&#]+)@i', $embed['src'], $matches ) ) {	
 				// this is what vimeo's own opengraph data looks like
 				$og['og:video'] = 'http://vimeo.com/moogaloop.swf?clip_id='.$matches[1];
-				$og['og:video:height'] = 640;
-				$og['og:video:width'] = 360;
+				$og['og:video:height'] = 360;
+				$og['og:video:width'] = 640;
 				$og['og:video:type'] = "application/x-shockwave-flash";
 
 				$resp = wp_remote_get("http://vimeo.com/api/v2/video/{$matches[1]}.json");
@@ -153,8 +155,8 @@ function sfc_media_find_video($post, $content='') {
 			if ( preg_match('@http://[^/]*?dailymotion\.com/embed/video/([^?&#]+)@i', $embed['src'], $matches ) ) {	
 				// this is what dailymotion's own opengraph data looks like
 				$og['og:video'] = 'http://www.dailymotion.com/swf/video/'.$matches[1].'?autoPlay=1';
-				$og['og:video:height'] = 1280;
-				$og['og:video:width'] = 720;
+				$og['og:video:height'] = 720;
+				$og['og:video:width'] = 1280;
 				$og['og:video:type'] = "application/x-shockwave-flash";
 				
 				$resp = wp_remote_get("https://api.dailymotion.com/video/{$matches[1]}?fields=thumbnail_large_url", array('sslverify'=>false));
@@ -227,7 +229,7 @@ function sfc_media_find_video($post, $content='') {
 	else
 	
 	// TODO: This is crap and it rarely works. Think harder.
-	
+	/*
 	// look for an embed to add with video_src (simple, just add first embed)
 	if ( preg_match('/<embed\s+(.+?)>/i', $content, $matches) ) {
 		foreach ( wp_kses_hair($matches[1], array('http')) as $attr) 
@@ -249,8 +251,22 @@ function sfc_media_find_video($post, $content='') {
 		if ( isset($embed['width']) ) $og['og:video:width'] = $embed['width'];
 		if ( isset($embed['type']) ) $og['og:video:type'] = $embed['type'];
 	}
+*/
 
+/*
+Veoh embed example for potential future use
 
+<object width="410" height="341" id="veohFlashPlayer" name="veohFlashPlayer">
+<param name="movie" value="http://www.veoh.com/swf/webplayer/WebPlayer.swf?version=AFrontend.5.7.0.1311&permalinkId=v25812263H4aE9RgT&player=videodetailsembedded&videoAutoPlay=0&id=anonymous"></param>
+<param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+<embed src="http://www.veoh.com/swf/webplayer/WebPlayer.swf?version=AFrontend.5.7.0.1311&permalinkId=v25812263H4aE9RgT&player=videodetailsembedded&videoAutoPlay=0&id=anonymous" 
+type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" 
+width="410" height="341" id="veohFlashPlayerEmbed" name="veohFlashPlayerEmbed"></embed>
+</object>
+<br /><font size="1">Watch <a href="http://www.veoh.com/watch/v25812263H4aE9RgT">
+Dagli Brugsen Glud-Nørby opføres.</a> in <a href="http://www.veoh.com/browse/videos/category/entertainment">
+Entertainment</a>  |  View More <a href="http://www.veoh.com">Free Videos Online at Veoh.com</a></font>
+*/
 	return $og;
 }
 

@@ -5,8 +5,14 @@
 						Call <?php get_session_phone(); ?>!
 					</div>
 				<?php endif;?>
-				
-				<?php /*
+				<div class="social-elements">
+					<?php get_social_elements(); ?>
+				</div>
+				<a href="https://twitter.com/elleeott" class="twitter-follow-button" data-show-count="false">Follow @elleeott</a>
+
+
+
+<?php /*
 				<div id="search-form"><?php get_search_form(); ?></div>
 				<div id="login-out"><?php wp_loginout(); ?></div>
 				<div id="login-form"><?php wp_login_form(); ?></div>

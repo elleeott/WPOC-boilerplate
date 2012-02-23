@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%
 Tags: facebook, connect, simple, otto, otto42, javascript, comments, share, status
 Requires at least: 3.3
 Tested up to: 3.3
-Stable Tag: 1.2
+Stable Tag: 1.3
 
 == Description ==
 
@@ -13,6 +13,8 @@ Simple Facebook Connect is a framework and series of sub-systems that let you ad
 After activating the plugin and setting up a Facebook Application for your site, you can enable individual pieces of functionality to let you integrate your site in various ways.
 
 The plugin is also a developer framework for both the Graph API and the Facebook Javascript SDK, allowing you to make other custom plugins or theme modifications with much less code. The basics of Facebook integration are already handled by the core plugin, so just a few function calls can be made to contact Facebook systems and connect with them in various ways.
+
+Requires WordPress 3.0 and PHP 5. 
 
 * Enables your site to connect to Facebook with JS SDK
 * Implements OpenGraph tags, entirely automatically
@@ -35,7 +37,7 @@ If you have suggestions for a new add-on, feel free to email me at otto@ottodest
 
 Want regular updates? Become a fan of my sites on Facebook!
 http://www.facebook.com/ottopress
-https://www.facebook.com/pages/Nothing-to-See-Here/241409175928000
+http://www.facebook.com/apps/application.php?id=116002660893
 
 Or follow my sites on Twitter!
 http://twitter.com/ottodestruct
@@ -143,10 +145,25 @@ The Login module can optionally make the system use Facebook avatars instead of 
 
 == Upgrade Notice ==
 
+= 1.3 =
+* This version removes support for posting to Facebook Application Profile Walls, since FB is removing them.
+* This is an interim release, to get SFC to work now for many users having problems with 1.2. Another release will be made soon to handle FB's deprecation of offline_access. This version still requires offline_access to function fully.
+
 = 1.2 = 
 * This version REQUIRES WordPress 3.3. If you have not yet updated to WordPress 3.3, DO NOT UPGRADE THIS PLUGIN. This plugin will not work with WordPress 3.2.
 
 == Changelog ==
+
+= 1.3 =
+* Dump application wall publishing support.
+* Move help info into separate file
+* Fix image handling when auto or manually publishing some videos
+* Yet another logout issue. FB sure makes it hard to disconnect from them when you want to do so.
+* Minor improvements to photo module.
+* Minor bugfixes.
+* Height/width fix for video support
+* Better manual excerpt handling
+* Fix problem relating to FB's new access token requirements
 
 = 1.2 =
 * Lots of minor bugfixes

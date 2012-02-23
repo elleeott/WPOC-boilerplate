@@ -57,40 +57,19 @@ article, aside, figure, footer, header, hgroup, nav, section {
 .clearfix {
   zoom: 1; }
 
-body {
-  font-family: "helvetica neue", helvetica, arial, sans-serif;
-  font-size: 14px; }
-
 a {
   color: #cc692d;
   text-decoration: none; }
   a:hover {
     color: #783e1b;
     text-decoration: underline; }
-
-h1 {
-  font-family: "helvetica neue", helvetica, arial, sans-serif;
-  font-size: 24px;
-  margin: 0 0 1em; }
-
-h2 {
-  font-size: 18px;
-  margin: 0 0 1em; }
+  a:visited {
+    color: #8d491f; }
+  a:active {
+    color: #a25324; }
 
 strong {
   font-weight: bold; }
-
-p {
-  margin: 0 0 1em;
-  line-height: 1.5em;
-  font-family: georgia, serif; }
-
-input[type="text"] {
-  border: 1px solid #cccccc;
-  padding: 3px;
-  font-family: "helvetica neue", helvetica, arial, sans-serif;
-  font-size: 12px;
-  color: #666666; }
 
 article h1 {
   font-size: 1.5em;

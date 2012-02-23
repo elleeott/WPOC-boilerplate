@@ -51,6 +51,15 @@ function recipe_directions_init($post) {
 		display:inline-block;
 		width:150px;
 	}
+	.additional-meta-fields span{
+		color:#666;
+	}
+	.recipe-meta-info {
+		float:left;
+	}
+	.recipe-nutritional-info {
+		float:right;
+	}
 </style>
 <?php
     wp_nonce_field( 'recipe_directions_nonce_action', 'recipe_directions_nonce' ); 
@@ -95,10 +104,51 @@ function recipe_directions_init($post) {
 	} else {
 		$fat = '';
 	}
+	if(isset($values['_sat_fat'])){
+		$sat_fat = esc_attr($values['_sat_fat'][0]);
+	} else {
+		$sat_fat = '';
+	}
+	if(isset($values['_trans_fat'])){
+		$trans_fat = esc_attr($values['_trans_fat'][0]);
+	} else {
+		$trans_fat = '';
+	}
+	if(isset($values['_cholesterol'])){
+		$cholesterol = esc_attr($values['_cholesterol'][0]);
+	} else {
+		$cholesterol = '';
+	}
+	if(isset($values['_sodium'])){
+		$sodium = esc_attr($values['_sodium'][0]);
+	} else {
+		$sodium = '';
+	}
+	if(isset($values['_carbs'])){
+		$carbs = esc_attr($values['_carbs'][0]);
+	} else {
+		$carbs = '';
+	}
+	if(isset($values['_dietary_fiber'])){
+		$dietary_fiber = esc_attr($values['_dietary_fiber'][0]);
+	} else {
+		$dietary_fiber = '';
+	}
+	if(isset($values['_sugars'])){
+		$sugars = esc_attr($values['_sugars'][0]);
+	} else {
+		$sugars = '';
+	}
+	if(isset($values['_protein'])){
+		$protein = esc_attr($values['_protein'][0]);
+	} else {
+		$protein = '';
+	}
+
 	echo '<strong>Ingredients</strong><br/>';
 	//echo '<div><textarea id="recipe-ingredients" class="mceEditor" name="_recipe_ingredients" cols="40" rows="4">'.$ingredients.'</textarea></div>';
 	$ing_settings = array(
-		'wpautop' => true,
+		'wpautop' => false,
 		'media_buttons' => false,
 		'textarea_name' => '_recipe_ingredients',
 		'tinymce' => array(
@@ -109,7 +159,7 @@ function recipe_directions_init($post) {
 	echo '<p></p><strong>Directions</strong><br/>';
 	//echo '<div><textarea id="recipe-directions" class="mceEditor" name="_recipe_directions" cols="40" rows="4">'.$directions.'</textarea></div>';
 	$dir_settings = array(
-		'wpautop' => true,
+		'wpautop' => false,
 		'media_buttons' => false,
 		'textarea_name' => '_recipe_directions',
 		'tinymce' => array(
@@ -118,12 +168,28 @@ function recipe_directions_init($post) {
 	);
 	wp_editor($directions,'recipedirections',$dir_settings);
 	echo '<div class="additional-meta-fields">';
-	echo '<div><label for="prep-time">Prep Time:</label><input type="text" id="prep-time" name="_prep_time" value="'.$prep_time.'"/></div>';
-	echo '<div><label for="cook-time">Cook Time:</label><input type="text" id="cook-time" name="_cook_time" value="'.$cook_time.'"/></div>';
-	echo '<div><label for="yield">Yield:</label><input type="text" id="yield" name="_yield" value="'.$yield.'"/></div>';
+	echo '<div class="recipe-meta-info">';
+	echo '<strong>Recipe Meta Information</strong><br/>';
+	echo '<div><label for="prep-time">Prep Time:</label><input type="text" id="prep-time" name="_prep_time" value="'.$prep_time.'"/> <span>minutes</span></div>';
+	echo '<div><label for="cook-time">Cook Time:</label><input type="text" id="cook-time" name="_cook_time" value="'.$cook_time.'"/> <span>minutes</span></div>';
+	echo '<div><label for="yield">Yield:</label><input type="text" id="yield" name="_yield" value="'.$yield.'"/> <span>servings</span></div>';
 	echo '<div><label for="serving-size">Serving Size:</label><input type="text" id="serving-size" name="_serving_size" value="'.$serving_size.'"/></div>';
-	echo '<div><label for="calories">Calories per Serving:</label><input type="text" id="calories" name="_calories" value="'.$calories.'"/></div>';
-	echo '<div><label for="fat">Fat per Serving:</label><input type="text" id="fat" name="_fat" value="'.$fat.'"/></div>';
+	echo '</div>';
+
+	echo '<div class="recipe-nutritional-info">';
+	echo '<strong>Nutritional Information</strong><br/>';
+	echo '<div><label for="calories">Calories per Serving:</label><input type="text" id="calories" name="_calories" value="'.$calories.'"/> <span>calories</span></div>';
+	echo '<div><label for="fat">Total Fat:</label><input type="text" id="fat" name="_fat" value="'.$fat.'"/> <span>grams</span></div>';
+	echo '<div><label for="sat-fat">Saturated Fat:</label><input type="text" id="sat-fat" name="_sat_fat" value="'.$sat_fat.'"/> <span>grams</span></div>';
+	echo '<div><label for="trans-fat">Trans Fat:</label><input type="text" id="trans-fat" name="_trans_fat" value="'.$trans_fat.'"/> <span>grams</span></div>';
+	echo '<div><label for="cholesterol">Cholesterol:</label><input type="text" id="cholesterol" name="_cholesterol" value="'.$cholesterol.'"/> <span>milligrams</span></div>';
+	echo '<div><label for="sodium">Sodium:</label><input type="text" id="sodium" name="_sodium" value="'.$sodium.'"/> <span>milligrams</span></div>';
+	echo '<div><label for="carbs">Carbohydrates:</label><input type="text" id="carbs" name="_carbs" value="'.$carbs.'"/> <span>grams</span></div>';
+	echo '<div><label for="dietary-fiber">Dietary Fiber:</label><input type="text" id="dietary-fiber" name="_dietary_fiber" value="'.$dietary_fiber.'"/> <span>grams</span></div>';
+	echo '<div><label for="sugars">Sugars:</label><input type="text" id="sugars" name="_sugars" value="'.$sugars.'"/> <span>grams</span></div>';
+	echo '<div><label for="protein">Protein:</label><input type="text" id="protein" name="_protein" value="'.$protein.'"/> <span>grams</span></div>';
+	echo '</div>';
+	echo '<div style="clear:both;"></div>';
 	echo '</div>';
 }
 
@@ -189,6 +255,31 @@ function save_recipe_postdata($post_id) {
 	if(isset($_POST['_fat'])) {
 		update_post_meta($post_id,'_fat',wp_kses($_POST['_fat'],$allowed));
 	}
+	if(isset($_POST['_sat_fat'])) {
+		update_post_meta($post_id,'_sat_fat',wp_kses($_POST['_sat_fat'],$allowed));
+	}
+	if(isset($_POST['_trans_fat'])) {
+		update_post_meta($post_id,'_trans_fat',wp_kses($_POST['_trans_fat'],$allowed));
+	}
+	if(isset($_POST['_cholesterol'])) {
+		update_post_meta($post_id,'_cholesterol',wp_kses($_POST['_cholesterol'],$allowed));
+	}
+	if(isset($_POST['_sodium'])) {
+		update_post_meta($post_id,'_sodium',wp_kses($_POST['_sodium'],$allowed));
+	}
+	if(isset($_POST['_carbs'])) {
+		update_post_meta($post_id,'_carbs',wp_kses($_POST['_carbs'],$allowed));
+	}
+	if(isset($_POST['_dietary_fiber'])) {
+		update_post_meta($post_id,'_dietary_fiber',wp_kses($_POST['_dietary_fiber'],$allowed));
+	}
+	if(isset($_POST['_sugars'])) {
+		update_post_meta($post_id,'_sugars',wp_kses($_POST['_sugars'],$allowed));
+	}
+	if(isset($_POST['_protein'])) {
+		update_post_meta($post_id,'_protein',wp_kses($_POST['_protein'],$allowed));
+	}
+	
 	if(isset($_POST['_recipe_ingredients'])) {
 		update_post_meta($post_id,'_recipe_ingredients',wp_kses($_POST['_recipe_ingredients'],$allowed));
 		

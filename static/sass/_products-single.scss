@@ -1,4 +1,10 @@
-body.single-products {
+.products-detail {
+	h1 {
+		font-family:"franklin-gothic-urw-cond";
+		font-size:30px;
+		text-transform:uppercase;
+		
+	}
 	.product-img {
 		float:left;
 		margin:0 20px 20px 0;
@@ -67,7 +73,21 @@ body.single-products {
 		
 	}
 }
-	
+.description {
+	color:#333;
+	margin:20px 0;
+	p {
+		width:380px;
+		font-size:15px;
+		line-height:1.5em;
+		//font-family: "skolar";
+		font-family: "abril-text";
+		//font-family: "kepler-std";
+		//font-family: "rooney-web";
+		//font-family: "georgia";
+		margin:1em 0;
+	}
+}
 	
 .list {
 	.product-img {

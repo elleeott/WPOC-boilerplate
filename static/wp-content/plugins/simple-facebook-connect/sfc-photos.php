@@ -67,7 +67,7 @@ function media_sfc_photos_form($errors) {
 		$album = $_GET['album'];
 
 		if ( false === ( $photos = get_transient('sfcphotos-'.$album) ) ) {
-			$photos = sfc_remote($album, 'photos', array('code'=>$user['code'], 'timeout' => 60));
+			$photos = sfc_remote($album, 'photos', array('code'=>$user['code'], 'timeout' => 60, 'limit' => 0));
 
 			if ($photos === false) {
 				?><p><?php _e('Facebook is being really, really slow and not responding to requests in a reasonable period of time. Try again later.','sfc'); ?></p><?php	
@@ -110,7 +110,7 @@ function media_sfc_photos_form($errors) {
 	} else {
 
 		if ( false === ( $albums = get_transient('sfcphotos-'.$user['user_id']) ) ) {
-			$albums = sfc_remote($user['user_id'], 'albums', array('code'=>$user['code'], 'timeout' => 60));
+			$albums = sfc_remote($user['user_id'], 'albums', array('code'=>$user['code'], 'timeout' => 60, 'limit' => 0));
 			
 			if ($albums === false) {
 				?><p><?php _e('Facebook is being really, really slow and not responding to requests in a reasonable period of time. Try again later.','sfc'); ?></p><?php	

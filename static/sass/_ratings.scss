@@ -1,0 +1,22 @@
+.comment-form-rating {
+	span.ratings-js input {
+		display:none;
+	}
+	span.ratings-js {
+		width:15px;
+		height:15px;
+		background:#ccc;
+		display:block;
+		float:left;
+		cursor:pointer;
+	}
+	span.ratings-hover {
+		background:#efefef;
+	}
+	span.ratings-selected {
+		background:#000;
+	}
+	span.ratings-stars {
+		display:none;
+	}
+}

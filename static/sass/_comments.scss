@@ -1,0 +1,56 @@
+.comments-list > h3 {
+	font-size:18px;
+	border-bottom:1px solid $tertiaryAccentColor;
+}
+li.comment.depth-1 {
+	border-bottom:1px solid $tertiaryAccentColor;
+
+}
+article.comment {
+	position:relative;
+	padding:20px 60px;
+	min-height:50px;
+	img.avatar {
+		position:absolute;
+		left:0;
+		top:20px;
+	}
+
+}
+
+.comment-content {
+	p {
+	
+	}
+
+}
+
+li.comment.depth-2 {
+	padding-left:60px;
+	border-top:1px solid $tertiaryAccentColor;
+}
+
+.reply {
+	position:absolute;
+	top:20px;
+	right:0;
+	font-size:.8em;
+	 a {
+		color:$tertiaryLinkColor;
+	}
+}
+
+#respond {
+	fieldset {
+		margin:0 0 20px;
+	}
+	label {
+		display:block;
+		float:left;
+		width:20%;
+	}
+	input[type="text"], input[type="email"], textarea {
+		display:block;
+		width:50%;
+	}
+}

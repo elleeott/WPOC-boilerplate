@@ -95,7 +95,29 @@ $(document).ready(function(){
 		return false;
 	});	
 	
-});
+	//comment form validation
+	$('#commentform').validate();
+	
+	// ratings
+	$('.comment-form-rating span').addClass('ratings-js');
+	$('.comment-form-rating').append('<span class="ratings-stars"></span>');
+	$('.ratings-js').hover(function(){
+		$(this).addClass('ratings-hover');
+	}, function() {
+		$(this).removeClass('ratings-hover');
+	});
+	$('.ratings-js').click(function(){
+		$('.ratings-js').removeClass('ratings-selected');
+		$(this).addClass('ratings-selected');
+		$(this).children('input').attr('checked', true);
+		var rating = $(this).children('input').val();
+		$('.ratings-stars').css({display:'none'});
+		$('.ratings-stars').html(rating + ' out of 5 stars');
+		$('.ratings-stars').fadeIn('fast');
+	});
+	
+	
+}); //end jquery document ready
 
 
 //window loaded functions

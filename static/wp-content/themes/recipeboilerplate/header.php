@@ -1,3 +1,4 @@
+<?php global $isOpenCartPage; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,8 +15,9 @@
 		<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="latest comments" />
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 		<?php if(function_exists('insert_ga_code')) insert_ga_code(); ?>
-	</head>
-	<?php if(isset($isapage)): ?>
+		<script type="text/javascript" src="http://use.typekit.com/guf3svx.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>	</head>
+	<?php if(isset($isOpenCartPage)): ?>
 		<body class="store">
 		<?php else : ?>
 		<body <?php body_class(); ?>>
@@ -57,8 +59,8 @@
 			<div class="breadcrumbs container">
 			
 				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.<br>
-				<?php echo 'session data: '; print_r($_SESSION); ?><br/>
-				<?php echo 'cookies: '; print_r($_COOKIE); ?>
+				<?php // echo 'session data: '; print_r($_SESSION); ?><br/>
+				<?php // echo 'cookies: '; print_r($_COOKIE); ?>
 			</div>
 			
 			

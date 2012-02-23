@@ -1,19 +1,28 @@
 @import "_sass-local.scss";
 @import "_reset.scss";
 @import "_config.scss";
+
+
 @import "_buttons.scss";
 @import "_footer.scss";
-@import "_article.scss";
-@import "_nutrition-label.scss";
-@import "_pagination.scss";
+
+@import "_blog-single.scss";
+@import "_blog-category.scss";
 @import "_products-single.scss";
 @import "_products-category.scss";
 @import "_recipes-single.scss";
 @import "_recipes-category.scss";
+@import "_nutrition-label.scss";
+
+@import "_pagination.scss";
 @import "_sidebar-widgets.scss";
+
+@import "_comments.scss";
 @import "_cart.scss";
-@import "_sidebar-category.scss";
+@import "_checkout.scss";
+
 @import "_notifications.scss";
+@import "_ratings.scss";
 
 
 /* iphones */
@@ -47,7 +56,12 @@ and (min-device-width: 768px)
 	@import "_nav.scss";
 }
 
-
 html {
 	overflow: -moz-scrollbars-vertical;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
+
+body {
+	//@include backgroundImage('img/assets/home-hero-background.png',0 0,repeat);
+}
+

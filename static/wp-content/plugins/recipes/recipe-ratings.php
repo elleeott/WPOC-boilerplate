@@ -4,14 +4,17 @@
 global $custom_comment_fields;
 $custom_comment_fields = array(
 	'hidden_field1' => '<input id="type" name="type" type="hidden" value="rating"/>',
-	'field1' => '<p class="comment-form">
+	'field1' => '
+	<fieldset>
+	<div class="comment-form-field comment-form-rating clearfix">
 	<label for="rating">Rating</label>
-	<input id="rating-1" name="rating" type="radio" value="1"/>
-	<input id="rating-2" name="rating" type="radio" value="2"/>
-	<input id="rating-3" name="rating" type="radio" value="3"/>
-	<input id="rating-4" name="rating" type="radio" value="4"/>
-	<input id="rating-4" name="rating" type="radio" value="5"/>
-	</p>'
+	<span><input id="rating-1" name="rating" type="radio" value="1"/></span>
+	<span><input id="rating-2" name="rating" type="radio" value="2"/></span>
+	<span><input id="rating-3" name="rating" type="radio" value="3"/></span>
+	<span><input id="rating-4" name="rating" type="radio" value="4"/></span>
+	<span><input id="rating-4" name="rating" type="radio" value="5"/></span>
+	</div>
+	</fieldset>'
 );
 
 

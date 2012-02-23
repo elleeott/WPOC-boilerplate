@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div id="content-container" class="clearfix">
 <div class="container">
-	<section id="main-content" class="main-content-left">
+	<div id="main-content" class="main-content-left">
 	<?php if ($wp_query->found_posts > 0 ) : ?>
 		<h1><?php echo $wp_query->found_posts; ?> results for &ldquo;<?php echo $s; ?>&rdquo;</h1>
 		<?php if (have_posts()) : ?>
@@ -19,7 +19,7 @@
 		<?php get_template_part('sitemap'); ?>
 	<?php endif; ?>
 	
-	</section>
+	</div>
 	<?php get_sidebar(); ?>
 </div>
 	

@@ -17,71 +17,76 @@
 </style>
 <div id="content-container" class="clearfix">
 	<div class="container">
-		<section id="main-content" class="main-content-left">
+		<div id="main-content" class="main-content-left">
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
-				<article>
+				<article class="primary">
 					<div class="hrecipe">
 						<div class="recipe-img">
 							<div class="large-img">
 								<?php get_recipe_gallery(); ?>
 							</div>
 						</div>
-						<div class="fb-like" data-href="<?php the_permalink();?>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+						<div class="social-elements">
+							<?php get_social_elements(); ?>
+						</div>
 						<div class="item">
 							<h1 class="fn"><?php the_title(); ?></h1>
 						</div>
 						<div class="published"><?php the_time('F j, Y'); ?></div>
 						
+						<div class="summary">
+							<?php the_excerpt(); ?>
+						</div>
 						<div class="review hreview-aggregate">
-							<span class="rating">
-								<div class="average">Rating: 
-									<?php  
-										if(get_post_meta($post->ID,'_avg_rating',true)) {
-											echo get_post_meta($post->ID,'_avg_rating',true) . ' stars';
-										} else {
-											echo 'not yet rated';
-										} 
-									?>
-								</div>
-								<div class="count">
-									<?php  
-										if(get_post_meta($post->ID,'_sum_rating',true)) {
-											echo 'based on '.get_post_meta($post->ID,'_sum_rating',true).' reviews';
-										} 
-									?>
-								</div>
-							</span>
+							<?php get_ratings(); ?>
 						</div>
 						<dl class="clearfix">
 							<?php if(get_post_meta($post->ID,'_prep_time',true)): ?>
 								<dt>Prep time:</dt> <dd class="preptime"><?php create_time('_prep_time'); ?><span class="value-title" title="<?php create_hrecipe_time('_prep_time');?>"></span></dd>
 							<?php endif; ?>
-							<dt>Cook time:</dt> <dd class="cooktime"><?php create_time('_cook_time'); ?><span class="value-title" title="<?php create_hrecipe_time('_cook_time');?>"></span></dd>
-							<dt>Total time:</dt> <dd class="duration"><?php create_time('total'); ?><span class="value-title" title="<?php create_hrecipe_time('total');?>"></span></dd>
-							<dt>Yield:</dt> <dd class="yield">1 9" pie</dd>
+							
+							<?php if(get_post_meta($post->ID,'_cook_time',true)): ?>
+								<dt>Cook time:</dt> <dd class="cooktime"><?php create_time('_cook_time'); ?><span class="value-title" title="<?php create_hrecipe_time('_cook_time');?>"></span></dd>
+							<?php endif; ?>
+							
+							<?php if(get_post_meta($post->ID,'_cook_time',true) || get_post_meta($post->ID,'_prep_time',true)): ?>
+								<dt>Total time:</dt> <dd class="duration"><?php create_time('total'); ?><span class="value-title" title="<?php create_hrecipe_time('total');?>"></span></dd>
+							<?php endif; ?>
+							<?php if(get_post_meta($post->ID,'_yield',true)): ?>
+								<dt>Yield:</dt> <dd class="yield"><?php echo get_post_meta($post->ID,'_yield',true) ; ?></dd>
+							<?php endif; ?>
 						</dl>
+						
 						<dl class="nutrition clearfix">
-							<dt>Serving Size:</dt> <dd class="servingsize">1 medium slice</dd>
-							<dt>Calories per serving:</dt> <dd class="servingsize">250</dd>
-							<dt>Fat per Serving:</dt> <dd class="fat">12g</dd>
+							<?php if(get_post_meta($post->ID,'_serving_size',true)): ?>
+								<dt>Serving Size:</dt> <dd class="servingsize"><?php echo get_post_meta($post->ID,'_serving_size',true); ?></dd>
+							<?php endif; ?>
+							<?php if(get_post_meta($post->ID,'_calories',true)): ?>
+								<dt>Calories per serving:</dt> <dd class="servingsize"><?php echo get_post_meta($post->ID,'_calories',true); ?></dd>
+							<?php endif; ?>
+							<?php if(get_post_meta($post->ID,'_fat',true)): ?>
+								<dt>Fat per Serving:</dt> <dd class="fat"><?php echo get_post_meta($post->ID,'_fat',true); ?></dd>
+							<?php endif; ?>
 						</dl>
+						
+						<?php get_nutrition_label(); ?>
+
 						<?php if(get_post_meta($post->ID,'_recipe_ingredients',true)) : ?>
 							<div class="ingredients">
 								<h3>Ingredients:</h3>
 								<?php get_ingredients();?>
 							</div>
 						<?php endif; ?>
+						
 						<?php if(get_post_meta($post->ID,'_recipe_directions',true)) : ?>
-						<div class="instructions">
-							<h3>Directions:</h3>
-							<?php echo get_post_meta($post->ID,'_recipe_directions',true); ?>
-						</div>
+							<div class="instructions">
+								<h3>Directions:</h3>
+								<?php echo get_post_meta($post->ID,'_recipe_directions',true); ?>
+							</div>
 						<?php endif; ?>
-						<div class="summary">
-							<?php the_excerpt(); ?>
-						</div>
-						<?php the_content(); ?>
-					</div>
+											
+					</div><!--close hrecipe -->
+					
 					<div id="recipe-tags">
 						<h3>recipe tags</h3>
 						<?php 
@@ -126,7 +131,7 @@
 			<?php comments_template(); ?>
 			<?php endwhile; endif;?>
 	
-		</section>
+		</div>
 		<?php get_sidebar(); ?>
 	</div>
 </div><!--end content container -->

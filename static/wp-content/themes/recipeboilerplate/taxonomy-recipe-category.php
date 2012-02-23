@@ -1,39 +1,17 @@
 <?php get_header(); ?>
-
-<div id="content-container" class="clearfix">
+<div id="content-container" class="products-category clearfix">
 	<div class="container">
+		<div id="main-content" class="main-content-left">
+			<h1>Recipes &rsaquo; <?php echo $wp_query->queried_object->name; ?></h1>
 
-		<section id="main-content" class="main-content-left clearfix">
-			<h1>Recipes</h1>
+			<?php get_template_part('_recipes-category'); ?>
 
-			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
-			<div class="recipe-cell">
-				<div class="recipe-img">
-					<?php if(has_post_thumbnail()) : ?>
-						<?php echo get_the_post_thumbnail($post->ID,'recipe-med'); ?>	
-					<?php else : ?>
-						<img src="<?php echo $static_subdomain.'/img/interface/no-image.jpg'; ?>" />
-					<?php endif; ?>			
-				</div>
-				<h2>
-					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-				</h2>
-				<div>Rating: 
-				<?php  
-					if(get_post_meta($post->ID,'_avg_rating',true)) {
-						echo get_post_meta($post->ID,'_avg_rating',true);
-					} else {
-						echo 'not yet rated';
-					} 
-				?>
-				</div>
-			</div>
-			<?php endwhile; endif;?>
-			<?php wp_pagenavi(); ?>
-		</section>
-		
+		</div><!--main-content-->
 		<?php get_sidebar(); ?>
-	</div>		
+	</div><!--container-->
 </div><!--end content container -->
 
 <?php get_footer(); ?>
+
+
+

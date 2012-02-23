@@ -165,7 +165,7 @@ if (!is_admin()) {
             $protocol='https:';
         }
         
-        if(isset($isapage)) {
+        if(isset($isOpenCartPage)) {
 			//remove l10n js
 			wp_deregister_script( 'l10n' );	
 				
@@ -197,6 +197,10 @@ if (!is_admin()) {
 			
 			// register theme script
 			wp_register_script('site-script', STATIC_SUBDIR . autoVer('/static/js/index.js'), array('jquery'), NULL);        
+			
+			// register comment-form validation script
+				wp_register_script('comment-form-validate', STATIC_SUBDIR . autoVer('/static/js/jquery.validate.min.js'), array('jquery'), NULL);        
+			
         }
 	}
 	add_action('init', 'reg_scripts'); 
@@ -206,6 +210,9 @@ if (!is_admin()) {
 		wp_print_scripts('fancybox');	
 		wp_print_scripts('flexslider');	
 		wp_print_scripts('site-script');	
+		if(comments_open()) {
+			wp_print_scripts('comment-form-validate');	
+		}
 	}
 
 	function print_scripts_header() {
@@ -215,7 +222,7 @@ if (!is_admin()) {
 		wp_print_scripts('site-script');	
 	}
 	// place js files in the footer on WP pages, in header on OC pages.  OC has inline jquery dependencies that can't be easily moved.
-	if(isset($isapage)) {
+	if(isset($isOpenCartPage)) {
 		add_action('wp_head', 'print_scripts_header'); 				
 	} else {
 		add_action('wp_footer', 'print_scripts_footer'); 	
@@ -313,9 +320,39 @@ function custom_comments( $comment, $args, $depth ) {
 	<?php
 
 }
+
+// custom comment form
+function custom_form_fields($fields) {
+	$commenter = wp_get_current_commenter();
+	$req = get_option( 'require_name_email' );
+	$aria_req = ( $req ? " aria-required='true'" : '' );
+	$fields =  array(
+		'author' => '<fieldset><div class="comment-form-field comment-form-author clearfix"><label for="author">Name</label> ' . 
+		            '<input id="author"' . ( $req ? 'class="required"' : '' ) .'name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></div></fieldset>',
+		'email'  => '<fieldset><div class="comment-form-field comment-form-email clearfix"><label for="email">Email</label> ' .
+		            '<input id="email" ' . ( $req ? 'class="required"' : '' ) .'name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></div></fieldset>',
+		'url'    => '<fieldset><div class="comment-form-field comment-form-url clearfix"><label for="url">Website</label>' .
+		            '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div></fieldset>',
+	);
+	return $fields;
+}
+
+add_filter('comment_form_default_fields','custom_form_fields',1);
+
+
+//custom comment textarea
+function custom_comment_textarea($default) {
+	$default['comment_field'] = '<fieldset><div class="comment-form-field comment-form-comment clearfix"><label for="comment">Comment</label><textarea id="comment" class="required" name="comment" aria-required="true"></textarea></div></fieldset>';
+	return $default;
+}
+
+add_filter('comment_form_defaults','custom_comment_textarea');
+
+
+//output page title for header
 function set_the_title() {
 	//two parameters passed from OC pages
-	global $isapage; 
+	global $isOpenCartPage; 
 	global $page_title; 
 	global $s;
 	
@@ -347,7 +384,7 @@ function set_the_title() {
 		get_page_number();
 	}
 	//Opencart Pages
-	elseif (is_404() && (isset($isapage))) { 
+	elseif (is_404() && (isset($isOpenCartPage))) { 
 		bloginfo('name'); 
 		echo ' :: '; 
 		echo $page_title;
@@ -367,5 +404,22 @@ function set_the_title() {
 	}
 }
 
+//output social buttons
+function get_social_elements() {
+?>
+	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+	<div class="fb-like" data-href="<?php the_permalink();?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+	<a href="http://pinterest.com/pin/create/button/" class="pin-it-button" count-layout="horizontal">Pin It</a>
+<?php
+}
 
 
+//print footer social scripts
+function social_scripts() {
+?>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<script type="text/javascript" src="http://assets.pinterest.com/js/pinit.js"></script>
+<?php	
+}
+
+add_action('wp_footer','social_scripts');

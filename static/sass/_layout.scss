@@ -21,7 +21,7 @@ header.main {
 }
 
 #main-content {
-	width:720px;	
+	width:620px;	
 }
 .main-content-right {
 	float:right;
@@ -30,8 +30,8 @@ header.main {
 	float:left;
 }
 
-.sidebar {
-	width:200px;
+#sidebar {
+	width:300px;
 	min-height:400px;
 }
 
@@ -44,7 +44,22 @@ header.main {
 }
 
 .sidebar-content {
+
+	@include BoxShadow(5px,5px,0,0,0%,0%,.02);
+	//background-color:$knockOutColor;
+	//color:$secondaryknockOutTypeColor;
 	border:1px solid $secondaryAccentColor;
 	padding:10px;
 	min-height:500px;
+	font-family:"franklin-gothic-urw-cond";
+	h2 {
+		font-size:18px;
+		text-transform:uppercase;
+		color:#373632;
+	}
+	a {
+		//color:$secondaryknockOutTypeColor;
+		//@include textShadow($s:0%,$l:0%,$a:1);	
+		font-weight:normal;
+	}
 }

@@ -14,9 +14,10 @@ function sfc_getcomm_check($comments, $id) {
 			$newcomms = array();
 			
 			// get comments from the app or page post
-			if ($fbpagepost) {
-				if ($options['fanpage']) $token = $options['page_access_token'];
-				else $token = $options['app_access_token'];
+			if ($fbpagepost && !empty($options['fanpage'])) {
+			
+				$token = $options['page_access_token'];
+				
 				$fbresp = sfc_remote($fbpagepost, 'comments', array('access_token'=>$token));
 				  
 				if (!empty($fbresp['data'])) {

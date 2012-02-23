@@ -2,10 +2,13 @@
 
 <div id="content-container" class="products-detail clearfix">
 	<div class="container">
-		<section id="main-content" class="main-content-left">	
+		<div id="main-content" class="main-content-left">	
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
-				<article>
+				<article class="primary">
 					<div class="hproduct">
+						<div class="social-elements">
+							<?php get_social_elements(); ?>
+						</div>
 						<div class="product-img">
 							<div class="large-img flexslider">
 								<?php get_product_gallery(); ?>
@@ -45,7 +48,7 @@
 				</div>
 			<?php endwhile; endif;?>
 	
-		</section>
+		</div>
 		<?php get_sidebar(); ?>
 	</div><!-- end container -->
 </div><!--end content container -->

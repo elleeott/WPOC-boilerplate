@@ -143,6 +143,7 @@ function sfc_login_check($user) {
 
 	// the cookie is signed using our secret, so if we get it back from sfc_cookie_parse, then it's authenticated. So just log the user in.
 	$fbuid=$cookie['user_id'];
+	
 	if($fbuid) {
 		global $wpdb;
 		$user_id = $wpdb->get_var( $wpdb->prepare("SELECT user_id FROM $wpdb->usermeta WHERE meta_key = 'fbuid' AND meta_value = %s", $fbuid) );
@@ -178,15 +179,21 @@ function sfc_login_check($user) {
 // we have to change the logout to use a javascript redirect. No other way to make FB log out properly and stop giving us the cookie.
 add_action('wp_logout','sfc_login_logout');
 function sfc_login_logout() {
+	$options = get_option('sfc_options');
+	
 	// check for FB cookies, if not found, do nothing
 	$cookie = sfc_cookie_parse();
 	if (empty($cookie)) return;
+	
+	// force remove the cookie, since FB can't be relied on to do it properly
+	$domain = '.'.parse_url(home_url('/'), PHP_URL_HOST);
+	setcookie('fbsr_' . $options['appid'], ' ', time() - 31536000, "/", $domain);
 	
 	// we have an FB login, log them out with a redirect
 	add_action('sfc_async_init','sfc_login_logout_js');
 ?>
 	<html><head></head><body>
-	<?php sfc_add_base_js(); ?>
+	<?php sfc_add_base_js(array('cookie'=>false)); ?>
 	</body></html>
 <?php
 exit;
@@ -197,7 +204,7 @@ function sfc_login_logout_js() {
 	$redirect_to = !empty( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : 'wp-login.php?loggedout=true';
 ?>
 FB.getLoginStatus(function(response) {
-	if (response.authResponse) {
+	if (response.status === 'connected') {
 		FB.logout(function(response) {
 			window.location.href = '<?php echo $redirect_to; ?>';
 		});

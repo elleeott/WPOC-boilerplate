@@ -1,8 +1,8 @@
 <?php
 
 //mods to make OC play well w/ WP
-global $isapage;
-$isapage = true;
+global $isOpenCartPage;
+$isOpenCartPage = true;
 require_once($_SERVER['DOCUMENT_ROOT'].'/wp/wp-blog-header.php');
 
 // Version

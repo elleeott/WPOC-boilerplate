@@ -68,11 +68,11 @@ ErrorDocument 404 /404.php
  	RewriteRule . /index.php [L]
 	
 	#OC	
-	RewriteBase /store
-	RewriteRule sitemap.xml /index.php?route=feed/google_sitemap
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
+	#RewriteBase /store
+	#RewriteRule sitemap.xml /index.php?route=feed/google_sitemap
+	#RewriteCond %{REQUEST_FILENAME} !-f
+	#RewriteCond %{REQUEST_FILENAME} !-d
+	#RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 		
 </IfModule>
 

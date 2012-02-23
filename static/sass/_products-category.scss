@@ -1,4 +1,9 @@
 .products-category {
+	h1 {
+		font-family: "bistro-script-web";
+		font-size:36px
+
+	}
 	.product-cell {
 		width:150px;
 		height:300px;
@@ -12,5 +17,9 @@
 		width:150px;
 		height:200px;
 		
+	}
+	h3 {
+		font-family:"franklin-gothic-urw-cond";
+		text-transform:uppercase;
 	}
 }
