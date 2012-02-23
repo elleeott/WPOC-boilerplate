@@ -7,9 +7,11 @@ store/vqmod/vqmod.log
 store/vqmod/vqcache
 static/img/cache
 static/sass/_sass-local.scss
+static/wp-content/uploads
 store/system/logs/error.txt
 db/db-local.sql
 db/db-remote.sql
 google7b202ce0538de512.html
 /client
 frictious.esproj
+

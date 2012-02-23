@@ -1,5 +1,0 @@
-##### Far Future Expires Header for all static elements #####
-<FilesMatch "\.(gif|png|jpg|js|css|swf)$">
-    ExpiresActive On
-    ExpiresDefault "access plus 10 years"
-</FilesMatch>
