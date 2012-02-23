@@ -1,0 +1,36 @@
+#hero {
+	height:300px;
+	margin:0 0 20px;
+	position:relative;
+	margin:0 0 50px;
+}
+.slide {
+	position:relative;
+	background:#ccc;
+	height:300px;
+
+}
+.slide img {
+	position:absolute;
+	left:0px;
+	top:0;
+	z-index:0;
+}
+.slide h1 {
+	position:absolute;
+	bottom:0px;
+	left:0;
+	z-index:100px;
+}
+
+.slide a {
+	position:absolute;
+	bottom:10px;
+	right:10px;
+	z-index:100px;
+}
+
+
+.flex-direction-nav {
+	display:none;
+}

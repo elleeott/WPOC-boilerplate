@@ -1,7 +1,6 @@
 #hero {
 	margin:0 0 20px;
 	height:330px;
-	//background:url($staticdir + '/img/assets/home-hero-background.png') center bottom no-repeat;
 }
 
 .slide {
@@ -23,21 +22,6 @@
 	position:absolute;
 	top:80px;
 	left:600px;
-}
-
-#promo-tiles {
-	margin:0 0 20px;
-}
-
-#promo-tiles div{
-	height:200px;
-	background:#ccc;
-	width:300px;
-	float:left;
-	margin-right:20px;
-}
-#promo-tiles div.last{
-	margin-right:0;
 }
 
 .widgets .widget {
