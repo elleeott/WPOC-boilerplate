@@ -12,6 +12,8 @@ and (min-device-width : 320px)
 and (max-device-width : 480px)
 */
 
+
+
 @media only screen
 and (min-width:320px)
 and (max-width:480px)
@@ -21,9 +23,14 @@ and (max-width:480px)
 	@import "partials/mobile/_nav.scss";
 	@import "partials/mobile/_home.scss";
 	@import "partials/mobile/_recipes-category.scss";
+	@import "partials/mobile/_cart.scss";
+	
 }
 
 /* iphone4 */
+
+
+
 
 @media
 only screen and (-webkit-min-device-pixel-ratio : 1.5),
@@ -34,6 +41,9 @@ only screen and (min-device-pixel-ratio : 1.5)
 
 }
 
+
+
+
 @media only screen
 and (min-device-width: 768px)
 and (min-width:768px)
@@ -43,6 +53,7 @@ and (min-width:768px)
 	@import "partials/desktop/_nav.scss";
 	@import "partials/desktop/_home.scss";
 	@import "partials/desktop/_recipes-category.scss";
+	@import "partials/desktop/_cart.scss";
 }
 
 
@@ -105,7 +116,6 @@ strong {
 @import "partials/common/_nutrition-label.scss";
 
 /* cart/checkout */
-@import "partials/common/_cart.scss";
 @import "partials/common/_checkout.scss";
 
 

@@ -14,25 +14,32 @@ a.button, button.button {
 	vertical-align:top;
 	@include transition;
 	@include rounded(3px);
-	@include boxShadow;
-	@include textShadow(lighten(#000,40%));
+}
+a.button-primary, button.button-primary {
+	background:$linkColor1;
 	&:hover {
 		background:darken($linkColor1,5%);
 	}
 }
-a.button-primary, button.button-primary {
-	background:$linkColor1;
-}
 
 a.button-secondary {
 	background:$linkColor3;
+	&:hover {
+		background:darken($linkColor3,5%);
+	}
 
 }
 a.button-tertiary {
 	background:$linkColor3;
+	&:hover {
+		background:darken($linkColor3,5%);
+	}
 
 }
 
 a.busy {
 	background-color:$linkColor3/2;
+	&:hover {
+		background:darken($linkColor3/2,5%);
+	}
 }

@@ -79,14 +79,6 @@ and (max-width:480px) {
   #content-container {
     margin: 0 0 20px; }
 
-  #sidebar {
-    min-height: 100px; }
-
-  .sidebar-content {
-    border: 1px solid #cccccc;
-    padding: 10px;
-    min-height: 500px; }
-
   #logo {
     background: #ccc;
     width: 100px;
@@ -155,7 +147,51 @@ and (max-width:480px) {
   .recipe-img img {
     width: 100%;
     height: auto;
-    margin: auto; } }
+    margin: auto; }
+
+  /* mobile cart view */
+  #shopping-cart td, #shopping-cart th {
+    padding: 5px; }
+  #shopping-cart .cart-info {
+    margin: 0 0 20px; }
+    #shopping-cart .cart-info table {
+      width: 100%; }
+    #shopping-cart .cart-info td {
+      vertical-align: top;
+      border-bottom: 1px solid #cccccc; }
+    #shopping-cart .cart-info thead td {
+      color: #666666;
+      border-bottom: 3px solid #cccccc;
+      vertical-align: top; }
+    #shopping-cart .cart-info td.price, #shopping-cart .cart-info td.total {
+      text-align: right; }
+    #shopping-cart .cart-info tbody td.remove {
+      vertical-align: middle; }
+    #shopping-cart .cart-info tbody td.name img {
+      display: block; }
+    #shopping-cart .cart-info td.quantity {
+      text-align: center; }
+      #shopping-cart .cart-info td.quantity input {
+        text-align: center; }
+    #shopping-cart .cart-info tbody td {
+      padding-top: 10px;
+      padding-bottom: 10px; }
+    #shopping-cart .cart-info .cart-total {
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
+      margin: 0 0 20px; }
+      #shopping-cart .cart-info .cart-total table {
+        float: right; }
+      #shopping-cart .cart-info .cart-total td, #shopping-cart .cart-info .cart-total th {
+        text-align: right; }
+      #shopping-cart .cart-info .cart-total th {
+        font-weight: bold; }
+  #shopping-cart #buttons {
+    margin: 0 0 20px; }
+  #shopping-cart .checkout-button {
+    float: right; }
+  #shopping-cart td.price {
+    display: none; } }
 /* iphone4 */
 @media only screen and (-webkit-min-device-pixel-ratio : 1.5),
 only screen and (min-device-pixel-ratio : 1.5) {
@@ -312,7 +348,52 @@ and (min-width:768px) {
   .recipe-cell {
     width: 300px;
     float: left;
-    margin: 20px; } }
+    margin: 20px; }
+
+  /* desktop cart view */
+  #shopping-cart td, #shopping-cart th {
+    padding: 5px; }
+  #shopping-cart .cart-info {
+    margin: 0 0 20px; }
+    #shopping-cart .cart-info table {
+      width: 100%; }
+    #shopping-cart .cart-info td {
+      vertical-align: top;
+      border-bottom: 1px solid #cccccc; }
+    #shopping-cart .cart-info thead td {
+      color: #666666;
+      border-bottom: 3px solid #cccccc;
+      vertical-align: top; }
+    #shopping-cart .cart-info td.price, #shopping-cart .cart-info td.total {
+      text-align: right; }
+    #shopping-cart .cart-info tbody td.remove {
+      vertical-align: middle; }
+    #shopping-cart .cart-info tbody td.name img {
+      display: block; }
+    #shopping-cart .cart-info td.quantity {
+      text-align: center; }
+      #shopping-cart .cart-info td.quantity input {
+        text-align: center; }
+    #shopping-cart .cart-info tbody td {
+      padding-top: 10px;
+      padding-bottom: 10px; }
+    #shopping-cart .cart-info .cart-total {
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
+      margin: 0 0 20px; }
+      #shopping-cart .cart-info .cart-total table {
+        float: right; }
+      #shopping-cart .cart-info .cart-total td, #shopping-cart .cart-info .cart-total th {
+        text-align: right; }
+      #shopping-cart .cart-info .cart-total th {
+        font-weight: bold; }
+  #shopping-cart #buttons {
+    margin: 0 0 20px; }
+  #shopping-cart .checkout-button {
+    float: right; }
+  #shopping-cart tbody td.name img {
+    float: left;
+    margin: 0 10px 0 0; } }
 /* some default styling */
 html {
   overflow: -moz-scrollbars-vertical;
@@ -361,25 +442,27 @@ a.button, button.button {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -khtml-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  text-shadow: #666666 -1px 0px rgba(255, 255, 255, 0.7); }
-  a.button:hover, button.button:hover {
-    background: #b75e28; }
+  border-radius: 3px; }
 
 a.button-primary, button.button-primary {
   background: #cc692d; }
+  a.button-primary:hover, button.button-primary:hover {
+    background: #b75e28; }
 
 a.button-secondary {
   background: #999999; }
+  a.button-secondary:hover {
+    background: #8c8c8c; }
 
 a.button-tertiary {
   background: #999999; }
+  a.button-tertiary:hover {
+    background: #8c8c8c; }
 
 a.busy {
   background-color: #4c4c4c; }
+  a.busy:hover {
+    background: #3f3f3f; }
 
 footer {
   padding: 40px;
@@ -807,42 +890,3 @@ li.comment.depth-2 {
     border-bottom: 0 none; }
 
 /* cart/checkout */
-#shopping-cart td, #shopping-cart th {
-  padding: 5px; }
-#shopping-cart .cart-info {
-  margin: 0 0 20px; }
-  #shopping-cart .cart-info table {
-    width: 100%; }
-  #shopping-cart .cart-info td {
-    vertical-align: top;
-    border-bottom: 1px solid #cccccc; }
-  #shopping-cart .cart-info thead td {
-    color: #666666;
-    border-bottom: 3px solid #cccccc; }
-  #shopping-cart .cart-info td.price, #shopping-cart .cart-info td.total {
-    text-align: right; }
-  #shopping-cart .cart-info td.remove {
-    vertical-align: middle; }
-  #shopping-cart .cart-info td.quantity {
-    text-align: center; }
-    #shopping-cart .cart-info td.quantity input {
-      text-align: center; }
-  #shopping-cart .cart-info tbody td {
-    padding-top: 10px;
-    padding-bottom: 10px; }
-  #shopping-cart .cart-info tbody td.image {
-    width: 80px; }
-#shopping-cart .cart-total {
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
-  margin: 0 0 20px; }
-  #shopping-cart .cart-total table {
-    float: right; }
-  #shopping-cart .cart-total td, #shopping-cart .cart-total th {
-    text-align: right; }
-  #shopping-cart .cart-total th {
-    font-weight: bold; }
-#shopping-cart #buttons {
-  margin: 0 0 20px; }
-#shopping-cart .checkout-button {
-  float: right; }

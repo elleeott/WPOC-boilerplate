@@ -26,7 +26,7 @@
 					<tr>
 						<td class="remove"><?php echo $column_remove; ?></td>
 						<?php /* <td class="image"><?php echo $column_image; ?></td> */ ?>
-						<td colspan="2" class="name"><?php echo $column_name; ?></td>
+						<td class="name"><?php echo $column_name; ?></td>
 						<?php /* <td class="model"><?php echo $column_model; ?></td> */ ?>
 						<td class="quantity"><?php echo $column_quantity; ?></td>
 						<td class="price"><?php echo $column_price; ?></td>
@@ -37,12 +37,10 @@
 						<?php foreach ($products as $product) { ?>
 							<tr>
 								<td class="remove"><input type="checkbox" name="remove[]" value="<?php echo $product['key']; ?>" /></td>
-								<td class="image">
+								<td class="name">
 									<?php if ($product['thumb']) { ?>
 										<a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
 									<?php } ?>
-								</td>
-								<td class="name">
 									<a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
 									<?php if (!$product['stock']) { ?>
 										<span class="stock">***</span>

@@ -220,6 +220,7 @@ if (!is_admin()) {
 		wp_print_scripts('fancybox');	
 		wp_print_scripts('flexslider');	
 		wp_print_scripts('site-script');	
+		wp_print_scripts('comment-form-validate');	
 	}
 	// place js files in the footer on WP pages, in header on OC pages.  OC has inline jquery dependencies that can't be easily moved.
 	if(isset($isOpenCartPage)) {
@@ -423,3 +424,28 @@ function social_scripts() {
 }
 
 add_action('wp_footer','social_scripts');
+
+//mobile nav
+function get_mobile_nav() {
+	$args =array(
+		'post_type'=>'nav_menu_item'
+	); 
+	$items = wp_get_nav_menu_items('primary-nav',$args);
+	//print_r($items);
+	echo '<form><select>';
+	echo '<option>Choose a Section &hellip;</option>';
+	foreach ($items as $item) {
+			echo '<option value="'. $item->url.'">'.$item->title.'</option>';
+	} 
+	echo '</select></form>';
+
+}
+
+
+
+//disable conflicting plugins in checkout & cart
+
+function disable_plugins() {
+
+}
+

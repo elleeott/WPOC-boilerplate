@@ -2,6 +2,7 @@
 $(document).ready(function(){
 	if (document.documentElement.clientWidth >= 600) { // viewport width
 	//if (screen.width >= 600) { //display width
+	
 		//fancybox popovers
 		$('#support-links a').fancybox({
 			'width' : 560,
@@ -18,7 +19,12 @@ $(document).ready(function(){
 			$(this).children('ul').css({display:'none'});
 		});
 	} else {
-		$('#mobile-nav button').click(function(){
+/*		$('#mobile-nav button').click(function(){
+			window.location=$('#mobile-nav select option:selected').val();
+			return false;
+		});
+	*/
+		$('#mobile-nav select').change(function(){		
 			window.location=$('#mobile-nav select option:selected').val();
 			return false;
 		});

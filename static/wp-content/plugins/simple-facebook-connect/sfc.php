@@ -25,6 +25,9 @@ License: GPL2
     http://www.gnu.org/licenses/gpl-2.0.html
 
 */
+
+if(!isset($isOpenCartPage)) {
+
 function sfc_version() {
 	return '1.3';
 }
@@ -53,3 +56,4 @@ function sfc_settings_link($links) {
 	return $links;
 }
 
+}

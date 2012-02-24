@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0" name="viewport" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, mininum-scale=1.0, user-scalable=0" name="viewport" />
 		<meta name="description" content=""/>
 		<meta name="keywords" content=""/>
 		<title><?php set_the_title(); ?></title>
@@ -16,7 +16,9 @@
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 		<?php if(function_exists('insert_ga_code')) insert_ga_code(); ?>
 		<script type="text/javascript" src="http://use.typekit.com/guf3svx.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>	</head>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>	
+	</head>
+	
 	<?php if(isset($isOpenCartPage)): ?>
 		<body class="store">
 		<?php else : ?>
@@ -41,19 +43,7 @@
 					</div>
 				</nav>	
 				<nav id="mobile-nav">
-					<?php $args =array(
-						'post_type'=>'nav_menu_item'
-					); ?>
-					<?php $items = wp_get_nav_menu_items('primary-nav',$args); ?>
-					<?php //print_r($items); ?>
-					<form>
-						<select>
-							<?php foreach ($items as $item) { ?>
-								<option value="<?php echo $item->url; ?>"><?php echo $item->title; ?></option>
-							<?php } ?>
-						</select>
-						<button type="submit">go</button>
-					</form>
+					<?php get_mobile_nav(); ?>
 				</nav>	
 			</header>
 			<div class="breadcrumbs container">
@@ -62,9 +52,3 @@
 				<?php // echo 'session data: '; print_r($_SESSION); ?><br/>
 				<?php // echo 'cookies: '; print_r($_COOKIE); ?>
 			</div>
-			
-			
-			
-			
-			
-			

@@ -1,0 +1,8 @@
+/* mobile cart view */
+
+#shopping-cart {
+	@import "modules/_cart-common-styles.scss";
+	td.price {
+		display:none;
+	}
+}

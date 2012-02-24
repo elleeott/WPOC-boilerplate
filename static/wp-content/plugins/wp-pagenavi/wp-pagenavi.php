@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP-PageNavi
-Version: 2.81
+Version: 2.82
 Description: Adds a more advanced paging navigation to your WordPress blog
 Author: Lester 'GaMerZ' Chan & scribu
 Plugin URI: http://wordpress.org/extend/plugins/wp-pagenavi/
@@ -28,9 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 if(!isset($isOpenCartPage)) {
 
-
-
-@include dirname( __FILE__ ) . '/scb/load.php';
+include dirname( __FILE__ ) . '/scb/load.php';
 
 function _pagenavi_init() {
 	load_plugin_textdomain( 'wp-pagenavi', '', dirname( plugin_basename( __FILE__ ) ) . '/lang' );
@@ -65,3 +63,4 @@ function _pagenavi_init() {
 scb_init( '_pagenavi_init' );
 
 }
+
