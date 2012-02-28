@@ -41,23 +41,5 @@ li.comment.depth-2 {
 }
 
 #respond {
-	fieldset {
-		margin:0 0 20px;
-	}
-	label {
-		float:left;
-		width:25%;
-	}
-	input[type="text"], input[type="email"], textarea {
-		display:block;
-		float:left;
-		width:45%;
-	}
-	input[type="text"].error, input[type="email"].error, textarea.error {
-		@include formInputError;
-	}
-	label.error {
-		margin-left:10px;
-		color:$errorColor;
-	}
+	@import "modules/_form-left-labels.scss";
 }

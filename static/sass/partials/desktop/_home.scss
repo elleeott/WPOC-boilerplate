@@ -1,6 +1,7 @@
 #hero {
 	margin:0 0 20px;
 	height:330px;
+	//display: none;
 }
 
 .slide {
@@ -25,13 +26,18 @@
 }
 
 .widgets .widget {
-	width:280px;
+	h2 {
+		@include heading6;
+	}
+	width:278px;
 	padding:10px;
 	float:left;
+	background:#fff; //important to prevent flexslider from affecting type rendering!
 	margin-right:20px;
-	background:#efefef;
 	height:200px;
 	overflow:auto;
+	@include linkList;
+	border:1px solid $accentColor3;
 }
 
 .widgets .widget:nth-child(3n) {

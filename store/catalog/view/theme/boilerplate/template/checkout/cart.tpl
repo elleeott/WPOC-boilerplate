@@ -1,12 +1,7 @@
 <?php echo $header; ?>
-<div id="content-container" class="clearfix">
+<div id="content-container" class="store-cart clearfix">
 	<div id="shopping-cart" class="container">
 		<?php echo $content_top; ?>
-		<div class="breadcrumb">
-			<?php foreach ($breadcrumbs as $breadcrumb) { ?>
-				<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-			<?php } ?>
-		</div>
 		<a href="<?php echo $checkout; ?>" class="button button-primary checkout-button"><span><?php echo $button_checkout; ?></span></a>
 		<h1><?php echo $heading_title; ?></h1>
 		<?php if ($attention) { ?>

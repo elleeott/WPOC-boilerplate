@@ -108,13 +108,47 @@ $(document).ready(function(){
 	$('.comment-form-rating span').addClass('ratings-js');
 	$('.comment-form-rating').append('<span class="ratings-stars"></span>');
 	$('.ratings-js').hover(function(){
-		$(this).addClass('ratings-hover');
+		var numStars = ($(this).children('input').val());
+		$('.star-ratings').addClass('stars-' + numStars);
 	}, function() {
-		$(this).removeClass('ratings-hover');
+		$('.star-ratings').removeClass('stars-1 stars-2 stars-3 stars-4 stars-5')
 	});
+	
+	/*
+	$('.star-ratings span:eq(0)').hover(function(){
+		$('.star-ratings').addClass('stars-1');
+	}, function(){
+		$('.star-ratings').removeClass('stars-1');	
+	});
+	$('.star-ratings span:eq(1)').hover(function(){
+		$('.star-ratings').addClass('stars-2');
+	}, function(){
+		$('.star-ratings').removeClass('stars-2');	
+	});
+	$('.star-ratings span:eq(2)').hover(function(){
+		$('.star-ratings').addClass('stars-3');
+	}, function(){
+		$('.star-ratings').removeClass('stars-3');	
+	});
+	$('.star-ratings span:eq(3)').hover(function(){
+		$('.star-ratings').addClass('stars-4');
+	}, function(){
+		$('.star-ratings').removeClass('stars-4');	
+	});
+	$('.star-ratings span:eq(4)').hover(function(){
+		$('.star-ratings').addClass('stars-5');
+	}, function(){
+		$('.star-ratings').removeClass('stars-5');	
+	});
+	*/
 	$('.ratings-js').click(function(){
-		$('.ratings-js').removeClass('ratings-selected');
-		$(this).addClass('ratings-selected');
+		//$('.ratings-js').removeClass('ratings-selected');
+		//$(this).addClass('ratings-selected');
+		var numStars = ($(this).children('input').val());
+		$('.star-ratings').removeClass('stars-selected-1 stars-selected-2 stars-selected-3 stars-selected-4 stars-selected-5');
+		$('.star-ratings').addClass('stars-selected-' + numStars);
+			
+		
 		$(this).children('input').attr('checked', true);
 		var rating = $(this).children('input').val();
 		$('.ratings-stars').css({display:'none'});

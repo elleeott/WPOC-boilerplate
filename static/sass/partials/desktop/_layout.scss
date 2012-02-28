@@ -46,22 +46,7 @@ header.main {
 }
 
 .sidebar-content {
-
 	@include boxShadow(5px,5px,0,0,0%,0%,.02);
-	//background-color:$backgroundColor1;
-	//color:$fontColor5;
 	border:1px solid $accentColor2;
 	padding:10px;
-	min-height:500px;
-	font-family:"franklin-gothic-urw-cond";
-	h2 {
-		font-size:18px;
-		text-transform:uppercase;
-		color:#373632;
-	}
-	a {
-		//color:$fontColor5;
-		//@include textShadow($s:0%,$l:0%,$a:1);	
-		font-weight:normal;
-	}
 }

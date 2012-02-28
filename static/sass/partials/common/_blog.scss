@@ -7,3 +7,14 @@
 		@import "modules/_blog-media.scss";
 	}
 }
+
+.blog-category {
+	article {
+		border-bottom:1px solid #efefef;
+		padding:0 0 20px 0;
+		margin:0 0 20px 0;
+		@import "modules/_blog-content-style.scss";
+		@import "modules/_blog-media.scss";
+	}
+	
+}

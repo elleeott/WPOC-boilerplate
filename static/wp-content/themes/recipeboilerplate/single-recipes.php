@@ -14,6 +14,9 @@
 						<div class="social-elements clearfix">
 							<?php get_social_elements(); ?>
 						</div>
+						<div class="review hreview-aggregate">
+							<?php get_ratings(); ?>
+						</div>
 						<div class="item">
 							<h1 class="fn"><?php the_title(); ?></h1>
 						</div>
@@ -21,9 +24,6 @@
 						
 						<div class="summary">
 							<?php the_excerpt(); ?>
-						</div>
-						<div class="review hreview-aggregate">
-							<?php get_ratings(); ?>
 						</div>
 						<dl class="clearfix">
 							<?php if(get_post_meta($post->ID,'_prep_time',true)): ?>

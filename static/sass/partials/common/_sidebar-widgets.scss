@@ -1,3 +1,15 @@
 .widget {
 	margin-bottom:20px;
 }
+
+
+.sidebar-content {
+	h2 {
+		@include heading5;
+	}
+
+	.recent-recipes ul, .widget_recent_entries ul {
+		@include linkList;
+	}
+
+}

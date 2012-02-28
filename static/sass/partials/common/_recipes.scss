@@ -1,0 +1,141 @@
+.recipe-single {
+	article.primary {
+		h1 {
+			@include heading1;
+		}
+		h2 {
+			@include heading2;
+		
+		}
+		
+		h3 {
+			@include heading3;
+		
+		}
+		
+		h4 {
+			@include heading4;
+		
+		}
+		
+		h5 {
+			@include heading5;
+		
+		}
+		
+		h6 {
+			@include heading6;
+		
+		}
+		.recipe-img {
+			img {
+				max-width:100%;
+				height:auto;
+			}
+			ul {
+				list-style-type:none;
+				margin:0;
+			}
+			li {
+				line-height:1;
+				margin:0;
+			}
+		}
+		.rating {
+			float:right;
+		}
+		
+		dl {
+			font-family:$sansSerif1;
+			font-size:$baseFontSize*.9;
+			dt {
+				font-weight:bold;
+				width:100px;
+				float:left;
+				clear:left;
+				line-height:$baseLineHeight;
+			}
+			dd {
+				float:left;
+				margin-left:10px;
+				width:100px;
+				line-height:$baseLineHeight;
+			}
+		}
+	
+		p {
+			@include copyStyle;
+		}
+		
+		ol {
+			@include numList;
+		}
+		ul {
+			@include bullList;
+		}
+		
+		
+		/***** nutrition label *****/
+		.nutrition-label {
+			font-family:helvetica,arial,sans-serif;
+			width:220px;
+			padding:10px;
+			border:1px solid $accentColor3;
+			font-size:12px;
+			h2 {
+				font-family:helvetica,arial,sans-serif;
+				font-weight:bold;
+				margin:0;
+				font-size:24px;
+			}
+			table {
+				width:100%;
+			}
+			th, td {
+				border-bottom:1px solid $accentColor3;
+				padding:3px 0;
+			}
+			thead {
+				th, td {
+					border-bottom:1px solid $accentColor3;
+					padding:1px 0;
+				}
+			}
+			td {
+				text-align:right;
+				font-weight:bold;
+			}
+			thead {
+				th,td {
+					border:0 none;
+				}
+			}
+			.indent {
+				padding-left:5px;
+			}
+			.percent-value {
+				font-size:80%;
+			}
+			.servings {
+				padding:0 0 3px;
+				border-bottom:10px solid $accentColor2;		
+			}
+			.protein {
+				border-bottom:10px solid $accentColor2;		
+			}
+			.calories {
+				border-bottom:3px solid $accentColor2;
+			}
+			td.calories {
+				font-weight:normal;
+			}
+			.footnote {
+				font-size:80%;
+				color:$fontColor2;
+				border-bottom:0 none;
+			}
+		}
+		
+	}
+}
+

@@ -1,12 +1,12 @@
 #WordPress & OpenCart Boilerplate
 
 html5, performance optimized Boilerplate for Wordpress and opencart sites.
-current working install of WP 3.2.1 and OC 1.5.1.3
+current working install of WP 3.3.1 and OC 1.5.1.3
 
 
 ## install instructions
 
-1. download this repo and put it in webroot
+1. download and put it in webroot
 2. create a mysql db and user per WP and OC documentation.
 3. rename wp-config-sample.php to wp-config.php and enter db credentials
 4. run WP install - this will set up the required db tables for WP.

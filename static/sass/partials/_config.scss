@@ -13,7 +13,7 @@ $fontColor4:#fff;
 $fontColor5:#ccc;
 $fontColor6:#777;
 
-$errorColor:red;
+$errorColor:#8c0000;
 $warningColor:blue;
 
 
@@ -24,8 +24,18 @@ $accentColor3:#efefef;
 
 //type
 
-$serif1:georgia,serif;
+
+//font-family: "skolar";
+//font-family: "abril-text";
+//font-family: "kepler-std";
+//font-family: "rooney-web";
+//font-family: "georgia";
+//font-family:"franklin-gothic-urw-cond";
+
+$serif1:'abril-text',georgia,serif;
 $sansSerif1:'helvetica neue',helvetica,arial, sans-serif;
+$titling1:'franklin-gothic-urw-cond','arial condensed',arial,sans-serif;
+
 $baseFontSize:14px;
 $baseLineHeight: 1.5em;
 
@@ -46,17 +56,17 @@ $unit10:10px;
 	background:red;
 }
 
-@mixin rounded($radius) {
+@mixin rounded($radius:3px) {
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
 	-khtml-border-radius: $radius;
 	border-radius: $radius;
 
 }
-@mixin boxShadow($x:0px, $y:1px, $blur:3px, $h:0, $s:0%, $l:0%, $a:.1) {
-	-webkit-box-shadow: $x $y $blur hsla($h,$s,$l,$a);
-	   -moz-box-shadow: $x $y $blur hsla($h,$s,$l,$a);
-	       -box-shadow: $x $y $blur hsla($h,$s,$l,$a);
+@mixin boxShadow($inset:none,$x:0px, $y:1px, $blur:3px, $h:0, $s:0%, $l:0%, $a:.1) {
+	-webkit-box-shadow:$inset $x $y $blur hsla($h,$s,$l,$a);
+	   -moz-box-shadow:$inset $x $y $blur hsla($h,$s,$l,$a);
+	       -box-shadow:$inset $x $y $blur hsla($h,$s,$l,$a);
 }
 
 @mixin textShadow($x:0px, $y:-1px, $blur:0px, $h:0, $s:100%, $l:100%, $a:.7) {
@@ -72,7 +82,7 @@ $unit10:10px;
 }
 
 
-@mixin backgroundImage($path, $position:0 0, $repeat:no-repeat) {
+@mixin backgroundImage($path, $position:0 0, $repeat:no-repeat) { //example usage: @include backgroundImage('img/assets/home-hero-background.png',0 0,repeat);
 	background: {
 		image:file_url($staticFilePath,$staticHost,$path);
 		position:$position;
@@ -90,14 +100,14 @@ $unit10:10px;
 
 
 
-
 /************** text mixins ****************/
 
 @mixin heading1($fontSize:($baseFontSize * 2)) {
+
 	font-size:$fontSize;
 	line-height:1em;
 	margin:0 0 1em;
-	font-family:$sansSerif1;
+	font-family:$titling1;
 }
 
 @mixin heading2($fontSize:($baseFontSize * 1.7 )) {
@@ -151,6 +161,7 @@ $unit10:10px;
 	color:$fontColor2;
 }
 
+/******* lists *******/
 @mixin bullList {
 	list-style-type:disc;
 	margin:1.5em;
@@ -171,18 +182,59 @@ $unit10:10px;
 	
 }
 
+@mixin linkList { //corresponds to ul element
+	li {
+		margin:0 0 .25em;
+		a {
+			text-decoration:none;
+			color:$linkColor2;
+			//display:block;
+			@include transition;
+			&:hover {
+				color:darken($linkColor2,50%);		
+			}
+		}
+	}
+}
+
+/****** forms *******/
+@mixin inputField {
+	border:1px solid $accentColor2;
+	padding:5px 10px;
+	font-family:$serif1;
+	font-size:$baseFontSize;
+	background:lighten($accentColor3,5);
+	@include boxShadow(inset,0px,0px,5px,0,0%,0%,.1);
+	
+}
+@mixin inputFocus {
+	background:lighten($accentColor3,5%);	
+	border:1px solid darken($accentColor2,10%);
+	@include boxShadow(none,0px,0px,5px,0,0%,0%,.1);
+}
+
 @mixin formInputError {
 	border: 1px solid $errorColor;
 }
 
+@mixin requiredInput {
+	font-weight: bold;
+}
 
 
+/******tables *******/
 
+@mixin tableCell {
+	padding:5px;
+	vertical-align: top;
+	border-bottom:1px solid $accentColor2;
+}
 
+@mixin columnHead {
+	color:$fontColor2;
+	border-bottom:3px solid $accentColor2;
+	vertical-align:top;
 
-
-
-
-
+}
 
 

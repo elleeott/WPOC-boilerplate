@@ -5,34 +5,40 @@
 <p><?php echo $text_shipping_method; ?></p>
 <table class="form">
   <?php foreach ($shipping_methods as $shipping_method) { ?>
+  <thead>
   <tr>
-    <td colspan="3"><b><?php echo $shipping_method['title']; ?></b></td>
+    <th colspan="2"><?php echo $shipping_method['title']; ?></th>
   </tr>
+  </thead>
   <?php if (!$shipping_method['error']) { ?>
   <?php foreach ($shipping_method['quote'] as $quote) { ?>
   <tr>
-    <td style="width: 1px;"><?php if ($quote['code'] == $code || !$code) { ?>
+    <td><?php if ($quote['code'] == $code || !$code) { ?>
       <?php $code = $quote['code']; ?>
       <input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>" checked="checked" />
+    <label for="<?php echo $quote['code']; ?>"><?php echo $quote['title']; ?></label>
       <?php } else { ?>
       <input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>" />
-      <?php } ?></td>
-    <td><label for="<?php echo $quote['code']; ?>"><?php echo $quote['title']; ?></label></td>
-    <td style="text-align: right;"><label for="<?php echo $quote['code']; ?>"><?php echo $quote['text']; ?></label></td>
+    <label for="<?php echo $quote['code']; ?>"><?php echo $quote['title']; ?></label>
+      <?php } ?>
+    </td>
+    <td><label for="<?php echo $quote['code']; ?>"><?php echo $quote['text']; ?></label></td>
   </tr>
   <?php } ?>
   <?php } else { ?>
   <tr>
-    <td colspan="3"><div class="error"><?php echo $shipping_method['error']; ?></div></td>
+    <td colspan="2"><div class="error"><?php echo $shipping_method['error']; ?></div></td>
   </tr>
   <?php } ?>
   <?php } ?>
 </table>
 <?php } ?>
-<?php echo $text_comments; ?>
-<textarea name="comment" rows="8"><?php echo $comment; ?></textarea>
-<br />
-<br />
+<fieldset>
+	<label for="comment"><?php echo $text_comments; ?></label>
+	<textarea name="comment" rows="8"><?php echo $comment; ?></textarea>
+</fieldset>
+
+
 <div class="buttons">
   <div class="right"><a id="button-shipping" class="button button-primary"><span><?php echo $button_continue; ?></span></a></div>
 </div>

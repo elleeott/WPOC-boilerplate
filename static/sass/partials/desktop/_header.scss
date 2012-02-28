@@ -13,3 +13,56 @@
 #header-search {
 	color:#fff;
 }
+
+header {
+	nav#full-nav {
+		position:absolute;
+		bottom:0;
+		left:0;
+		right:0;
+		background:$backgroundColor1;
+		a {
+			display:block;
+			color:$fontColor4;
+			text-decoration:none;
+			padding:15px 20px;
+			font-size:12px;
+			height:12px;
+			@include transition;
+			&:hover {
+				background:$backgroundColor1/2; 
+			}
+		}
+	}
+	nav#mobile-nav {
+		display:none;
+	}
+}
+
+.current-menu-item,
+body.post-type-archive-recipes .menu-item-756,
+.single-recipes .menu-item-756,
+body.post-type-archive-products .menu-item-751,
+.single-products .menu-item-751
+ {
+	background:$backgroundColor1*2;
+}
+
+.menu-primary-nav-container > ul > li {
+	position:relative;	
+	float:left;
+	> a {
+		float:left;
+	}
+	> ul {
+		display:none;
+		position:absolute;
+		top:42px;
+		left:0;
+		background:$backgroundColor1/2; 
+		> li {
+			width:200px;
+		}
+	}	
+}
+

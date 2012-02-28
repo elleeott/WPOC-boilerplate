@@ -1,3 +1,4 @@
+<?php /*
 <div class="left">
 	<h2><?php echo $text_new_customer; ?></h2>
 	<p><?php echo $text_checkout; ?></p>
@@ -23,14 +24,18 @@
 	<p><?php echo $text_register_account; ?></p>
 	<a id="button-account" class="button button-primary"><span><?php echo $button_continue; ?></span></a>
 </div>
-
+*/?>
 <div id="login" class="right">
 	<h2><?php echo $text_returning_customer; ?></h2>
 	<p><?php echo $text_i_am_returning_customer; ?></p>
-	<?php echo $entry_email; ?>
-	<input type="text" name="email" value="" />
-	<?php echo $entry_password; ?>
-	<input type="password" name="password" value="" />
+	<fieldset>
+		<label for="email"><?php echo $entry_email; ?></label>
+		<input type="email" name="email" value="" />
+	</fieldset>
+	<fieldset>
+		<label for="password"><?php echo $entry_password; ?></label>
+		<input type="password" name="password" value="" />
+	</fieldset>
 	<a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a>
 	<a id="button-login" class="button button-primary"><span><?php echo $button_login; ?></span></a>
 </div>

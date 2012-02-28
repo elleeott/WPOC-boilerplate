@@ -1,0 +1,38 @@
+/* desktop cart view */
+
+#shopping-cart {
+
+	@import "modules/_cart-common-styles.scss";
+	
+	tbody td.name {
+		img {
+			float:left;
+			margin:0 10px 0 0;
+		}
+	} 
+
+
+}
+
+.store-checkout {
+	@import "modules/_checkout-common-styles.scss";
+}
+
+#payment-address {
+	@import "modules/_form-left-labels.scss";
+}
+#shipping-address {
+	@import "modules/_form-left-labels.scss";
+}
+#shipping-method {
+	@import "modules/_form-top-labels.scss";	
+}
+
+#payment-method {
+	@import "modules/_form-top-labels.scss";	
+	
+}
+
+#confirm {
+	@import "modules/_form-top-labels.scss";	
+}

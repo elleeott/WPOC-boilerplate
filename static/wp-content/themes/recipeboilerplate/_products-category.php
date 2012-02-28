@@ -22,11 +22,13 @@
 							<strong>Item#:</strong>
 							<?php echo get_post_meta(get_the_id(),'_oc_product_sku',true); ?>
 						</div>
+						<?php /*
 						<form class="add-to-cart-form" action="/store/index.php?route=checkout/cart/update" method="post">
 							<input type="hidden" name="product_id" value="<?php echo get_post_meta(get_the_id(),'_oc_product_id',true); ?>"/>
 							<input type="hidden" name="quantity" value="1"/>				
 							<a href="#" class="button button-primary add-to-cart">add to cart</a>
 						</form>
+						*/ ?>
 					</div>
 				<?php endwhile; endif;?>
 			</div>

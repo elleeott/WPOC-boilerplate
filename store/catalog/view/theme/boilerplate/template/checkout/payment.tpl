@@ -13,8 +13,11 @@
    <label for="<?php echo $payment_method['code']; ?>"><?php echo $payment_method['title']; ?></label>
   <?php } ?>
 <?php } ?>
-<?php echo $text_comments; ?>
-<textarea name="comment" rows="8"><?php echo $comment; ?></textarea>
+<fieldset>
+	<label for="comment"><?php echo $text_comments; ?></label>
+	<textarea name="comment" rows="8"><?php echo $comment; ?></textarea>
+</fieldset>
+
 
 <?php if ($text_agree) { ?>
 <div class="buttons">

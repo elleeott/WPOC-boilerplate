@@ -1,0 +1,144 @@
+/****** buttons *******/
+
+a.button, button.button {
+	display:inline-block;
+	text-decoration:none;
+	color:#fff;
+	font-size:12px;
+	height:32px;
+	line-height:31px;
+	padding:0 20px;
+	font-size:12px;
+	font-weight:bold;
+	cursor:pointer;
+	border:0 none;
+	font-family:$sansSerif1;
+	vertical-align:top;
+	@include transition;
+	@include rounded(3px);
+}
+a.button-primary, button.button-primary {
+	background:$linkColor1;
+	&:hover {
+		background:darken($linkColor1,5%);
+	}
+}
+
+a.button-secondary {
+	background:$linkColor3;
+	&:hover {
+		background:darken($linkColor3,5%);
+	}
+
+}
+a.button-tertiary {
+	background:$linkColor3;
+	&:hover {
+		background:darken($linkColor3,5%);
+	}
+
+}
+
+a.busy {
+	//padding-right:5px;
+	span {
+	//@include backgroundImage('img/assets/loading.gif',right center, no-repeat);		
+	//padding-right:15px;
+	}
+	color:darken(#fff,50%);
+	background-color:$linkColor3/2;
+	//@include backgroundImage('img/assets/home-hero-background.png',0 0,repeat);
+	
+
+
+	&:hover {
+		background-color:$linkColor3/2;
+	}
+}
+
+/****** notifications *****/
+
+#notification {
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	background:#efefef;
+	color:#333;
+	z-index:1000;
+	.container {
+		padding:10px;
+	}
+	a {
+		color:#333;
+		text-decoration:none;
+	}
+}
+
+
+/****** pagination *******/
+.wp-pagenavi {
+	font-family:$serif1;
+	.pages {
+		margin-right:10px;
+		color:$fontColor3;
+	}
+	a, .current {
+		padding:5px 10px;
+		margin:0 4px;
+	}
+	.current {
+		border-bottom:2px solid $accentColor2;
+	}
+	a.page {
+		text-decoration:none;
+		&:hover {
+			background:$accentColor3;
+		}
+	}
+}
+
+/***** forms *****/
+
+fieldset {
+	input[type="email"], input[type="text"],input[type="password"],textarea,select {
+		@include inputField;
+		@include rounded;
+		&:focus {
+			@include inputFocus;
+		}
+	}
+	label {
+		padding:6px 0;
+	}
+}
+
+fieldset.required {
+	label {
+		@include requiredInput;
+	}
+	label.error {
+		color:$errorColor;
+		font-weight:normal;
+	}
+	input[type="text"].error, input[type="email"].error, textarea.error, select.error {
+		@include formInputError;
+	}
+}
+
+/****** social elements *******/
+.social-elements {
+	//position:absolute;
+	//right:0;
+	//height:20px;
+	//overflow:hidden;
+	span {
+		display:block;
+		float:left;
+	}
+	.tweet {
+	}
+	.facebook-like-button {
+		width:120px;
+	}
+}

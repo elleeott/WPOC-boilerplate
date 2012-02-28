@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="content-container" class="clearfix">
+<div id="content-container" class="page-default clearfix">
 	<div class="container">
 		<div id="main-content" class="main-content-left">	
 		
@@ -7,7 +7,7 @@
 		
 		
 			<?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
-				<article>
+				<article class="primary">
 				<hgroup>
 					<h1><?php the_title(); ?></h1>
 				</hgroup>

@@ -58,6 +58,9 @@ article, aside, figure, footer, header, hgroup, nav, section {
   zoom: 1; }
 
 /************** text mixins ****************/
+/******* lists *******/
+/****** forms *******/
+/******tables *******/
 /*******LAYOUT MEDIA QUERIES ********/
 /* mobile */
 /*
@@ -150,13 +153,12 @@ and (max-width:480px) {
     margin: auto; }
 
   /* mobile cart view */
-  #shopping-cart td, #shopping-cart th {
-    padding: 5px; }
   #shopping-cart .cart-info {
     margin: 0 0 20px; }
     #shopping-cart .cart-info table {
       width: 100%; }
     #shopping-cart .cart-info td {
+      padding: 5px;
       vertical-align: top;
       border-bottom: 1px solid #cccccc; }
     #shopping-cart .cart-info thead td {
@@ -176,22 +178,98 @@ and (max-width:480px) {
     #shopping-cart .cart-info tbody td {
       padding-top: 10px;
       padding-bottom: 10px; }
-    #shopping-cart .cart-info .cart-total {
-      border-top: 1px solid #cccccc;
+  #shopping-cart .cart-total {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    margin: 0 0 20px; }
+    #shopping-cart .cart-total table {
+      float: right; }
+    #shopping-cart .cart-total td, #shopping-cart .cart-total th {
+      padding: 5px;
+      vertical-align: top;
       border-bottom: 1px solid #cccccc;
-      margin: 0 0 20px; }
-      #shopping-cart .cart-info .cart-total table {
-        float: right; }
-      #shopping-cart .cart-info .cart-total td, #shopping-cart .cart-info .cart-total th {
-        text-align: right; }
-      #shopping-cart .cart-info .cart-total th {
-        font-weight: bold; }
+      text-align: right; }
+    #shopping-cart .cart-total th {
+      color: #666666;
+      border-bottom: 3px solid #cccccc;
+      vertical-align: top;
+      font-weight: bold; }
   #shopping-cart #buttons {
     margin: 0 0 20px; }
   #shopping-cart .checkout-button {
     float: right; }
   #shopping-cart td.price {
-    display: none; } }
+    display: none; }
+
+  .store-checkout h1 {
+    font-size: 28px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+  .store-checkout #checkout {
+    display: none; }
+  .store-checkout .checkout-heading {
+    background: #cccccc;
+    padding: 5px;
+    margin: 0 0 10px; }
+    .store-checkout .checkout-heading a {
+      cursor: pointer;
+      margin: 0 0 0 10px;
+      color: #666666;
+      text-decoration: underline; }
+  .store-checkout .checkout-section {
+    margin: 0 0 20px; }
+  .store-checkout #shipping-method p {
+    font-size: 14px;
+    font-family: "abril-text", georgia, serif;
+    line-height: 21px;
+    margin: 1em 0; }
+  .store-checkout #shipping-method table {
+    width: 75%;
+    margin: 0 0 20px; }
+  .store-checkout #shipping-method th {
+    color: #666666;
+    border-bottom: 3px solid #cccccc;
+    vertical-align: top; }
+  .store-checkout #shipping-method td {
+    padding: 5px;
+    vertical-align: top;
+    border-bottom: 1px solid #cccccc; }
+  .store-checkout #payment-method p {
+    font-size: 14px;
+    font-family: "abril-text", georgia, serif;
+    line-height: 21px;
+    margin: 1em 0; }
+
+  #payment-address fieldset {
+    margin: 0 0 20px; }
+    #payment-address fieldset input[type="text"], #payment-address fieldset input[type="email"], #payment-address fieldset textarea, #payment-address fieldset select {
+      display: block;
+      width: 75%; }
+
+  #shipping-address fieldset {
+    margin: 0 0 20px; }
+    #shipping-address fieldset input[type="text"], #shipping-address fieldset input[type="email"], #shipping-address fieldset textarea, #shipping-address fieldset select {
+      display: block;
+      width: 75%; }
+
+  #shipping-method fieldset {
+    margin: 0 0 20px; }
+    #shipping-method fieldset input[type="text"], #shipping-method fieldset input[type="email"], #shipping-method fieldset textarea, #shipping-method fieldset select {
+      display: block;
+      width: 75%; }
+
+  #payment-method fieldset {
+    margin: 0 0 20px; }
+    #payment-method fieldset input[type="text"], #payment-method fieldset input[type="email"], #payment-method fieldset textarea, #payment-method fieldset select {
+      display: block;
+      width: 75%; }
+
+  #confirm fieldset {
+    margin: 0 0 20px; }
+    #confirm fieldset input[type="text"], #confirm fieldset input[type="email"], #confirm fieldset textarea, #confirm fieldset select {
+      display: block;
+      width: 75%; } }
 /* iphone4 */
 @media only screen and (-webkit-min-device-pixel-ratio : 1.5),
 only screen and (min-device-pixel-ratio : 1.5) {
@@ -236,19 +314,11 @@ and (min-width:768px) {
     float: left; }
 
   .sidebar-content {
-    -webkit-box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.02);
-    -moz-box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.02);
-    -box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.02);
+    -webkit-box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.1);
+    -box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.1);
     border: 1px solid #cccccc;
-    padding: 10px;
-    min-height: 500px;
-    font-family: "franklin-gothic-urw-cond"; }
-    .sidebar-content h2 {
-      font-size: 18px;
-      text-transform: uppercase;
-      color: #373632; }
-    .sidebar-content a {
-      font-weight: normal; }
+    padding: 10px; }
 
   #logo {
     background: #ccc;
@@ -333,13 +403,31 @@ and (min-width:768px) {
     left: 600px; }
 
   .widgets .widget {
-    width: 280px;
+    width: 278px;
     padding: 10px;
     float: left;
+    background: #fff;
     margin-right: 20px;
-    background: #efefef;
     height: 200px;
-    overflow: auto; }
+    overflow: auto;
+    border: 1px solid #efefef; }
+    .widgets .widget h2 {
+      font-size: 14px;
+      line-height: 1em;
+      margin: 0 0 1em;
+      font-weight: bold; }
+    .widgets .widget li {
+      margin: 0 0 .25em; }
+      .widgets .widget li a {
+        text-decoration: none;
+        color: #666666;
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        -ms-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out; }
+        .widgets .widget li a:hover {
+          color: black; }
 
   .widgets .widget:nth-child(3n) {
     margin-right: 0; }
@@ -351,13 +439,12 @@ and (min-width:768px) {
     margin: 20px; }
 
   /* desktop cart view */
-  #shopping-cart td, #shopping-cart th {
-    padding: 5px; }
   #shopping-cart .cart-info {
     margin: 0 0 20px; }
     #shopping-cart .cart-info table {
       width: 100%; }
     #shopping-cart .cart-info td {
+      padding: 5px;
       vertical-align: top;
       border-bottom: 1px solid #cccccc; }
     #shopping-cart .cart-info thead td {
@@ -377,23 +464,121 @@ and (min-width:768px) {
     #shopping-cart .cart-info tbody td {
       padding-top: 10px;
       padding-bottom: 10px; }
-    #shopping-cart .cart-info .cart-total {
-      border-top: 1px solid #cccccc;
+  #shopping-cart .cart-total {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    margin: 0 0 20px; }
+    #shopping-cart .cart-total table {
+      float: right; }
+    #shopping-cart .cart-total td, #shopping-cart .cart-total th {
+      padding: 5px;
+      vertical-align: top;
       border-bottom: 1px solid #cccccc;
-      margin: 0 0 20px; }
-      #shopping-cart .cart-info .cart-total table {
-        float: right; }
-      #shopping-cart .cart-info .cart-total td, #shopping-cart .cart-info .cart-total th {
-        text-align: right; }
-      #shopping-cart .cart-info .cart-total th {
-        font-weight: bold; }
+      text-align: right; }
+    #shopping-cart .cart-total th {
+      color: #666666;
+      border-bottom: 3px solid #cccccc;
+      vertical-align: top;
+      font-weight: bold; }
   #shopping-cart #buttons {
     margin: 0 0 20px; }
   #shopping-cart .checkout-button {
     float: right; }
   #shopping-cart tbody td.name img {
     float: left;
-    margin: 0 10px 0 0; } }
+    margin: 0 10px 0 0; }
+
+  .store-checkout h1 {
+    font-size: 28px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+  .store-checkout #checkout {
+    display: none; }
+  .store-checkout .checkout-heading {
+    background: #cccccc;
+    padding: 5px;
+    margin: 0 0 10px; }
+    .store-checkout .checkout-heading a {
+      cursor: pointer;
+      margin: 0 0 0 10px;
+      color: #666666;
+      text-decoration: underline; }
+  .store-checkout .checkout-section {
+    margin: 0 0 20px; }
+  .store-checkout #shipping-method p {
+    font-size: 14px;
+    font-family: "abril-text", georgia, serif;
+    line-height: 21px;
+    margin: 1em 0; }
+  .store-checkout #shipping-method table {
+    width: 75%;
+    margin: 0 0 20px; }
+  .store-checkout #shipping-method th {
+    color: #666666;
+    border-bottom: 3px solid #cccccc;
+    vertical-align: top; }
+  .store-checkout #shipping-method td {
+    padding: 5px;
+    vertical-align: top;
+    border-bottom: 1px solid #cccccc; }
+  .store-checkout #payment-method p {
+    font-size: 14px;
+    font-family: "abril-text", georgia, serif;
+    line-height: 21px;
+    margin: 1em 0; }
+
+  #payment-address fieldset {
+    margin: 0 0 20px; }
+    #payment-address fieldset label {
+      float: left;
+      width: 25%; }
+    #payment-address fieldset input[type="text"], #payment-address fieldset input[type="email"], #payment-address fieldset textarea, #payment-address fieldset select {
+      display: block;
+      float: left;
+      width: 45%; }
+    #payment-address fieldset input[type="text"].error, #payment-address fieldset input[type="email"].error, #payment-address fieldset textarea.error, #payment-address fieldset select.error {
+      border: 1px solid #8c0000; }
+    #payment-address fieldset label.error {
+      margin-left: 10px;
+      color: #8c0000; }
+  #payment-address fieldset.required label {
+    font-weight: bold; }
+
+  #shipping-address fieldset {
+    margin: 0 0 20px; }
+    #shipping-address fieldset label {
+      float: left;
+      width: 25%; }
+    #shipping-address fieldset input[type="text"], #shipping-address fieldset input[type="email"], #shipping-address fieldset textarea, #shipping-address fieldset select {
+      display: block;
+      float: left;
+      width: 45%; }
+    #shipping-address fieldset input[type="text"].error, #shipping-address fieldset input[type="email"].error, #shipping-address fieldset textarea.error, #shipping-address fieldset select.error {
+      border: 1px solid #8c0000; }
+    #shipping-address fieldset label.error {
+      margin-left: 10px;
+      color: #8c0000; }
+  #shipping-address fieldset.required label {
+    font-weight: bold; }
+
+  #shipping-method fieldset {
+    margin: 0 0 20px; }
+    #shipping-method fieldset input[type="text"], #shipping-method fieldset input[type="email"], #shipping-method fieldset textarea, #shipping-method fieldset select {
+      display: block;
+      width: 75%; }
+
+  #payment-method fieldset {
+    margin: 0 0 20px; }
+    #payment-method fieldset input[type="text"], #payment-method fieldset input[type="email"], #payment-method fieldset textarea, #payment-method fieldset select {
+      display: block;
+      width: 75%; }
+
+  #confirm fieldset {
+    margin: 0 0 20px; }
+    #confirm fieldset input[type="text"], #confirm fieldset input[type="email"], #confirm fieldset textarea, #confirm fieldset select {
+      display: block;
+      width: 75%; } }
 /* some default styling */
 html {
   overflow: -moz-scrollbars-vertical;
@@ -401,7 +586,7 @@ html {
 
 body {
   background-color: white;
-  font-family: georgia, serif;
+  font-family: "abril-text", georgia, serif;
   font-size: 14px; }
 
 a {
@@ -420,14 +605,175 @@ strong {
 
 /****  imports  ******/
 /* common */
+footer {
+  padding: 40px;
+  min-height: 300px;
+  background: #333333;
+  color: #fff; }
+  footer li {
+    margin: 0 0 5px; }
+
+.widget {
+  margin-bottom: 20px; }
+
+.sidebar-content h2 {
+  font-size: 16.8px;
+  line-height: 1em;
+  margin: 0 0 1em;
+  font-weight: bold; }
+.sidebar-content .recent-recipes ul li, .sidebar-content .widget_recent_entries ul li {
+  margin: 0 0 .25em; }
+  .sidebar-content .recent-recipes ul li a, .sidebar-content .widget_recent_entries ul li a {
+    text-decoration: none;
+    color: #666666;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out; }
+    .sidebar-content .recent-recipes ul li a:hover, .sidebar-content .widget_recent_entries ul li a:hover {
+      color: black; }
+
+.comments-list > h3 {
+  font-size: 18px;
+  border-bottom: 1px solid #efefef; }
+
+li.comment.depth-1 {
+  border-bottom: 1px solid #efefef; }
+
+article.comment {
+  position: relative;
+  padding: 20px 60px;
+  min-height: 50px; }
+  article.comment img.avatar {
+    position: absolute;
+    left: 0;
+    top: 20px; }
+
+.comment-content p {
+  font-size: 13px;
+  font-family: "abril-text", georgia, serif;
+  line-height: 19.5px;
+  margin: 1em 0; }
+
+li.comment.depth-2 {
+  padding-left: 60px;
+  border-top: 1px solid #efefef; }
+
+.reply {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  font-size: .8em; }
+  .reply a {
+    color: #999999; }
+
+#respond fieldset {
+  margin: 0 0 20px; }
+  #respond fieldset label {
+    float: left;
+    width: 25%; }
+  #respond fieldset input[type="text"], #respond fieldset input[type="email"], #respond fieldset textarea, #respond fieldset select {
+    display: block;
+    float: left;
+    width: 45%; }
+  #respond fieldset input[type="text"].error, #respond fieldset input[type="email"].error, #respond fieldset textarea.error, #respond fieldset select.error {
+    border: 1px solid #8c0000; }
+  #respond fieldset label.error {
+    margin-left: 10px;
+    color: #8c0000; }
+#respond fieldset.required label {
+  font-weight: bold; }
+
+/****** rating submission ******/
+.comment-form-rating span.ratings-js input {
+  display: none; }
+.comment-form-rating span.ratings-js {
+  width: 30px;
+  height: 29px;
+  display: block;
+  float: left;
+  cursor: pointer; }
+.comment-form-rating .star-ratings {
+  position: relative;
+  width: 150px;
+  height: 30px;
+  float: left;
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 0;
+  background-repeat: repeat; }
+.comment-form-rating div.stars-1, .comment-form-rating div.stars-selected-1 {
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 -30px;
+  background-repeat: repeat; }
+.comment-form-rating div.stars-2, .comment-form-rating div.stars-selected-2 {
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 -60px;
+  background-repeat: repeat; }
+.comment-form-rating div.stars-3, .comment-form-rating div.stars-selected-3 {
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 -90px;
+  background-repeat: repeat; }
+.comment-form-rating div.stars-4, .comment-form-rating div.stars-selected-4 {
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 -120px;
+  background-repeat: repeat; }
+.comment-form-rating div.stars-5, .comment-form-rating div.stars-selected-5 {
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 -150px;
+  background-repeat: repeat; }
+
+/****** rating widget display ******/
+.ranked-recipes li {
+  margin: 0 0 5px;
+  border-top: 1px solid #efefef;
+  padding: 5px 0; }
+  .ranked-recipes li .rating {
+    float: right;
+    display: block;
+    position: relative;
+    text-indent: -9999em;
+    width: 74px;
+    height: 15px;
+    background-image: url('//static.frictio.dev/img/assets/stars-small.1330372005.png');
+    background-position: 0 0;
+    background-repeat: repeat; }
+  .ranked-recipes li .rating-stars {
+    position: absolute;
+    height: 100%;
+    background-image: url('//static.frictio.dev/img/assets/stars-small.1330372005.png');
+    background-position: 0 -15px;
+    background-repeat: repeat; }
+
+.recipe-single .rating {
+  display: block;
+  position: relative;
+  width: 150px;
+  height: 30px;
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 0;
+  background-repeat: repeat; }
+.recipe-single .rating-stars {
+  position: absolute;
+  height: 100%;
+  background-image: url('//static.frictio.dev/img/assets/stars.1330366982.png');
+  background-position: 0 -150px;
+  background-repeat: repeat; }
+.recipe-single .average, .recipe-single .count {
+  position: relative;
+  top: 35px;
+  color: #666666;
+  font-size: 11.2px; }
+
+/****** buttons *******/
 a.button, button.button {
   display: inline-block;
   text-decoration: none;
   color: #fff;
   font-size: 12px;
-  height: 28px;
-  line-height: 27px;
-  padding: 0 15px;
+  height: 32px;
+  line-height: 31px;
+  padding: 0 20px;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
@@ -460,26 +806,29 @@ a.button-tertiary {
     background: #8c8c8c; }
 
 a.busy {
+  color: gray;
   background-color: #4c4c4c; }
   a.busy:hover {
-    background: #3f3f3f; }
+    background-color: #4c4c4c; }
 
-footer {
-  padding: 40px;
-  min-height: 300px;
-  background: #333333;
-  color: #fff; }
-  footer li {
-    margin: 0 0 5px; }
+/****** notifications *****/
+#notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #efefef;
+  color: #333;
+  z-index: 1000; }
+  #notification .container {
+    padding: 10px; }
+  #notification a {
+    color: #333;
+    text-decoration: none; }
 
-.social-elements span {
-  display: block;
-  float: left; }
-.social-elements .facebook-like-button {
-  width: 120px; }
-
+/****** pagination *******/
 .wp-pagenavi {
-  font-family: georgia, serif; }
+  font-family: "abril-text", georgia, serif; }
   .wp-pagenavi .pages {
     margin-right: 10px;
     color: #999999; }
@@ -493,89 +842,44 @@ footer {
     .wp-pagenavi a.page:hover {
       background: #efefef; }
 
-.widget {
-  margin-bottom: 20px; }
+/***** forms *****/
+fieldset input[type="email"], fieldset input[type="text"], fieldset input[type="password"], fieldset textarea, fieldset select {
+  border: 1px solid #cccccc;
+  padding: 5px 10px;
+  font-family: "abril-text", georgia, serif;
+  font-size: 14px;
+  background: #fcfcfc;
+  -webkit-box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+  -box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px; }
+  fieldset input[type="email"]:focus, fieldset input[type="text"]:focus, fieldset input[type="password"]:focus, fieldset textarea:focus, fieldset select:focus {
+    background: #fcfcfc;
+    border: 1px solid #b3b3b3;
+    -webkit-box-shadow: none 0px 0px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: none 0px 0px 5px rgba(0, 0, 0, 0.1);
+    -box-shadow: none 0px 0px 5px rgba(0, 0, 0, 0.1); }
+fieldset label {
+  padding: 6px 0; }
 
-.comments-list > h3 {
-  font-size: 18px;
-  border-bottom: 1px solid #efefef; }
+fieldset.required label {
+  font-weight: bold; }
+fieldset.required label.error {
+  color: #8c0000;
+  font-weight: normal; }
+fieldset.required input[type="text"].error, fieldset.required input[type="email"].error, fieldset.required textarea.error, fieldset.required select.error {
+  border: 1px solid #8c0000; }
 
-li.comment.depth-1 {
-  border-bottom: 1px solid #efefef; }
-
-article.comment {
-  position: relative;
-  padding: 20px 60px;
-  min-height: 50px; }
-  article.comment img.avatar {
-    position: absolute;
-    left: 0;
-    top: 20px; }
-
-.comment-content p {
-  font-size: 13px;
-  font-family: georgia, serif;
-  line-height: 19.5px;
-  margin: 1em 0; }
-
-li.comment.depth-2 {
-  padding-left: 60px;
-  border-top: 1px solid #efefef; }
-
-.reply {
-  position: absolute;
-  top: 20px;
-  right: 0;
-  font-size: .8em; }
-  .reply a {
-    color: #999999; }
-
-#respond fieldset {
-  margin: 0 0 20px; }
-#respond label {
-  float: left;
-  width: 25%; }
-#respond input[type="text"], #respond input[type="email"], #respond textarea {
+/****** social elements *******/
+.social-elements span {
   display: block;
-  float: left;
-  width: 45%; }
-#respond input[type="text"].error, #respond input[type="email"].error, #respond textarea.error {
-  border: 1px solid red; }
-#respond label.error {
-  margin-left: 10px;
-  color: red; }
+  float: left; }
+.social-elements .facebook-like-button {
+  width: 120px; }
 
-#notification {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #efefef;
-  color: #333;
-  z-index: 1000; }
-  #notification .container {
-    padding: 10px 0; }
-  #notification a {
-    color: #333;
-    text-decoration: none; }
-
-.comment-form-rating span.ratings-js input {
-  display: none; }
-.comment-form-rating span.ratings-js {
-  width: 15px;
-  height: 15px;
-  background: #ccc;
-  display: block;
-  float: left;
-  cursor: pointer; }
-.comment-form-rating span.ratings-hover {
-  background: #efefef; }
-.comment-form-rating span.ratings-selected {
-  background: #000; }
-.comment-form-rating span.ratings-stars {
-  display: none; }
-
-/* blog views */
 .blog-single article.primary {
   border-bottom: 1px solid #efefef;
   padding: 0 0 20px 0;
@@ -585,17 +889,17 @@ li.comment.depth-2 {
     font-size: 28px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "helvetica neue", helvetica, arial, sans-serif; }
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
   .blog-single article.primary h2 {
     font-size: 23.8px;
     line-height: 1em;
     margin: 0 0 .5em;
-    font-family: georgia, serif; }
+    font-family: "abril-text", georgia, serif; }
   .blog-single article.primary h3 {
     font-size: 19.6px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: georgia, serif;
+    font-family: "abril-text", georgia, serif;
     font-style: italic; }
   .blog-single article.primary h4 {
     font-size: 16.8px;
@@ -616,7 +920,7 @@ li.comment.depth-2 {
     font-weight: bold; }
   .blog-single article.primary p {
     font-size: 14px;
-    font-family: georgia, serif;
+    font-family: "abril-text", georgia, serif;
     line-height: 21px;
     margin: 1em 0; }
   .blog-single article.primary ol {
@@ -649,7 +953,7 @@ li.comment.depth-2 {
       line-height: 16.797px;
       margin: .5em 0 0;
       color: #666666; }
-  .blog-single article.primary .aligncenter, .blog-single article.primary .alignleft, .blog-single article.primary .alignright {
+  .blog-single article.primary .aligncenter, .blog-single article.primary .alignleft, .blog-single article.primary .alignright, .blog-single article.primary .alignnone {
     height: auto;
     max-width: 100%; }
   .blog-single article.primary .aligncenter {
@@ -676,17 +980,17 @@ li.comment.depth-2 {
     font-size: 28px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "helvetica neue", helvetica, arial, sans-serif; }
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
   .blog-category article h2 {
     font-size: 23.8px;
     line-height: 1em;
     margin: 0 0 .5em;
-    font-family: georgia, serif; }
+    font-family: "abril-text", georgia, serif; }
   .blog-category article h3 {
     font-size: 19.6px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: georgia, serif;
+    font-family: "abril-text", georgia, serif;
     font-style: italic; }
   .blog-category article h4 {
     font-size: 16.8px;
@@ -707,7 +1011,7 @@ li.comment.depth-2 {
     font-weight: bold; }
   .blog-category article p {
     font-size: 14px;
-    font-family: georgia, serif;
+    font-family: "abril-text", georgia, serif;
     line-height: 21px;
     margin: 1em 0; }
   .blog-category article ol {
@@ -740,7 +1044,7 @@ li.comment.depth-2 {
       line-height: 16.797px;
       margin: .5em 0 0;
       color: #666666; }
-  .blog-category article .aligncenter, .blog-category article .alignleft, .blog-category article .alignright {
+  .blog-category article .aligncenter, .blog-category article .alignleft, .blog-category article .alignright, .blog-category article .alignnone {
     height: auto;
     max-width: 100%; }
   .blog-category article .aligncenter {
@@ -758,18 +1062,110 @@ li.comment.depth-2 {
     width: 100%;
     height: 100%; }
 
-/* product views */
-.products-detail h1 {
-  font-family: "franklin-gothic-urw-cond";
-  font-size: 30px;
-  text-transform: uppercase; }
-.products-detail .product-img {
+.page-default article.primary {
+  border-bottom: 1px solid #efefef;
+  padding: 0 0 20px 0;
+  margin: 0 0 20px 0;
+  /* wordpress image & caption class hook styling */ }
+  .page-default article.primary h1 {
+    font-size: 28px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+  .page-default article.primary h2 {
+    font-size: 23.8px;
+    line-height: 1em;
+    margin: 0 0 .5em;
+    font-family: "abril-text", georgia, serif; }
+  .page-default article.primary h3 {
+    font-size: 19.6px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "abril-text", georgia, serif;
+    font-style: italic; }
+  .page-default article.primary h4 {
+    font-size: 16.8px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "helvetica neue", helvetica, arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold; }
+  .page-default article.primary h5 {
+    font-size: 16.8px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-weight: bold; }
+  .page-default article.primary h6 {
+    font-size: 14px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-weight: bold; }
+  .page-default article.primary p {
+    font-size: 14px;
+    font-family: "abril-text", georgia, serif;
+    line-height: 21px;
+    margin: 1em 0; }
+  .page-default article.primary ol {
+    list-style-type: decimal;
+    margin: 1.5em; }
+    .page-default article.primary ol li {
+      margin: 0 0 .5em;
+      line-height: 1.5em; }
+  .page-default article.primary ul {
+    list-style-type: disc;
+    margin: 1.5em; }
+    .page-default article.primary ul li {
+      margin: 0 0 .5em;
+      line-height: 1.5em; }
+  .page-default article.primary blockquote {
+    border-left: 3px solid #cccccc;
+    padding: 0 5%; }
+    .page-default article.primary blockquote p {
+      font-style: italic;
+      color: #666666; }
+  .page-default article.primary .wp-caption {
+    max-width: 100%; }
+    .page-default article.primary .wp-caption img {
+      display: block;
+      height: auto;
+      max-width: 100%; }
+    .page-default article.primary .wp-caption p {
+      font-size: 11.998px;
+      font-family: "helvetica neue", helvetica, arial, sans-serif;
+      line-height: 16.797px;
+      margin: .5em 0 0;
+      color: #666666; }
+  .page-default article.primary .aligncenter, .page-default article.primary .alignleft, .page-default article.primary .alignright, .page-default article.primary .alignnone {
+    height: auto;
+    max-width: 100%; }
+  .page-default article.primary .aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  .page-default article.primary .alignleft {
+    float: left;
+    margin: 0 1em 1em 0; }
+  .page-default article.primary .alignright {
+    float: right;
+    margin: 0 0 1em 1em; }
+  .page-default article.primary embed {
+    width: 100%;
+    height: 100%; }
+
+/****** product single view *******/
+.products-single article.primary h1 {
+  font-size: 28px;
+  line-height: 1em;
+  margin: 0 0 1em;
+  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+.products-single article.primary .product-img {
   float: left;
   margin: 0 20px 20px 0;
   height: 300px;
   width: 300px;
   position: relative; }
-.products-detail .large-img {
+.products-single article.primary .large-img {
   /*
   position:relative;
   li {
@@ -785,12 +1181,12 @@ li.comment.depth-2 {
   	display:block;	
   }
   */ }
-.products-detail .small-img {
+.products-single article.primary .small-img {
   height: 150px;
   width: 150px;
   position: relative;
   display: none; }
-  .products-detail .small-img li {
+  .products-single article.primary .small-img li {
     position: absolute;
     top: 0;
     left: 0;
@@ -798,41 +1194,42 @@ li.comment.depth-2 {
     width: 150px;
     background: #fff;
     display: none; }
-  .products-detail .small-img li.focus-img {
+  .products-single article.primary .small-img li.focus-img {
     display: block; }
-.products-detail .product-info .option {
-  margin: 0 0 20px;
-  position: relative; }
-.products-detail .product-info label {
-  display: block; }
-.products-detail .product-info .required {
-  font-weight: bold; }
-.products-detail .product-info .error {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: red; }
-.products-detail .product-info .field-error {
-  border: 1px solid red; }
-
-.description {
-  color: #333;
+.products-single article.primary .product-info {
+  background: #fff; }
+  .products-single article.primary .product-info .option {
+    margin: 0 0 20px;
+    position: relative; }
+  .products-single article.primary .product-info label {
+    display: block; }
+  .products-single article.primary .product-info .required {
+    font-weight: bold; }
+  .products-single article.primary .product-info .error {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red; }
+  .products-single article.primary .product-info .field-error {
+    border: 1px solid red; }
+.products-single .description {
   margin: 20px 0; }
-  .description p {
-    width: 380px;
-    font-size: 15px;
-    line-height: 1.5em;
-    font-family: "abril-text";
+  .products-single .description p {
+    font-size: 14px;
+    font-family: "abril-text", georgia, serif;
+    line-height: 21px;
     margin: 1em 0; }
-
-.list .product-img {
+.products-single .list .product-img {
   float: left;
   margin: 0 20px 20px 0; }
 
+/**** product category view *****/
 .products-category h1 {
-  font-family: "bistro-script-web";
-  font-size: 36px; }
+  font-size: 28px;
+  line-height: 1em;
+  margin: 0 0 1em;
+  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
 .products-category .product-cell {
   width: 150px;
   height: 300px;
@@ -845,48 +1242,126 @@ li.comment.depth-2 {
   width: 150px;
   height: 200px; }
 .products-category h3 {
-  font-family: "franklin-gothic-urw-cond";
-  text-transform: uppercase; }
+  font-size: 16.8px;
+  line-height: 1em;
+  margin: 0 0 1em;
+  font-weight: bold; }
 
-/* recipe views */
-.nutrition-label {
-  width: 220px;
-  padding: 10px;
-  border: 1px solid #efefef;
-  font-size: 12px; }
-  .nutrition-label h2 {
-    font-weight: bold;
-    margin: 0;
-    font-size: 24px; }
-  .nutrition-label table {
-    width: 100%; }
-  .nutrition-label th, .nutrition-label td {
-    border-bottom: 1px solid #efefef;
-    padding: 3px 0; }
-  .nutrition-label thead th, .nutrition-label thead td {
-    border-bottom: 1px solid #efefef;
-    padding: 1px 0; }
-  .nutrition-label td {
-    text-align: right;
+.recipe-single article.primary {
+  /***** nutrition label *****/ }
+  .recipe-single article.primary h1 {
+    font-size: 28px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+  .recipe-single article.primary h2 {
+    font-size: 23.8px;
+    line-height: 1em;
+    margin: 0 0 .5em;
+    font-family: "abril-text", georgia, serif; }
+  .recipe-single article.primary h3 {
+    font-size: 19.6px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "abril-text", georgia, serif;
+    font-style: italic; }
+  .recipe-single article.primary h4 {
+    font-size: 16.8px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-family: "helvetica neue", helvetica, arial, sans-serif;
+    text-transform: uppercase;
     font-weight: bold; }
-  .nutrition-label thead th, .nutrition-label thead td {
-    border: 0 none; }
-  .nutrition-label .indent {
-    padding-left: 5px; }
-  .nutrition-label .percent-value {
-    font-size: 80%; }
-  .nutrition-label .servings {
-    padding: 0 0 3px;
-    border-bottom: 10px solid #cccccc; }
-  .nutrition-label .protein {
-    border-bottom: 10px solid #cccccc; }
-  .nutrition-label .calories {
-    border-bottom: 3px solid #cccccc; }
-  .nutrition-label td.calories {
-    font-weight: normal; }
-  .nutrition-label .footnote {
-    font-size: 80%;
-    color: #666666;
-    border-bottom: 0 none; }
-
-/* cart/checkout */
+  .recipe-single article.primary h5 {
+    font-size: 16.8px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-weight: bold; }
+  .recipe-single article.primary h6 {
+    font-size: 14px;
+    line-height: 1em;
+    margin: 0 0 1em;
+    font-weight: bold; }
+  .recipe-single article.primary .recipe-img img {
+    max-width: 100%;
+    height: auto; }
+  .recipe-single article.primary .recipe-img ul {
+    list-style-type: none;
+    margin: 0; }
+  .recipe-single article.primary .recipe-img li {
+    line-height: 1;
+    margin: 0; }
+  .recipe-single article.primary .rating {
+    float: right; }
+  .recipe-single article.primary dl {
+    font-family: "helvetica neue", helvetica, arial, sans-serif;
+    font-size: 12.6px; }
+    .recipe-single article.primary dl dt {
+      font-weight: bold;
+      width: 100px;
+      float: left;
+      clear: left;
+      line-height: 1.5em; }
+    .recipe-single article.primary dl dd {
+      float: left;
+      margin-left: 10px;
+      width: 100px;
+      line-height: 1.5em; }
+  .recipe-single article.primary p {
+    font-size: 14px;
+    font-family: "abril-text", georgia, serif;
+    line-height: 21px;
+    margin: 1em 0; }
+  .recipe-single article.primary ol {
+    list-style-type: decimal;
+    margin: 1.5em; }
+    .recipe-single article.primary ol li {
+      margin: 0 0 .5em;
+      line-height: 1.5em; }
+  .recipe-single article.primary ul {
+    list-style-type: disc;
+    margin: 1.5em; }
+    .recipe-single article.primary ul li {
+      margin: 0 0 .5em;
+      line-height: 1.5em; }
+  .recipe-single article.primary .nutrition-label {
+    font-family: helvetica,arial,sans-serif;
+    width: 220px;
+    padding: 10px;
+    border: 1px solid #efefef;
+    font-size: 12px; }
+    .recipe-single article.primary .nutrition-label h2 {
+      font-family: helvetica,arial,sans-serif;
+      font-weight: bold;
+      margin: 0;
+      font-size: 24px; }
+    .recipe-single article.primary .nutrition-label table {
+      width: 100%; }
+    .recipe-single article.primary .nutrition-label th, .recipe-single article.primary .nutrition-label td {
+      border-bottom: 1px solid #efefef;
+      padding: 3px 0; }
+    .recipe-single article.primary .nutrition-label thead th, .recipe-single article.primary .nutrition-label thead td {
+      border-bottom: 1px solid #efefef;
+      padding: 1px 0; }
+    .recipe-single article.primary .nutrition-label td {
+      text-align: right;
+      font-weight: bold; }
+    .recipe-single article.primary .nutrition-label thead th, .recipe-single article.primary .nutrition-label thead td {
+      border: 0 none; }
+    .recipe-single article.primary .nutrition-label .indent {
+      padding-left: 5px; }
+    .recipe-single article.primary .nutrition-label .percent-value {
+      font-size: 80%; }
+    .recipe-single article.primary .nutrition-label .servings {
+      padding: 0 0 3px;
+      border-bottom: 10px solid #cccccc; }
+    .recipe-single article.primary .nutrition-label .protein {
+      border-bottom: 10px solid #cccccc; }
+    .recipe-single article.primary .nutrition-label .calories {
+      border-bottom: 3px solid #cccccc; }
+    .recipe-single article.primary .nutrition-label td.calories {
+      font-weight: normal; }
+    .recipe-single article.primary .nutrition-label .footnote {
+      font-size: 80%;
+      color: #666666;
+      border-bottom: 0 none; }

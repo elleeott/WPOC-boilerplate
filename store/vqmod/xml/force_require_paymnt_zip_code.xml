@@ -1,0 +1,19 @@
+<modification>
+	<id>Override the logic which doesn't always require a postcode (zip code) payment field in checkout.</id>
+	<version>1</version>
+	<vqmver>1.0</vqmver>
+	<author>Bent Media</author>
+	<email>elliottr@bentmedia.com</email>
+	<website>http://www.bentmedia.com</website>
+
+	<file name="catalog/controller/checkout/guest.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
+			]]></search>
+			<add><![CDATA[				 
+				if (utf8_strlen($this->request->post['postcode']) < 2) {
+			]]></add>
+		</operation>
+	</file>
+</modification>

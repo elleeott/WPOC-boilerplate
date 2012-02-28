@@ -1,50 +1,38 @@
 <?php echo $header; ?>
-<style>
-	.checkout-heading {
-		background:#efefef;
-		padding:5px;
-		margin:0 0 10px;
-	}
-</style>
-<div id="content-container" class="clearfix">
+<div id="content-container" class="store-checkout clearfix">
 	<div class="container">
-		<div class="breadcrumb">
-			<?php foreach ($breadcrumbs as $breadcrumb) { ?>
-			<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-			<?php } ?>
-		</div>
 	  <h1><?php echo $heading_title; ?></h1>
 		<div class="checkout">
-			<div id="checkout">
+			<div id="checkout" class="checkout-section">
 				<div class="checkout-heading"><?php echo $text_checkout_option; ?></div>
 				<div class="checkout-content"></div>
 			</div>
 			<?php if (!$logged) { ?>
-				<div id="payment-address">
+				<div id="payment-address" class="checkout-section">
 					<div class="checkout-heading"><span><?php echo $text_checkout_account; ?></span></div>
 					<div class="checkout-content"></div>
 				</div>
 			<?php } else { ?>
-				<div id="payment-address">
+				<div id="payment-address" class="checkout-section">
 					<div class="checkout-heading"><span><?php echo $text_checkout_payment_address; ?></span></div>
 					<div class="checkout-content"></div>
 				</div>
 			<?php } ?>
 			<?php if ($shipping_required) { ?>
-				<div id="shipping-address">
+				<div id="shipping-address" class="checkout-section">
 					<div class="checkout-heading"><?php echo $text_checkout_shipping_address; ?></div>
 					<div class="checkout-content"></div>
 				</div>
-				<div id="shipping-method">
+				<div id="shipping-method" class="checkout-section">
 					<div class="checkout-heading"><?php echo $text_checkout_shipping_method; ?></div>
 					<div class="checkout-content"></div>
 				</div>
 			<?php } ?>
-			<div id="payment-method">
+			<div id="payment-method" class="checkout-section">
 				<div class="checkout-heading"><?php echo $text_checkout_payment_method; ?></div>
 				<div class="checkout-content"></div>
 			</div>
-			<div id="confirm">
+			<div id="confirm" class="checkout-section">
 				<div class="checkout-heading"><?php echo $text_checkout_confirm; ?></div>
 				<div class="checkout-content"></div>
 			</div>
@@ -57,6 +45,9 @@
 
 
 <script type="text/javascript">
+
+/*
+// toggle guest vs. register checkout
 $('#checkout .checkout-content input[name=\'account\']').live('change', function() {
 	if ($(this).attr('value') == 'register') {
 		$('#payment-address .checkout-heading span').html('<?php echo $text_checkout_account; ?>');
@@ -64,10 +55,16 @@ $('#checkout .checkout-content input[name=\'account\']').live('change', function
 		$('#payment-address .checkout-heading span').html('<?php echo $text_checkout_payment_address; ?>');
 	}
 
+});
+*/
+
+$(document).ready(function() {
+
 	$('.checkout-heading a').live('click', function() {
 		$('.checkout-content').slideUp('slow');
 		$(this).parent().parent().find('.checkout-content').slideDown('slow');
 	});
+
 });
 
 <?php if (!$logged) { ?> 
@@ -108,7 +105,36 @@ $(document).ready(function() {
 });
 <?php } ?>
 
+$(document).ready(function() {
+	$.ajax({
+		url: 'index.php?route=checkout/guest',
+		dataType: 'json',
+		success: function(json) {
+			$('.warning').remove();
+			
+			if (json['redirect']) {
+				location = json['redirect'];
+			}
+			
+			if (json['output']) {			
+				$('#payment-address .checkout-content').html(json['output']);
+				
+				//$('#checkout .checkout-content').slideUp('slow');
+				
+				$('#payment-address .checkout-content').slideDown('slow');
+				
+				$('.checkout-heading a').remove();
+				
+				//$('#checkout .checkout-heading').append('<a><?php echo $text_modify; ?></a>');
+				_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step2: Billing Details']);
+			}
+		}
+	});
+});
+
+
 // Checkout
+/*
 $('#button-account').live('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/' + $('input[name=\'account\']:checked').attr('value'),
@@ -143,8 +169,10 @@ $('#button-account').live('click', function() {
 		}
 	});
 });
+*/
 
 // Login
+/*
 $('#button-login').live('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/login',
@@ -205,8 +233,10 @@ $('#button-login').live('click', function() {
 		}
 	});	
 });
+*/
 
 // Register
+/*
 $('#button-register').live('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/register',
@@ -399,8 +429,10 @@ $('#button-register').live('click', function() {
 		}
 	});	
 });
+*/
 
 // Payment Address	
+/*
 $('#payment-address #button-address').live('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/address/payment',
@@ -525,7 +557,9 @@ $('#payment-address #button-address').live('click', function() {
 	});	
 });
 
-// Shipping Address			
+*/
+// Shipping Address	
+/*		
 $('#shipping-address #button-address').live('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/address/shipping',
@@ -627,23 +661,29 @@ $('#shipping-address #button-address').live('click', function() {
 	});	
 });
 
+
+*/
 // Guest
+
+
+
 $('#button-guest').live('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/guest',
 		type: 'post',
-		data: $('#payment-address input[type=\'text\'], #payment-address input[type=\'checkbox\']:checked, #payment-address select'),
+		data: $('#payment-address input[type=\'text\'], #payment-address input[type=\'email\'], #payment-address input[type=\'checkbox\']:checked, #payment-address select'),
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-guest').attr('disabled', true);
 			$('#button-guest').addClass('busy');
+			$('label.error').remove();
+			$('input.error').removeClass('error');
+			$('select.error').removeClass('error');
 		},	
 		complete: function() {
 			$('#button-guest').attr('disabled', false); 
-			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
-			$('.error').remove();
 			
 			if (json['redirect']) {
 				location = json['redirect'];
@@ -651,40 +691,41 @@ $('#button-guest').live('click', function() {
 			
 			if (json['error']) {
 				if (json['error']['firstname']) {
-					$('#payment-address input[name=\'firstname\'] + br').after('<span class="error">' + json['error']['firstname'] + '</span>');
+					$('#payment-address input[name=\'firstname\']').addClass('error').after('<label class="error">' + json['error']['firstname'] + '</label>');
 				}
 				
 				if (json['error']['lastname']) {
-					$('#payment-address input[name=\'lastname\'] + br').after('<span class="error">' + json['error']['lastname'] + '</span>');
+					$('#payment-address input[name=\'lastname\']').addClass('error').after('<label class="error">' + json['error']['lastname'] + '</label>');
 				}	
 				
 				if (json['error']['email']) {
-					$('#payment-address input[name=\'email\'] + br').after('<span class="error">' + json['error']['email'] + '</span>');
+					$('#payment-address input[name=\'email\']').addClass('error').after('<label class="error">' + json['error']['email'] + '</label>');
 				}
 				
 				if (json['error']['telephone']) {
-					$('#payment-address input[name=\'telephone\'] + br').after('<span class="error">' + json['error']['telephone'] + '</span>');
+					$('#payment-address input[name=\'telephone\']').addClass('error').after('<label class="error">' + json['error']['telephone'] + '</label>');
 				}		
 										
 				if (json['error']['address_1']) {
-					$('#payment-address input[name=\'address_1\'] + br').after('<span class="error">' + json['error']['address_1'] + '</span>');
+					$('#payment-address input[name=\'address_1\']').addClass('error').after('<label class="error">' + json['error']['address_1'] + '</label>');
 				}	
 				
 				if (json['error']['city']) {
-					$('#payment-address input[name=\'city\'] + br').after('<span class="error">' + json['error']['city'] + '</span>');
+					$('#payment-address input[name=\'city\'] ').addClass('error').after('<label class="error">' + json['error']['city'] + '</label>');
 				}	
 				
 				if (json['error']['postcode']) {
-					$('#payment-address input[name=\'postcode\'] + br').after('<span class="error">' + json['error']['postcode'] + '</span>');
+					$('#payment-address input[name=\'postcode\']').addClass('error').after('<label class="error">' + json['error']['postcode'] + '</label>');
 				}	
 				
 				if (json['error']['country']) {
-					$('#payment-address select[name=\'country_id\'] + br').after('<span class="error">' + json['error']['country'] + '</span>');
+					$('#payment-address select[name=\'country_id\']').addClass('error').after('<label class="error">' + json['error']['country'] + '</label>');
 				}	
 				
 				if (json['error']['zone']) {
-					$('#payment-address select[name=\'zone_id\'] + br').after('<span class="error">' + json['error']['zone'] + '</span>');
+					$('#payment-address select[name=\'zone_id\']').addClass('error').after('<label class="error">' + json['error']['zone'] + '</label>');
 				}
+				$('.busy').removeClass('busy');
 			} else {
 				<?php if ($shipping_required) { ?>	
 				var shipping_address = $('#payment-address input[name=\'shipping_address\']:checked').attr('value');
@@ -702,7 +743,7 @@ $('#button-guest').live('click', function() {
 								$('#shipping-method .checkout-content').html(json['output']);
 								
 								$('#payment-address .checkout-content').slideUp('slow');
-								
+								$('.busy').removeClass('busy');
 								$('#shipping-method .checkout-content').slideDown('slow');
 								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step4: Shipping Method']);
 								
@@ -743,7 +784,8 @@ $('#button-guest').live('click', function() {
 								$('#shipping-address .checkout-content').html(json['output']);
 								
 								$('#payment-address .checkout-content').slideUp('slow');
-								
+								$('.busy').removeClass('busy');
+
 								$('#shipping-address .checkout-content').slideDown('slow');
 								_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step3: Shipping Address']);
 								
@@ -770,7 +812,7 @@ $('#button-guest').live('click', function() {
 							$('#payment-method .checkout-content').html(json['output']);
 							
 							$('#payment-address .checkout-content').slideUp('slow');
-								
+							$('.busy').removeClass('busy');	
 							$('#payment-method .checkout-content').slideDown('slow');
 							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step2: Billing Details']);
 								
@@ -797,10 +839,12 @@ $('#button-guest-shipping').live('click', function() {
 		beforeSend: function() {
 			$('#button-guest-shipping').attr('disabled', true);
 			$('#button-guest-shipping').addClass('busy');
+			$('label.error').remove();
+			$('input.error').removeClass('error');
+			$('select.error').removeClass('error');
 		},	
 		complete: function() {
 			$('#button-guest-shipping').attr('disabled', false); 
-			$('.busy').removeClass('busy');
 		},			
 		success: function(json) {
 			$('.error').remove();
@@ -811,32 +855,33 @@ $('#button-guest-shipping').live('click', function() {
 			
 			if (json['error']) {
 				if (json['error']['firstname']) {
-					$('#shipping-address input[name=\'firstname\']').after('<span class="error">' + json['error']['firstname'] + '</span>');
+					$('#shipping-address input[name=\'firstname\']').addClass('error').after('<label class="error">' + json['error']['firstname'] + '</span>');
 				}
 				
 				if (json['error']['lastname']) {
-					$('#shipping-address input[name=\'lastname\']').after('<span class="error">' + json['error']['lastname'] + '</span>');
+					$('#shipping-address input[name=\'lastname\']').addClass('error').after('<label class="error">' + json['error']['lastname'] + '</span>');
 				}	
 										
 				if (json['error']['address_1']) {
-					$('#shipping-address input[name=\'address_1\']').after('<span class="error">' + json['error']['address_1'] + '</span>');
+					$('#shipping-address input[name=\'address_1\']').addClass('error').after('<label class="error">' + json['error']['address_1'] + '</span>');
 				}	
 				
 				if (json['error']['city']) {
-					$('#shipping-address input[name=\'city\']').after('<span class="error">' + json['error']['city'] + '</span>');
+					$('#shipping-address input[name=\'city\']').addClass('error').after('<label class="error">' + json['error']['city'] + '</span>');
 				}	
 				
 				if (json['error']['postcode']) {
-					$('#shipping-address input[name=\'postcode\']').after('<span class="error">' + json['error']['postcode'] + '</span>');
+					$('#shipping-address input[name=\'postcode\']').addClass('error').after('<label class="error">' + json['error']['postcode'] + '</span>');
 				}	
 				
 				if (json['error']['country']) {
-					$('#shipping-address select[name=\'country_id\']').after('<span class="error">' + json['error']['country'] + '</span>');
+					$('#shipping-address select[name=\'country_id\']').addClass('error').after('<label class="error">' + json['error']['country'] + '</span>');
 				}	
 				
 				if (json['error']['zone']) {
-					$('#shipping-address select[name=\'zone_id\']').after('<span class="error">' + json['error']['zone'] + '</span>');
+					$('#shipping-address select[name=\'zone_id\']').addClass('error').after('<label class="error">' + json['error']['zone'] + '</span>');
 				}
+				$('.busy').removeClass('busy');
 			} else {
 				$.ajax({
 					url: 'index.php?route=checkout/shipping',
@@ -850,7 +895,8 @@ $('#button-guest-shipping').live('click', function() {
 							$('#shipping-method .checkout-content').html(json['output']);
 							
 							$('#shipping-address .checkout-content').slideUp('slow');
-							
+							$('.busy').removeClass('busy');
+
 							$('#shipping-method .checkout-content').slideDown('slow');
 							_gaq.push(['_trackEvent', 'Checkout', 'Checkout Step','Step4: Shipping Method']);
 							

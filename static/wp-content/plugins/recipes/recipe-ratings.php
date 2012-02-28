@@ -8,11 +8,13 @@ $custom_comment_fields = array(
 	<fieldset>
 	<div class="comment-form-field comment-form-rating clearfix">
 	<label for="rating">Rating</label>
+	<div class="star-ratings">
 	<span><input id="rating-1" name="rating" type="radio" value="1"/></span>
 	<span><input id="rating-2" name="rating" type="radio" value="2"/></span>
 	<span><input id="rating-3" name="rating" type="radio" value="3"/></span>
 	<span><input id="rating-4" name="rating" type="radio" value="4"/></span>
 	<span><input id="rating-4" name="rating" type="radio" value="5"/></span>
+	</div>
 	</div>
 	</fieldset>'
 );
@@ -118,10 +120,11 @@ class Ranked_Recipes_Widget extends WP_Widget {
 			echo '<ul>';
 			while ($query->have_posts()):$query->the_post();
 				if(get_post_meta($post->ID,'_avg_rating',true)) : 
-					echo '<li>';
+					echo '<li class="clearfix">';
 					echo '<a href="'.get_permalink($post->ID).'">'.$post->post_title.'</a> ';
-					echo get_post_meta($post->ID,'_avg_rating',true);
-					echo ' stars</li>';
+					//echo get_post_meta($post->ID,'_avg_rating',true);
+					get_ratings();
+					echo '</li>';
 				endif; 
 			endwhile;
 			echo '</ul>';

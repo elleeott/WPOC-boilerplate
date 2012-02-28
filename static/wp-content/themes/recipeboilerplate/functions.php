@@ -328,9 +328,9 @@ function custom_form_fields($fields) {
 	$req = get_option( 'require_name_email' );
 	$aria_req = ( $req ? " aria-required='true'" : '' );
 	$fields =  array(
-		'author' => '<fieldset><div class="comment-form-field comment-form-author clearfix"><label for="author">Name</label> ' . 
+		'author' => '<fieldset class="required"><div class="comment-form-field comment-form-author clearfix"><label for="author">Name</label> ' . 
 		            '<input id="author"' . ( $req ? 'class="required"' : '' ) .'name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></div></fieldset>',
-		'email'  => '<fieldset><div class="comment-form-field comment-form-email clearfix"><label for="email">Email</label> ' .
+		'email'  => '<fieldset class="required"><div class="comment-form-field comment-form-email clearfix"><label for="email">Email</label> ' .
 		            '<input id="email" ' . ( $req ? 'class="required"' : '' ) .'name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></div></fieldset>',
 		'url'    => '<fieldset><div class="comment-form-field comment-form-url clearfix"><label for="url">Website</label>' .
 		            '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div></fieldset>',
@@ -343,7 +343,7 @@ add_filter('comment_form_default_fields','custom_form_fields',1);
 
 //custom comment textarea
 function custom_comment_textarea($default) {
-	$default['comment_field'] = '<fieldset><div class="comment-form-field comment-form-comment clearfix"><label for="comment">Comment</label><textarea id="comment" class="required" name="comment" aria-required="true"></textarea></div></fieldset>';
+	$default['comment_field'] = '<fieldset class="required"><div class="comment-form-field comment-form-comment clearfix"><label for="comment">Comment</label><textarea id="comment" class="required" name="comment" aria-required="true"></textarea></div></fieldset>';
 	return $default;
 }
 

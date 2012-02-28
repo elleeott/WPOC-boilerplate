@@ -13,23 +13,20 @@ and (max-device-width : 480px)
 */
 
 
-
 @media only screen
 and (min-width:320px)
 and (max-width:480px)
 {
 	@import "partials/mobile/_layout.scss";
 	@import "partials/mobile/_header.scss";
-	@import "partials/mobile/_nav.scss";
 	@import "partials/mobile/_home.scss";
 	@import "partials/mobile/_recipes-category.scss";
-	@import "partials/mobile/_cart.scss";
+	@import "partials/mobile/_cart-checkout.scss";
+	
 	
 }
 
 /* iphone4 */
-
-
 
 
 @media
@@ -42,18 +39,15 @@ only screen and (min-device-pixel-ratio : 1.5)
 }
 
 
-
-
 @media only screen
 and (min-device-width: 768px)
 and (min-width:768px)
 {
 	@import "partials/desktop/_layout.scss";
 	@import "partials/desktop/_header.scss";
-	@import "partials/desktop/_nav.scss";
 	@import "partials/desktop/_home.scss";
 	@import "partials/desktop/_recipes-category.scss";
-	@import "partials/desktop/_cart.scss";
+	@import "partials/desktop/_cart-checkout.scss";
 }
 
 
@@ -62,6 +56,7 @@ html {
 	overflow: -moz-scrollbars-vertical;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
+
 
 body {
 	//@include backgroundImage('img/assets/home-hero-background.png',0 0,repeat);
@@ -94,29 +89,18 @@ strong {
 /****  imports  ******/
 
 /* common */
-@import "partials/common/_buttons.scss";
 @import "partials/common/_footer.scss";
-@import "partials/common/_social-elements.scss";
-@import "partials/common/_pagination.scss";
 @import "partials/common/_sidebar-widgets.scss";
 @import "partials/common/_comments.scss";
-@import "partials/common/_notifications.scss";
 @import "partials/common/_ratings.scss";
+@import "partials/common/_interface-elements.scss";
 
-/* blog views */
-@import "partials/common/_blog-single.scss";
-@import "partials/common/_blog-category.scss";
+@import "partials/common/_blog.scss";
+@import "partials/common/_page-default.scss";
+@import "partials/common/_products.scss";
+@import "partials/common/_recipes.scss";
 
-/* product views */
-@import "partials/common/_products-single.scss";
-@import "partials/common/_products-category.scss";
 
-/* recipe views */
-@import "partials/common/_recipes-single.scss";
-@import "partials/common/_nutrition-label.scss";
-
-/* cart/checkout */
-@import "partials/common/_checkout.scss";
 
 
 

@@ -91,10 +91,12 @@ function get_ratings() {
 	if(get_post_meta($post->ID,'_avg_rating',true) && get_post_meta($post->ID,'_sum_rating',true)) {
 		$avg_rating = get_post_meta($post->ID,'_avg_rating',true);
 		$sum_ratings = get_post_meta($post->ID,'_sum_rating',true);
+		$star_rating_width = ($avg_rating/5)*100;
 		?>
 		<span class="rating">
-			<div class="average">Rating: <?php echo $avg_rating; ?> stars</div>
-			<div class="count">Based on <?php echo $sum_ratings ; ?> reviews</div>
+			<span class="rating-stars" style="width:<?php echo $star_rating_width; ?>%"></span>
+			<span class="average"><?php echo $avg_rating; ?> stars</span>
+			<span class="count">based on <?php echo $sum_ratings; ?> reviews</span>
 		</span>
 		
 <?php } else { ?>

@@ -8,3 +8,28 @@
 	text-align:center;
 	margin:0 0 20px;
 }
+
+header {
+	nav#full-nav {
+		display:none;
+	}
+	nav#mobile-nav {
+		
+		background:$backgroundColor1;
+		padding:5px 20px;
+		select {
+			width:100%;
+		}
+	}
+}
+#cart {
+	position:absolute;
+	top:0;
+	right:0;
+}
+#support-links {
+	position:absolute;
+	top:20px;
+	right:0px;
+	font-size:12px;
+}
