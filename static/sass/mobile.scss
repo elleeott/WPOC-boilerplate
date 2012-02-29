@@ -1,14 +1,24 @@
-// main desktop css file
+// main mobile css file
 
 @import "partials/_sass-local.scss";
 @import "partials/_reset.scss";
 @import "partials/_config.scss";
-@import "partials/desktop/_layout.scss";
-@import "partials/desktop/_header.scss";
-@import "partials/desktop/_home.scss";
-@import "partials/desktop/_recipes-category.scss";
-@import "partials/desktop/_cart-checkout.scss";
+@import "partials/mobile/_layout.scss";
+@import "partials/mobile/_header.scss";
+@import "partials/mobile/_home.scss";
+@import "partials/mobile/_recipes-category.scss";
+@import "partials/mobile/_cart-checkout.scss";
 
+
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+/* iphone4 hi-dpi images */
+
+}
+
+
+
+
+/****  imports  ******/
 
 /* common */
 @import "partials/common/_footer.scss";
@@ -16,11 +26,13 @@
 @import "partials/common/_comments.scss";
 @import "partials/common/_ratings.scss";
 @import "partials/common/_interface-elements.scss";
+
 @import "partials/common/_blog.scss";
 @import "partials/common/_page-default.scss";
 @import "partials/common/_products.scss";
 @import "partials/common/_recipes.scss";
 @import "modules/_home-style.scss";
+
 
 
 

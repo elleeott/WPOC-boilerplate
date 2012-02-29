@@ -132,6 +132,8 @@ fieldset.required {
 	//right:0;
 	//height:20px;
 	//overflow:hidden;
+	order-top:1px solid $accentColor3;
+	border-bottom:1px solid $accentColor3;
 	span {
 		display:block;
 		float:left;
@@ -139,6 +141,5 @@ fieldset.required {
 	.tweet {
 	}
 	.facebook-like-button {
-		width:120px;
 	}
 }

@@ -5,10 +5,7 @@
 						Call <?php get_session_phone(); ?>!
 					</div>
 				<?php endif;?>
-				<div class="social-elements">
-					<?php get_social_elements(); ?>
-				</div>
-				<a href="https://twitter.com/elleeott" class="twitter-follow-button" data-show-count="false">Follow @elleeott</a>
+				<a id="mobile-toggler" href="/?mobile=1">view full site</a>
 
 
 

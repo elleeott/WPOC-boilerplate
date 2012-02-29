@@ -54,6 +54,7 @@ $starHeight:29px;
 			@include backgroundImage('img/assets/stars-small.png',0 0,repeat);	
 		}
 		.rating-stars {
+			display:block;
 			position:absolute;
 			height:100%;
 			@include backgroundImage('img/assets/stars-small.png',0 -15px,repeat);	
@@ -77,8 +78,8 @@ $starHeight:29px;
 	.average,.count {
 		position:relative;
 		top:35px;
-		color:$fontColor2;
-		font-size:$baseFontSize*.8;
+		@include copyStyle3;
+
 	}
 
 }

@@ -1,6 +1,12 @@
-.comments-list > h3 {
-	font-size:18px;
-	border-bottom:1px solid $accentColor3;
+.comments-list {
+	 & >h3 {
+		@include heading3;
+		border-bottom:3px solid $accentColor3;
+		padding:0 0 .55em;
+	}
+	& > ol {
+		margin:0 0 20px;
+	}
 }
 li.comment.depth-1 {
 	border-bottom:1px solid $accentColor3;
@@ -20,7 +26,7 @@ article.comment {
 
 .comment-content {
 	p {
-		@include copyStyle($fontSize:13px);
+		@include copyStyle1($fontSize:13px);
 	}
 
 }
@@ -42,4 +48,31 @@ li.comment.depth-2 {
 
 #respond {
 	@import "modules/_form-left-labels.scss";
+	h3 {
+		@include heading3;
+	}
+
+}
+p.comment-notes {
+	@include copyStyle2;
+}
+.form-allowed-tags {
+	@include copyStyle3(12px);
+	code {
+		@include codeStyle1(12px);
+	}	
+}
+
+#fb-user {
+	position:relative;
+	padding:0 0 0 60px;
+	min-height:60px;
+	display:block;
+	.fb_link {
+		img {
+			position:absolute;
+			left:0;
+			top:0;	
+		}
+	}
 }

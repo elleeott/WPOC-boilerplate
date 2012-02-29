@@ -61,6 +61,30 @@ article, aside, figure, footer, header, hgroup, nav, section {
 /******* lists *******/
 /****** forms *******/
 /******tables *******/
+/* some default styling */
+html {
+  overflow: -moz-scrollbars-vertical;
+  -webkit-font-smoothing: subpixel-antialiased; }
+
+body {
+  background-color: white;
+  font-family: "abril-text", georgia, serif;
+  font-size: 14px; }
+
+a {
+  color: #cc692d;
+  text-decoration: none; }
+  a:hover {
+    color: #783e1b;
+    text-decoration: underline; }
+  a:visited {
+    color: #8d491f; }
+  a:active {
+    color: #a25324; }
+
+strong {
+  font-weight: bold; }
+
 article h1 {
   font-size: 1.5em;
   margin: 0 0 1em; }

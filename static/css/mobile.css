@@ -85,52 +85,16 @@ a {
 strong {
   font-weight: bold; }
 
-/* desktop layout view */
+/* mobile layout view */
 .container {
-  width: 940px;
-  margin: auto;
-  position: relative; }
+  padding: 0 20px; }
 
-header.main {
-  position: relative; }
-  header.main > .container {
-    padding: 30px 0 0;
-    height: 120px; }
+header {
+  position: relative;
+  margin: 0 0 20px; }
 
 #content-container {
-  padding: 20px 0 60px;
-  min-height: 500px; }
-
-#main-content {
-  position: relative;
-  width: 620px; }
-
-.main-content-right {
-  float: right; }
-
-.main-content-left {
-  float: left; }
-
-#sidebar {
-  width: 300px;
-  min-height: 400px; }
-
-.sidebar-right {
-  float: right; }
-
-.sidebar-left {
-  float: left; }
-
-.sidebar-content {
-  -webkit-box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.1);
-  -box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid #cccccc;
-  padding: 10px; }
-
-/****** misc ******/
-#mobile-toggler {
-  display: none; }
+  margin: 0 0 20px; }
 
 #logo {
   background: #ccc;
@@ -138,119 +102,71 @@ header.main {
   height: 50px;
   line-height: 50px;
   font-size: 20px;
-  position: absolute;
-  top: 25px;
-  right: 0;
   color: #333333;
-  text-align: center; }
-
-#header-search {
-  color: #fff; }
+  text-align: center;
+  margin: 0 0 20px; }
 
 header nav#full-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #333333; }
-  header nav#full-nav a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 15px 20px;
-    font-size: 12px;
-    height: 12px;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out; }
-    header nav#full-nav a:hover {
-      background: #191919; }
-header nav#mobile-nav {
   display: none; }
+header nav#mobile-nav {
+  background: #333333;
+  padding: 5px 20px; }
+  header nav#mobile-nav select {
+    width: 100%; }
 
-.current-menu-item,
-body.post-type-archive-recipes .menu-item-756,
-.single-recipes .menu-item-756,
-body.post-type-archive-products .menu-item-751,
-.single-products .menu-item-751 {
-  background: #666666; }
+#cart {
+  position: absolute;
+  top: 0;
+  right: 0; }
 
-.menu-primary-nav-container > ul > li {
-  position: relative;
-  float: left; }
-  .menu-primary-nav-container > ul > li > a {
-    float: left; }
-  .menu-primary-nav-container > ul > li > ul {
-    display: none;
-    position: absolute;
-    top: 42px;
-    left: 0;
-    background: #191919; }
-    .menu-primary-nav-container > ul > li > ul > li {
-      width: 200px; }
+#support-links {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  font-size: 12px; }
 
 #hero {
+  height: 300px;
   margin: 0 0 20px;
-  height: 330px; }
+  position: relative;
+  margin: 0 0 50px; }
 
 .slide {
   position: relative;
-  height: 300px;
-  background: #efefef; }
+  background: #ccc;
+  height: 300px; }
 
 .slide img {
   position: absolute;
-  left: 40px; }
+  left: 0px;
+  top: 0;
+  z-index: 0; }
 
 .slide h1 {
   position: absolute;
-  top: 40px;
-  left: 600px; }
+  bottom: 0px;
+  left: 0;
+  z-index: 100px; }
 
 .slide a {
   position: absolute;
-  top: 80px;
-  left: 600px; }
+  bottom: 10px;
+  right: 10px;
+  z-index: 100px; }
 
-.widgets .widget {
-  width: 278px;
-  padding: 10px;
-  float: left;
-  background: #fff;
-  margin-right: 20px;
-  height: 200px;
-  overflow: auto;
-  border: 1px solid #efefef; }
-  .widgets .widget h2 {
-    font-size: 14px;
-    line-height: 1em;
-    margin: 0 0 1em;
-    font-weight: bold; }
-  .widgets .widget li {
-    margin: 0 0 .25em; }
-    .widgets .widget li a {
-      text-decoration: none;
-      color: #666666;
-      -webkit-transition: all .2s ease-in-out;
-      -moz-transition: all .2s ease-in-out;
-      -o-transition: all .2s ease-in-out;
-      -ms-transition: all .2s ease-in-out;
-      transition: all .2s ease-in-out; }
-      .widgets .widget li a:hover {
-        color: black; }
+.flex-direction-nav {
+  display: none; }
 
-.widgets .widget:nth-child(3n) {
-  margin-right: 0; }
-
-/* desktop recipe category view */
+/* mobile recipe category view */
 .recipe-cell {
-  width: 300px;
-  float: left;
-  margin: 20px; }
+  margin: auto; }
 
-/* desktop cart view */
+.recipe-img img {
+  width: 100%;
+  height: auto;
+  margin: auto; }
+
+/* mobile cart view */
 #shopping-cart .cart-info {
   margin: 0 0 20px; }
   #shopping-cart .cart-info table {
@@ -296,9 +212,8 @@ body.post-type-archive-products .menu-item-751,
   margin: 0 0 20px; }
 #shopping-cart .checkout-button {
   float: right; }
-#shopping-cart tbody td.name img {
-  float: left;
-  margin: 0 10px 0 0; }
+#shopping-cart td.price {
+  display: none; }
 
 .store-checkout h1 {
   font-size: 28px;
@@ -342,37 +257,15 @@ body.post-type-archive-products .menu-item-751,
 
 #payment-address fieldset {
   margin: 0 0 20px; }
-  #payment-address fieldset label {
-    float: left;
-    width: 25%; }
   #payment-address fieldset input[type="text"], #payment-address fieldset input[type="email"], #payment-address fieldset textarea, #payment-address fieldset select {
     display: block;
-    float: left;
-    width: 45%; }
-  #payment-address fieldset input[type="text"].error, #payment-address fieldset input[type="email"].error, #payment-address fieldset textarea.error, #payment-address fieldset select.error {
-    border: 1px solid #8c0000; }
-  #payment-address fieldset label.error {
-    margin-left: 10px;
-    color: #8c0000; }
-#payment-address fieldset.required label {
-  font-weight: bold; }
+    width: 75%; }
 
 #shipping-address fieldset {
   margin: 0 0 20px; }
-  #shipping-address fieldset label {
-    float: left;
-    width: 25%; }
   #shipping-address fieldset input[type="text"], #shipping-address fieldset input[type="email"], #shipping-address fieldset textarea, #shipping-address fieldset select {
     display: block;
-    float: left;
-    width: 45%; }
-  #shipping-address fieldset input[type="text"].error, #shipping-address fieldset input[type="email"].error, #shipping-address fieldset textarea.error, #shipping-address fieldset select.error {
-    border: 1px solid #8c0000; }
-  #shipping-address fieldset label.error {
-    margin-left: 10px;
-    color: #8c0000; }
-#shipping-address fieldset.required label {
-  font-weight: bold; }
+    width: 75%; }
 
 #shipping-method fieldset {
   margin: 0 0 20px; }
@@ -392,6 +285,9 @@ body.post-type-archive-products .menu-item-751,
     display: block;
     width: 75%; }
 
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+  /* iphone4 hi-dpi images */ }
+/****  imports  ******/
 /* common */
 footer {
   padding: 40px;

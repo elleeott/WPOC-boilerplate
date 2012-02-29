@@ -243,12 +243,21 @@ if (!is_admin()) {
 		} else {
 		    $print = STATIC_SUBDIR . autoVer('/static/css/print.css');
 		    $base = STATIC_SUBDIR . autoVer('/static/css/base.css');
+		    $mobile = STATIC_SUBDIR . autoVer('/static/css/mobile.css');
 		    $fancybox = STATIC_SUBDIR . autoVer('/static/js/fancybox/jquery.fancybox-1.3.4.css');
 		    $flexslider = STATIC_SUBDIR . autoVer('/static/css/flexslider.css');
 			wp_register_style('print',$print,false,NULL,'print');
 			wp_enqueue_style('print');
-			wp_register_style('base',$base,false,NULL,'screen');
-			wp_enqueue_style('base');	    
+			if(isset($_COOKIE['mobile'])) {
+				wp_register_style('base',$base,false,NULL,'screen');
+				wp_enqueue_style('base');	    
+			} else {
+				wp_register_style('base',$base,false,NULL,'only screen and (min-device-width: 768px) and (min-width:768px)');
+				wp_enqueue_style('base');	    
+				//wp_register_style('mobile',$base,false,NULL,'only screen and (min-device-width : 320px) and (max-device-width : 480px)');
+				wp_register_style('mobile',$mobile,false,NULL,'only screen and (min-width:320px) and (max-width:480px)');
+				wp_enqueue_style('mobile');	    
+			}
 			wp_register_style('fancybox',$fancybox,false,NULL,'screen');
 			wp_enqueue_style('fancybox');	    
 			wp_register_style('flexslider',$flexslider,false,NULL,'screen');
@@ -408,9 +417,14 @@ function set_the_title() {
 //output social buttons
 function get_social_elements() {
 ?>
-	<span class="tweet"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></span>
-	<span class="facebook-like-button"><div class="fb-like" data-href="<?php the_permalink();?>" data-send="true" data-layout="button_count" data-width="100" data-show-faces="false"></div></span>
-	<span class="pinterest-pin"><a href="http://pinterest.com/pin/create/button/" class="pin-it-button" count-layout="horizontal">Pin It</a></span>
+	<div class="addthis_toolbox addthis_default_style ">
+		<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+		<a class="addthis_button_tweet"></a>
+		<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+		<a class="addthis_button_pinterest" pi:pinit:url="" pi:pinit:media="" pi:pinit:layout="horizontal"></a>
+		<!--<a class="addthis_counter addthis_pill_style"></a>-->
+	</div>
+
 <?php
 }
 
@@ -418,8 +432,7 @@ function get_social_elements() {
 //print footer social scripts
 function social_scripts() {
 ?>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	<script type="text/javascript" src="http://assets.pinterest.com/js/pinit.js"></script>
+	<script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f4cdd6c44c82db7"></script>
 <?php	
 }
 
@@ -441,11 +454,11 @@ function get_mobile_nav() {
 
 }
 
-
-
-//disable conflicting plugins in checkout & cart
-
-function disable_plugins() {
-
-}
+// set cookie for user preference for desktop vs. mobile version of the site
+function cookie_pref_version() {
+	if(isset($_GET['mobile']) && !isset($_COOKIE['mobile'])) {
+		setcookie('mobile', 1,time()+360000);
+	}
+} 
+add_action('init','cookie_pref_version');
 

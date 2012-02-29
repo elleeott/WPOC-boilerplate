@@ -146,16 +146,38 @@ $unit10:10px;
 }
 
 
-@mixin copyStyle($fontSize:$baseFontSize) {
+@mixin copyStyle1($fontSize:$baseFontSize) {
 	font-size:$fontSize;
 	font-family:$serif1;
 	line-height:$fontSize*1.5;
 	margin:1em 0;
 }
+@mixin copyStyle2($fontSize:$baseFontSize*.9) {
+	font-size:$fontSize;
+	font-family:$serif1;
+	line-height:$fontSize*1.5;
+	margin:1em 0;
+	color:$fontColor2;
+}
+@mixin copyStyle3($fontSize:$baseFontSize*.857) {
+	font-size:$fontSize;
+	font-family:$serif1;
+	line-height:$fontSize*1.5;
+	margin:1em 0;
+	color:$fontColor3;
+}
 
-@mixin captionStyle($fontSize:$baseFontSize*.857) {
+@mixin captionStyle1($fontSize:$baseFontSize*.857) {
 	font-size:$fontSize;
 	font-family:$sansSerif1;
+	line-height:($fontSize*1.4);
+	margin:.5em 0 0;
+	color:$fontColor2;
+}
+
+@mixin codeStyle1($fontSize:$baseFontSize) {
+	font-size:$fontSize;
+	font-family: 'Courier New', Courier, 'Lucida Console',  Monaco, monospace;
 	line-height:($fontSize*1.4);
 	margin:.5em 0 0;
 	color:$fontColor2;
@@ -236,5 +258,43 @@ $unit10:10px;
 	vertical-align:top;
 
 }
+
+
+
+
+
+/* some default styling */
+html {
+	overflow: -moz-scrollbars-vertical;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+body {
+	background-color:$canvasColor;
+	font-family:$serif1;
+	font-size:$baseFontSize;
+}
+
+a {
+	color:$linkColor1;
+	text-decoration:none;
+	&:hover {
+		color:darken($linkColor1,20%);
+		text-decoration:underline;
+	}
+	&:visited {
+		color:darken($linkColor1,15%);	
+	}
+	&:active {
+		color:darken($linkColor1,10%);	
+	}
+
+}
+
+strong {
+	font-weight:bold;
+}
+
 
 

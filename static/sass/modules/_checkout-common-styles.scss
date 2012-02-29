@@ -24,7 +24,7 @@ h1 {
 
 #shipping-method {
 	p {
-		@include copyStyle;
+		@include copyStyle1;
 	}
 	table {
 		width:75%;
@@ -40,7 +40,7 @@ h1 {
 }
 #payment-method {
 	p {
-		@include copyStyle;
+		@include copyStyle1;
 	}
 	
 }
