@@ -31,7 +31,7 @@ $(document).ready(function(){
 	}
 	
 	//product page add to cart
-	$('.products-detail .add-to-cart-form a.button').click(function(){
+	$('.products-single .add-to-cart-form a.button').click(function(){
 		$.ajax({
 			url: '/store/index.php?route=checkout/cart/update',
 			type: 'post',

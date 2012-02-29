@@ -199,7 +199,7 @@ if (!is_admin()) {
 			wp_register_script('site-script', STATIC_SUBDIR . autoVer('/static/js/index.js'), array('jquery'), NULL);        
 			
 			// register comment-form validation script
-				wp_register_script('comment-form-validate', STATIC_SUBDIR . autoVer('/static/js/jquery.validate.min.js'), array('jquery'), NULL);        
+			wp_register_script('comment-form-validate', STATIC_SUBDIR . autoVer('/static/js/jquery.validate.min.js'), array('jquery'), NULL);        
 			
         }
 	}
@@ -210,9 +210,7 @@ if (!is_admin()) {
 		wp_print_scripts('fancybox');	
 		wp_print_scripts('flexslider');	
 		wp_print_scripts('site-script');	
-		if(comments_open()) {
-			wp_print_scripts('comment-form-validate');	
-		}
+		wp_print_scripts('comment-form-validate');	
 	}
 
 	function print_scripts_header() {
