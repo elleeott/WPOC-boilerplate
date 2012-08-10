@@ -1,0 +1,242 @@
+#pressbox-about {
+  text-align: center;
+  background-color: #f5f5f5;
+  
+  border-color: #999;
+  border-style: solid;
+  border-width: 2px;
+  
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  
+  width: 250px;
+  
+  vertical-align: middle;
+ 
+  float: right;
+}
+
+#pressbox-shortcode{
+  margin-bottom: 10px;
+}
+
+#pressbox .pressbox-settings {
+  clear: both;
+}
+
+#pressbox form {
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+#pressbox ul {
+    border-bottom: 1px dotted #aaa;
+}
+
+#pressbox-inscontainer {
+  margin-left: 40px;  
+}
+
+#pressbox ol {
+    font-size: 11px;
+}
+
+#pressbox-insfooter {
+      margin-left: 40px;
+      border-bottom: 1px dotted #aaa;
+}
+
+#pressbox .pressbox-label {
+    font-weight: bold;
+    float: left;
+    width: 50px;
+}
+
+#pressbox .pressbox-clabel {
+    font-weight: bold;
+    display: inline;
+}
+#pressbox .pressbox-infolabel {
+    float: left;
+    width: 150px;
+    text-align: right;
+}
+
+/* Frontend CSS */
+#pressbox-wrap {
+  padding: 3px;
+}
+
+#pressbox-breadcrumb ul
+{
+  padding-left: 0;
+  margin-left: 0;
+  background-color: #222;
+  color: #ccc;
+  float: left;
+  width: 100%;
+}
+
+#pressbox-breadcrumb ul li { display: inline; }
+
+#pressbox-breadcrumb ul li a
+{
+  padding: 1em 1em;
+  background-color: #222;
+  color: #ccc;
+  text-decoration: none;
+  float: left;
+  border-right: 1px solid #ccc;
+}
+
+#pressbox-breadcrumb ul li a:hover
+{
+  background-color: #ccc;
+  color: #222;
+}
+
+/* Folder Display */
+#pressbox-navigation {
+  width: 100%;
+}
+
+#pressbox-folders {
+  height: 90px;
+  overflow: auto;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted #aaa;
+  width:100%;
+}
+
+#pressbox-folders ul {
+  width:100%;
+  margin-bottom:20px;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+#pressbox-folders li{
+  float:left;
+  display:inline;
+  width: 32%;
+  margin: 1px 1px 1px 1px;
+}
+
+#pressbox-folders img {
+  margin-right: 2px;
+}
+
+/* Favorites */
+#pressbox-favorites {
+  clear: both;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #DDD;
+  width: 100%;
+  height: 50px;
+}
+
+#pressbox-favorites p {
+  float: right;
+  margin-right: 5px;
+}
+
+#pressbox-favform {
+  float: left;
+}
+
+/* File Display */
+#pressbox-files {
+  clear: both;
+  height: 550px;
+  margin-left: 10px;
+  table-layout: fixed;
+}
+
+#pressbox-filelist ul {
+  width:100%;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+
+#pressbox-filelist li{
+  float:left;
+  display:inline;
+  width: 32%;
+  margin: 1px 1px 1px 1px;
+}
+
+.pressbox-container {
+  overflow: hidden;
+  width: 200px;
+}
+
+.pressbox-file {
+  text-align: center;
+  background-color: #f5f5f5;
+  
+  border-color: #999;
+  border-style: solid;
+  border-width: 2px;
+  
+  height: 160px;
+  width:170px;
+  text-overflow: ellipsis;
+  
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.pressbox-file a:link {text-decoration: none; font-size: 10px;}
+.pressbox-file a:visited {text-decoration: none; font-size: 10px;}
+.pressbox-file a:active {text-decoration: none;}
+.pressbox-file a:hover {text-decoration: underline;}
+
+.pressbox-file img {
+  border: 0px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* File Data */
+#pressbox-display-container {
+  clear: both;
+  width: 95%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#pressbox-display-box {
+  background-color: #f5f5f5;
+  
+  border-color: #999;
+  border-style: solid;
+  border-width: 2px;
+  
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  overflow:hidden;
+ 
+  width: 100%;
+  padding-top: 5px;
+}
+
+#pressbox-display {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#pressbox-metadata {
+  float: right;
+}
+
+#pressbox-insert {
+  clear:both;
+  text-align: center;
+}

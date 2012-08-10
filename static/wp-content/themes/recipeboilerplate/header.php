@@ -28,7 +28,7 @@
 			<header class="main">		
 				<div class="container">
 					<div id="logo"><a href="/">logo</a></div> 
-						<a href="/store/index.php?route=account/login">login</a>
+						<?php /* <a href="/store/index.php?route=account/login">login</a> */ ?>
 					<div id="support-links">
 						<?php wp_nav_menu(array( 'theme_location' => 'secondary-nav' ) ); ?>
 					</div>
@@ -48,7 +48,19 @@
 			</header>
 			<div class="breadcrumbs container">
 			
-				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.<br>
-				<?php // echo 'session data: '; print_r($_SESSION); ?><br/>
-				<?php // echo 'cookies: '; print_r($_COOKIE); ?>
+				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.
+				<hr>
+				<?php  echo 'session data: '; print_r($_SESSION); ?>
+				<hr>
+				<?php  echo 'cookies: '; print_r($_COOKIE); ?>
+				<hr>
+				<?php echo  'query: ' . $GLOBALS['wp_query']->request; ?>
+				<hr>
+
+				<?php
+				    global $wpdb;
+				    echo '<pre style="background:#fff;">';
+				    print_r($wpdb->queries);
+				    echo "</pre>";
+				?>
 			</div>

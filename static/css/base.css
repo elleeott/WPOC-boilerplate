@@ -304,7 +304,8 @@ body.post-type-archive-products .menu-item-751,
   font-size: 28px;
   line-height: 1em;
   margin: 0 0 1em;
-  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif;
+  text-transform: uppercase; }
 .store-checkout #checkout {
   display: none; }
 .store-checkout .checkout-heading {
@@ -530,27 +531,27 @@ p.comment-notes {
   width: 150px;
   height: 30px;
   float: left;
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 0;
   background-repeat: repeat; }
 .comment-form-rating div.stars-1, .comment-form-rating div.stars-selected-1 {
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 -30px;
   background-repeat: repeat; }
 .comment-form-rating div.stars-2, .comment-form-rating div.stars-selected-2 {
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 -60px;
   background-repeat: repeat; }
 .comment-form-rating div.stars-3, .comment-form-rating div.stars-selected-3 {
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 -90px;
   background-repeat: repeat; }
 .comment-form-rating div.stars-4, .comment-form-rating div.stars-selected-4 {
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 -120px;
   background-repeat: repeat; }
 .comment-form-rating div.stars-5, .comment-form-rating div.stars-selected-5 {
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 -150px;
   background-repeat: repeat; }
 
@@ -566,14 +567,14 @@ p.comment-notes {
     text-indent: -9999em;
     width: 74px;
     height: 15px;
-    background-image: url('//static.frictio.dev/img/assets/stars-small.1330390506.png');
+    background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars-small.png");
     background-position: 0 0;
     background-repeat: repeat; }
   .ranked-recipes li .rating-stars {
     display: block;
     position: absolute;
     height: 100%;
-    background-image: url('//static.frictio.dev/img/assets/stars-small.1330390506.png');
+    background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars-small.png");
     background-position: 0 -15px;
     background-repeat: repeat; }
 
@@ -582,13 +583,13 @@ p.comment-notes {
   position: relative;
   width: 150px;
   height: 30px;
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 0;
   background-repeat: repeat; }
 .recipe-single .rating-stars {
   position: absolute;
   height: 100%;
-  background-image: url('//static.frictio.dev/img/assets/stars.1330390506.png');
+  background-image: file_url("/volumes/drive2/localhost/frictious/static/", "//static.frictio.dev/", "img/assets/stars.png");
   background-position: 0 -150px;
   background-repeat: repeat; }
 .recipe-single .average, .recipe-single .count {
@@ -725,7 +726,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 28px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif;
+    text-transform: uppercase; }
   .blog-single article.primary h2 {
     font-size: 23.8px;
     line-height: 1em;
@@ -741,9 +743,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 16.8px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "helvetica neue", helvetica, arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: bold; }
+    font-family: "rooney-web", georgia, serif;
+    font-style: italic; }
   .blog-single article.primary h5 {
     font-size: 16.8px;
     line-height: 1em;
@@ -776,7 +777,10 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     padding: 0 5%; }
     .blog-single article.primary blockquote p {
       font-style: italic;
-      color: #666666; }
+      color: #999999;
+      font-family: "rooney-web", georgia, serif;
+      font-size: 24px;
+      line-height: 1.2em; }
   .blog-single article.primary .wp-caption {
     max-width: 100%; }
     .blog-single article.primary .wp-caption img {
@@ -816,7 +820,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 28px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif;
+    text-transform: uppercase; }
   .blog-category article h2 {
     font-size: 23.8px;
     line-height: 1em;
@@ -832,9 +837,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 16.8px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "helvetica neue", helvetica, arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: bold; }
+    font-family: "rooney-web", georgia, serif;
+    font-style: italic; }
   .blog-category article h5 {
     font-size: 16.8px;
     line-height: 1em;
@@ -867,7 +871,10 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     padding: 0 5%; }
     .blog-category article blockquote p {
       font-style: italic;
-      color: #666666; }
+      color: #999999;
+      font-family: "rooney-web", georgia, serif;
+      font-size: 24px;
+      line-height: 1.2em; }
   .blog-category article .wp-caption {
     max-width: 100%; }
     .blog-category article .wp-caption img {
@@ -907,7 +914,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 28px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif;
+    text-transform: uppercase; }
   .page-default article.primary h2 {
     font-size: 23.8px;
     line-height: 1em;
@@ -923,9 +931,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 16.8px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "helvetica neue", helvetica, arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: bold; }
+    font-family: "rooney-web", georgia, serif;
+    font-style: italic; }
   .page-default article.primary h5 {
     font-size: 16.8px;
     line-height: 1em;
@@ -958,7 +965,10 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     padding: 0 5%; }
     .page-default article.primary blockquote p {
       font-style: italic;
-      color: #666666; }
+      color: #999999;
+      font-family: "rooney-web", georgia, serif;
+      font-size: 24px;
+      line-height: 1.2em; }
   .page-default article.primary .wp-caption {
     max-width: 100%; }
     .page-default article.primary .wp-caption img {
@@ -994,7 +1004,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
   font-size: 28px;
   line-height: 1em;
   margin: 0 0 1em;
-  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif;
+  text-transform: uppercase; }
 .products-single article.primary .product-img {
   float: left;
   margin: 0 20px 20px 0;
@@ -1065,7 +1076,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
   font-size: 28px;
   line-height: 1em;
   margin: 0 0 1em;
-  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+  font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif;
+  text-transform: uppercase; }
 .products-category .product-cell {
   width: 150px;
   height: 300px;
@@ -1089,7 +1101,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 28px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif; }
+    font-family: "franklin-gothic-urw-cond", "arial condensed", arial, sans-serif;
+    text-transform: uppercase; }
   .recipe-single article.primary h2 {
     font-size: 23.8px;
     line-height: 1em;
@@ -1105,9 +1118,8 @@ fieldset.required input[type="text"].error, fieldset.required input[type="email"
     font-size: 16.8px;
     line-height: 1em;
     margin: 0 0 1em;
-    font-family: "helvetica neue", helvetica, arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: bold; }
+    font-family: "rooney-web", georgia, serif;
+    font-style: italic; }
   .recipe-single article.primary h5 {
     font-size: 16.8px;
     line-height: 1em;

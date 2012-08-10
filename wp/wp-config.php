@@ -16,7 +16,7 @@
 //get environment specific info - db creds
 require_once('wp-config-local.php');
 
-
+define('WP_CACHE', true);
 define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp');
 define('WP_HOME', 'http://' . $_SERVER['SERVER_NAME']);
 define('COOKIE_DOMAIN', $_SERVER['SERVER_NAME']);	

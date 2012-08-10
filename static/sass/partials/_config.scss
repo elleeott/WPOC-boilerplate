@@ -33,6 +33,7 @@ $accentColor3:#efefef;
 //font-family:"franklin-gothic-urw-cond";
 
 $serif1:'abril-text',georgia,serif;
+$serif2: 'rooney-web',georgia,serif; 
 $sansSerif1:'helvetica neue',helvetica,arial, sans-serif;
 $titling1:'franklin-gothic-urw-cond','arial condensed',arial,sans-serif;
 
@@ -63,6 +64,7 @@ $unit10:10px;
 	border-radius: $radius;
 
 }
+
 @mixin boxShadow($inset:none,$x:0px, $y:1px, $blur:3px, $h:0, $s:0%, $l:0%, $a:.1) {
 	-webkit-box-shadow:$inset $x $y $blur hsla($h,$s,$l,$a);
 	   -moz-box-shadow:$inset $x $y $blur hsla($h,$s,$l,$a);
@@ -108,6 +110,7 @@ $unit10:10px;
 	line-height:1em;
 	margin:0 0 1em;
 	font-family:$titling1;
+	text-transform:uppercase;
 }
 
 @mixin heading2($fontSize:($baseFontSize * 1.7 )) {
@@ -128,9 +131,9 @@ $unit10:10px;
 	font-size:$fontSize;
 	line-height:1em;
 	margin:0 0 1em;
-	font-family:$sansSerif1;
-	text-transform:uppercase;
-	font-weight:bold;
+	font-family:$serif2;
+	font-style:italic;
+	//font-weight:bold;
 }
 @mixin heading5($fontSize:($baseFontSize * 1.2)) {
 	font-size:$fontSize;
