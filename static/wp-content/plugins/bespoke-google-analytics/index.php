@@ -43,8 +43,6 @@ function insert_ga_code() {
 			FROM oc_order_product
 			WHERE order_id = $order_id
 		"));
-		//print_r($order_details);
-		//print_r($order_product_details);
 	}
 	?>
 	
@@ -56,18 +54,14 @@ function insert_ga_code() {
 	  _gaq.push(['_setDomainName', '<?php echo $_SERVER['SERVER_NAME']; ?>']);
 	  _gaq.push(['_trackPageview']);
 	  
-	<?php if(isset($order_id)) :?>
+	<?php if(isset($order_id) && $order_details->order_status_id > 0) :?>
 		_gaq.push(['_addTrans','<?php echo $order_id; ?>','<?php echo $store_name; ?>','<?php echo $sub_total; ?>','<?php echo $tax;  ?>','<?php echo $shipping; ?>','<?php echo $order_details->shipping_city ;?>','<?php echo $order_details->shipping_zone ;?>','<?php echo $order_details->shipping_country;?>']);
 		<?php foreach ($order_product_details as $row) : ?>
-			<?php $sku = $wpdb->get_var($wpdb->prepare("
-				SELECT sku
-				FROM oc_product
-				WHERE product_id = $row->product_id
-			"));
-			?>
-			_gaq.push(['_addItem','<?php echo $order_id; ?>','<?php echo $sku; ?>','<?php echo $row->name; ?>','<?php /*product category or variation*/ ?>','<?php echo $row->price; ?>','<?php echo $row->quantity; ?>']);
+			_gaq.push(['_addItem','<?php echo $order_id; ?>','<?php echo $row->model; ?>','<?php echo $row->name; ?>','<?php /*product category or variation*/ ?>','<?php echo $row->price; ?>','<?php echo $row->quantity; ?>']);
 		<?php endforeach; ?>
 		_gaq.push(['_trackTrans']);
+		<?php unset($_SESSION['order_id']); ?>
+
 	<?php endif;?>
 	
 	  (function() {
@@ -79,6 +73,4 @@ function insert_ga_code() {
 	</script>
 	<?php
 	
-	unset($_SESSION['order_id']);
- 
 }

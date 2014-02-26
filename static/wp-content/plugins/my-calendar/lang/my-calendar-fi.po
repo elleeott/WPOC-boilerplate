@@ -1,0 +1,1071 @@
+# Translation of the WordPress plugin My Calendar 1.3.0 by Joseph C Dolson.
+# Copyright (C) 2010 Joseph C Dolson
+# This file is distributed under the same license as the My Calendar package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: My Calendar 1.3.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/my-calendar\n"
+"POT-Creation-Date: 2010-06-04 00:23+0000\n"
+"PO-Revision-Date: 2010-06-28 21:29+0200\n"
+"Last-Translator: Ilpo Puhakka <ilpo.puhakka@gmail.com>\n"
+"Language-Team: Mediajalostamo <info@mediajalostamo.fi>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: FINLAND\n"
+
+#: my-calendar-categories.php:37
+msgid "Category added successfully"
+msgstr "Luokka lisätty onnistuneesti"
+
+#: my-calendar-categories.php:43
+msgid "Category deleted successfully"
+msgstr "Luokka poistettu onnistuneesti"
+
+#: my-calendar-categories.php:48
+#: my-calendar-categories.php:60
+msgid "Edit Category"
+msgstr "Muokkaa luokkaa"
+
+#: my-calendar-categories.php:52
+msgid "Category Editor"
+msgstr "Luokan muokkaustyökalu"
+
+#: my-calendar-categories.php:61
+#: my-calendar-categories.php:114
+#: my-calendar-categories.php:152
+msgid "Category Name"
+msgstr "Luokan nimi"
+
+#: my-calendar-categories.php:62
+#: my-calendar-categories.php:115
+msgid "Category Color (Hex format)"
+msgstr "Luokan väri (Heksa-arvo)"
+
+#: my-calendar-categories.php:63
+#: my-calendar-categories.php:116
+#: my-calendar-categories.php:154
+msgid "Category Icon"
+msgstr "Luokan ikoni"
+
+#: my-calendar-categories.php:85
+#: my-calendar-locations.php:60
+msgid "Save Changes"
+msgstr "Tallenna muutokset"
+
+#: my-calendar-categories.php:95
+msgid "Category edited successfully"
+msgstr "Luokkaa muokattu onnistuneesti"
+
+#: my-calendar-categories.php:101
+#: my-calendar-categories.php:113
+#: my-calendar-categories.php:133
+msgid "Add Category"
+msgstr "Lisää luokka"
+
+#: my-calendar-categories.php:105
+msgid "Add New Category"
+msgstr "Lisää uusi luokka"
+
+#: my-calendar-categories.php:139
+#: my-calendar.php:131
+msgid "Manage Categories"
+msgstr "Hallitse luokkia"
+
+#: my-calendar-categories.php:151
+#: my-calendar-event-manager.php:740
+#: my-calendar-locations.php:127
+msgid "ID"
+msgstr "ID"
+
+#: my-calendar-categories.php:153
+msgid "Category Color"
+msgstr "Luokan väri"
+
+#: my-calendar-categories.php:155
+#: my-calendar-categories.php:169
+#: my-calendar-event-manager.php:792
+#: my-calendar-locations.php:129
+#: my-calendar-locations.php:141
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: my-calendar-categories.php:156
+#: my-calendar-categories.php:175
+#: my-calendar-event-manager.php:57
+#: my-calendar-event-manager.php:792
+#: my-calendar-locations.php:130
+#: my-calendar-locations.php:142
+msgid "Delete"
+msgstr "Poista"
+
+#: my-calendar-categories.php:172
+#: my-calendar-event-manager.php:778
+#: my-calendar.php:972
+msgid "N/A"
+msgstr "N/A"
+
+#: my-calendar-categories.php:175
+#: my-calendar-locations.php:142
+msgid "Are you sure you want to delete this category?"
+msgstr "Haluatko varmasti poistaa tämän luokan?"
+
+#: my-calendar-categories.php:186
+msgid "There are no categories in the database - something has gone wrong!"
+msgstr "Luokkia ei ole tietokannassa – jossain on tapahtunut virhe!"
+
+#: my-calendar-event-manager.php:13
+#: my-calendar-settings.php:195
+msgid "My Calendar has identified that you have the Calendar plugin by Kieran O'Shea installed. You can import those events and categories into the My Calendar database. Would you like to import these events?"
+msgstr "My Calendar on huomannut, että teillä on Kieran O'Shean kalenterilisäosa asennettuna. Voit tuoda nämä tapahtumat ja kategoriat tietokantaan. Haluatko tuoda näitä tapahtumia?"
+
+#: my-calendar-event-manager.php:19
+#: my-calendar-settings.php:201
+msgid "Import from Calendar"
+msgstr "Tuo kalenterista"
+
+#: my-calendar-event-manager.php:24
+msgid "Although it is possible that this import could fail to import your events correctly, it should not have any impact on your existing Calendar database. If you encounter any problems, <a href=\"http://www.joedolson.com/contact.php\">please contact me</a>!"
+msgstr "On mahdollista, että tuontityökalu epäonnistuu tapahtumien oikeanlaisessa siirrossa. Tällä ei kuitenkaan ole mitään vaikutusta nykyiseen kalenteritietokantaan. Jos kohtaat ongelmia, <a href=\"http://www.joedolson.com/contact.php\">ota yhteyttä lisäosan kehittäjään</a>!"
+
+#: my-calendar-event-manager.php:52
+msgid "Delete Event"
+msgstr "Poista tapahtuma"
+
+#: my-calendar-event-manager.php:52
+msgid "Are you sure you want to delete this event?"
+msgstr "Haluatko varmasti poistaa tämän tapahtuman?"
+
+#: my-calendar-event-manager.php:65
+msgid "You do not have permission to delete that event."
+msgstr "Sinulla ei ole riittäviä oikeuksia tapahtuman poistamiseen."
+
+#: my-calendar-event-manager.php:142
+#: my-calendar-event-manager.php:147
+#: my-calendar-event-manager.php:152
+#: my-calendar-event-manager.php:162
+#: my-calendar-event-manager.php:170
+#: my-calendar-event-manager.php:179
+#: my-calendar-event-manager.php:187
+#: my-calendar-event-manager.php:217
+#: my-calendar-event-manager.php:325
+#: my-calendar-event-manager.php:330
+#: my-calendar-event-manager.php:335
+#: my-calendar-event-manager.php:345
+#: my-calendar-event-manager.php:353
+#: my-calendar-event-manager.php:362
+#: my-calendar-event-manager.php:370
+#: my-calendar-event-manager.php:442
+#: my-calendar-event-manager.php:457
+msgid "Error"
+msgstr "Virhe"
+
+#: my-calendar-event-manager.php:142
+#: my-calendar-event-manager.php:325
+msgid "Your event end date must be either after or the same as your event begin date"
+msgstr "Tapahtumasi loppumispäivän pitää olla joko jälkeen tai samaan aikaan kuin alkamisajankohdan"
+
+#: my-calendar-event-manager.php:147
+#: my-calendar-event-manager.php:330
+msgid "Your date formatting is correct but one or more of your dates is invalid. Check for number of days in month and leap year related errors."
+msgstr "Sinun päivämääräsi muotoilu on oikea, mutta yksi tai useampi päivämääristä on pätemätön. Tarkista montako päivää kuukaudessa on ja ettei ole karkausvuosi."
+
+#: my-calendar-event-manager.php:152
+#: my-calendar-event-manager.php:335
+msgid "Both start and end dates must be entered and be in the format YYYY-MM-DD"
+msgstr "Sekä alku- ja päättymisajankohta on merkittävä ja oltava muodossa VVVV-KK-PP"
+
+#: my-calendar-event-manager.php:162
+#: my-calendar-event-manager.php:345
+msgid "The time field must either be blank or be entered in the format hh:mm"
+msgstr "Aikakentän on joko oltava tyhjä tai merkittävä muodossa hh:mm"
+
+#: my-calendar-event-manager.php:170
+#: my-calendar-event-manager.php:353
+msgid "The URL entered must either be prefixed with http:// or be completely blank"
+msgstr "URL on syötettävä joko etuliitteellä http:// tai se voi olla täysin tyhjä"
+
+#: my-calendar-event-manager.php:179
+#: my-calendar-event-manager.php:362
+msgid "The event title must be between 1 and 60 characters in length."
+msgstr "Tapahtuman otsikon on oltava 1–60 merkkiä pitkä."
+
+#: my-calendar-event-manager.php:187
+#: my-calendar-event-manager.php:370
+msgid "The repetition value must be 0 unless a type of recurrance is selected in which case the repetition value must be 0 or higher"
+msgstr "Toisto-arvon on oltava 0, paitsi jos toiston tyyppi on valittu, jolloin sen on oltava 0 tai suurempi."
+
+#: my-calendar-event-manager.php:217
+msgid "An event with the details you submitted could not be found in the database. This may indicate a problem with your database or the way in which it is configured."
+msgstr "Julkaisemillasi tiedoilla olevaa tapahtumaa ei löydy tietokannasta. Tämä voi johtua ongelmasta tietokannassa tai sen asetuksissa."
+
+#: my-calendar-event-manager.php:221
+msgid "Event added. It will now show in your calendar."
+msgstr "Tapahtuma lisätty. Se näkyy nyt kalenterissa."
+
+#: my-calendar-event-manager.php:302
+#: my-calendar-event-manager.php:401
+msgid "Failure"
+msgstr "Virhe"
+
+#: my-calendar-event-manager.php:302
+msgid "You can't update an event if you haven't submitted an event id"
+msgstr "Et voi päivittää tapahtumaa jos et ole syöttänyt tapahtuman id-tunnusta"
+
+#: my-calendar-event-manager.php:401
+msgid "The database failed to return data to indicate the event has been updated sucessfully. This may indicate a problem with your database or the way in which it is configured."
+msgstr "Tietokanta ei onnistunut palauttamaan tietoja osoittaen että tapahtuma olisi päivitetty onnistuneesti. Tämä voi olla ongelma tietokannassa tai siinä, miten se on määritetty."
+
+#: my-calendar-event-manager.php:405
+msgid "Event updated successfully"
+msgstr "Tapahtuma päivitetty onnistuneesti"
+
+#: my-calendar-event-manager.php:433
+msgid "You do not have sufficient permissions to edit that event."
+msgstr "Sinulla ei ole riittäviä käyttäjäoikeuksia tapahtuman muokkaamiseen."
+
+#: my-calendar-event-manager.php:442
+msgid "You can't delete an event if you haven't submitted an event id"
+msgstr "Et voi poistaa tapahtumaa jos et ole syöttänyt tapahtuman id-tunnusta."
+
+#: my-calendar-event-manager.php:453
+msgid "Event deleted successfully"
+msgstr "Tapahtuma poistettu onnistuneesti"
+
+#: my-calendar-event-manager.php:457
+msgid "Despite issuing a request to delete, the event still remains in the database. Please investigate."
+msgstr "Vaikka yritit poistaa tapahtuman, se näkyy edelleen tietokannassa. Ole hyvä ja tutki tietokantasi."
+
+#: my-calendar-event-manager.php:472
+#: my-calendar-event-manager.php:545
+msgid "Edit Event"
+msgstr "Muokkaa tapahtumaa"
+
+#: my-calendar-event-manager.php:476
+msgid "You must provide an event id in order to edit it"
+msgstr "Sinun on syötettävä tapahtuman id-tunnus, jotta voit muokata sitä"
+
+#: my-calendar-event-manager.php:482
+msgid "Add Event"
+msgstr "Lisää tapahtuma"
+
+#: my-calendar-event-manager.php:487
+msgid "Manage Events"
+msgstr "Hallitse tapahtumia"
+
+#: my-calendar-event-manager.php:521
+msgid "Sorry! That's an invalid event key."
+msgstr "Väärä tapahtuman avain."
+
+#: my-calendar-event-manager.php:526
+msgid "Sorry! We couldn't find an event with that ID."
+msgstr "Tapahtumaa syöttämällä id-tunnuksella ei löydy."
+
+#: my-calendar-event-manager.php:545
+msgid "Add an Event"
+msgstr "Lisää tapahtuma"
+
+#: my-calendar-event-manager.php:554
+msgid "Enter your Event Information"
+msgstr "Syötä tapahtuman tiedot"
+
+#: my-calendar-event-manager.php:556
+msgid "Event Title"
+msgstr "Tapahtuman nimi"
+
+#: my-calendar-event-manager.php:559
+msgid "Event Description (<abbr title=\"hypertext markup language\">HTML</abbr> allowed)"
+msgstr "Tapahtuman kuvaus (<abbr title=\"hypertext markup language\">HTML</abbr> sallittu)"
+
+#: my-calendar-event-manager.php:562
+msgid "Event Category"
+msgstr "Tapahtuman luokka"
+
+#: my-calendar-event-manager.php:581
+msgid "Event Link (Optional)"
+msgstr "Tapahtuman linkki (valinnainen)"
+
+#: my-calendar-event-manager.php:584
+msgid "Start Date (YYYY-MM-DD)"
+msgstr "Aloituspäivä (VVVV-KK-PP)"
+
+#: my-calendar-event-manager.php:587
+msgid "End Date (YYYY-MM-DD) (Optional)"
+msgstr "Loppumispäivä (VVVV-KK-PP) (Valinnainen)"
+
+#: my-calendar-event-manager.php:590
+msgid "Time (hh:mm)"
+msgstr "Aika (tt:mm)"
+
+#: my-calendar-event-manager.php:601
+msgid "Optional, set blank if your event is an all-day event or does not happen at a specific time."
+msgstr "Valinnainen. Jätä tyhjäksi, jos tapahtuma on koko päivän kestävä tapahtuma tai ei tapahdu tiettyyn aikaan."
+
+#: my-calendar-event-manager.php:601
+msgid "Current time difference from GMT is "
+msgstr "Nykyinen aikaero GMT:stä on "
+
+#: my-calendar-event-manager.php:601
+msgid " hour(s)"
+msgstr " tunti(a)"
+
+#: my-calendar-event-manager.php:605
+msgid "Recurring Events"
+msgstr "Toistuvat tapahtumat"
+
+#: my-calendar-event-manager.php:626
+msgid "Repeats for"
+msgstr "Toistokerrat"
+
+#: my-calendar-event-manager.php:627
+msgid "Units"
+msgstr "Toistoväli"
+
+#: my-calendar-event-manager.php:628
+msgid "Does not recur"
+msgstr "Ei toistu"
+
+#: my-calendar-event-manager.php:629
+#: my-calendar-event-manager.php:768
+msgid "Daily"
+msgstr "Päivittäin"
+
+#: my-calendar-event-manager.php:630
+#: my-calendar-event-manager.php:769
+msgid "Weekly"
+msgstr "Viikottain"
+
+#: my-calendar-event-manager.php:631
+msgid "Bi-weekly"
+msgstr "Joka toinen viikko"
+
+#: my-calendar-event-manager.php:632
+#: my-calendar-event-manager.php:771
+msgid "Monthly"
+msgstr "Kuukausittain"
+
+#: my-calendar-event-manager.php:633
+msgid "Annually"
+msgstr "Vuosittain"
+
+#: my-calendar-event-manager.php:635
+msgid "Entering 0 means forever, if a unit is selected. If the recurrance unit is left at \"Does not recur,\" the event will not reoccur."
+msgstr "Jos toistoväli on valittuna, 0 tarkoittaa ikuista toistoa. Jos toistoväli jätetään tilaan \"ei toistu \", tapahtuma ei toistu."
+
+#: my-calendar-event-manager.php:642
+#: my-calendar-locations.php:41
+#: my-calendar-locations.php:90
+msgid "All location fields are optional: <em>insufficient information may result in an inaccurate map</em>."
+msgstr "Kaikki paikkaan liittyvät kentät ovat valinnaisia: <em>Puutteellisten tietojen antaminen saattaa johtaa epätarkkaan karttaan</em>."
+
+#: my-calendar-event-manager.php:648
+msgid "Choose a preset location:"
+msgstr "Valitse aiemmin käytetty paikka:"
+
+#: my-calendar-event-manager.php:661
+msgid "Add recurring locations for later use."
+msgstr "Lisää toistuva paikka myöhempää käyttöä varten."
+
+#: my-calendar-event-manager.php:666
+#: my-calendar-locations.php:44
+#: my-calendar-locations.php:93
+msgid "Name of Location (e.g. <em>Joe's Bar and Grill</em>)"
+msgstr "Paikan nimi "
+
+#: my-calendar-event-manager.php:669
+#: my-calendar-locations.php:47
+#: my-calendar-locations.php:96
+msgid "Street Address"
+msgstr "Katuosoite"
+
+#: my-calendar-event-manager.php:672
+#: my-calendar-locations.php:50
+#: my-calendar-locations.php:99
+msgid "Street Address (2)"
+msgstr "Katuosoite (2)"
+
+#: my-calendar-event-manager.php:675
+#: my-calendar-locations.php:53
+#: my-calendar-locations.php:102
+msgid "City"
+msgstr "Kaupunki"
+
+#: my-calendar-event-manager.php:675
+#: my-calendar-locations.php:53
+#: my-calendar-locations.php:102
+msgid "State/Province"
+msgstr "Maakunta"
+
+#: my-calendar-event-manager.php:675
+#: my-calendar-locations.php:53
+#: my-calendar-locations.php:102
+msgid "Postal Code"
+msgstr "Postinumero"
+
+#: my-calendar-event-manager.php:678
+#: my-calendar-locations.php:56
+#: my-calendar-locations.php:105
+msgid "Country"
+msgstr "Maa"
+
+#: my-calendar-event-manager.php:683
+msgid "Save Event"
+msgstr "Tallenna tapahtuma"
+
+#: my-calendar-event-manager.php:741
+#: my-calendar-widgets.php:32
+#: my-calendar-widgets.php:113
+msgid "Title"
+msgstr "Nimi"
+
+#: my-calendar-event-manager.php:742
+msgid "Description"
+msgstr "Kuvaus"
+
+#: my-calendar-event-manager.php:743
+msgid "Start Date"
+msgstr "Alkamisajankohta"
+
+#: my-calendar-event-manager.php:745
+msgid "Recurs"
+msgstr "Toistoväli"
+
+#: my-calendar-event-manager.php:746
+msgid "Repeats"
+msgstr "Toistokerrat"
+
+#: my-calendar-event-manager.php:747
+#: my-calendar-settings.php:152
+msgid "Author"
+msgstr "Lisääjä"
+
+#: my-calendar-event-manager.php:748
+msgid "Category"
+msgstr "Luokka"
+
+#: my-calendar-event-manager.php:749
+msgid "Edit / Delete"
+msgstr "Muokkaa / Poista"
+
+#: my-calendar-event-manager.php:767
+msgid "Never"
+msgstr "Ei koskaan"
+
+#: my-calendar-event-manager.php:770
+msgid "Bi-Weekly"
+msgstr "Joka toinen viikko"
+
+#: my-calendar-event-manager.php:772
+msgid "Yearly"
+msgstr "Vuosittain"
+
+#: my-calendar-event-manager.php:779
+msgid "Forever"
+msgstr "Toistaiseksi"
+
+#: my-calendar-event-manager.php:780
+msgid "Times"
+msgstr "kertaa"
+
+#: my-calendar-event-manager.php:802
+msgid "There are no events in the database!"
+msgstr "Tietokannassa ei ole tapahtumia!"
+
+#: my-calendar-help.php:6
+msgid "How to use My Calendar"
+msgstr "My Calendar käyttöohjeet"
+
+#: my-calendar-help.php:11
+msgid "Shortcode Syntax"
+msgstr "Tagien merkkausohje"
+
+#: my-calendar-help.php:16
+msgid "This basic shortcode will show the calendar on a post or page including all categories and the category key, in a traditional month-by-month format."
+msgstr "Tämä tagi näyttää kalenterin joko artikkelissa tai sivulla siten, että mukana on kaikki kategoriat perinteisessä kuukausittaisessa näkymässä."
+
+#: my-calendar-help.php:19
+msgid "The shortcode supports three attributes, <code>category</code>, <code>format</code> and <code>showkey</code>. There is currently only one alternate option for <code>format</code> &mdash; <code>list</code> &mdash; which will show the calendar in a list format, skipping dates without any events. The <code>category</code> attribute requires either the name of or ID number one of your event categories (the name is case-sensitive). This will show a calendar only including events in that category. Multiple categories can be specified by separating the category names or IDs using the pipe character: <code>|</code>. Setting <code>showkey</code> to <code>no</code> will prevent the category key from being displayed &mdash; this can be useful with single-category output."
+msgstr "Tämä tagi tukee kolmea atribuuttia, <code>category</code>, <code>format</code> and <code>showkey</code>. Tällä hetkellä on vain yksi vaihtoehtoinen asetus, <code>format</code> &mdash; <code>list</code> &mdash; joka näyttää kalenterin listanäkymänä ja ohittaa päivämäärät ilman tapahtumia. <code>category</code> -atribuutti tarvitsee joko nimen tai id-tunnuksen jostain tapahtumaluokasta. Tällöin koodi näyttää tapahtumat vain valitusta luokasta. Voit valita useampia luokkia erottamalla id-tunnukset tai luokan nimet toisistaan pystyviivalla: <code>|</code>.Asettamalla <code>showkey</code> -tagin atribuutiksi <code>no</code> voit estää tapahtumaluokan avainta näkymästä. Tämä on käyttökelpoista etenkin yhden luokan kalentereissa."
+
+#: my-calendar-help.php:22
+msgid "This shortcode displays the output of the Upcoming Events widget. Without attributes, it will display using the settings in your widget; the attributes are used to override the widget settings. The <code>before</code> and <code>after</code> attributes should be numbers; the <code>type</code> attribute can be either \"event\" or \"date\", and the <code>category</code> attribute works the same way as the category attribute on the main calendar shortcode. Templates work using the template codes listed below."
+msgstr "Tämä tagi näyttää samat tiedot kuin Tulevat tapahtumat vimpain.  Ilman atribuutteja se käyttää samoja asetuksia kuin vimpain. Atribuutteja käytetään korvaamaan vimpaimen asetukset. <code>before</code> ja <code>after</code>-atribuuteille annetaan numeroarvoja. <code>type</code>-atribuutti voi olla joko \"event\" tai \"date\", ja <code>category</code>-atribuutti toimii samaan tapaan kuin category-atribuutti muissakin tageissa. <code>template</code>-atribuutti toimii alla listattuilla arvoilla."
+
+#: my-calendar-help.php:25
+msgid "Predictably enough, this shortcode displays the output of the Today's Events widget, with two configurable attributes: category and template."
+msgstr "Tämä tagi näyttää Tapahtumat tänään -vimpaimen sisällön. Se toimii kuten yllä."
+
+#: my-calendar-help.php:33
+msgid "Category Icons"
+msgstr "Luokkien ikonit"
+
+#: my-calendar-help.php:36
+msgid "My Calendar is designed to manage multiple calendars. The basis for these calendars are categories; you can easily setup a calendar page which includes all categories, or you can dedicate separate pages to calendars in each category. For an example, this might be useful for you in managing the tour calendars for multiple bands; event calendars for a variety of locations, etc."
+msgstr "My Calendar on suunniteltu useiden kalentereiden hallintaan. Voit laittaa luokkien tapahtumat näkymään joko samalla sivulla tai sitten eri luokissa olevat tapahtumat eri sivuille. Tämä voi olla hyödyllistä, jos hallinnoit esimerkiksi kahdelle eri kohderyhmälle tarkoitettuja tapahtumia. "
+
+#: my-calendar-help.php:39
+msgid "The pre-installed category icons may not be especially useful for your needs or design. I'm assuming that you're going to upload your own icons -- all you need to do is upload them to the plugin's icons folder, and they'll be available for immediate use, or place them in a folder at \"my-calendar-custom\" to avoid having them overwritten by upgrades."
+msgstr "Oletusikonit eivät välttämättä sovellu käyttöösi eikä sivustosi ulkoasuun. Voit lisätä omia tunnuskuvia lisäämällä ne lisäosan icons-kansioon. Kuitenkin välttyäksesi niiden katoamiselta lisäosaa päivitettäessä, sinun on luotava kansio \"my-calendar-custom\" wp-content/plugins -kansioon. "
+
+#: my-calendar-help.php:39
+msgid "Your icons folder is:"
+msgstr "Sinun icons-kansio on:"
+
+#: my-calendar-help.php:39
+msgid "You can alternately place icons in:"
+msgstr "Vaihtoehtoisesti voi ladata ikonit kansioon: "
+
+#: my-calendar-help.php:47
+msgid "Widget Templating"
+msgstr "Vimpainten atribuutit"
+
+#: my-calendar-help.php:50
+msgid "These codes are available in calendar widgets to create your own custom calendar format."
+msgstr "Voit käyttää näitä tageja vimpaimissa muotoillaksesi kalenterin haluamasi näköiseksi."
+
+#: my-calendar-help.php:54
+msgid "Displays the name of the category the event is in."
+msgstr "Näyttää sen luokan nimen, jossa tapahtuma on."
+
+#: my-calendar-help.php:57
+msgid "Displays the title of the event."
+msgstr "Näyttää tapahtuman otsikon."
+
+#: my-calendar-help.php:60
+msgid "Displays the start time for the event."
+msgstr "Näyttää tapahtuman alkamisajankohdan."
+
+#: my-calendar-help.php:63
+msgid "Displays the date on which the event begins."
+msgstr "Näyttää päivämäärän, jolloin tapahtuma alkaa. "
+
+#: my-calendar-help.php:66
+msgid "Displays the date on which the event ends."
+msgstr "Näyttää päivämäärän, jolloin tapahtuma loppuu."
+
+#: my-calendar-help.php:69
+msgid "Displays the WordPress author who posted the event."
+msgstr "Näyttää WordPress-käyttäjän, joka julkaisi tapahtuman."
+
+#: my-calendar-help.php:72
+msgid "Displays the URL provided for the event."
+msgstr "Näyttää tapahtumaan liitetyn linkin polun."
+
+#: my-calendar-help.php:75
+msgid "Displays the description of the event."
+msgstr "Näyttää tapahtuman kuvauksen."
+
+#: my-calendar-help.php:78
+msgid "Displays title of the event as a link if a URL is present, or the title alone if no URL is available."
+msgstr "Näyttää tapahtuman otsikon linkkinä, jos tapahtumaan on liitetty linkki."
+
+#: my-calendar-help.php:81
+msgid "Displays the name of the location of the event."
+msgstr "Näyttää tapahtumapaikan nimen."
+
+#: my-calendar-help.php:84
+msgid "Displays the first line of the site address."
+msgstr "Näyttää tapahtumapaikan osoitteen ensimmäisen rivin."
+
+#: my-calendar-help.php:87
+msgid "Displays the second line of the site address."
+msgstr "Näyttää tapahtumapaikan osoitteen toisen rivin."
+
+#: my-calendar-help.php:90
+msgid "Displays the city for the event."
+msgstr "Näyttää kaupungin, jossa tapahtuma on."
+
+#: my-calendar-help.php:93
+msgid "Displays the state for the event."
+msgstr "Näyttää tapahtuman maakunnan."
+
+#: my-calendar-help.php:96
+msgid "Displays the postcode for the event."
+msgstr "Näyttää tapahtuman postinumeron."
+
+#: my-calendar-help.php:99
+msgid "Displays the country for the event location."
+msgstr "Näyttää tapahtumapaikan sijaintimaan."
+
+#: my-calendar-help.php:102
+msgid "Displays the event address in <a href=\"http://microformats.org/wiki/hcard\">hcard</a> format."
+msgstr "Näyttää tapahtuman osoitteen <a href=\"http://microformats.org/wiki/hcard\">hcard</a>-muodossa."
+
+#: my-calendar-help.php:105
+msgid "Displays a link to a Google Map of the event, if sufficient address information is available. If not, will be empty."
+msgstr "Näyttää linkin tapahtuman Google Karttaan, jos osoitetiedot ovat olemassa."
+
+#: my-calendar-locations.php:18
+msgid "Location added successfully"
+msgstr "Tapahtumapaikka lisätty onnistuneesti"
+
+#: my-calendar-locations.php:22
+msgid "Location deleted successfully"
+msgstr "Tapahtumapaikka poistettu onnistuneesti"
+
+#: my-calendar-locations.php:27
+msgid "Edit Location"
+msgstr "Muokkaa tapahtumapaikkaa"
+
+#: my-calendar-locations.php:31
+msgid "Location Editor"
+msgstr "Tapahtumapaikkatyökalu"
+
+#: my-calendar-locations.php:70
+msgid "Location edited successfully"
+msgstr "Tapahtumapaikkaa muokattu onnistuneesti"
+
+#: my-calendar-locations.php:76
+#: my-calendar-locations.php:109
+msgid "Add Location"
+msgstr "Lisää tapahtumapaikka"
+
+#: my-calendar-locations.php:80
+msgid "Add New Location"
+msgstr "Lisää uusi tapahtumapaikka"
+
+#: my-calendar-locations.php:115
+#: my-calendar.php:132
+msgid "Manage Locations"
+msgstr "Hallitse tapahtumapaikkoja"
+
+#: my-calendar-locations.php:128
+msgid "Location"
+msgstr "Tapahtumapaikka"
+
+#: my-calendar-locations.php:150
+msgid "There are no locations in the database yet!"
+msgstr "Tietokannassa ei vielä ole tapahtumapaikkoja!"
+
+#: my-calendar-locations.php:154
+msgid "Please note: editing or deleting locations stored for re-use will have no effect on any event previously scheduled at that location. The location database exists purely as a shorthand method to enter frequently used locations into event records."
+msgstr "Huomaathan: tapahtumapaikkojen muokkaaminen tai poistaminen ei vaikuta jo luotuihin tapahtumiin. Tapahtumapaikkatietokanta on olemassa vain, jotta tapahtumien lisääminen olisi vaivattomampaa."
+
+#: my-calendar-settings.php:67
+msgid "Categories imported successfully."
+msgstr "Luokat tuotu onnistuneesti."
+
+#: my-calendar-settings.php:69
+msgid "Categories not imported."
+msgstr "Luokkia ei tuotu."
+
+#: my-calendar-settings.php:72
+msgid "Events imported successfully."
+msgstr "Tapahtumat tuotu onnistuneesti."
+
+#: my-calendar-settings.php:74
+msgid "Events not imported."
+msgstr "Tapahtumia ei tuotu."
+
+#: my-calendar-settings.php:116
+msgid "Settings saved"
+msgstr "Asetukset tallennettu"
+
+#: my-calendar-settings.php:139
+msgid "My Calendar Options"
+msgstr "My Calendar asetukset"
+
+#: my-calendar-settings.php:143
+msgid "Calendar Settings"
+msgstr "Kalenterin asetukset"
+
+#: my-calendar-settings.php:147
+msgid "Primary Calendar Options"
+msgstr "Ensisijaiset kalenteriasetukset"
+
+#: my-calendar-settings.php:149
+msgid "Choose the lowest user group that may manage events"
+msgstr "Valitse heikoin rooli, jolla on oikeudet muokata tapahtumia"
+
+#: my-calendar-settings.php:150
+msgid "Subscriber"
+msgstr "Tilaaja"
+
+#: my-calendar-settings.php:151
+msgid "Contributor"
+msgstr "Avustaja"
+
+#: my-calendar-settings.php:153
+msgid "Editor"
+msgstr "Päätoimittaja"
+
+#: my-calendar-settings.php:154
+msgid "Administrator"
+msgstr "Pääkäyttäjä"
+
+#: my-calendar-settings.php:158
+msgid "Do you want to display the author name on events?"
+msgstr "Haluatko näyttää tapahtuman julkaisijan nimen tapahtumien yhteydessä?"
+
+#: my-calendar-settings.php:159
+#: my-calendar-settings.php:168
+msgid "Yes"
+msgstr "Kyllä"
+
+#: my-calendar-settings.php:160
+#: my-calendar-settings.php:169
+msgid "No"
+msgstr "Ei"
+
+#: my-calendar-settings.php:164
+msgid "Show Heading for Calendar"
+msgstr "Näytä otsikko kalenterille"
+
+#: my-calendar-settings.php:167
+msgid "Display a jumpbox for changing month and year quickly?"
+msgstr "Näytetäänkö hyppylaatikko, jolla voit muuttaa tapahtuman kuukauden ja vuoden nopeasti?"
+
+#: my-calendar-settings.php:173
+msgid "In list mode, show how many months of events at a time:"
+msgstr "Kuinka monen kuukauden tapahtumat näytetään listanäkymässä?"
+
+#: my-calendar-settings.php:176
+msgid "Date format in list mode"
+msgstr "Päivämäärän muoto listanäkymässä"
+
+#: my-calendar-settings.php:177
+msgid "Date format uses the same syntax as the <a href=\"http://php.net/date\">PHP <code>date()</code> function</a>. Save option to update sample output."
+msgstr "Päivämäärän muoto käyttää samaa syntaksia kuin <a href=\"http://php.net/date\">PHP <code>date()</code> funktio</a>. Tallenne niin näet esimerkin oikeassa muodossa."
+
+#: my-calendar-settings.php:180
+msgid "Show Link to Google Map (when sufficient address information is available.)"
+msgstr "Näytä linkki Google Karttoihin (vain kun osoitetiedot ovat saatavilla)"
+
+#: my-calendar-settings.php:181
+msgid "Show Event Address in Details"
+msgstr "Näytä tapahtuman osoite yksityiskohtaisten tietojen joukossa"
+
+#: my-calendar-settings.php:185
+msgid "Save Settings"
+msgstr "Tallenna asetukset"
+
+#: my-calendar-styles.php:36
+msgid "Style Settings saved"
+msgstr "Tyyliasetukset tallennettu"
+
+#: my-calendar-styles.php:54
+msgid "My Calendar Styles"
+msgstr "My Calendar tyylit"
+
+#: my-calendar-styles.php:58
+msgid "Calendar Style Settings"
+msgstr "Kalenterin tyyliasetukset"
+
+#: my-calendar-styles.php:62
+msgid "CSS Style Options"
+msgstr "CSS-tyyliasetukset"
+
+#: my-calendar-styles.php:64
+msgid "Reset the My Calendar stylesheet to the default"
+msgstr "Palauta My Calendar oletusasetukset"
+
+#: my-calendar-styles.php:64
+msgid "Disable My Calendar Stylesheet"
+msgstr "Älä käytä My Calendar tyylisivua"
+
+#: my-calendar-styles.php:67
+msgid "Edit the stylesheet for My Calendar"
+msgstr "Muokkaa My Calendar tyylisivua"
+
+#: my-calendar-styles.php:71
+msgid "Calendar Behaviors: Calendar View"
+msgstr "Kalenterin käyttäytyminen: kalenterinäkymä"
+
+#: my-calendar-styles.php:73
+msgid "Reset the My Calendar Calendar Javascript"
+msgstr "Palauta kalenterinäkymän oletus Javascript"
+
+#: my-calendar-styles.php:73
+msgid "Disable Calendar Javascript Effects"
+msgstr "Älä käytä kalenterinäkymän Javascript efektejä"
+
+#: my-calendar-styles.php:76
+msgid "Edit the jQuery scripts for My Calendar in Calendar format"
+msgstr "Muokkaa kalenterinäkymän jQuery-skriptejä"
+
+#: my-calendar-styles.php:80
+msgid "Calendar Behaviors: List View"
+msgstr "Kalenterin käyttäytyminen: listanäkymä"
+
+#: my-calendar-styles.php:82
+msgid "Reset the My Calendar List Javascript"
+msgstr "Palauta listanäkymän oletus Javascript"
+
+#: my-calendar-styles.php:82
+msgid "Disable List Javascript Effects"
+msgstr "Älä käytä listanäkymän Javascript efektejä"
+
+#: my-calendar-styles.php:85
+msgid "Edit the jQuery scripts for My Calendar in List format"
+msgstr "Muokkaa listanäkymän jQuery-skriptejä"
+
+#: my-calendar-styles.php:89
+msgid "Save"
+msgstr "Tallenna"
+
+#: my-calendar-widgets.php:11
+#: my-calendar-widgets.php:42
+#: my-calendar-widgets.php:43
+msgid "Today's Events"
+msgstr "Tapahtumat tänään"
+
+#: my-calendar-widgets.php:36
+#: my-calendar-widgets.php:117
+msgid "Template"
+msgstr "Kaava"
+
+#: my-calendar-widgets.php:56
+#: my-calendar-widgets.php:143
+#: my-calendar-widgets.php:144
+msgid "Upcoming Events"
+msgstr "Tulevat tapahtumat"
+
+#: my-calendar-widgets.php:121
+msgid "Widget Options"
+msgstr "Vimpaimen asetukset"
+
+#: my-calendar-widgets.php:123
+msgid "Display upcoming events by:"
+msgstr "Tapahtumien näyttölogiikka"
+
+#: my-calendar-widgets.php:124
+msgid "Events (e.g. 2 past, 3 future)"
+msgstr "Tapahtumat (esim. 2 mennyttä, 3 tulevaa)"
+
+#: my-calendar-widgets.php:125
+msgid "Dates (e.g. 4 days past, 5 forward)"
+msgstr "Päivät (esim. 4 viimeisintä, 5 tulevaa)"
+
+#: my-calendar-widgets.php:129
+msgid "events into the future;"
+msgstr "tulevaa tapahtumaa, "
+
+#: my-calendar-widgets.php:130
+msgid "events from the past"
+msgstr "mennyttä tapahtumaa"
+
+#: my-calendar-widgets.php:133
+msgid "days into the future;"
+msgstr "tulevaa päivää"
+
+#: my-calendar-widgets.php:134
+msgid "days from the past"
+msgstr "mennyttä päivää"
+
+#: my-calendar-widgets.php:137
+msgid "Show only this category:"
+msgstr "näytä vain tästä luokasta (nimi tai id):"
+
+#: my-calendar-widgets.php:250
+msgid "There are no events currently scheduled."
+msgstr "Tapahtumia ei juuri nyt ole."
+
+#: my-calendar.php:48
+#: my-calendar.php:133
+msgid "Settings"
+msgstr "Asetukset"
+
+#: my-calendar.php:69
+msgid "Get Support"
+msgstr "Tuki"
+
+#: my-calendar.php:70
+msgid "Make a Donation"
+msgstr "Tee lahjoitus"
+
+#. #-#-#-#-#  plugin.pot (My Calendar 1.3.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: my-calendar.php:124
+msgid "My Calendar"
+msgstr "Kalenteri"
+
+#: my-calendar.php:127
+msgid "Add/Edit Events"
+msgstr "Lisää/muokkaa tapahtumia"
+
+#: my-calendar.php:134
+msgid "Style Editor"
+msgstr "Tyyliasetukset"
+
+#: my-calendar.php:135
+msgid "My Calendar Help"
+msgstr "My Calendar opastus"
+
+#: my-calendar.php:135
+msgid "Help"
+msgstr "Opastus"
+
+#: my-calendar.php:833
+#: my-calendar.php:837
+#: my-calendar.php:847
+#: my-calendar.php:849
+msgid "Next Events"
+msgstr "Seuraavat tapahtumat"
+
+#: my-calendar.php:862
+#: my-calendar.php:866
+#: my-calendar.php:876
+#: my-calendar.php:878
+msgid "Previous Events"
+msgstr "Edelliset tapahtumat"
+
+#: my-calendar.php:966
+msgid "Event Details"
+msgstr "Tapahtuman tiedot"
+
+#: my-calendar.php:972
+msgid "Not Applicable"
+msgstr "Ei saatavilla"
+
+#: my-calendar.php:980
+msgid "Posted by"
+msgstr "Julkaisija: "
+
+#: my-calendar.php:1659
+msgid "Month"
+msgstr "Kuukausi"
+
+#: my-calendar.php:1660
+#: my-calendar.php:1723
+msgid "January"
+msgstr "tammikuu"
+
+#: my-calendar.php:1661
+#: my-calendar.php:1723
+msgid "February"
+msgstr "helmikuu"
+
+#: my-calendar.php:1662
+#: my-calendar.php:1723
+msgid "March"
+msgstr "maaliskuu"
+
+#: my-calendar.php:1663
+#: my-calendar.php:1723
+msgid "April"
+msgstr "huhtikuu"
+
+#: my-calendar.php:1664
+#: my-calendar.php:1723
+msgid "May"
+msgstr "toukokuu"
+
+#: my-calendar.php:1665
+#: my-calendar.php:1723
+msgid "June"
+msgstr "kesäkuu"
+
+#: my-calendar.php:1666
+#: my-calendar.php:1723
+msgid "July"
+msgstr "heinäkuu"
+
+#: my-calendar.php:1667
+#: my-calendar.php:1723
+msgid "August"
+msgstr "elokuu"
+
+#: my-calendar.php:1668
+#: my-calendar.php:1723
+msgid "September"
+msgstr "syyskuu"
+
+#: my-calendar.php:1669
+#: my-calendar.php:1723
+msgid "October"
+msgstr "lokakuu"
+
+#: my-calendar.php:1670
+#: my-calendar.php:1723
+msgid "November"
+msgstr "marraskuu"
+
+#: my-calendar.php:1671
+#: my-calendar.php:1723
+msgid "December"
+msgstr "joulukuu"
+
+#: my-calendar.php:1673
+msgid "Year"
+msgstr "Vuosi"
+
+#: my-calendar.php:1698
+msgid "Go"
+msgstr "Mene"
+
+#: my-calendar.php:1716
+#: my-calendar.php:1719
+msgid "<abbr title=\"Sunday\">Sun</abbr>"
+msgstr "<abbr title=\"Sunnuntai\">Su</abbr>"
+
+#: my-calendar.php:1716
+#: my-calendar.php:1719
+msgid "<abbr title=\"Monday\">Mon</abbr>"
+msgstr "<abbr title=\"Maanantai\">Ma</abbr>"
+
+#: my-calendar.php:1716
+#: my-calendar.php:1719
+msgid "<abbr title=\"Tuesday\">Tues</abbr>"
+msgstr "<abbr title=\"Tiistai\">Ti</abbr>"
+
+#: my-calendar.php:1716
+#: my-calendar.php:1719
+msgid "<abbr title=\"Wednesday\">Wed</abbr>"
+msgstr "<abbr title=\"Keskiviikko\">Ke</abbr>"
+
+#: my-calendar.php:1716
+#: my-calendar.php:1719
+msgid "<abbr title=\"Thursday\">Thur</abbr>"
+msgstr "<abbr title=\"Torstai\">To</abbr>"
+
+#: my-calendar.php:1716
+#: my-calendar.php:1719
+msgid "<abbr title=\"Friday\">Fri</abbr>"
+msgstr "<abbr title=\"Perjantai\">Pe</abbr>"
+
+#: my-calendar.php:1716
+#: my-calendar.php:1719
+msgid "<abbr title=\"Saturday\">Sat</abbr>"
+msgstr "<abbr title=\"Lauantai\">La</abbr>"
+
+#: my-calendar.php:1778
+msgid "and"
+msgstr "ja"
+
+#: my-calendar.php:1806
+#: my-calendar.php:1810
+msgid "Calendar"
+msgstr "Kalenteri"
+
+#: my-calendar.php:1814
+msgid "Events in"
+msgstr "Tapahtumat"
+
+#: my-calendar.php:1923
+msgid "There are no events scheduled during this period."
+msgstr "Tällä aikavälillä ei ole tapahtumia."
+
+#: my-calendar.php:1933
+msgid "Category Key"
+msgstr "Luokan avain"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.joedolson.com/articles/my-calendar/"
+msgstr "http://www.joedolson.com/articles/my-calendar/"
+
+#. Description of the plugin/theme
+msgid "Accessible WordPress event calendar plugin. Show events from multiple calendars on pages, in posts, or in widgets."
+msgstr "Tapahtumakalenteri Wordpressiin. Näytä tapahtumia useasta eri kalenterista sivuilla, artikkeleissa tai vimpaimissa."
+
+#. Author of the plugin/theme
+msgid "Joseph C Dolson"
+msgstr "Joseph C Dolson"
+
+#. Author URI of the plugin/theme
+msgid "http://www.joedolson.com"
+msgstr "http://www.joedolson.com"
+

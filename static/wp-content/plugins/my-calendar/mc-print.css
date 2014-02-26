@@ -1,0 +1,13 @@
+.my-calendar-header, h3 img, .mc-toggle, .mc_edit_links, #mc-export,.longdesc, .shortdesc , .mc-print { display: none; }
+table { border: 1px solid #ddd; border-collapse: collapse; margin: 0 auto;}
+th { text-align:center; background: #f6f6f6; border: 1px solid #ddd; width: 130px; text-transform:uppercase; }
+td { border: 1px solid #ddd; font-size: 12px; vertical-align: top;}
+.details {border-bottom: 1px solid #ddd; color: #444; margin-bottom: 2px;}
+.details a { display: none; }
+h3 { font-size: 1.1em; margin: 2px 0 5px;}
+p {margin: 2px 0; padding: 1px 0; line-height: 1.2; }
+caption { font-size: 1.4em; padding: 3px 0; }
+abbr { border: none;}
+a { text-decoration: none; color: #f00}
+.mc-date { font-weight: 700; font-size: 1.2em; padding: 2px 4px; line-height: 1; margin-left: 3px; float: right; background: #f9f9f9; position: relative; top: -1px; right: -1px; border-left: 1px solid #ddd; border-bottom: 1px solid #ddd}
+.return { width: 910px; margin: 10px auto;}

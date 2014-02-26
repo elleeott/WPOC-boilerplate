@@ -1,0 +1,19 @@
+.mc_edit_links {
+font-size: .8em;
+margin: 5px -5px -5px;
+padding: 2px;
+clear: both;
+-webkit-border-bottom-right-radius: 8px;
+-webkit-border-bottom-left-radius: 8px;
+-moz-border-radius-bottomright: 8px;
+-moz-border-radius-bottomleft: 8px;
+border-bottom-right-radius: 8px;
+border-bottom-left-radius: 8px;
+border-top: 1px solid #ddd;
+}
+.mini .mc_edit_links , .list .mc_edit_links {
+margin-bottom: 5px;
+}
+.mc_edit_links ul {margin: 0 20px;}
+.list .mc_edit_links li {padding: 0;list-style-type: disc;}
+.list .mc_edit_links a {display: block!important;}

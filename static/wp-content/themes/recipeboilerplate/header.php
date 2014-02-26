@@ -48,19 +48,16 @@
 			</header>
 			<div class="breadcrumbs container">
 			
-				<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds.
-				<hr>
-				<?php  echo 'session data: '; print_r($_SESSION); ?>
-				<hr>
-				<?php  echo 'cookies: '; print_r($_COOKIE); ?>
-				<hr>
-				<?php echo  'query: ' . $GLOBALS['wp_query']->request; ?>
-				<hr>
+				<?php  echo get_num_queries(); ?> queries in <?php timer_stop(1); ?>  seconds. <br/>
+				<?php // echo 'session data: '; print_r($_SESSION); ?>
+				<br/>
+				<?php  // echo 'cookies: '; print_r($_COOKIE); ?>
+				<?php // echo  'query: ' . $GLOBALS['wp_query']->request; ?>
 
 				<?php
-				    global $wpdb;
-				    echo '<pre style="background:#fff;">';
-				    print_r($wpdb->queries);
-				    echo "</pre>";
+				  //  global $wpdb;
+				   // echo '<pre style="background:#fff;">';
+				    //print_r($wpdb->queries);
+				   // echo "</pre>";
 				?>
 			</div>
