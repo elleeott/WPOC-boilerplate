@@ -52,6 +52,7 @@ function insert_ga_code() {
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', '<?php echo $web_id;?>']);
 	  _gaq.push(['_setDomainName', '<?php echo $_SERVER['SERVER_NAME']; ?>']);
+	  _gaq.push(['_setAllowLinker', true]);
 	  _gaq.push(['_trackPageview']);
 	  
 	<?php if(isset($order_id) && $order_details->order_status_id > 0) :?>

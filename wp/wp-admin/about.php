@@ -7,19 +7,24 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once( './admin.php' );
+require_once( dirname( __FILE__ ) . '/admin.php' );
 
 $title = __( 'About' );
 
 list( $display_version ) = explode( '-', $wp_version );
 
-include( './admin-header.php' );
+// Temporary 3.8 hack: We want to use user-profile for the color schemes but don't need the heavy zxcvbn.
+wp_deregister_script( 'zxcvbn-async' );
+wp_register_script( 'zxcvbn-async', false );
+wp_enqueue_script( 'user-profile' );
+
+include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 <div class="wrap about-wrap">
 
-<h1><?php printf( __( 'Welcome to WordPress %s' ), $display_version ); ?></h1>
+<h1><?php printf( __( 'Welcome to WordPress&nbsp;%s' ), $display_version ); ?></h1>
 
-<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Using WordPress %s will improve your looks, personality, and web publishing experience. Okay, just the last one, but still. :)' ), $display_version ); ?></div>
+<div class="about-text"><?php printf( __( 'Thank you for updating to WordPress %s, the most beautiful WordPress&nbsp;yet.' ), $display_version ); ?></div>
 
 <div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
@@ -34,156 +39,122 @@ include( './admin-header.php' );
 </h2>
 
 <div class="changelog point-releases">
-	<h3><?php echo _n( 'Maintenance and Security Release', 'Maintenance and Security Releases', 2 ); ?></h3>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug.',
-         '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.', 12 ), '3.3.2', number_format_i18n( 12 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.3.2' ); ?>
- 	</p>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug.',
-         '<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs.', 15 ), '3.3.1', number_format_i18n( 15 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.3.1' ); ?>
+	<h3><?php echo _n( 'Maintenance Release', 'Maintenance Releases', 1 ); ?></h3>
+	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed %2$s bug.',
+		'<strong>Version %1$s</strong> addressed %2$s bugs.', 31 ), '3.8.1', number_format_i18n( 31 ) ); ?>
+		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.8.1' ); ?>
  	</p>
 </div>
 
 <div class="changelog">
-	<h3><?php _e( 'Easier Uploading' ); ?></h3>
-
-	<div class="feature-section images-stagger-right">
-		<div class="feature-images">
-			<img src="images/screenshots/media-icon.png" width="200" class="angled-right" />
-			<img src="images/screenshots/drag-and-drop.png" width="200" class="angled-left" />
+	<h2 class="about-headline-callout"><?php _e( 'Introducing a modern new&nbsp;design' ); ?></h2>
+	<img class="about-overview-img" src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/overview.png?1" />
+	<div class="feature-section col three-col about-updates">
+		<div class="col-1">
+			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/aesthetics.png?1" />
+			<h3><?php _e( 'Modern aesthetic' ); ?></h3>
+			<p><?php _e( 'The new WordPress dashboard has a fresh, uncluttered design that embraces clarity and simplicity.' ); ?></p>
 		</div>
-		<div class="left-feature">
-			<h4><?php _e( 'File Type Detection' ); ?></h4>
-			<p><?php _e( 'We&#8217;ve streamlined things! Instead of needing to click on a specific upload icon based on your file type, now there&#8217;s just one. Once your file is uploaded, the appropriate fields will be displayed for entering information based on the file type.' ); ?></p>
-
-			<h4><?php _e( 'Drag-and-Drop Media Uploader' ); ?></h4>
-			<p><?php _e( 'Adding photos or other files to posts and pages just got easier. Drag files from your desktop and drop them into the uploader. Add one file at a time, or many at once.' ); ?></p>
-
-			<h4><?php _e( 'More File Formats' ); ?></h4>
-			<p><?php _e( 'We&#8217;ve added the rar and 7z file formats to the list of allowed file types in the uploader.' ); ?></p>
+		<div class="col-2">
+			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/typography.png?1" />
+			<h3><?php _e( 'Clean typography' ); ?></h3>
+			<p><?php _e( 'The Open Sans typeface provides simple, friendly text that is optimized for both desktop and mobile viewing. It&#8217;s even open source, just like WordPress.' ); ?></p>
+		</div>
+		<div class="col-3 last-feature">
+			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/contrast.png?1" />
+			<h3><?php _e( 'Refined contrast' ); ?></h3>
+			<p><?php _e( 'We think beautiful design should never sacrifice legibility. With superior contrast and large, comfortable type, the new design is easy to read and a pleasure to navigate.' ); ?></p>
 		</div>
 	</div>
 </div>
+
+<hr>
 
 <div class="changelog">
-	<h3><?php _e( 'Dashboard Design' ); ?></h3>
-
-	<div class="feature-section text-features">
-		<h4><?php _e( 'Flyout Menus' ); ?></h4>
-		<p><?php _e( 'Speed up navigating the dashboard and reduce repetitive clicking with our new flyout submenus. As you hover over each main menu item in your dashboard navigation, the submenus will magically appear, providing single-click access to any dashboard screen.' ); ?></p>
-
+	<div class="feature-section col two-col">
 		<div>
-		<h4><?php _e( 'Header + Admin Bar = Toolbar' ); ?></h4>
-		<p><?php _e( 'To save space and increase efficiency, we&#8217;ve combined the admin bar and the old Dashboard header into one persistent toolbar. Hovering over the toolbar items will reveal submenus when available for quick access. ' ); ?></p>
+			<h3><?php _e( 'WordPress on every&nbsp;device' ); ?></h3>
+			<p><?php _e( 'We all access the internet in different ways. Smartphone, tablet, notebook, desktop &mdash; no matter what you use, WordPress will adapt and you&#8217;ll feel right at home.' ); ?></p>
+			<h4><?php _e( 'High definition at high&nbsp;speed' ); ?></h4>
+			<p><?php _e( 'WordPress is sharper than ever with new vector-based icons that scale to your screen. By ditching pixels, pages load significantly faster, too.' ); ?></p>
 		</div>
-	</div>
-
-	<div class="feature-section screenshot-features">
-		<div class="angled-left">
-			<img src="images/screenshots/admin-flyouts.png" />
-			<h4><?php _e( 'Responsive Design' ); ?></h4>
-			<p><?php _e( 'Certain dashboard screens have been updated to look better at various sizes, including improved iPad/tablet support.' ); ?></p>
-		</div>
-		<div class="angled-right">
-			<img src="images/screenshots/help-screen.png" />
-			<h4><?php _e( 'Help Tabs' ); ?></h4>
-			<p><?php _e( 'The Help tabs located in the upper corner of the dashboard screens below your name have gotten a facelift. Help content is broken into smaller sections for easier access, with links to relevant documentation and the support forums always visible.' ); ?></p>
+		<div class="last-feature about-colors-img">
+			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/colors.png?1" />
 		</div>
 	</div>
 </div>
+
+<hr>
+
+<?php
+global $_wp_admin_css_colors;
+$new_colors = array( 'fresh', 'light', 'blue', 'midnight', 'sunrise', 'ectoplasm', 'ocean', 'coffee' );
+$_wp_admin_css_colors = array_intersect_key( $_wp_admin_css_colors, array_fill_keys( $new_colors, true ) );
+
+if ( count( $_wp_admin_css_colors ) > 1 && has_action( 'admin_color_scheme_picker' ) ) : ?>
+<div class="changelog about-colors">
+	<div class="feature-section col one-col">
+		<div>
+			<h3><?php _e( 'Pick a color' ); ?></h3>
+			<p><?php _e( 'We&#8217;ve included eight color schemes so you can pick your favorite. Choose from any of them below to change it instantly.' ); ?>
+				<?php
+				/** This action is documented in wp-admin/user-edit.php */
+				do_action( 'admin_color_scheme_picker' );
+				?>
+			<p><?php printf( __( 'To change your color scheme later, just <a href="%1$s">visit your profile</a>.' ), get_edit_profile_url( get_current_user_id() ) ); ?></p>
+		</div>
+	</div>
+</div>
+
+<hr>
+<?php endif; ?>
 
 <div class="changelog">
-	<h3><?php _e( 'Feels Like the First Time' ); ?></h3>
-
-	<div class="feature-section images-stagger-right">
-		<div class="feature-images">
-			<img src="images/screenshots/new-feature-pointer.png" class="angled-right" />
-			<img src="images/screenshots/welcome-screen.png" class="angled-left" />
+	<div class="feature-section col two-col">
+		<div>
+			<h3><?php _e( 'Refined theme management' ); ?></h3>
+			<p><?php _e( 'The new themes screen lets you survey your themes at a glance. Or want more information? Click to discover more. Then sit back and use your keyboard&#8217;s navigation arrows to flip through every theme you&#8217;ve got.' ); ?></p>
+			<h4><?php _e( 'Smoother widget experience' ); ?></h4>
+			<p><?php _e( 'Drag-drag-drag. Scroll-scroll-scroll. Widget management can be complicated. With the new design, we&#8217;ve worked to streamline the widgets&nbsp;screen.' ); ?></p>
+			<p><?php _e( 'Have a large monitor? Multiple widget areas stack side-by-side to use the available space. Using a tablet? Just tap a widget to add it.' ); ?></p>
 		</div>
-		<div class="left-feature">
-			<h4><?php _e( 'New Feature Pointers' ); ?></h4>
-			<p><?php _e( 'When we add new features, move navigation, or do anything else with the dashboard that might throw you for a loop when you update your WordPress site, we&#8217;ll let you know about it with new feature pointers explaining the change.' ); ?></p>
-
-			<h4><?php _e( 'Post-update Changelog' ); ?></h4>
-			<p><?php _e( 'This screen! From now on when you update WordPress, you&#8217;ll be brought to this screen &mdash; also accessible any time from the W logo in the corner of the toolbar &mdash; to get an overview of what&#8217;s changed.' ); ?></p>
-
-			<h4><?php _e( 'Dashboard Welcome' ); ?></h4>
-			<p><?php _e( 'The dashboard home screen will have a Welcome area that displays when a new WordPress installation is accessed for the first time, prompting the site owner to complete various setup tasks. Once dismissed, this welcome can be accessed via the dashboard home screen options tab.' ); ?></p>
+		<div class="last-feature about-themes-img">
+			<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/themes.png?1" />
 		</div>
 	</div>
-
 </div>
 
-<div class="changelog">
-	<h3><?php _e( 'Content Tools' ); ?></h3>
+<hr>
 
-	<div class="feature-section three-col">
+<div class="changelog about-twentyfourteen">
+	<h2 class="about-headline-callout"><?php _e( 'Twenty Fourteen, a sleek new magazine&nbsp;theme' ); ?></h2>
+	<img src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.8/twentyfourteen.jpg?1" />
+
+	<div class="feature-section col one-col center-col">
 		<div>
-			<h4><?php _e( 'Better Co-Editing' ); ?></h4>
-			<img src="images/screenshots/coediting.png" class="element-screenshot" />
-			<p><?php _e( 'Have you ever gone to edit a post after someone else has finished with it, only to get an alert that tells you the other person is still editing the post? From now on, you&#8217;ll only get that alert if another person is still on the editing screen &mdash; no more time lag.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'Tumblr Importer' ); ?></h4>
-			<p><?php _e( 'Want to import content from Tumblr to WordPress? No problem! Go to <span class="no-break">Tools &rarr; Import</span> to get the new Tumblr Importer, which maps your Tumblog posts to the matching WordPress post formats. Tip: Choose a theme designed to display post formats to get the greatest benefit from the importer.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'Widget Improvements' ); ?></h4>
-			<p><?php _e( 'Changing themes often requires widget re-configuration based on the number and position of sidebars. Now if you change back to a previous theme, the widgets will automatically go back to how you had them arranged in that theme. <em>Note: if you&#8217;ve added new widgets since the switch, you&#8217;ll need to rescue them from the Inactive Widgets area.</em>' ); ?></p>
+			<h3><?php _e( 'Turn your blog into a&nbsp;magazine' ); ?></h3>
+			<p><?php _e( 'Create a beautiful magazine-style site with WordPress and Twenty Fourteen. Choose a grid or a slider to display featured content on your homepage. Customize your site with three widget areas or change your layout with two page templates.' ); ?></p>
+			<p><?php _e( 'With a striking design that does not compromise our trademark simplicity, Twenty Fourteen is our most intrepid default theme yet.' ); ?></p>
 		</div>
 	</div>
-
 </div>
 
-<div class="changelog">
-	<h3><?php _e( 'Under the Hood' ); ?></h3>
-
-	<div class="feature-section three-col">
-		<div>
-			<h4><?php _e( 'Flexible Permalinks' ); ?></h4>
-			<p><?php _e( 'You have more freedom when choosing a post permalink structure. Skip the date information or add a category slug without a performance penalty.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'Post Slugs: Less Funky' ); ?></h4>
-			<p><?php _e( 'Funky characters in post titles (e.g. curly quotes from a word processor) will no longer result in garbled post slugs.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'jQuery and jQuery UI' ); ?></h4>
-			<p><?php printf( __( 'WordPress now includes the entire jQuery UI stack and the latest version of jQuery: %s.' ), '1.7.1' ); ?></p>
-		</div>
-	</div>
-
-	<div class="feature-section three-col">
-		<div>
-			<h4 style="direction:ltr">is_main_query()</h4>
-			<p><?php _e( 'This handy method will tell you if a <code>WP_Query</code> object is the main WordPress query or a secondary query.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'WP_Screen API' ); ?></h4>
-			<p><?php _e( 'WordPress has a nice new API for working with admin screens. Create rich screens, add help documentation, adapt to screen contexts, and more.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'Editor API Overhaul' ); ?></h4>
-			<p><?php _e( 'The new editor API automatically pulls in all the JS and CSS goodness for the editor. It even supports multiple editors on the same page.' ); ?></p>
-		</div>
-	</div>
-
-</div>
+<hr>
 
 <div class="return-to-dashboard">
 	<?php if ( current_user_can( 'update_core' ) && isset( $_GET['updated'] ) ) : ?>
-	<a href="<?php echo esc_url( network_admin_url( 'update-core.php' ) ); ?>"><?php
+	<a href="<?php echo esc_url( self_admin_url( 'update-core.php' ) ); ?>"><?php
 		is_multisite() ? _e( 'Return to Updates' ) : _e( 'Return to Dashboard &rarr; Updates' );
 	?></a> |
 	<?php endif; ?>
-	<a href="<?php echo esc_url( admin_url() ); ?>"><?php _e( 'Go to Dashboard &rarr; Home' ); ?></a>
+	<a href="<?php echo esc_url( self_admin_url() ); ?>"><?php
+		is_blog_admin() ? _e( 'Go to Dashboard &rarr; Home' ) : _e( 'Go to Dashboard' ); ?></a>
 </div>
 
 </div>
 <?php
 
-include( './admin-footer.php' );
+include( ABSPATH . 'wp-admin/admin-footer.php' );
 
 // These are strings we may use to describe maintenance/security releases, where we aim for no new strings.
 return;
@@ -209,5 +180,3 @@ _n_noop( '<strong>Version %1$s</strong> addressed some security issues and fixed
          '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.' );
 
 __( 'For more information, see <a href="%s">the release notes</a>.' );
-
-?>

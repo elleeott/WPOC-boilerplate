@@ -1,5 +1,29 @@
 <?php get_header(); ?>
 <div id="content-container" class="clearfix">
+	<style type="text/css">
+		.cart a {
+			width:200px;
+			text-align:center;
+			background:#7DD5E3;
+			color:#fff;
+			text-transform:uppercase;
+			margin:40px auto;
+			display:block;
+			padding:2em 4em;
+			border-radius:80px;
+			font-weight:bold;
+			font-family:helvetica,arial,sans-serif;
+			font-size:24px;
+		}
+		.cart a:hover {
+			background:#70C0CC;
+			text-decoration:none;
+		}
+	</style>
+	<div class="cart">
+		<a href="http://3dcart-frictio-us.3dcartstores.com/add_cart.asp?out=1&quick=1&item_id=4" onclick="_gaq.push(['_link', 'http://3dcart-frictio-us.3dcartstores.com/add_cart.asp?out=1&quick=1&item_id=4']); return false;">add to 3dcart</a>
+	</div>
+
 	<div id="hero">
 		<div class="container">
 			<div class="flexslider">
